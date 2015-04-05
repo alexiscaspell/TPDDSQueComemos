@@ -1,4 +1,5 @@
 /target/
+/tp.anual/xtend-gen/
 .classpath
 .settings
 .project

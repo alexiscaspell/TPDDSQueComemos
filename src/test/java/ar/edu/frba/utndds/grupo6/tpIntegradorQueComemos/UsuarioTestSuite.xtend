@@ -30,5 +30,5 @@ class UsuarioTestSuite {
 		val homero = new Usuario()
 		homero.calcularIMC(113, 1.83)
 		Assert.assertEquals(33.74, homero.IMC, 0.01)
-	
+	}
 }

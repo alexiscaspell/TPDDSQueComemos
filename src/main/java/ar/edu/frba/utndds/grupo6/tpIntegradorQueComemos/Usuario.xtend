@@ -1,15 +1,18 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import org.eclipse.xtend.lib.annotations.Accessors
-
 class Usuario {
 	
+	private double _altura;
 	
-	@Accessors double IMC
-
+	private double _peso;
 	
-
-	def calcularIMC(double peso, double altura) {
-		IMC= peso/ (altura * altura)
+	new(double peso, double altura){
+		_altura = altura
+		_peso = peso
 	}
+	
+	def double calcularIMC(){
+		_peso / (_altura * _altura)		
+	}
+			
 }

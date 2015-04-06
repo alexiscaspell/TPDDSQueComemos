@@ -7,35 +7,31 @@ class UsuarioTestSuite {
 
 	@Test
 	def void unTipoAlto() {
-		val pepe = new Usuario()
-		pepe.calcularIMC(80.4, 1.90)
-		Assert.assertEquals(22.27, pepe.IMC, 0.01)
+		val pepe = new Usuario(80.4, 1.90)
+		Assert.assertEquals(22.27, pepe.calcularIMC(), 0.01)
 	}
 	
 	@Test
 	def void testEnunciado() {
-		val persona_enunciado = new Usuario()
-		persona_enunciado.calcularIMC(83, 1.88)
-		Assert.assertEquals(23.48, persona_enunciado.IMC, 0.01)
-	}
-	@Test
-	def void unTipoGordo() {    /*perdoname jesus por decirte gordo en pascua*/ 
-		val jesus = new Usuario()
-		jesus.calcularIMC(100, 1.75)
-		Assert.assertEquals(32.65, jesus.IMC, 0.01)
+		val persona_enunciado = new Usuario(83,1.88)
+		Assert.assertEquals(23.48, persona_enunciado.calcularIMC(), 0.01)
 	}
 	
 	@Test
-	def void homeroSipson() {   
-		val homero = new Usuario()
-		homero.calcularIMC(113, 1.83)
-		Assert.assertEquals(33.74, homero.IMC, 0.01)
+	def void unTipoGordo() {    /*perdoname jesus por decirte gordo en pascua */
+		val jesus = new Usuario(100,1.75)
+		Assert.assertEquals(32.65, jesus.calcularIMC(), 0.01)
 	}
 	
 	@Test
-	def void unCorcho() {   
-		val usuario = new Usuario()
-		usuario.calcularIMC(100, 1.50)
-		Assert.assertEquals(44.44, usuario.IMC, 0.01)
+	def void homeroSimpson() {   
+		val homero = new Usuario(113,1.83)
+		Assert.assertEquals(33.74, homero.calcularIMC(), 0.01)
+	}
+	
+	@Test
+	def void IMCDeUnUsuarioQueMide100YPesa150(){
+		val usuario = new Usuario(100,1.50)
+		Assert.assertEquals(44.44, usuario.calcularIMC(), 0.01)	
 	}
 }

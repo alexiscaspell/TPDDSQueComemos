@@ -31,4 +31,11 @@ class UsuarioTestSuite {
 		homero.calcularIMC(113, 1.83)
 		Assert.assertEquals(33.74, homero.IMC, 0.01)
 	}
+	
+	@Test
+	def void unCorcho() {   
+		val usuario = new Usuario()
+		usuario.calcularIMC(100, 1.50)
+		Assert.assertEquals(44.44, usuario.IMC, 0.01)
+	}
 }

@@ -2,17 +2,17 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 class Usuario {
 	
-	private double altura;
+	private double _altura;
 	
-	private double peso;
+	private double _peso;
 	
 	new(double peso, double altura){
-		this.altura = altura
-		this.peso = peso
+		_altura = altura
+		_peso = peso
 	}
 	
 	def double calcularIMC(){
-		peso / (altura * altura)		
+		_peso / (_altura * _altura)		
 	}
 			
 }

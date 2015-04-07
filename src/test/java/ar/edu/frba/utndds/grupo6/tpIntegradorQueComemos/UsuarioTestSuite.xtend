@@ -18,7 +18,7 @@ class UsuarioTestSuite {
 	}
 	
 	@Test
-	def void unTipoGordo() {    /*perdoname jesus por decirte gordo en pascua */
+	def void unTipoGordo() {
 		val jesus = new Usuario(100,1.75)
 		Assert.assertEquals(32.65, jesus.calcularIMC(), 0.01)
 	}

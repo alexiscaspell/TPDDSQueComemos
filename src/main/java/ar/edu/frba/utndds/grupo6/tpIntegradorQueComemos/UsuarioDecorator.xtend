@@ -1,7 +1,9 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import org.eclipse.xtend.lib.annotations.Accessors
+
 import java.util.Date
+import java.util.ArrayList
 
 @Accessors
 abstract class UsuarioDecorator implements Usuario {
@@ -12,22 +14,17 @@ abstract class UsuarioDecorator implements Usuario {
 		decorado = usuario
 	}
 	
-	override setNombre(String unNombre){
-		decorado.setNombre(unNombre)
-	}
 	
 	override agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento, int rutinaUsuario){
 		decorado.agregarUsuario(nombre,peso,altura,fechaNacimiento,rutinaUsuario)
 	}
-	
-	override setFechaNacimiento(Date unaFecha){
-		decorado.setFechaNacimiento(unaFecha)		
-	}
-	
+		
 	override estadoRutina(){
 		decorado.estadoRutina()
 	}
 	
+	
+	//getters
 	override calcularIMC(){
 		decorado.calcularIMC()
 	}
@@ -64,4 +61,39 @@ abstract class UsuarioDecorator implements Usuario {
 	override usuarioValido(){
 		decorado.usuarioValido()
 	}
+	
+	//Setters
+	override setNombre(String unNombre){
+		
+		this.nombre=unNombre
+	}
+	
+	override setFechaNacimiento(Date unaFecha){
+		
+		this.fechaNacimiento=unaFecha
+	}
+	
+	override setPeso(double peso){
+		this.peso = peso;
+	}
+	
+	override setAltura(double altura){
+		this.altura = altura;
+	}
+	
+	override setPreferenciasAlimenticias(ArrayList<String> listaDeAlimentos){
+		this.preferenciasAlimenticias = listaDeAlimentos;
+	}
+	
+	override setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos){
+		this.platosQueNoLeGustan = listaDeAlimentos;
+	}
+	
+	/*falta el set de la rutina */
+	
+	
+	
+	
+	
+	
 }

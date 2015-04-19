@@ -30,4 +30,6 @@ class UsuarioHipertenso extends UsuarioDecorator {
 			return (decorado.preferenciasAlimenticias.size>0)
 	}
 	
+	
+	
 }

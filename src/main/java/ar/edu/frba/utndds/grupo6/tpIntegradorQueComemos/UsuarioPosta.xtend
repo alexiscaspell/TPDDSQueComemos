@@ -9,9 +9,9 @@ class UsuarioPosta implements Usuario {
 	private double peso;
 	private String nombre;
 	private Date fechaNacimiento;
-	private ArrayList<String> preferenciasAlimenticias = new ArrayList<String>()
-      
-	
+	private ArrayList<String> preferenciasAlimenticias = new ArrayList<String>();
+	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();
+    
 	// 0 - LEVE
 	// 1 - NADA 
 	// 2 - MEDIANO
@@ -19,7 +19,7 @@ class UsuarioPosta implements Usuario {
 	// 4 - Activa sin ejercicio adicional  
 	
 	private int rutina; 
-
+	
 	new(double peso, double altura, int rutina) {
 		this.altura = altura
 		this.peso = peso
@@ -42,15 +42,6 @@ class UsuarioPosta implements Usuario {
 		 return (nombre.length>4);
 	}
 	
-	override setNombre(String unNombre){
-		
-		this.nombre=unNombre
-	}
-	
-	override setFechaNacimiento(Date unaFecha){
-		
-		this.fechaNacimiento=unaFecha
-	}
 	
 	
 	override boolean agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento, int rutinaUsuario)
@@ -82,6 +73,7 @@ class UsuarioPosta implements Usuario {
 	
 	}
 	
+	//Getters
 	override getPeso(){
 		peso
 	}
@@ -102,5 +94,32 @@ class UsuarioPosta implements Usuario {
 		return true
 	}
 	
-
+	//Setters
+	override setNombre(String unNombre){
+		
+		this.nombre=unNombre
+	}
+	
+	override setFechaNacimiento(Date unaFecha){
+		
+		this.fechaNacimiento=unaFecha
+	}
+	
+	override setPeso(double peso){
+		this.peso = peso;
+	}
+	
+	override setAltura(double altura){
+		this.altura = altura;
+	}
+	
+	override setPreferenciasAlimenticias(ArrayList<String> listaDeAlimentos){
+		this.preferenciasAlimenticias = listaDeAlimentos;
+	}
+	
+	override setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos){
+		this.platosQueNoLeGustan = listaDeAlimentos;
+	}
+	
+	/*falta el set de la rutina */
 }

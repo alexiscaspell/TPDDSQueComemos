@@ -15,14 +15,23 @@ interface Usuario {
 	def boolean agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento, int rutinaUsuario)
 	
 	def void agregarReceta()
-	def void setNombre(String nombre)
-    def void setFechaNacimiento(Date fecha)
 	
+	//getters	
 	def double calcularIMC()
 	def double getPeso()
 	def double getAltura()
 	def ArrayList<String> getPreferenciasAlimenticias()
 	
 	def int getRutina()
+	
+	//setters
+	def void setPeso(double peso)
+	def void setAltura(double altura)
+	def void setNombre(String nombre)
+    def void setFechaNacimiento(Date fecha)
+    def void setPreferenciasAlimenticias (ArrayList<String> listaDeAlimentos)
+    def void setPlatosQueNoLeGustan (ArrayList<String> listaDeAlimentos)
+    /*falta el set de la rutina */
+	 
 	
 }

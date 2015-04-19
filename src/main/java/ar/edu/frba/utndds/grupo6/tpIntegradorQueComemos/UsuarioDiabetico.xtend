@@ -3,7 +3,7 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class UsuarioDiabetico extends UsuarioDecorator {
+public class UsuarioDiabetico extends UsuarioDecorator {
 	
 	
 	new(Usuario decorado) 
@@ -25,8 +25,15 @@ class UsuarioDiabetico extends UsuarioDecorator {
 		{
 			decorado.estadoRutina()
 		}
-		else {
+		else 
+		{
 			throw new RutinaNoSaludableExc()
 		}
+	}	
+	
+	override cumpleCondicion()
+	{
+  		return (decorado.preferenciasAlimenticias.size>0)
+
 	}	
 }

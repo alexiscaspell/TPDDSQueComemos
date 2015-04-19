@@ -15,11 +15,15 @@ class UsuarioHipertenso extends UsuarioDecorator {
 	}
 	
 	override estadoRutina(){
-		// if tiene una rutina activa intensiva con ejercicio adicional
-		decorado.estadoRutina()  
-		println("RUTINA NO SALUDABLE") // Esto puede ser q tenga q ir en usuarioPosta.estadoRutina()
-		return false
-	} 
-	
+		// Rutina saludable si tiene una rutina activa con ejercicio Adicional
+		if (  decorado.rutina == 3  ) { 
+			if ( decorado.estadoRutina() ) return true
+			else return false
+		} else {
+			println("RUTINA NO SALUDABLE") // Esto puede ser q tenga q ir en usuarioPosta.estadoRutina()
+			return false
+			
+		}
+	}
 	
 }

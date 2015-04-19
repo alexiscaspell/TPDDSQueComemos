@@ -16,12 +16,13 @@ class UsuarioDiabetico extends UsuarioDecorator {
 	
 	override estadoRutina(){
 		// Rutina saludable si tiene una rutina activa o no pesa más de 70 kgs.
-		if ( decorado.peso < 70  || decorado.rutina == 3 || decorado.rutina == 4 ) {    
-			decorado.estadoRutina()  
-			return true
+		if ( decorado.peso < 70  || decorado.rutina == 3 || decorado.rutina == 4 ) { 
+			if ( decorado.estadoRutina() ) return true
+			else return false
 		} else {
 			println("RUTINA NO SALUDABLE") // Esto puede ser q tenga q ir en usuarioPosta.estadoRutina()
 			return false
+			
 		}
 	}
 	

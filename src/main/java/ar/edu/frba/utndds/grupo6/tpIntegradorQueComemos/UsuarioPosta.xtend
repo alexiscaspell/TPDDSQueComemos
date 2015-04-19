@@ -29,9 +29,14 @@ class UsuarioPosta implements Usuario {
 	}
 
 	override estadoRutina(){
-		if ( this.calcularIMC > 18 && this.calcularIMC < 30 )
+		if ( this.calcularIMC > 18 && this.calcularIMC < 30 ) {
 			println( "RUTINA SALUDABLE ")
 			return true
+		} else {
+			println( "RUTINA NO SALUDABLE ")
+			return false
+		}
+	
 	}
 	
 	override getPeso(){

@@ -6,6 +6,7 @@ import org.junit.Assert
 class UsuarioTestSuite {
 
 	Usuario diabetico
+	Usuario hipertenso
 
 	@Test
 	def void unTipoAlto() {
@@ -47,8 +48,23 @@ class UsuarioTestSuite {
 		diabetico = new UsuarioDiabetico( usuarioDiabeticoNoSaludable )
 		Assert.assertFalse( diabetico.estadoRutina() )
 		
-		val usuarioDiabeticoGordo = new UsuarioPosta( 90, 1.7, 3 )
-		diabetico = new UsuarioDiabetico( usuarioDiabeticoNoSaludable )
+		val usuarioDiabeticoGordo = new UsuarioPosta( 100, 1.7, 3 )
+		diabetico = new UsuarioDiabetico( usuarioDiabeticoGordo )
 		Assert.assertFalse( diabetico.estadoRutina() )
+	}
+	
+	@Test
+	def void UsuarioHipertenso() {
+		val usuarioHipertensoSaludable = new UsuarioPosta(83, 1.88, 3)
+		hipertenso = new UsuarioHipertenso( usuarioHipertensoSaludable )
+		Assert.assertTrue( hipertenso.estadoRutina() )
+		
+		val usuarioHipertensoNoSaludable = new UsuarioPosta( 83, 1.88, 0 )
+		hipertenso = new UsuarioHipertenso( usuarioHipertensoNoSaludable )
+		Assert.assertFalse( hipertenso.estadoRutina() )
+		
+		val usuarioHipertensoGordo = new UsuarioPosta( 100, 1.7, 3 )
+		hipertenso = new UsuarioHipertenso( usuarioHipertensoGordo )
+		Assert.assertFalse( hipertenso.estadoRutina() )
 	}
 }

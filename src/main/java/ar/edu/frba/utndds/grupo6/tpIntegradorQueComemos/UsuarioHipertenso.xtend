@@ -26,4 +26,8 @@ class UsuarioHipertenso extends UsuarioDecorator {
 		}
 	}
 	
+	override cumpleCondicion(){
+			return (decorado.preferenciasAlimenticias.size>0)
+	}
+	
 }

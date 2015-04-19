@@ -1,6 +1,10 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.ArrayList
+
+
+
 
 @Accessors
 class UsuarioDiabetico extends UsuarioDecorator {
@@ -24,6 +28,12 @@ class UsuarioDiabetico extends UsuarioDecorator {
 			return false
 			
 		}
+	}
+	
+	override cumpleCondicion()
+	{
+  		return (decorado.preferenciasAlimenticias.size>0)
+
 	}
 	
 	

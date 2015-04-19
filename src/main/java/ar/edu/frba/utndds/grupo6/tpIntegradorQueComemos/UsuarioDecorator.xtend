@@ -18,4 +18,16 @@ abstract class UsuarioDecorator implements Usuario {
 	override calcularIMC(){
 		decorado.calcularIMC()
 	}
+	
+	override getPeso(){
+		decorado.getPeso()
+	}
+	
+	override getAltura(){
+		decorado.getAltura()
+	}
+	
+	override getRutina(){
+		decorado.getRutina()
+	}
 }

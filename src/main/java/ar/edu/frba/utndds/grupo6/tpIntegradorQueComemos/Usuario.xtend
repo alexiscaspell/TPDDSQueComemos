@@ -4,5 +4,9 @@ interface Usuario {
 	
 	def double calcularIMC()
 	def void agregarReceta()
-	def void estadoRutina()
+	def boolean estadoRutina()
+	
+	def double getPeso()
+	def double getAltura()
+	def int getRutina()
 }

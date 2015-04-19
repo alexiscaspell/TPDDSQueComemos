@@ -1,19 +1,18 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
+import java.util.List
+
 class UsuarioPosta implements Usuario {
 	
 	private double altura;
+	
 	private double peso;
 	
-	// 0 - LEVE
-	// 1 - NADA 
-	// 2 - MEDIANO
-	// 3 - INTENSIVO
-	// 4 - Activa sin ejercicio adicional  
+	private Rutinas rutina;
 	
-	private int rutina; 
+	private List<String> preferenciasAlimenticias;	 
 
-	new(double peso, double altura, int rutina) {
+	new(double peso, double altura, Rutinas rutina) {
 		this.altura = altura
 		this.peso = peso
 		this.rutina = rutina
@@ -24,19 +23,13 @@ class UsuarioPosta implements Usuario {
 	}
 
 	override agregarReceta(){
-		// Despues se ve
-		
+		// Despues se ve		
 	}
 
 	override estadoRutina(){
-		if ( this.calcularIMC > 18 && this.calcularIMC < 30 ) {
-			println( "RUTINA SALUDABLE ")
-			return true
-		} else {
-			println( "RUTINA NO SALUDABLE ")
-			return false
-		}
-	
+		if ( this.calcularIMC < 18 || this.calcularIMC > 30 ) {
+			throw new RutinaNoSaludableExc()
+		}	
 	}
 	
 	override getPeso(){
@@ -50,4 +43,9 @@ class UsuarioPosta implements Usuario {
 	override getRutina(){
 		rutina
 	}
+	
+	override getPreferenciasAlimenticias() {
+		return preferenciasAlimenticias
+	}
+	
 }

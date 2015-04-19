@@ -6,23 +6,25 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class UsuarioHipertenso extends UsuarioDecorator {
 	
 	
-	new(Usuario decorado) {
+	new(Usuario decorado) 
+	{
 		super(decorado)
 	}
 	
-	override agregarReceta() {
-		// sE VE DESPUES	
+	override agregarReceta() 
+	{
+		// SE VE DESPUES	
 	}
 	
-	override estadoRutina(){
+	override estadoRutina()
+	{
 		// Rutina saludable si tiene una rutina activa con ejercicio Adicional
-		if (  decorado.rutina == 3  ) { 
-			if ( decorado.estadoRutina() ) return true
-			else return false
-		} else {
-			println("RUTINA NO SALUDABLE") // Esto puede ser q tenga q ir en usuarioPosta.estadoRutina()
-			return false
-			
+		if (decorado.getRutina() == Rutinas.INTENSIVO)
+		{
+			decorado.estadoRutina()
+		} else 
+		{
+			throw new RutinaNoSaludableExc()	
 		}
 	}
 	

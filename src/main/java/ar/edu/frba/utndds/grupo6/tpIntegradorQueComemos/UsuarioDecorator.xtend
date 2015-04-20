@@ -24,6 +24,10 @@ abstract class UsuarioDecorator implements Usuario {
 	}
 	
 	
+	override fechaNacimientoValida(){
+		decorado.fechaNacimientoValida()
+	}
+	
 	//getters
 	override calcularIMC(){
 		decorado.calcularIMC()

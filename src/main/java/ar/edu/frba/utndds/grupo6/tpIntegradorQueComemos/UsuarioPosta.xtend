@@ -3,19 +3,20 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.Date
 import java.util.ArrayList
 
-
 public class UsuarioPosta implements Usuario {
 	
 	private double altura;
 	
 	private double peso;
-	
+			
 	private Rutinas rutina;
 	
 	private String nombre;
 	
 	private Date fechaNacimiento;
 	
+	private Date hoy = new Date();
+			
 	private ArrayList<String> preferenciasAlimenticias = new ArrayList<String>();
 	
 	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();		
@@ -30,11 +31,16 @@ public class UsuarioPosta implements Usuario {
 	}
 	
 	override boolean usuarioValido(){
-		return(cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion())
+		return(cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion() && fechaNacimientoValida())
 	}	
 	
 	override boolean cumpleCamposObligatorios(){
-   		return (nombre!=null && peso>0 && altura>0 && fechaNacimiento!=null && rutina!=Rutinas.LEVE);
+   		return (nombre!=null && peso>0 && altura>0 && fechaNacimiento!=null && rutina!=null);
+	}
+	
+	override boolean fechaNacimientoValida(){
+		
+		return (fechaNacimiento.before(hoy))
 	}
 	
 	override boolean nombreCorrecto()

@@ -20,6 +20,8 @@ public interface Usuario {
 	
 	def boolean usuarioValido()
 	
+	def boolean fechaNacimientoValida()
+	
 	def boolean agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento, Rutinas rutinaUsuario)
 		
 	//Getters	

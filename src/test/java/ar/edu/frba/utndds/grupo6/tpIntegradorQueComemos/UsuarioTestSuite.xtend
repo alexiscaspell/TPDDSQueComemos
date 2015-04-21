@@ -119,4 +119,40 @@ class UsuarioTestSuite {
 		vegano.usuarioValido()
 	} 
 	
+	@Test
+	def void usuarioDiabeticoValido(){
+		val unUsuario = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		unUsuario.preferenciasAlimenticias.clear()
+		unUsuario.preferenciasAlimenticias.add(Ingrediente.PAPA)
+		diabetico = new UsuarioDiabetico(unUsuario)
+		Assert.assertTrue(diabetico.usuarioValido())
+	}
+	
+	@Test (expected=UsuarioNoValidoExc)
+	def void usuarioDiabeticoNoValido()
+	{
+		val usuarioDiabeticoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		usuarioDiabeticoNoValido.preferenciasAlimenticias.clear()
+		diabetico = new UsuarioVegano(usuarioDiabeticoNoValido)
+		diabetico.usuarioValido()
+	} 
+	
+	@Test
+	def void usuarioHipertensoValido(){
+		val unUsuario = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		unUsuario.preferenciasAlimenticias.clear()
+		unUsuario.preferenciasAlimenticias.add(Ingrediente.PAPA)
+		hipertenso = new UsuarioHipertenso(unUsuario)
+		Assert.assertTrue(hipertenso.usuarioValido())
+	}
+	
+	@Test (expected=UsuarioNoValidoExc)
+	def void usuarioHipertensoNoValido()
+	{
+		val usuarioHipertensoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		usuarioHipertensoNoValido.preferenciasAlimenticias.clear()
+		hipertenso = new UsuarioVegano(usuarioHipertensoNoValido)
+		hipertenso.usuarioValido()
+	} 
+	
 }

@@ -72,10 +72,6 @@ abstract class UsuarioDecorator implements Usuario {
 		
 	}
 	
-	override cumpleCondicion(){
-		decorado.cumpleCondicion()
-	}
-	
 	override nombreCorrecto(){
 		decorado.nombreCorrecto
 	}

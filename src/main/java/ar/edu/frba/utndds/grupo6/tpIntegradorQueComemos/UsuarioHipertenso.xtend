@@ -23,8 +23,12 @@ class UsuarioHipertenso extends UsuarioDecorator {
 		}
 	}
 	
-	override cumpleCondicion()
+	override usuarioValido()
 	{
-			return (decorado.preferenciasAlimenticias.size>0)
+			if ( decorado.preferenciasAlimenticias.size>0 ) {
+				return true
+			} else {
+				throw new UsuarioNoValidoExc()	
+			}
 	}
 }

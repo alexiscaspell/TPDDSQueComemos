@@ -26,9 +26,13 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 		}
 	}	
 	
-	override cumpleCondicion()
+	override usuarioValido()
 	{
-  		return ((decorado.preferenciasAlimenticias.size>0)&& (decorado.sexo!=null))
+  		if ((decorado.preferenciasAlimenticias.size>0)&& (decorado.sexo!=null) ) {
+  			return true 
+  		} else{
+  		 	throw new UsuarioNoValidoExc()	
+  		}	
 
 	}	
 }

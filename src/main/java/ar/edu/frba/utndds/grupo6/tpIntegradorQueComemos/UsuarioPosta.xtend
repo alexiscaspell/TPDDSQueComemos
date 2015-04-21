@@ -42,9 +42,9 @@ public class UsuarioPosta implements Usuario {
 
 	}
 
-	override boolean usuarioValido() {
-		return (cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion())// && fechaNacimientoValida())
-	}
+	/*override boolean usuarioValido() {
+		return (cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion()))
+	}*/
 
 	override boolean cumpleCamposObligatorios() {
 		return (nombre != null && peso > 0 && altura > 0 && fechaNacimiento != null && rutina != null);
@@ -91,9 +91,8 @@ public class UsuarioPosta implements Usuario {
 		sexo
 	}
 
-	override cumpleCondicion() {
-		println("USUARIO POSTA")
-		return true
+	override usuarioValido() {
+		return ( cumpleCamposObligatorios() && nombreCorrecto()) // && fechaNacimientoValida())
 	}
 
 	//Setters

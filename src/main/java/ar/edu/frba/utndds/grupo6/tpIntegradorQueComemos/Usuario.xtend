@@ -21,8 +21,6 @@ public interface Usuario {
 	
 	def void estadoRutina()	
 	
-	def boolean cumpleCondicion()
-	
 	def boolean nombreCorrecto()	
 	
 	def boolean cumpleCamposObligatorios()

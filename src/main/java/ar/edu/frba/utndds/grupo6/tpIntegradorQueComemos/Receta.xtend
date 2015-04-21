@@ -13,22 +13,13 @@ public abstract class Receta {
 	private String nombre
 	
 	@Accessors
-	private HashMap<Ingrediente, Integer> ingredientes
-	
-	@Accessors
-	private HashMap<Condimento, Integer> condimentos
-	
-	@Accessors
-	private String explicacion
-	
-	@Accessors
-	private int calorias
-	
-	@Accessors
 	private Dificultad dificultad
 	
 	@Accessors
 	private ArrayList<Temporada> temporada	
+	
+	@Accessors
+	private TipoReceta tipo
 	
 	def Usuario getUsuarioCreador() {
 		return usuarioCreador
@@ -38,17 +29,11 @@ public abstract class Receta {
 		return nombre
 	}
 	
-	def HashMap<Ingrediente, Integer> getIngredientes() {
-		return ingredientes
-	}
+	def HashMap<Ingrediente, Integer> getIngredientes()
 	
-	def HashMap<Condimento, Integer> getCondimentos() {
-		return condimentos
-	}
+	def HashMap<Condimento, Integer> getCondimentos()
 	
-	def String getExplicacion() {
-		return explicacion
-	}	
+	def String getExplicacion()	
 	
 	def Dificultad getDificultad() {
 		return dificultad
@@ -58,13 +43,16 @@ public abstract class Receta {
 		return temporada
 	}
 	
-	def int getCalorias() {
-		return calorias
-	}
+	def int getCalorias()
 	
 	def abstract void validar()
 	
 	def abstract ArrayList<Condicion> condicionesInadecuadas()
 	
 	def abstract int cantidadDeAzucar()
+	
+	def boolean puedeSerModificada(Usuario usuario) 
+	{
+		getUsuarioCreador().equals(usuario) || tipo == TipoReceta.PUBLICA
+	}
 }

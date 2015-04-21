@@ -4,7 +4,23 @@ import java.util.ArrayList
 import java.util.HashMap
 
 public class RecetaSimple extends Receta 
-{		
+{
+	private Usuario usuarioCreador
+	
+	private String nombre
+	
+	private HashMap<Condimento, Integer> condimentos
+	
+	private String explicacion
+	
+	private int calorias
+	
+	private Dificultad dificultad
+	
+	private ArrayList<Temporada> temporada	
+	
+	private HashMap<Ingrediente, Integer> ingredientes
+			
 	new(Usuario usuario, 
 		String nombre, 
 		HashMap<Ingrediente, Integer> ingredientes, 
@@ -57,6 +73,22 @@ public class RecetaSimple extends Receta
 			return condimentos.get(Condimento.AZUCAR)
 		}
 		return 0
+	}
+	
+	override getIngredientes() {
+		ingredientes
+	}
+	
+	override getCondimentos() {
+		condimentos
+	}
+	
+	override getExplicacion() {
+		explicacion
+	}
+	
+	override getCalorias() {
+		calorias
 	}
 	
 }

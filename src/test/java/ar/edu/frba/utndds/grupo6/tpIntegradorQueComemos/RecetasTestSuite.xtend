@@ -24,6 +24,23 @@ class RecetasTestSuite {
 		Assert.assertEquals(100, recetaMilanesasConPure.cantidadDeAzucar(), 0.01)		
 	}
 	
+	@Test
+	def void cantidadIngredientesPure()
+	{
+		val pure = getRecetaPure()
+		Assert.assertTrue(pure.getIngredientes().values.length == 1)
+	}
+	
+	@Test
+	def void cantidadIngredientesMilanesasConPure()
+	{
+		val recetasSimples = new ArrayList<Receta>()
+		recetasSimples.add(getRecetaPure())
+		recetasSimples.add(getRecetaMilanesas())	
+		val recetaMilanesasConPure = new RecetaCompuesta(recetasSimples)
+		Assert.assertTrue(recetaMilanesasConPure.getIngredientes().values.length == 4)
+	}		
+	
 	def Receta getRecetaPure()
 	{
 		val usuario = new UsuarioPosta(100, 1.50, Rutinas.LEVE)

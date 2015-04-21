@@ -1,6 +1,7 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.ArrayList
+import java.util.HashMap
 
 public class RecetaCompuesta extends Receta {
 	
@@ -29,4 +30,25 @@ public class RecetaCompuesta extends Receta {
 		recetasConAzucar.fold(0, [acum, receta | acum + receta.cantidadDeAzucar()])
 	}
 	
+	override getIngredientes() {
+		val ingred = new HashMap<Ingrediente, Integer>()
+		for(i : 0..<recetas.length)
+		{
+			val receta = recetas.get(i)
+			ingred.putAll(receta.getIngredientes())
+		}
+		ingred
+	}
+	
+	override getCondimentos() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override getExplicacion() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override getCalorias() {
+		recetas.fold(0, [acum, receta | acum + receta.calorias])
+	}	
 }

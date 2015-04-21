@@ -20,7 +20,7 @@ public class UsuarioPosta implements Usuario {
 
 	private Date hoy = new Date();
 
-	private ArrayList<String> preferenciasAlimenticias = new ArrayList<String>();
+	private ArrayList<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>();
 
 	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();
 
@@ -35,7 +35,6 @@ public class UsuarioPosta implements Usuario {
 		this.altura = altura
 		this.peso = peso
 		this.rutina = rutina
-		this.preferenciasAlimenticias.add("")
 		this.fechaNacimiento=fechaNacimiento
 		this.nombre=nombre
 		this.sexo=sexo
@@ -44,7 +43,7 @@ public class UsuarioPosta implements Usuario {
 	}
 
 	override boolean usuarioValido() {
-		return (cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion() && fechaNacimientoValida())
+		return (cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion())// && fechaNacimientoValida())
 	}
 
 	override boolean cumpleCamposObligatorios() {
@@ -84,7 +83,7 @@ public class UsuarioPosta implements Usuario {
 		rutina
 	}
 
-	override ArrayList<String> getPreferenciasAlimenticias() {
+	override ArrayList<Ingrediente> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias
 	}
 	
@@ -93,6 +92,7 @@ public class UsuarioPosta implements Usuario {
 	}
 
 	override cumpleCondicion() {
+		println("USUARIO POSTA")
 		return true
 	}
 
@@ -119,8 +119,8 @@ public class UsuarioPosta implements Usuario {
 		this.sexo=sexo;
 	}
 
-	override setPreferenciasAlimenticias(ArrayList<String> listaDeAlimentos) {
-		this.preferenciasAlimenticias = listaDeAlimentos;
+	override setPreferenciasAlimenticias(Ingrediente alimento) {
+		this.preferenciasAlimenticias.add(alimento)
 	}
 
 	override setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos) {

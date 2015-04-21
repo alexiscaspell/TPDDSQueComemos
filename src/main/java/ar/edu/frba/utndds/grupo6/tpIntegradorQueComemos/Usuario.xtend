@@ -42,7 +42,7 @@ public interface Usuario {
 	
 	def Rutinas getRutina()
 
-	def ArrayList<String> getPreferenciasAlimenticias()
+	def ArrayList<Ingrediente> getPreferenciasAlimenticias()
 	
 	//Setters
 	
@@ -56,7 +56,7 @@ public interface Usuario {
     
     def void setFechaNacimiento(Date fecha)
     
-    def void setPreferenciasAlimenticias (ArrayList<String> listaDeAlimentos)
+    def void setPreferenciasAlimenticias (Ingrediente alimento)
     
     def void setPlatosQueNoLeGustan (ArrayList<String> listaDeAlimentos)
     

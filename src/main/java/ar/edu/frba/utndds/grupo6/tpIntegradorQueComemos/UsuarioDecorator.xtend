@@ -107,8 +107,8 @@ abstract class UsuarioDecorator implements Usuario {
 		this.altura = altura;
 	}
 	
-	override setPreferenciasAlimenticias(ArrayList<String> listaDeAlimentos){
-		this.preferenciasAlimenticias = listaDeAlimentos;
+	override setPreferenciasAlimenticias(Ingrediente alimento){
+		this.preferenciasAlimenticias.add(alimento)
 	}
 	
 	override setSexo(Sexo sexo){

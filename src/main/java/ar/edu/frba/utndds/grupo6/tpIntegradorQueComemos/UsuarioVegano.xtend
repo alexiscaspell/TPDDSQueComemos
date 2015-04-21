@@ -19,9 +19,12 @@ class UsuarioVegano extends UsuarioDecorator {
 	}
 
 	override cumpleCondicion() {
-		return !(decorado.preferenciasAlimenticias.contains(Ingrediente.POLLO) ||
-			decorado.preferenciasAlimenticias.contains(Ingrediente.CARNE) || decorado.preferenciasAlimenticias.contains(Ingrediente.CHIVITO) ||
-			decorado.preferenciasAlimenticias.contains(Ingrediente.CHORI))
+		decorado.cumpleCondicion if(!(decorado.preferenciasAlimenticias.contains(Ingrediente.POLLO) ||
+			                          decorado.preferenciasAlimenticias.contains(Ingrediente.CARNE) ||
+			                          decorado.preferenciasAlimenticias.contains(Ingrediente.CHIVITO) ||
+			                          decorado.preferenciasAlimenticias.contains(Ingrediente.CHORI)))
+		{return false}
+		else{decorado.cumpleCondicion()}
 			
 	}
 

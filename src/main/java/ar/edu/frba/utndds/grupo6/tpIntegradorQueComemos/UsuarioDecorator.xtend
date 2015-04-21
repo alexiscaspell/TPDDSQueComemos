@@ -16,9 +16,6 @@ abstract class UsuarioDecorator implements Usuario {
 	}
 	
 	
-	override agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento, Rutinas rutinaUsuario){
-		decorado.agregarUsuario(nombre,peso,altura,fechaNacimiento,rutinaUsuario)
-	}
 	
 	override agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
 		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
@@ -108,6 +105,10 @@ abstract class UsuarioDecorator implements Usuario {
 	
 	override setPreferenciasAlimenticias(ArrayList<String> listaDeAlimentos){
 		this.preferenciasAlimenticias = listaDeAlimentos;
+	}
+	
+	override setSexo(Sexo sexo){
+		this.sexo=sexo;
 	}
 	
 	override setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos){

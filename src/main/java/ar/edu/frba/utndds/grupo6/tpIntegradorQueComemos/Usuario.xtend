@@ -31,8 +31,7 @@ public interface Usuario {
 	
 	def boolean fechaNacimientoValida()
 	
-	def boolean agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento, Rutinas rutinaUsuario)
-		
+			
 	//Getters	
 	
 	def double getPeso()
@@ -48,6 +47,8 @@ public interface Usuario {
 	def void setPeso(double peso)
 	
 	def void setAltura(double altura)
+	
+	def void setSexo(Sexo sexo)
 	
 	def void setNombre(String nombre)
     

@@ -9,6 +9,8 @@ public class UsuarioPosta implements Usuario {
 	private double altura;
 
 	private double peso;
+	
+	private Sexo sexo;
 
 	private Rutinas rutina;
 
@@ -28,12 +30,16 @@ public class UsuarioPosta implements Usuario {
 	
 	Receta recetaAux
 	
-	new(double peso, double altura, Rutinas rutina) {
+	new(double peso, double altura, Rutinas rutina, String nombre,Sexo sexo, Date fechaNacimiento, Rutinas rutinaUsuario ) {
 
 		this.altura = altura
 		this.peso = peso
-		this.rutina = rutina
+		this.rutina = rutinaUsuario
 		this.preferenciasAlimenticias.add("")
+		this.fechaNacimiento=fechaNacimiento
+		this.nombre=nombre
+		this.sexo=sexo
+				
 
 	}
 
@@ -54,14 +60,7 @@ public class UsuarioPosta implements Usuario {
 		return (nombre.length > 4);
 	}
 
-	override boolean agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento,
-		Rutinas rutinaUsuario) {
-		val usuarioNuevo = new UsuarioPosta(peso, altura, rutinaUsuario)
-		usuarioNuevo.setNombre(nombre)
-		usuarioNuevo.setFechaNacimiento(fechaNacimiento)
-		return usuarioNuevo.usuarioValido()
-	}
-
+	
 	override double calcularIMC() {
 		peso / (altura * altura)
 	}
@@ -110,6 +109,10 @@ public class UsuarioPosta implements Usuario {
 
 	override setAltura(double altura) {
 		this.altura = altura;
+	}
+	
+	override setSexo(Sexo sexo){
+		this.sexo=sexo;
 	}
 
 	override setPreferenciasAlimenticias(ArrayList<String> listaDeAlimentos) {

@@ -4,33 +4,24 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 class UsuarioVegano extends UsuarioDecorator {
-	
-	
-	new(Usuario decorado) 
-	{
+
+	new(Usuario decorado) {
 		super(decorado)
 	}
-	
-	override agregarReceta() 
-	{
-		// sE VE DESPUES	
-	}
-	
-	override estadoRutina()
-	{
+
+	override estadoRutina() {
 		//Ver si se hace un enum con las posibles preferencias alimenticias
-		if (this.preferenciasAlimenticias.contains("Frutas"))
-		{
+		if (this.preferenciasAlimenticias.contains("Frutas")) {
 			decorado.estadoRutina()
-		}		  
-		else
-		{
+		} else {
 			throw new RutinaNoSaludableExc()
-		} 
-	} 
-	
-	override cumpleCondicion(){
-		return (decorado.preferenciasAlimenticias.contains("pollo")||decorado.preferenciasAlimenticias.contains("carne")||decorado.preferenciasAlimenticias.contains("chivito")||decorado.preferenciasAlimenticias.contains("chori"))
+		}
 	}
-	
+
+	override cumpleCondicion() {
+		return (decorado.preferenciasAlimenticias.contains("pollo") ||
+			decorado.preferenciasAlimenticias.contains("carne") || decorado.preferenciasAlimenticias.contains("chivito") ||
+			decorado.preferenciasAlimenticias.contains("chori"))
+	}
+
 }

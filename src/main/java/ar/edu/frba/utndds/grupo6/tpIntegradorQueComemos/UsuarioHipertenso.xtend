@@ -11,11 +11,6 @@ class UsuarioHipertenso extends UsuarioDecorator {
 		super(decorado)
 	}
 	
-	override agregarReceta() 
-	{
-		// SE VE DESPUES	
-	}
-	
 	override estadoRutina()
 	{
 		// Rutina saludable si tiene una rutina activa con ejercicio Adicional

@@ -20,6 +20,7 @@ class Recetario {
 		for (i : 0 ..< recetas.length) {
 			val receta = recetas.get(i)
 			if(receta.nombre == nombre) return receta
-		}
+		} 
+		// Exception!
 	}
 }

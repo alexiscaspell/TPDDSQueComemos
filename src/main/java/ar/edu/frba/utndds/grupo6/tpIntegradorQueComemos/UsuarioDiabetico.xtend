@@ -11,11 +11,6 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 		super(decorado)
 	}
 	
-	override agregarReceta() 
-	{
-		// sE VE DESPUES	
-	}
-	
 	override estadoRutina()
 	{		
 		// Rutina saludable si tiene una rutina activa o no pesa más de 70 kgs.

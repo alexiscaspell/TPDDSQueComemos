@@ -4,6 +4,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 import java.util.Date
 import java.util.ArrayList
+import java.util.HashMap
 
 @Accessors
 abstract class UsuarioDecorator implements Usuario {
@@ -18,7 +19,27 @@ abstract class UsuarioDecorator implements Usuario {
 	override agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento, Rutinas rutinaUsuario){
 		decorado.agregarUsuario(nombre,peso,altura,fechaNacimiento,rutinaUsuario)
 	}
-		
+	
+	override agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
+		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+		ArrayList<Temporada> temporada)
+	{
+		decorado.agregarRecetaSimple( nombre , ingredientes, condimentos, explicacion, dificultad, temporada )
+	}
+	
+	override agregarRecetaCompuesta( String composicion1, String compsicion2 ){
+		decorado.agregarRecetaCompuesta( composicion1, compsicion2 )
+	}
+	
+	override modificarReceta() {
+		decorado.modificarReceta()
+	}
+	
+	override getReceta( String nombre ){
+		decorado.getReceta( nombre )
+	}
+	
+	
 	override estadoRutina(){
 		decorado.estadoRutina()
 	}
@@ -98,3 +119,4 @@ abstract class UsuarioDecorator implements Usuario {
 		this.rutina = rutina
 	}
 }
+

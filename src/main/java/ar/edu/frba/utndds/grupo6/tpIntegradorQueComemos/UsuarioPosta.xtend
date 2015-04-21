@@ -2,24 +2,31 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.Date
 import java.util.ArrayList
+import java.util.HashMap
 
 public class UsuarioPosta implements Usuario {
-	
+
 	private double altura;
-	
+
 	private double peso;
-			
+
 	private Rutinas rutina;
-	
+
 	private String nombre;
-	
+
 	private Date fechaNacimiento;
-	
+
 	private Date hoy = new Date();
-			
+
 	private ArrayList<String> preferenciasAlimenticias = new ArrayList<String>();
+
+	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();
+
+	private ArrayList<Receta> recetas;
 	
-	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();		
+	private Recetario recetario
+	
+	Receta recetaAux
 	
 	new(double peso, double altura, Rutinas rutina) {
 
@@ -27,100 +34,130 @@ public class UsuarioPosta implements Usuario {
 		this.peso = peso
 		this.rutina = rutina
 		this.preferenciasAlimenticias.add("")
-		
+
 	}
-	
-	override boolean usuarioValido(){
-		return(cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion() && fechaNacimientoValida())
-	}	
-	
-	override boolean cumpleCamposObligatorios(){
-   		return (nombre!=null && peso>0 && altura>0 && fechaNacimiento!=null && rutina!=null);
+
+	override boolean usuarioValido() {
+		return (cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion() && fechaNacimientoValida())
 	}
-	
-	override boolean fechaNacimientoValida(){
-		
+
+	override boolean cumpleCamposObligatorios() {
+		return (nombre != null && peso > 0 && altura > 0 && fechaNacimiento != null && rutina != null);
+	}
+
+	override boolean fechaNacimientoValida() {
+
 		return (fechaNacimiento.before(hoy))
 	}
-	
-	override boolean nombreCorrecto()
-	{
-		 return (nombre.length>4);
-	}	
-	
-	override boolean agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento, Rutinas rutinaUsuario)
-	{
-	   val usuarioNuevo = new UsuarioPosta(peso,altura,rutinaUsuario)
-	   usuarioNuevo.setNombre(nombre)
-	   usuarioNuevo.setFechaNacimiento(fechaNacimiento)
-	   return usuarioNuevo.usuarioValido()	   
+
+	override boolean nombreCorrecto() {
+		return (nombre.length > 4);
+	}
+
+	override boolean agregarUsuario(String nombre, double peso, double altura, Date fechaNacimiento,
+		Rutinas rutinaUsuario) {
+		val usuarioNuevo = new UsuarioPosta(peso, altura, rutinaUsuario)
+		usuarioNuevo.setNombre(nombre)
+		usuarioNuevo.setFechaNacimiento(fechaNacimiento)
+		return usuarioNuevo.usuarioValido()
 	}
 
 	override double calcularIMC() {
 		peso / (altura * altura)
 	}
 
-	override agregarReceta(){
-		// Despues se ve		
+	override estadoRutina() {
+		if (this.calcularIMC < 18 || this.calcularIMC > 30) {
+			throw new RutinaNoSaludableExc()
+		}
 	}
 
-	override estadoRutina()
-	{
-		if ( this.calcularIMC < 18 || this.calcularIMC > 30 ) {
-			throw new RutinaNoSaludableExc()
-		}	
-	}
-	
 	//Getters
-	override getPeso(){
+	override getPeso() {
 		peso
 	}
-	
-	override getAltura(){
+
+	override getAltura() {
 		altura
 	}
-	
-	override getRutina(){
+
+	override getRutina() {
 		rutina
 	}
-	
-	override ArrayList<String> getPreferenciasAlimenticias(){
+
+	override ArrayList<String> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias
 	}
-	
-	override cumpleCondicion(){
+
+	override cumpleCondicion() {
 		return true
 	}
-	
+
 	//Setters
-	override setNombre(String unNombre){
-		
-		this.nombre=unNombre
+	override setNombre(String unNombre) {
+
+		this.nombre = unNombre
 	}
-	
-	override setFechaNacimiento(Date unaFecha){
-		
-		this.fechaNacimiento=unaFecha
+
+	override setFechaNacimiento(Date unaFecha) {
+
+		this.fechaNacimiento = unaFecha
 	}
-	
-	override setPeso(double peso){
+
+	override setPeso(double peso) {
 		this.peso = peso;
 	}
-	
-	override setAltura(double altura){
+
+	override setAltura(double altura) {
 		this.altura = altura;
 	}
-	
-	override setPreferenciasAlimenticias(ArrayList<String> listaDeAlimentos){
+
+	override setPreferenciasAlimenticias(ArrayList<String> listaDeAlimentos) {
 		this.preferenciasAlimenticias = listaDeAlimentos;
 	}
-	
-	override setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos){
+
+	override setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos) {
 		this.platosQueNoLeGustan = listaDeAlimentos;
 	}
-	
-	override setRutina(Rutinas rutina)
-	{
+
+	override setRutina(Rutinas rutina) {
 		this.rutina = rutina
 	}
+	
+	override agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
+		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+		ArrayList<Temporada> temporada) {
+
+		val recetaSimple = new RecetaSimple(this, nombre, ingredientes, condimentos, explicacion, dificultad, temporada)
+
+		// Setear tipo de receta privada
+		recetas.add(recetaSimple)
+	}
+	
+	override agregarRecetaCompuesta( String composicion1, String compsicion2 ) {
+		
+		val recetasSimples = new ArrayList<Receta>()
+		recetasSimples.add(getReceta( composicion1 ))
+		recetasSimples.add(getReceta( compsicion2 ))	
+		val recetaCompuesta = new RecetaCompuesta( recetasSimples )
+		recetas.add( recetaCompuesta )
+	}
+	
+	override modificarReceta() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override getReceta( String nombre ){
+		
+		for (i : 0 ..< recetas.length) {
+			val receta = recetas.get(i)
+			if(receta.nombre == nombre) return receta
+		}
+		// Agregar situacion donde la receta obtenida es una compuesta
+		recetaAux = recetario.getReceta( nombre ) 
+		agregarRecetaSimple( nombre, recetaAux.ingredientes, recetaAux.condimentos, recetaAux.explicacion, recetaAux.dificultad, recetaAux.temporada )
+		getReceta( nombre )
+		// Revizar recursividad 
+	}
+	
 }

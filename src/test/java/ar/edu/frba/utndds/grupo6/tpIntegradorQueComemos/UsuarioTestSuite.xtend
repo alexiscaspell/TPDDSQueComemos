@@ -7,6 +7,7 @@ class UsuarioTestSuite {
 
 	Usuario diabetico
 	Usuario hipertenso
+	Usuario vegano
 
 	@Test
 	def void unTipoAlto() {
@@ -84,4 +85,16 @@ class UsuarioTestSuite {
 		hipertenso = new UsuarioHipertenso( usuarioHipertensoGordo )
 		hipertenso.estadoRutina()
 	}
+	
+	// Test Vegano valido con frutas
+	// Test Vegano invalido sin frutas
+	
+	@Test (expected=RutinaNoSaludableExc)
+	def void usuarioVeganoNoSaludable()
+	{
+		val usuarioVeganoNoSaludable = new UsuarioPosta( 100, 1.7, Rutinas.LEVE )
+		vegano = new UsuarioVegano( usuarioVeganoNoSaludable )
+		vegano.estadoRutina()
+	}
+	
 }

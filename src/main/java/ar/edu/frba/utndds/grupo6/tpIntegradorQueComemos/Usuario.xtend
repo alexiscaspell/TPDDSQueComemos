@@ -1,6 +1,7 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.ArrayList
 import java.util.Date
+import java.util.HashMap
 
 public interface Usuario {	
 
@@ -8,7 +9,15 @@ public interface Usuario {
 	
 	def double calcularIMC()
 	
-	def void agregarReceta()
+	def void agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
+		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+		ArrayList<Temporada> temporada)
+	
+	def void agregarRecetaCompuesta( String composicion1, String compsicion2 )
+	
+	def void modificarReceta()
+	
+	def Receta getReceta( String nombre )
 	
 	def void estadoRutina()	
 	

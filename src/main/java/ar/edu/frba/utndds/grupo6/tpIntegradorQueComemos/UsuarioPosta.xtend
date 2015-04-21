@@ -87,6 +87,10 @@ public class UsuarioPosta implements Usuario {
 	override ArrayList<String> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias
 	}
+	
+	override getSexo(){
+		sexo
+	}
 
 	override cumpleCondicion() {
 		return true

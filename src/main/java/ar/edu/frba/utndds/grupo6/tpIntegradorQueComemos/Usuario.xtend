@@ -36,6 +36,8 @@ public interface Usuario {
 	
 	def double getPeso()
 	
+	def Sexo getSexo()
+	
 	def double getAltura()
 	
 	def Rutinas getRutina()

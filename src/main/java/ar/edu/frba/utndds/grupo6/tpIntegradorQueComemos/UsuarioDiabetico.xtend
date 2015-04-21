@@ -28,7 +28,7 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 	
 	override cumpleCondicion()
 	{
-  		return (decorado.preferenciasAlimenticias.size>0)//&& (decorado.sexo!=null))
+  		return ((decorado.preferenciasAlimenticias.size>0)&& (decorado.sexo!=null))
 
 	}	
 }

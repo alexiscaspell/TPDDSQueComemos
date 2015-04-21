@@ -30,11 +30,11 @@ public class UsuarioPosta implements Usuario {
 	
 	Receta recetaAux
 	
-	new(double peso, double altura, Rutinas rutina, String nombre,Sexo sexo, Date fechaNacimiento, Rutinas rutinaUsuario ) {
+	new(double peso, double altura, Rutinas rutina, String nombre,Sexo sexo, Date fechaNacimiento) {
 
 		this.altura = altura
 		this.peso = peso
-		this.rutina = rutinaUsuario
+		this.rutina = rutina
 		this.preferenciasAlimenticias.add("")
 		this.fechaNacimiento=fechaNacimiento
 		this.nombre=nombre

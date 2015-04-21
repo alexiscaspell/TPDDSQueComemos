@@ -4,8 +4,11 @@ import org.junit.Test
 import org.junit.Assert
 import java.util.HashMap
 import java.util.ArrayList
+import java.util.Date
 
 class RecetasTestSuite {
+	
+	Date fecha = new Date(1970,01,04)
 	
 	@Test
 	def void recetaPure()
@@ -43,7 +46,8 @@ class RecetasTestSuite {
 	
 	def Receta getRecetaPure()
 	{
-		val usuario = new UsuarioPosta(100, 1.50, Rutinas.LEVE)
+		
+		val usuario = new UsuarioPosta(100, 1.50, Rutinas.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.PAPA, 1000)
@@ -66,7 +70,7 @@ class RecetasTestSuite {
 	
 	def Receta getRecetaMilanesas()
 	{
-		val usuario = new UsuarioPosta(100, 1.50, Rutinas.LEVE)
+		val usuario = new UsuarioPosta(100, 1.50, Rutinas.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.CARNE, 1000)

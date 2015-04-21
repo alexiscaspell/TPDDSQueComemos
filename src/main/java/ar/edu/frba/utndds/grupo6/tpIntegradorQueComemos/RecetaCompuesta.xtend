@@ -23,4 +23,10 @@ public class RecetaCompuesta extends Receta {
 		return condicionesInadecuadas
 	}
 	
+	override cantidadDeAzucar() 
+	{
+		val recetasConAzucar = recetas.filter[x | x.condimentos.containsKey(Condimento.AZUCAR)]
+		recetasConAzucar.fold(0, [acum, receta | acum + receta.cantidadDeAzucar()])
+	}
+	
 }

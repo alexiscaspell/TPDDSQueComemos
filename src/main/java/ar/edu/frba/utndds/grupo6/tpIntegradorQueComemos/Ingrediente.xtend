@@ -4,5 +4,8 @@ enum Ingrediente {
 	POLLO,
 	CARNE,
 	CHIVITO,
-	CHORI
+	CHORI,
+	PAPA,
+	HUEVO,
+	PAN_RAYADO	
 }

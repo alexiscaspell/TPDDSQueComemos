@@ -39,14 +39,14 @@ class UsuarioTestSuite {
 	}
 
 	@Test
-	def void UsuarioDiabeticoSaludable() {
+	def void usuarioDiabeticoSaludable() {
 		val usuarioDiabeticoSaludable = new UsuarioPosta(83, 1.88, Rutinas.INTENSIVO)
 		diabetico = new UsuarioDiabetico( usuarioDiabeticoSaludable )
 		diabetico.estadoRutina()			
 	}
 	
 	@Test (expected=RutinaNoSaludableExc)
-	def void UsuarioDiabeticoNoSaludable()
+	def void usuarioDiabeticoNoSaludable()
 	{
 		val usuarioDiabeticoNoSaludable = new UsuarioPosta( 83, 1.88, Rutinas.LEVE )
 		diabetico = new UsuarioDiabetico( usuarioDiabeticoNoSaludable )
@@ -54,7 +54,7 @@ class UsuarioTestSuite {
 	}
 	
 	@Test (expected=RutinaNoSaludableExc)
-	def void UsuarioDiabeticoGordo()
+	def void usuarioDiabeticoGordo()
 	{
 		val usuarioDiabeticoGordo = new UsuarioPosta( 100, 1.7, Rutinas.INTENSIVO )
 		diabetico = new UsuarioDiabetico( usuarioDiabeticoGordo )
@@ -62,7 +62,7 @@ class UsuarioTestSuite {
 	}
 	
 	@Test
-	def void UsuarioHipertensoSaludable()
+	def void usuarioHipertensoSaludable()
 	{
 		val usuarioHipertensoSaludable = new UsuarioPosta(83, 1.88, Rutinas.INTENSIVO)
 		hipertenso = new UsuarioHipertenso( usuarioHipertensoSaludable )
@@ -70,7 +70,7 @@ class UsuarioTestSuite {
 	}
 	
 	@Test (expected=RutinaNoSaludableExc)
-	def void UsuarioHipertensoNoSaludable()
+	def void usuarioHipertensoNoSaludable()
 	{
 		val usuarioHipertensoNoSaludable = new UsuarioPosta( 83, 1.88, Rutinas.LEVE )
 		hipertenso = new UsuarioHipertenso( usuarioHipertensoNoSaludable )
@@ -78,7 +78,7 @@ class UsuarioTestSuite {
 	}
 	
 	@Test (expected=RutinaNoSaludableExc)
-	def void UsuarioHipertensoGordo()
+	def void usuarioHipertensoGordo()
 	{
 		val usuarioHipertensoGordo = new UsuarioPosta( 100, 1.7, Rutinas.INTENSIVO )
 		hipertenso = new UsuarioHipertenso( usuarioHipertensoGordo )

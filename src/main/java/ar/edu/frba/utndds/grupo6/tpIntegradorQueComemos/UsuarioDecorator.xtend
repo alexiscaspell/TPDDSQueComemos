@@ -19,19 +19,6 @@ abstract class UsuarioDecorator implements Usuario {
 		decorado = usuario
 	}
 	
-	
-	
-	override agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
-		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada)
-	{
-		decorado.agregarRecetaSimple( nombre , ingredientes, condimentos, explicacion, dificultad, temporada )
-	}
-	
-	override agregarRecetaCompuesta( String composicion1, String compsicion2 ){
-		decorado.agregarRecetaCompuesta( composicion1, compsicion2 )
-	}
-	
 	override modificarReceta() {
 		decorado.modificarReceta()
 	}

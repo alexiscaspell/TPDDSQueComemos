@@ -9,12 +9,6 @@ public interface Usuario {
 	
 	def double calcularIMC()
 	
-	def void agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
-		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada)
-	
-	def void agregarRecetaCompuesta( String composicion1, String compsicion2 )
-	
 	def void agregarReceta(Receta receta)
 	
 	def void modificarReceta()

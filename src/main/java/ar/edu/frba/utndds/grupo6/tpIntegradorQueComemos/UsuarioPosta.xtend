@@ -135,43 +135,12 @@ public class UsuarioPosta implements Usuario {
 		this.rutina = rutina
 	}
 	
-	override agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
-		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada) {
-		println("Nombre en agregarRecetaSimple" + nombre )
-		val recetaSimple = new RecetaSimple(this, nombre, ingredientes, condimentos, explicacion, dificultad, temporada)
-		// Setear tipo de receta privada
-		
-		recetas.add(recetaSimple)
-	}
-	
-	override agregarRecetaCompuesta( String composicion1, String compsicion2 ) {		
-		val recetasSimples = new ArrayList<Receta>()
-		recetasSimples.add(getReceta( composicion1 ))
-		recetasSimples.add(getReceta( compsicion2 ))	
-		val recetaCompuesta = new RecetaCompuesta( recetasSimples )
-		recetas.add( recetaCompuesta )
-	}
-	
 	override modificarReceta() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	override getReceta( String nombre ){
-		
-		for (i : 0 ..< recetas.length) {
-			val receta = recetas.get(i)
-			println( receta.nombre + "=" + nombre  )
-			if(receta.nombre == nombre) {
-				println("Encontro la receta")
-				return receta			
-				}
-		}
-		// Agregar situacion donde la receta obtenida es una compuesta
-		recetaAux = recetario.getReceta( nombre ) 
-		agregarRecetaSimple( nombre, recetaAux.ingredientes, recetaAux.condimentos, recetaAux.explicacion, recetaAux.dificultad, recetaAux.temporada )
-		getReceta( nombre )
-		// Revizar recursividad 
+		recetario.getReceta( nombre )
 	}
 	
 	override agregarReceta(Receta receta) 

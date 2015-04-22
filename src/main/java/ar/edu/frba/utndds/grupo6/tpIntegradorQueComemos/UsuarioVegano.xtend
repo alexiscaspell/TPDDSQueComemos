@@ -3,9 +3,10 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class UsuarioVegano extends UsuarioDecorator {
-
+class UsuarioVegano extends UsuarioDecorator 
+{
 	new(Usuario decorado) {
+		
 		super(decorado)
 	}
 
@@ -18,13 +19,16 @@ class UsuarioVegano extends UsuarioDecorator {
 		}
 	}
 
-	override usuarioValido() {
+	override usuarioValido() 
+	{
 		if ( decorado.preferenciasAlimenticias.contains(Ingrediente.POLLO) || decorado.preferenciasAlimenticias.contains(Ingrediente.CARNE) ||
-		decorado.preferenciasAlimenticias.contains(Ingrediente.CHIVITO) || decorado.preferenciasAlimenticias.contains(Ingrediente.CHORI)){
+		decorado.preferenciasAlimenticias.contains(Ingrediente.CHIVITO) || decorado.preferenciasAlimenticias.contains(Ingrediente.CHORI))
+		{
 			throw new UsuarioNoValidoExc()			 
-		}  else {
+		}  
+		else 
+		{
 			return true			
 		}
-}
-
+	}	
 }

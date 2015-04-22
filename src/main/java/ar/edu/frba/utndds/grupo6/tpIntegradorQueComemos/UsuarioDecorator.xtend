@@ -11,7 +11,11 @@ abstract class UsuarioDecorator implements Usuario {
 	
 	Usuario decorado
 	
-	new(Usuario usuario) {
+	private Recetario recetario
+	
+	new(Usuario usuario) 
+	{
+		recetario = Recetario.getInstance()
 		decorado = usuario
 	}
 	
@@ -34,8 +38,7 @@ abstract class UsuarioDecorator implements Usuario {
 	
 	override getReceta( String nombre ){
 		decorado.getReceta( nombre )
-	}
-	
+	}	
 	
 	override estadoRutina(){
 		decorado.estadoRutina()
@@ -47,6 +50,11 @@ abstract class UsuarioDecorator implements Usuario {
 	}
 	
 	//getters
+	override getRecetario()
+	{
+		recetario
+	}
+	
 	override calcularIMC(){
 		decorado.calcularIMC()
 	}
@@ -118,6 +126,11 @@ abstract class UsuarioDecorator implements Usuario {
 	override setRutina(Rutinas rutina)
 	{
 		this.rutina = rutina
+	}
+	
+	override agregarReceta(Receta receta)
+	{
+		recetario.agregarReceta(receta)
 	}
 }
 

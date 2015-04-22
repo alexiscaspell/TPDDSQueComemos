@@ -21,10 +21,6 @@ public abstract class Receta {
 	@Accessors
 	private TipoReceta tipo
 	
-	def Usuario getUsuarioCreador() {
-		return usuarioCreador
-	}
-	
 	def String getNombre() {
 		return nombre
 	}
@@ -53,6 +49,6 @@ public abstract class Receta {
 	
 	def boolean puedeSerModificada(Usuario usuario) 
 	{
-		getUsuarioCreador().equals(usuario) || tipo == TipoReceta.PUBLICA
+		usuarioCreador.equals(usuario) || tipo == TipoReceta.PUBLICA
 	}
 }

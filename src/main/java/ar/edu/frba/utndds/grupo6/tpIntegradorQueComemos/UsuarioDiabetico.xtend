@@ -3,7 +3,7 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-public class UsuarioDiabetico extends UsuarioDecorator {
+public class UsuarioDiabetico extends UsuarioDecorator {	
 	
 	
 	new(Usuario decorado) 
@@ -36,5 +36,6 @@ public class UsuarioDiabetico extends UsuarioDecorator {
   		{
   		 	throw new UsuarioNoValidoExc()	
   		}
-	}	
+	}
+	
 }

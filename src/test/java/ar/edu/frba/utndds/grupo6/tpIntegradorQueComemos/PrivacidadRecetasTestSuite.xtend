@@ -10,25 +10,45 @@ class PrivacidadRecetasTestSuite {
 	
 	Date fecha = new Date(1970,01,04)
 	
-	Usuario usuario1;
-	Usuario usuario2;
+	Usuario usuario1 = getUsuario1();
+	Usuario usuario2 = getUsuario2();
 	
 	@Test 
-	def Usuario2ModificaRecetaDeUsuario1(){
-		Assert.assertFalse( crearUsuariosConReceta().puedeSerModificada( usuario2 )  )			
+	def Usuario1ModificaRecetaDeUsuario1()
+	{
+		val receta = getRecetaPure()
+		receta.tipo = TipoReceta.PRIVADA
+		Assert.assertTrue(receta.puedeSerModificada(usuario1))			
 	}
 	
 	@Test 
-	def Usuario1ModificaRecetaDeUsuario1(){
-		
-		Assert.assertTrue( crearUsuariosConReceta().puedeSerModificada( usuario1 )  )			
+	def Usuario2NoPuedeModificarRecetaDeUsuario1()
+	{
+		val receta = getRecetaPure()
+		receta.tipo = TipoReceta.PRIVADA
+		Assert.assertFalse(receta.puedeSerModificada(usuario2))			
 	}
 	
-	def crearUsuariosConReceta(){
+	@Test
+	def Usuario2ModificaRecetaUsuario1PorSerPublica()
+	{
+		val receta = getRecetaPure()
+		receta.tipo = TipoReceta.PUBLICA
+		Assert.assertTrue(receta.puedeSerModificada(usuario2))	
+	}
 	
-	  	usuario1 = new UsuarioPosta(82,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		usuario2 = new UsuarioPosta(90,1.62,Rutinas.MEDIANO,"Pablo Lopez",Sexo.MASCULINO,fecha)
-		
+	def Usuario getUsuario1()
+	{
+		new UsuarioPosta(82,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+	}
+	
+	def Usuario getUsuario2()
+	{
+		new UsuarioPosta(90,1.62,Rutinas.MEDIANO,"Pablo Lopez",Sexo.MASCULINO,fecha)
+	}
+	
+	def Receta getRecetaPure()
+	{		
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.PAPA, 1000)
@@ -44,12 +64,9 @@ class PrivacidadRecetasTestSuite {
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
-		temporadas.add(Temporada.VERANO)		
-		usuario1.agregarRecetaSimple( nombre, ingredientes, condimentos, explicacion, Dificultad.DIFICIL, temporadas) 
-		println("Despues de agregarRecetaSimple" + nombre )
-		val receta = usuario1.getReceta( nombre )
-		println( "Despues de hacer getReceta" + receta.nombre )
-		receta 
-	} 
+		temporadas.add(Temporada.VERANO)						  
+		val recetaSimple = new RecetaSimple(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple
+	}
 	
 }

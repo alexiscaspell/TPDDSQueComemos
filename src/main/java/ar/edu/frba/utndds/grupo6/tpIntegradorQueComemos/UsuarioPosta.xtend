@@ -25,13 +25,13 @@ public class UsuarioPosta implements Usuario {
 	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();
 
 	private ArrayList<Receta> recetas = new ArrayList<Receta>;
-	
+		
 	private Recetario recetario
 	
 	Receta recetaAux
 	
-	new(double peso, double altura, Rutinas rutina, String nombre,Sexo sexo, Date fechaNacimiento) {
-
+	new(double peso, double altura, Rutinas rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
+	{
 		this.altura = altura
 		this.peso = peso
 		this.rutina = rutina
@@ -39,37 +39,43 @@ public class UsuarioPosta implements Usuario {
 		this.nombre=nombre
 		this.sexo=sexo
 		preferenciasAlimenticias = new ArrayList<Ingrediente>();
+		recetario = Recetario.getInstance()
 	}
 
-	/*override boolean usuarioValido() {
-		return (cumpleCamposObligatorios() && nombreCorrecto() && cumpleCondicion()))
-	}*/
-
-	override boolean cumpleCamposObligatorios() {
+	override boolean cumpleCamposObligatorios() 
+	{
 		return (nombre != null && peso > 0 && altura > 0 && fechaNacimiento != null && rutina != null);
 	}
 
-	override boolean fechaNacimientoValida() {
-
+	override boolean fechaNacimientoValida() 
+	{
 		return (fechaNacimiento.before(hoy))
 	}
 
-	override boolean nombreCorrecto() {
+	override boolean nombreCorrecto()
+	{
 		return (nombre.length > 4);
 	}
 
-	
-	override double calcularIMC() {
+	override double calcularIMC()
+	{
 		peso / (altura * altura)
 	}
 
-	override estadoRutina() {
+	override estadoRutina() 
+	{
 		if (this.calcularIMC < 18 || this.calcularIMC > 30) {
 			throw new RutinaNoSaludableExc()
 		}
 	}
 
 	//Getters
+	
+	override getRecetario()
+	{
+		recetario
+	}
+	
 	override getPeso() {
 		peso
 	}
@@ -139,8 +145,7 @@ public class UsuarioPosta implements Usuario {
 		recetas.add(recetaSimple)
 	}
 	
-	override agregarRecetaCompuesta( String composicion1, String compsicion2 ) {
-		
+	override agregarRecetaCompuesta( String composicion1, String compsicion2 ) {		
 		val recetasSimples = new ArrayList<Receta>()
 		recetasSimples.add(getReceta( composicion1 ))
 		recetasSimples.add(getReceta( compsicion2 ))	
@@ -167,6 +172,11 @@ public class UsuarioPosta implements Usuario {
 		agregarRecetaSimple( nombre, recetaAux.ingredientes, recetaAux.condimentos, recetaAux.explicacion, recetaAux.dificultad, recetaAux.temporada )
 		getReceta( nombre )
 		// Revizar recursividad 
+	}
+	
+	override agregarReceta(Receta receta) 
+	{
+		recetas.add(receta)
 	}
 	
 }

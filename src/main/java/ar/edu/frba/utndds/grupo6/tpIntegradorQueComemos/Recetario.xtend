@@ -4,8 +4,32 @@ import java.util.ArrayList
 import java.util.HashMap
 
 class Recetario {
-
+	
 	private ArrayList<Receta> recetas;
+	
+	private static Recetario instance;
+	
+	static def Recetario getInstance()
+	{
+		if (instance == null)
+		{
+			new Recetario()
+		}
+		else
+		{
+			instance
+		}
+	}
+	
+	private new()
+	{
+		recetas = new ArrayList<Receta>()
+	}
+	
+	def agregarReceta(Receta receta)
+	{
+		recetas.add(receta)
+	}	
 
 	def agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
 		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
@@ -16,11 +40,13 @@ class Recetario {
 		recetas.add(recetaSimple)
 	}
 
-	def getReceta( String nombre) {
-		for (i : 0 ..< recetas.length) {
-			val receta = recetas.get(i)
-			if(receta.nombre == nombre) return receta
-		} 
+	def getReceta(String nombre) 
+	{
+		recetas.findFirst[x | x.nombre == nombre]
+		//for (i : 0 ..< recetas.length) {
+			//val receta = recetas.get(i)
+			//if(receta.nombre == nombre) return receta
+		//} 
 		// Exception!
 	}
 }

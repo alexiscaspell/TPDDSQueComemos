@@ -15,9 +15,11 @@ public interface Usuario {
 	
 	def void agregarRecetaCompuesta( String composicion1, String compsicion2 )
 	
+	def void agregarReceta(Receta receta)
+	
 	def void modificarReceta()
 	
-	def Receta getReceta( String nombre )
+	def Receta getReceta(String nombre)
 	
 	def void estadoRutina()	
 	
@@ -41,6 +43,8 @@ public interface Usuario {
 	def Rutinas getRutina()
 
 	def ArrayList<Ingrediente> getPreferenciasAlimenticias()
+	
+	def Recetario getRecetario()
 	
 	//Setters
 	

@@ -3,9 +3,8 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class UsuarioHipertenso extends UsuarioDecorator {
-	
-	
+class UsuarioHipertenso extends UsuarioDecorator 
+{	
 	new(Usuario decorado) 
 	{
 		super(decorado)
@@ -17,7 +16,8 @@ class UsuarioHipertenso extends UsuarioDecorator {
 		if (decorado.getRutina() == Rutinas.INTENSIVO)
 		{
 			decorado.estadoRutina()
-		} else 
+		} 
+		else 
 		{
 			throw new RutinaNoSaludableExc()	
 		}
@@ -25,10 +25,10 @@ class UsuarioHipertenso extends UsuarioDecorator {
 	
 	override usuarioValido()
 	{
-			if ( decorado.preferenciasAlimenticias.size>0 ) {
-				return true
-			} else {
-				throw new UsuarioNoValidoExc()	
-			}
-	}
+		if ( decorado.preferenciasAlimenticias.size>0 ) {
+			return true
+		} else {
+			throw new UsuarioNoValidoExc()	
+		}
+	}	
 }

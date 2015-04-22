@@ -20,7 +20,7 @@ public class UsuarioPosta implements Usuario {
 
 	private Date hoy = new Date();
 
-	private ArrayList<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>();
+	private ArrayList<Ingrediente> preferenciasAlimenticias; 
 
 	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();
 
@@ -38,8 +38,7 @@ public class UsuarioPosta implements Usuario {
 		this.fechaNacimiento=fechaNacimiento
 		this.nombre=nombre
 		this.sexo=sexo
-				
-
+		preferenciasAlimenticias = new ArrayList<Ingrediente>();
 	}
 
 	/*override boolean usuarioValido() {

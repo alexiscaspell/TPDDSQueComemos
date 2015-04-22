@@ -9,38 +9,37 @@ class UsuarioTestSuite {
 	Usuario diabetico
 	Usuario hipertenso
 	Usuario vegano
-	Date fecha = new Date(1970,01,04)
-	
-/*
+	Date fecha = new Date(1970,01,04)	
+
 	@Test
 	def void unTipoAlto() {
-		val pepe = new UsuarioPosta(80.4, 1.90, Rutinas.LEVE)
+		val pepe = new UsuarioPosta(80.4,1.90,Rutinas.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		Assert.assertEquals(22.27, pepe.calcularIMC(), 0.01)
 	}
 
 	@Test
 	def void testEnunciado() {
-		val persona_enunciado = new UsuarioPosta(83, 1.88, Rutinas.LEVE)
+		val persona_enunciado = new UsuarioPosta(83,1.88,Rutinas.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		Assert.assertEquals(23.48, persona_enunciado.calcularIMC(), 0.01)
 	}
 
 	@Test
 	def void unTipoGordo() {
-		val jesus = new UsuarioPosta(100, 1.75, Rutinas.LEVE)
+		val jesus = new UsuarioPosta(100,1.75,Rutinas.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		Assert.assertEquals(32.65, jesus.calcularIMC(), 0.01)
 	}
 
 	@Test
 	def void homeroSimpson() {
-		val homero = new UsuarioPosta(113, 1.83, Rutinas.LEVE)
+		val homero = new UsuarioPosta(113,1.83,Rutinas.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		Assert.assertEquals(33.74, homero.calcularIMC(), 0.01)
 	}
 
 	@Test
 	def void IMCDeUnUsuarioQueMide100YPesa150() {
-		val usuario = new UsuarioPosta(100, 1.50, Rutinas.LEVE)
+		val usuario = new UsuarioPosta(100,1.50,Rutinas.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		Assert.assertEquals(44.44, usuario.calcularIMC(), 0.01)
-	}*/
+	}
 
 	@Test
 	def void usuarioDiabeticoSaludable() {
@@ -122,7 +121,6 @@ class UsuarioTestSuite {
 	@Test
 	def void usuarioVeganoValido(){
 		val unUsuario = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		unUsuario.preferenciasAlimenticias.clear()
 		unUsuario.preferenciasAlimenticias.add(Ingrediente.PAPA)
 		vegano = new UsuarioVegano(unUsuario)
 		Assert.assertTrue(vegano.usuarioValido())
@@ -131,8 +129,7 @@ class UsuarioTestSuite {
 	@Test (expected=UsuarioNoValidoExc)
 	def void usuarioVeganoNoValido()
 	{
-		val usuarioVeganoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		usuarioVeganoNoValido.preferenciasAlimenticias.clear()
+		val usuarioVeganoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
 		usuarioVeganoNoValido.preferenciasAlimenticias.add(Ingrediente.CHORI)
 		vegano = new UsuarioVegano(usuarioVeganoNoValido)
 		vegano.usuarioValido()
@@ -141,7 +138,6 @@ class UsuarioTestSuite {
 	@Test
 	def void usuarioDiabeticoValido(){
 		val unUsuario = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		unUsuario.preferenciasAlimenticias.clear()
 		unUsuario.preferenciasAlimenticias.add(Ingrediente.PAPA)
 		diabetico = new UsuarioDiabetico(unUsuario)
 		Assert.assertTrue(diabetico.usuarioValido())
@@ -150,16 +146,14 @@ class UsuarioTestSuite {
 	@Test (expected=UsuarioNoValidoExc)
 	def void usuarioDiabeticoNoValido()
 	{
-		val usuarioDiabeticoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		usuarioDiabeticoNoValido.preferenciasAlimenticias.clear()
-		diabetico = new UsuarioVegano(usuarioDiabeticoNoValido)
+		val usuarioDiabeticoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
+		diabetico = new UsuarioDiabetico(usuarioDiabeticoNoValido)
 		diabetico.usuarioValido()
 	} 
 	
 	@Test
 	def void usuarioHipertensoValido(){
 		val unUsuario = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		unUsuario.preferenciasAlimenticias.clear()
 		unUsuario.preferenciasAlimenticias.add(Ingrediente.PAPA)
 		hipertenso = new UsuarioHipertenso(unUsuario)
 		Assert.assertTrue(hipertenso.usuarioValido())
@@ -169,8 +163,7 @@ class UsuarioTestSuite {
 	def void usuarioHipertensoNoValido()
 	{
 		val usuarioHipertensoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		usuarioHipertensoNoValido.preferenciasAlimenticias.clear()
-		hipertenso = new UsuarioVegano(usuarioHipertensoNoValido)
+		hipertenso = new UsuarioHipertenso(usuarioHipertensoNoValido)
 		hipertenso.usuarioValido()
 	} 
 	

@@ -28,11 +28,13 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 	
 	override usuarioValido()
 	{
-  		if ((decorado.preferenciasAlimenticias.size>0)&& (decorado.sexo!=null) ) {
+  		if ((decorado.preferenciasAlimenticias.length>0) && (decorado.sexo != null)) 
+  		{
   			return true 
-  		} else{
+  		} 
+  		else
+  		{
   		 	throw new UsuarioNoValidoExc()	
-  		}	
-
+  		}
 	}	
 }

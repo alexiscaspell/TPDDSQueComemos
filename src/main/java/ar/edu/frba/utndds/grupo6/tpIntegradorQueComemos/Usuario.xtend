@@ -17,7 +17,9 @@ public interface Usuario {
 	
 	def void agregarReceta(Receta receta)
 	
-	def void modificarReceta()
+	def void modificarReceta(String nombreReceta, String nuevo_nombre, HashMap<Ingrediente, Integer> ingredientes,
+		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+		ArrayList<Temporada> temporada)
 	
 	def Receta getReceta(String nombre)
 	

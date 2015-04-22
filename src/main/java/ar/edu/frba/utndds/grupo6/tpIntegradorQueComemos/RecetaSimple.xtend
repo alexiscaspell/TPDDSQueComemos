@@ -82,4 +82,6 @@ public class RecetaSimple extends Receta
 		calorias
 	}
 	
+	
+	
 }

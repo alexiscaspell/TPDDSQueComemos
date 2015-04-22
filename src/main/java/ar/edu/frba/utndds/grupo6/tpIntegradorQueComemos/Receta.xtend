@@ -51,4 +51,33 @@ public abstract class Receta {
 	{
 		usuarioCreador.equals(usuario) || tipo == TipoReceta.PUBLICA
 	}
+	
+	def setIngredientes(HashMap <Ingrediente,Integer> ingredientesNuevos) {
+		this.ingredientes = ingredientesNuevos
+	}
+	
+	def setNombre(String unNombre) {
+		this.nombre=unNombre
+	}
+
+	def setCondimentos(HashMap <Condimento,Integer> condimentosNuevos){
+		this.condimentos=condimentosNuevos
+
+	}
+
+	def setExplicacion (String unaExplicacion)
+	{
+		this.explicacion=unaExplicacion
+	}
+
+	def setDificultad(Dificultad dificultadReceta)
+	{
+		this.dificultad=dificultadReceta
+	}
+
+	def setTemporada( ArrayList<Temporada> unasTemporadas)
+	{
+		this.temporada=unasTemporadas
+	}
+
 }

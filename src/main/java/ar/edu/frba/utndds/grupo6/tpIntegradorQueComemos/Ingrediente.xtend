@@ -7,5 +7,6 @@ enum Ingrediente {
 	CHORI,
 	PAPA,
 	HUEVO,
-	PAN_RAYADO	
+	PAN_RAYADO,	
+	FRUTA
 }

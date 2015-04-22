@@ -24,7 +24,7 @@ public class UsuarioPosta implements Usuario {
 
 	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();
 
-	private ArrayList<Receta> recetas;
+	private ArrayList<Receta> recetas = new ArrayList<Receta>;
 	
 	private Recetario recetario
 	
@@ -133,10 +133,10 @@ public class UsuarioPosta implements Usuario {
 	override agregarRecetaSimple(String nombre, HashMap<Ingrediente, Integer> ingredientes,
 		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
 		ArrayList<Temporada> temporada) {
-
+		println("Nombre en agregarRecetaSimple" + nombre )
 		val recetaSimple = new RecetaSimple(this, nombre, ingredientes, condimentos, explicacion, dificultad, temporada)
-
 		// Setear tipo de receta privada
+		
 		recetas.add(recetaSimple)
 	}
 	
@@ -157,7 +157,11 @@ public class UsuarioPosta implements Usuario {
 		
 		for (i : 0 ..< recetas.length) {
 			val receta = recetas.get(i)
-			if(receta.nombre == nombre) return receta
+			println( receta.nombre + "=" + nombre  )
+			if(receta.nombre == nombre) {
+				println("Encontro la receta")
+				return receta			
+				}
 		}
 		// Agregar situacion donde la receta obtenida es una compuesta
 		recetaAux = recetario.getReceta( nombre ) 

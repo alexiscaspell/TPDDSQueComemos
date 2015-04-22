@@ -46,7 +46,7 @@ class UsuarioTestSuite {
 	def void usuarioDiabeticoSaludable() {
 		val usuarioDiabeticoSaludable = new UsuarioPosta(82,1.78,Rutinas.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		diabetico = new UsuarioDiabetico( usuarioDiabeticoSaludable )
-		diabetico.estadoRutina()			
+		diabetico.estadoRutina() 			
 	}
 	
 	@Test (expected=RutinaNoSaludableExc)
@@ -90,13 +90,32 @@ class UsuarioTestSuite {
 	}
 	
 	// Test Vegano valido con frutas
-	// Test Vegano invalido sin frutas
+	@Test
+	def void usuarioVeganoSaludable()
+	{
+		val usuarioVeganoNoSaludable = new UsuarioPosta(82,1.88,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		vegano = new UsuarioVegano( usuarioVeganoNoSaludable )
+		vegano.preferenciasAlimenticias.add(Ingrediente.FRUTA)
+		vegano.estadoRutina()
+	}
 	
+	// Test Vegano invalido con frutas
 	@Test (expected=RutinaNoSaludableExc)
 	def void usuarioVeganoNoSaludable()
 	{
-		val usuarioVeganoNoSaludable = new UsuarioPosta(82,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		val usuarioVeganoNoSaludable = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		vegano = new UsuarioVegano( usuarioVeganoNoSaludable )
+		vegano.preferenciasAlimenticias.add(Ingrediente.FRUTA)
+		vegano.estadoRutina()
+	}
+	
+	// Test Vegano invalido con frutas
+	@Test (expected=RutinaNoSaludableExc)
+	def void usuarioVeganoGordo()
+	{
+		val usuarioVeganoNoSaludable = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		vegano = new UsuarioVegano( usuarioVeganoNoSaludable )
+		vegano.preferenciasAlimenticias.add(Ingrediente.FRUTA)
 		vegano.estadoRutina()
 	}
 	

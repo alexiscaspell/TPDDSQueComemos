@@ -11,7 +11,7 @@ class UsuarioVegano extends UsuarioDecorator {
 
 	override estadoRutina() {
 		//Ver si se hace un enum con las posibles preferencias alimenticias
-		if (this.preferenciasAlimenticias.contains("Frutas")) {
+		if (decorado.preferenciasAlimenticias.contains(Ingrediente.FRUTA)) {
 			decorado.estadoRutina()
 		} else {
 			throw new RutinaNoSaludableExc()

@@ -12,24 +12,22 @@ class PrivacidadRecetasTestSuite {
 	
 	Usuario usuario1;
 	Usuario usuario2;
-	Receta receta
 	
 	@Test 
 	def Usuario2ModificaRecetaDeUsuario1(){
-		crearUsuariosConReceta()
-		Assert.assertFalse(  receta.puedeSerModificada( usuario1 )  )			
+		Assert.assertFalse( crearUsuariosConReceta().puedeSerModificada( usuario2 )  )			
 	}
 	
 	@Test 
-	def Usuario2ModificaRecetaDeUsuario2(){
-		crearUsuariosConReceta()
-		Assert.assertTrue(  receta.puedeSerModificada( usuario1 )  )			
+	def Usuario1ModificaRecetaDeUsuario1(){
+		
+		Assert.assertTrue( crearUsuariosConReceta().puedeSerModificada( usuario1 )  )			
 	}
 	
 	def crearUsuariosConReceta(){
 	
-	  	usuario1 = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		usuario2 = new UsuarioPosta(90,1.62,Rutinas.LEVE,"Pablo Lopez",Sexo.MASCULINO,fecha)
+	  	usuario1 = new UsuarioPosta(82,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		usuario2 = new UsuarioPosta(90,1.62,Rutinas.MEDIANO,"Pablo Lopez",Sexo.MASCULINO,fecha)
 		
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
@@ -48,9 +46,10 @@ class PrivacidadRecetasTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)		
 		usuario1.agregarRecetaSimple( nombre, ingredientes, condimentos, explicacion, Dificultad.DIFICIL, temporadas) 
-		
-		receta = usuario1.getReceta( nombre )
-		
+		println("Despues de agregarRecetaSimple" + nombre )
+		val receta = usuario1.getReceta( nombre )
+		println( "Despues de hacer getReceta" + receta.nombre )
+		receta 
 	} 
 	
 }

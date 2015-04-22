@@ -135,9 +135,18 @@ public class UsuarioPosta implements Usuario {
 		this.rutina = rutina
 	}
 	
-	override modificarReceta() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+	override modificarReceta(String nombreReceta, String nuevo_nombre, HashMap<Ingrediente, Integer> ingredientes,
+		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+		ArrayList<Temporada> temporada) {
+		
+		val receta = getReceta( nombreReceta ) 
+		receta.setNombre( nombre ) 
+		receta.setIngredientes( ingredientes )
+		receta.setCondimentos( condimentos ) 
+		receta.setExplicacion( explicacion ) 
+		receta.setDificultad( dificultad ) 
+		receta.setTemporada( temporada ) 
+}
 	
 	override getReceta( String nombre ){
 		recetario.getReceta( nombre )

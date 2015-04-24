@@ -14,28 +14,16 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 	override estadoRutina()
 	{		
 		// Rutina saludable si tiene una rutina activa o no pesa más de 70 kgs.
-		if (decorado.getPeso() < 70  || 
+		return ( ( decorado.getPeso() < 70  || 
 			decorado.getRutina() == Rutinas.INTENSIVO || 
-			decorado.getRutina() == Rutinas.ACTIVA_SIN_EJERCICIO) 
-		{
-			decorado.estadoRutina()
-		}
-		else 
-		{
-			throw new RutinaNoSaludableExc()
-		}
+			decorado.getRutina() == Rutinas.ACTIVA_SIN_EJERCICIO ) && decorado.estadoRutina() ) 
+		
 	}	
 	
 	override usuarioValido()
 	{
-  		if ((decorado.preferenciasAlimenticias.length>0) && (decorado.sexo != null)) 
-  		{
-  			return true 
-  		} 
-  		else
-  		{
-  		 	throw new UsuarioNoValidoExc()	
-  		}
+  		return ((decorado.preferenciasAlimenticias.length>0) && (decorado.sexo != null) && decorado.usuarioValido ) 
+  		
 	}
 	
 }

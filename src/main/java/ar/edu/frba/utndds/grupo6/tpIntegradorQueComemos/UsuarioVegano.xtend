@@ -10,25 +10,18 @@ class UsuarioVegano extends UsuarioDecorator
 		super(decorado)
 	}
 
-	override estadoRutina() {
+	override estadoRutina() 
+	{
 		//Ver si se hace un enum con las posibles preferencias alimenticias
-		if (decorado.preferenciasAlimenticias.contains(Ingrediente.FRUTA)) {
-			decorado.estadoRutina()
-		} else {
-			throw new RutinaNoSaludableExc()
-		}
+		return (decorado.preferenciasAlimenticias.contains(Ingrediente.FRUTA) && decorado.estadoRutina )
+			
 	}
 
 	override usuarioValido() 
 	{
-		if ( decorado.preferenciasAlimenticias.contains(Ingrediente.POLLO) || decorado.preferenciasAlimenticias.contains(Ingrediente.CARNE) ||
-		decorado.preferenciasAlimenticias.contains(Ingrediente.CHIVITO) || decorado.preferenciasAlimenticias.contains(Ingrediente.CHORI))
-		{
-			throw new UsuarioNoValidoExc()			 
-		}  
-		else 
-		{
-			return true			
-		}
-	}	
+		return ( !decorado.getPreferenciasAlimenticias().contains(Ingrediente.POLLO) && decorado.usuarioValido() ) //faltan chori, etc (VER ENUMS)//
+		//reemplazar por forEach
+	}
+	
+	
 }

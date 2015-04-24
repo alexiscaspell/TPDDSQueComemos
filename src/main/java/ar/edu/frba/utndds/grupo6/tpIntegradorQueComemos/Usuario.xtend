@@ -7,8 +7,7 @@ public interface Usuario {
 
 	//Métodos
 	
-	def double calcularIMC()
-	
+		
 	def void agregarReceta(Receta receta)
 	
 	def void modificarReceta(String nombreReceta, String nuevo_nombre, HashMap<Ingrediente, Integer> ingredientes,
@@ -17,16 +16,11 @@ public interface Usuario {
 	
 	def Receta getReceta(String nombre)
 	
-	def void estadoRutina()	
-	
-	def boolean nombreCorrecto()	
-	
-	def boolean cumpleCamposObligatorios()
+	def boolean estadoRutina()	
 	
 	def boolean usuarioValido()
 	
-	def boolean fechaNacimientoValida()
-	
+		
 			
 	//Getters	
 	
@@ -60,4 +54,3 @@ public interface Usuario {
     
     def void setRutina(Rutinas rutina)
 }
-

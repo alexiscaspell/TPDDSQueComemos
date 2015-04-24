@@ -28,7 +28,6 @@ public class UsuarioPosta implements Usuario {
 		
 	private Recetario recetario
 	
-	Receta recetaAux
 	
 	new(double peso, double altura, Rutinas rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
 	{
@@ -42,31 +41,29 @@ public class UsuarioPosta implements Usuario {
 		recetario = Recetario.getInstance()
 	}
 
-	override boolean cumpleCamposObligatorios() 
+	def boolean cumpleCamposObligatorios() 
 	{
 		return (nombre != null && peso > 0 && altura > 0 && fechaNacimiento != null && rutina != null);
 	}
 
-	override boolean fechaNacimientoValida() 
+	def boolean fechaNacimientoValida() 
 	{
 		return (fechaNacimiento.before(hoy))
 	}
 
-	override boolean nombreCorrecto()
+	def boolean nombreCorrecto()
 	{
 		return (nombre.length > 4);
 	}
 
-	override double calcularIMC()
+	def double calcularIMC()
 	{
 		peso / (altura * altura)
 	}
 
 	override estadoRutina() 
 	{
-		if (this.calcularIMC < 18 || this.calcularIMC > 30) {
-			throw new RutinaNoSaludableExc()
-		}
+		return ( this.calcularIMC > 18 && this.calcularIMC < 30 ) 
 	}
 
 	//Getters

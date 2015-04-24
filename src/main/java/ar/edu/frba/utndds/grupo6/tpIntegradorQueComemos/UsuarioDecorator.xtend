@@ -34,19 +34,13 @@ abstract class UsuarioDecorator implements Usuario {
 	}
 	
 	
-	override fechaNacimientoValida(){
-		decorado.fechaNacimientoValida()
-	}
-	
 	//getters
 	override getRecetario()
 	{
 		recetario
 	}
 	
-	override calcularIMC(){
-		decorado.calcularIMC()
-	}
+	
 	
 	override getPeso(){
 		decorado.getPeso()
@@ -69,14 +63,7 @@ abstract class UsuarioDecorator implements Usuario {
 		
 	}
 	
-	override nombreCorrecto(){
-		decorado.nombreCorrecto
-	}
-	
-	override cumpleCamposObligatorios(){
-		decorado.cumpleCamposObligatorios()
-	}
-	
+			
 	override usuarioValido(){
 		decorado.usuarioValido()
 	}
@@ -122,4 +109,3 @@ abstract class UsuarioDecorator implements Usuario {
 		recetario.agregarReceta(receta)
 	}
 }
-

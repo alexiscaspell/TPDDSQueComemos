@@ -45,23 +45,23 @@ class UsuarioTestSuite {
 	def void usuarioDiabeticoSaludable() {
 		val usuarioDiabeticoSaludable = new UsuarioPosta(82,1.78,Rutinas.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		diabetico = new UsuarioDiabetico( usuarioDiabeticoSaludable )
-		diabetico.estadoRutina() 			
+		Assert.assertTrue( diabetico.estadoRutina() ) 			
 	}
 	
-	@Test (expected=RutinaNoSaludableExc)
+	@Test 
 	def void usuarioDiabeticoNoSaludable()
 	{
 		val usuarioDiabeticoNoSaludable = new UsuarioPosta(82,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		diabetico = new UsuarioDiabetico( usuarioDiabeticoNoSaludable )
-		diabetico.estadoRutina()
+		Assert.assertFalse(diabetico.estadoRutina() )
 	}
 	
-	@Test (expected=RutinaNoSaludableExc)
+	@Test 
 	def void usuarioDiabeticoGordo()
 	{
 		val usuarioDiabeticoGordo = new UsuarioPosta(100,1.78,Rutinas.INTENSIVO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		diabetico = new UsuarioDiabetico( usuarioDiabeticoGordo )
-		diabetico.estadoRutina()
+		Assert.assertFalse(diabetico.estadoRutina() )
 	}
 	
 	@Test
@@ -69,23 +69,23 @@ class UsuarioTestSuite {
 	{
 		val usuarioHipertensoSaludable = new UsuarioPosta(82,1.78,Rutinas.INTENSIVO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		hipertenso = new UsuarioHipertenso( usuarioHipertensoSaludable )
-		hipertenso.estadoRutina()	
+		Assert.assertTrue( hipertenso.estadoRutina() )	
 	}
 	
-	@Test (expected=RutinaNoSaludableExc)
+	@Test
 	def void usuarioHipertensoNoSaludable()
 	{
 		val usuarioHipertensoNoSaludable = new UsuarioPosta(82,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		hipertenso = new UsuarioHipertenso( usuarioHipertensoNoSaludable )
-		hipertenso.estadoRutina()
+		Assert.assertFalse( hipertenso.estadoRutina() )
 	}
 	
-	@Test (expected=RutinaNoSaludableExc)
+	@Test 
 	def void usuarioHipertensoGordo()
 	{
 		val usuarioHipertensoGordo = new UsuarioPosta(100,1.78,Rutinas.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		hipertenso = new UsuarioHipertenso( usuarioHipertensoGordo )
-		hipertenso.estadoRutina()
+		Assert.assertFalse( hipertenso.estadoRutina() )
 	}
 	
 	// Test Vegano valido con frutas
@@ -95,27 +95,27 @@ class UsuarioTestSuite {
 		val usuarioVeganoNoSaludable = new UsuarioPosta(82,1.88,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		vegano = new UsuarioVegano( usuarioVeganoNoSaludable )
 		vegano.preferenciasAlimenticias.add(Ingrediente.FRUTA)
-		vegano.estadoRutina()
+		Assert.assertTrue( vegano.estadoRutina() )
 	}
 	
 	// Test Vegano invalido con frutas
-	@Test (expected=RutinaNoSaludableExc)
+	@Test 
 	def void usuarioVeganoNoSaludable()
 	{
 		val usuarioVeganoNoSaludable = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		vegano = new UsuarioVegano( usuarioVeganoNoSaludable )
 		vegano.preferenciasAlimenticias.add(Ingrediente.FRUTA)
-		vegano.estadoRutina()
+		Assert.assertFalse (vegano.estadoRutina() )
 	}
 	
 	// Test Vegano invalido con frutas
-	@Test (expected=RutinaNoSaludableExc)
+	@Test
 	def void usuarioVeganoGordo()
 	{
 		val usuarioVeganoNoSaludable = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		vegano = new UsuarioVegano( usuarioVeganoNoSaludable )
 		vegano.preferenciasAlimenticias.add(Ingrediente.FRUTA)
-		vegano.estadoRutina()
+		Assert.assertFalse(vegano.estadoRutina() )
 	}
 	
 	@Test
@@ -126,13 +126,14 @@ class UsuarioTestSuite {
 		Assert.assertTrue(vegano.usuarioValido())
 	}
 	
-	@Test (expected=UsuarioNoValidoExc)
+	@Test 
 	def void usuarioVeganoNoValido()
 	{
 		val usuarioVeganoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
-		usuarioVeganoNoValido.preferenciasAlimenticias.add(Ingrediente.CHORI)
+		usuarioVeganoNoValido.preferenciasAlimenticias.add(Ingrediente.POLLO)
 		vegano = new UsuarioVegano(usuarioVeganoNoValido)
-		vegano.usuarioValido()
+		
+		Assert.assertFalse( vegano.usuarioValido() )
 	} 
 	
 	@Test
@@ -143,15 +144,15 @@ class UsuarioTestSuite {
 		Assert.assertTrue(diabetico.usuarioValido())
 	}
 	
-	@Test (expected=UsuarioNoValidoExc)
+	@Test 
 	def void usuarioDiabeticoNoValido()
 	{
 		val usuarioDiabeticoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
 		diabetico = new UsuarioDiabetico(usuarioDiabeticoNoValido)
-		diabetico.usuarioValido()
+		Assert.assertFalse( diabetico.usuarioValido() ) 
 	} 
 	
-	@Test
+	@Test 
 	def void usuarioHipertensoValido(){
 		val unUsuario = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		unUsuario.preferenciasAlimenticias.add(Ingrediente.PAPA)
@@ -159,12 +160,12 @@ class UsuarioTestSuite {
 		Assert.assertTrue(hipertenso.usuarioValido())
 	}
 	
-	@Test (expected=UsuarioNoValidoExc)
+	@Test 
 	def void usuarioHipertensoNoValido()
 	{
 		val usuarioHipertensoNoValido = new UsuarioPosta(100,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		hipertenso = new UsuarioHipertenso(usuarioHipertensoNoValido)
-		hipertenso.usuarioValido()
+		Assert.assertFalse( hipertenso.usuarioValido() )
 	} 
 	
 }

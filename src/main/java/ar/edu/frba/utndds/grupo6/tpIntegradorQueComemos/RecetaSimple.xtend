@@ -45,25 +45,24 @@ public class RecetaSimple extends Receta
 		{
 			condicionesInadecuadas.add(Condicion.HIPERTENSO)
 		}
-		if (condimentos.containsKey(Condimento.AZUCAR) && cantidadDeAzucar() > 100)
+		
+		
+		
+		if (cantidadDeAzucar() > 100)
 		{
 			condicionesInadecuadas.add(Condicion.DIABETICO)
 		}
-		if (ingredientes.containsKey(Ingrediente.POLLO) || ingredientes.containsKey(Ingrediente.CARNE) || ingredientes.containsKey(Ingrediente.CHIVITO)
-			|| ingredientes.containsKey(Ingrediente.CHORI))
+		if (ingredientes.keySet.exists[x | x.contieneCarne()])
 		{
-			condicionesInadecuadas.add(Condicion.VEGANO)			
+			condicionesInadecuadas.add(Condicion.VEGANO)
 		}
+		
 		return condicionesInadecuadas
 	}
 	
 	override cantidadDeAzucar() 
 	{
-		if (condimentos.containsKey(Condimento.AZUCAR))
-		{
-			return condimentos.get(Condimento.AZUCAR)
-		}
-		return 0
+		condimentos.keySet.fold(0, [acum, condimento | acum + condimento.cantidadDeAzucar(condimentos.get(condimento))])
 	}
 	
 	override getIngredientes() {

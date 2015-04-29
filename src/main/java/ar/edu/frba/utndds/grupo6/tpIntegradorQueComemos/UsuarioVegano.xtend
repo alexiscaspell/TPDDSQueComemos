@@ -5,22 +5,19 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class UsuarioVegano extends UsuarioDecorator 
 {
-	new(Usuario decorado) {
-		
+	new(Usuario decorado) {		
 		super(decorado)
 	}
 
 	override estadoRutina() 
 	{
-		//Ver si se hace un enum con las posibles preferencias alimenticias
-		return (decorado.preferenciasAlimenticias.contains(Ingrediente.FRUTA) && decorado.estadoRutina )
-			
+		return (decorado.preferenciasAlimenticias.exists[ingrediente | ingrediente.contieneFruta()] && decorado.estadoRutina())			
 	}
 
 	override usuarioValido() 
 	{
-		return ( !decorado.getPreferenciasAlimenticias().contains(Ingrediente.POLLO) && decorado.usuarioValido() ) //faltan chori, etc (VER ENUMS)//
-		//reemplazar por forEach
+		return (!decorado.getPreferenciasAlimenticias().exists[ingrediente | ingrediente.contieneCarne()] && decorado.usuarioValido())
+		//reemplazar por forEach ??
 	}
 	
 	

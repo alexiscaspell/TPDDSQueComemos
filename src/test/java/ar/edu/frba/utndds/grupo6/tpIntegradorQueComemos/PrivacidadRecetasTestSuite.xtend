@@ -39,12 +39,12 @@ class PrivacidadRecetasTestSuite {
 	
 	def Usuario getUsuario1()
 	{
-		new UsuarioPosta(82,1.78,Rutinas.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		new UsuarioPosta(82,1.78,Rutina.LEVE,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 	}
 	
 	def Usuario getUsuario2()
 	{
-		new UsuarioPosta(90,1.62,Rutinas.MEDIANO,"Pablo Lopez",Sexo.MASCULINO,fecha)
+		new UsuarioPosta(90,1.62,Rutina.MEDIANO,"Pablo Lopez",Sexo.MASCULINO,fecha)
 	}
 	
 	def Receta getRecetaPure()

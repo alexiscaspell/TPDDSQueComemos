@@ -52,7 +52,7 @@ public abstract class Receta {
 		usuarioCreador.equals(usuario) || tipo == TipoReceta.PUBLICA
 	}
 	
-	def setIngredientes(HashMap <Ingrediente,Integer> ingredientesNuevos) {
+	def void setIngredientes(HashMap <Ingrediente,Integer> ingredientesNuevos) {
 		this.ingredientes = ingredientesNuevos
 	}
 	
@@ -60,12 +60,12 @@ public abstract class Receta {
 		this.nombre=unNombre
 	}
 
-	def setCondimentos(HashMap <Condimento,Integer> condimentosNuevos){
+	def void setCondimentos(HashMap <Condimento,Integer> condimentosNuevos){
 		this.condimentos=condimentosNuevos
 
 	}
 
-	def setExplicacion (String unaExplicacion)
+	def void setExplicacion (String unaExplicacion)
 	{
 		this.explicacion=unaExplicacion
 	}

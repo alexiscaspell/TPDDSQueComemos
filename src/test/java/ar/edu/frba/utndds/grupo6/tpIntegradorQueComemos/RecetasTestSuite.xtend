@@ -47,7 +47,7 @@ class RecetasTestSuite {
 	def Receta getRecetaPure()
 	{
 		
-		val usuario = new UsuarioPosta(100, 1.50, Rutinas.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.PAPA, 1000)
@@ -70,7 +70,7 @@ class RecetasTestSuite {
 	
 	def Receta getRecetaMilanesas()
 	{
-		val usuario = new UsuarioPosta(100, 1.50, Rutinas.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.CARNE, 1000)

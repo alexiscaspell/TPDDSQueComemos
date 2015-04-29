@@ -3,6 +3,7 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.Date
 import java.util.ArrayList
 import java.util.HashMap
+import java.util.Map
 
 public class UsuarioPosta implements Usuario {
 
@@ -12,13 +13,11 @@ public class UsuarioPosta implements Usuario {
 	
 	private Sexo sexo;
 
-	private Rutinas rutina;
+	private Rutina rutina;
 
 	private String nombre;
 
 	private Date fechaNacimiento;
-
-	private Date hoy = new Date();
 
 	private ArrayList<Ingrediente> preferenciasAlimenticias; 
 
@@ -26,10 +25,9 @@ public class UsuarioPosta implements Usuario {
 
 	private ArrayList<Receta> recetas = new ArrayList<Receta>;
 		
-	private Recetario recetario
+	private Recetario recetario	
 	
-	
-	new(double peso, double altura, Rutinas rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
+	new(double peso, double altura, Rutina rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
 	{
 		this.altura = altura
 		this.peso = peso
@@ -48,7 +46,7 @@ public class UsuarioPosta implements Usuario {
 
 	def boolean fechaNacimientoValida() 
 	{
-		return (fechaNacimiento.before(hoy))
+		return (fechaNacimiento.before(new Date()))
 	}
 
 	def boolean nombreCorrecto()
@@ -56,14 +54,14 @@ public class UsuarioPosta implements Usuario {
 		return (nombre.length > 4);
 	}
 
-	def double calcularIMC()
+	def double getIMC()
 	{
 		peso / (altura * altura)
 	}
 
 	override estadoRutina() 
 	{
-		return ( this.calcularIMC > 18 && this.calcularIMC < 30 ) 
+		return ( this.getIMC > 18 && this.getIMC < 30 ) 
 	}
 
 	//Getters
@@ -94,48 +92,46 @@ public class UsuarioPosta implements Usuario {
 	}
 
 	override usuarioValido() {
-		return ( cumpleCamposObligatorios() && nombreCorrecto()) // && fechaNacimientoValida())
+		return (cumpleCamposObligatorios() && nombreCorrecto())
 	}
 
 	//Setters
-	override setNombre(String unNombre) {
-
+	def void setNombre(String unNombre) {
 		this.nombre = unNombre
 	}
 
-	override setFechaNacimiento(Date unaFecha) {
-
+	def void setFechaNacimiento(Date unaFecha) {
 		this.fechaNacimiento = unaFecha
 	}
 
-	override setPeso(double peso) {
+	def void setPeso(double peso) {
 		this.peso = peso;
 	}
 
-	override setAltura(double altura) {
+	def void setAltura(double altura) {
 		this.altura = altura;
 	}
 	
-	override setSexo(Sexo sexo){
+	def void setSexo(Sexo sexo){
 		this.sexo=sexo;
 	}
 
-	override setPreferenciasAlimenticias(Ingrediente alimento) {
-		this.preferenciasAlimenticias.add(alimento)
+	def void setPreferenciasAlimenticias(Map<Ingrediente, Integer> alimentos) {
+		this.preferenciasAlimenticias = alimentos
 	}
 
-	override setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos) {
+	def void setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos) {
 		this.platosQueNoLeGustan = listaDeAlimentos;
 	}
 
-	override setRutina(Rutinas rutina) {
+	def void setRutina(Rutina rutina) {
 		this.rutina = rutina
 	}
 	
 	override modificarReceta(String nombreReceta, String nuevo_nombre, HashMap<Ingrediente, Integer> ingredientes,
 		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
 		ArrayList<Temporada> temporada) {
-		
+					
 		val receta = getReceta( nombreReceta ) 
 		receta.setNombre( nombre ) 
 		receta.setIngredientes( ingredientes )
@@ -143,13 +139,14 @@ public class UsuarioPosta implements Usuario {
 		receta.setExplicacion( explicacion ) 
 		receta.setDificultad( dificultad ) 
 		receta.setTemporada( temporada ) 
-}
-	
-	override getReceta( String nombre ){
-		recetario.getReceta( nombre )
 	}
 	
-	override agregarReceta(Receta receta) 
+	override getReceta(String nombre){
+		recetario.getReceta(nombre)
+	}
+	
+	//Métodos
+	def agregarReceta(Receta receta) 
 	{
 		recetas.add(receta)
 	}

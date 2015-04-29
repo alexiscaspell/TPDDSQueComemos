@@ -13,13 +13,11 @@ class UsuarioHipertenso extends UsuarioDecorator
 	override estadoRutina()
 	{
 		// Rutina saludable si tiene una rutina activa con ejercicio Adicional
-		return (decorado.getRutina() == Rutinas.INTENSIVO && decorado.estadoRutina() )
-		
+		return (decorado.getRutina().rutinaActivaConEjercicioAdicional() && decorado.estadoRutina())		
 	}
 	
 	override usuarioValido()
 	{
-		return( decorado.preferenciasAlimenticias.size>0 && decorado.usuarioValido() )
-		
+		return(decorado.preferenciasAlimenticias.size > 0 && decorado.usuarioValido())		
 	}	
 }

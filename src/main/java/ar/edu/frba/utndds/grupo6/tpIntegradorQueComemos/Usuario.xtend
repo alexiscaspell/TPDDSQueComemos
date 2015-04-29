@@ -1,6 +1,7 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.ArrayList
 import java.util.HashMap
+import java.util.List
 
 public interface Usuario {	
 
@@ -26,7 +27,7 @@ public interface Usuario {
 	
 	def Rutina getRutina()
 
-	def ArrayList<Ingrediente> getPreferenciasAlimenticias()
+	def List<Ingrediente> getPreferenciasAlimenticias()
 	
 	def Recetario getRecetario()
 }

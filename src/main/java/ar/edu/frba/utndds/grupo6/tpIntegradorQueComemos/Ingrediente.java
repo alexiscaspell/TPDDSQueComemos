@@ -37,7 +37,7 @@ public enum Ingrediente {
 	CHORI {
 		@Override
 		public boolean contieneCarne() {
-			return false;
+			return true;
 		}
 
 		@Override

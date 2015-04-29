@@ -17,7 +17,7 @@ class UsuarioVegano extends UsuarioDecorator
 	override usuarioValido() 
 	{
 		return (!decorado.getPreferenciasAlimenticias().exists[ingrediente | ingrediente.contieneCarne()] && decorado.usuarioValido())
-		//reemplazar por forEach ??
+		
 	}
 	
 	

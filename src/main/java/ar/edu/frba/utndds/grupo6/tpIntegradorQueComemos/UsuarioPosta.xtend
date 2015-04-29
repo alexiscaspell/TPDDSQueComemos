@@ -4,6 +4,7 @@ import java.util.Date
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.Map
+import java.util.List
 
 public class UsuarioPosta implements Usuario {
 
@@ -19,11 +20,11 @@ public class UsuarioPosta implements Usuario {
 
 	private Date fechaNacimiento;
 
-	private ArrayList<Ingrediente> preferenciasAlimenticias; 
+	private List<Ingrediente> preferenciasAlimenticias; 
 
-	private ArrayList<String> platosQueNoLeGustan = new ArrayList<String>();
+	private List<String> platosQueNoLeGustan = new ArrayList<String>();
 
-	private ArrayList<Receta> recetas = new ArrayList<Receta>;
+	private List<Receta> recetas = new ArrayList<Receta>;
 		
 	private Recetario recetario	
 	
@@ -83,7 +84,7 @@ public class UsuarioPosta implements Usuario {
 		rutina
 	}
 
-	override ArrayList<Ingrediente> getPreferenciasAlimenticias() {
+	override List<Ingrediente> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias
 	}
 	

@@ -50,5 +50,6 @@ public class RecetaCompuesta extends Receta {
 	
 	override getCalorias() {
 		recetas.fold(0, [acum, receta | acum + receta.calorias])
-	}	
+	}
+	
 }

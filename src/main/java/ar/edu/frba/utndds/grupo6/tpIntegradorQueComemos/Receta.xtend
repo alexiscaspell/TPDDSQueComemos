@@ -1,8 +1,8 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.ArrayList
-import java.util.HashMap
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.Map
 
 public abstract class Receta {
 	
@@ -21,25 +21,18 @@ public abstract class Receta {
 	@Accessors
 	private TipoReceta tipo
 	
-	def String getNombre() {
-		return nombre
-	}
+	@Accessors
+	private Map<Ingrediente, Integer> ingredientes
 	
-	def HashMap<Ingrediente, Integer> getIngredientes()
+	@Accessors
+	private Map<Condimento, Integer> condimentos
 	
-	def HashMap<Condimento, Integer> getCondimentos()
+	@Accessors
+	private String explicacion	
 	
-	def String getExplicacion()	
+	def abstract int getCalorias()
 	
-	def Dificultad getDificultad() {
-		return dificultad
-	}
-	
-	def ArrayList<Temporada> getTemporada() {
-		return temporada
-	}
-	
-	def int getCalorias()
+	def abstract String getExplicacion()
 	
 	def abstract void validar()
 	
@@ -51,33 +44,4 @@ public abstract class Receta {
 	{
 		usuarioCreador.equals(usuario) || tipo == TipoReceta.PUBLICA
 	}
-	
-	def void setIngredientes(HashMap <Ingrediente,Integer> ingredientesNuevos) {
-		this.ingredientes = ingredientesNuevos
-	}
-	
-	def setNombre(String unNombre) {
-		this.nombre=unNombre
-	}
-
-	def void setCondimentos(HashMap <Condimento,Integer> condimentosNuevos){
-		this.condimentos=condimentosNuevos
-
-	}
-
-	def void setExplicacion (String unaExplicacion)
-	{
-		this.explicacion=unaExplicacion
-	}
-
-	def setDificultad(Dificultad dificultadReceta)
-	{
-		this.dificultad=dificultadReceta
-	}
-
-	def setTemporada( ArrayList<Temporada> unasTemporadas)
-	{
-		this.temporada=unasTemporadas
-	}
-
 }

@@ -35,6 +35,7 @@ public class RecetaSimple extends Receta
 		this.explicacion = explicacion
 		this.dificultad = dificultad
 		this.temporada = temporada
+		//Cuando este el calculo de calorias al ingresar los ingredientes, se puede poner el validar en el constructor
 		//this.validar()
 	}
 	

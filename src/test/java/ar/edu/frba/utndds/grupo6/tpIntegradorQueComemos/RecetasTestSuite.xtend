@@ -20,7 +20,7 @@ class RecetasTestSuite {
 	Date fecha = format.parse("01-04-1970")
 	
 	@Test(expected=RecetaInvalidaExc)
-	def void recetaInvalida()
+	def void recetaInvalidaPorCaloriasInsuficientes()
 	{
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Receta 1"
@@ -36,6 +36,45 @@ class RecetasTestSuite {
 		temporadas.add(Temporada.INVIERNO)		  
 		val invalida = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		invalida.calorias = 4
+		invalida.validar()
+	}
+	
+	@Test(expected=RecetaInvalidaExc)
+	def void recetaInvalidaPorDemasiadasCalorias()
+	{
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val nombre = "Receta 1"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.PAPA, 1000)
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.SAL, 10)
+		val explicacion = "1 - Paso 1\n" + 
+						  "2 - Paso 2\n" +
+						  "3 - Paso 3\n" +
+						  "4 - Paso 4\n"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)		  
+		val invalida = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		invalida.calorias = 6000
+		invalida.validar()
+	}
+	
+	@Test(expected=RecetaInvalidaExc)
+	def void recetaInvalidaPorNoTenerIngredientes()
+	{
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val nombre = "Receta 1"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.SAL, 10)
+		val explicacion = "1 - Paso 1\n" + 
+						  "2 - Paso 2\n" +
+						  "3 - Paso 3\n" +
+						  "4 - Paso 4\n"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)		  
+		val invalida = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		invalida.calorias = 6000
 		invalida.validar()
 	}
 	

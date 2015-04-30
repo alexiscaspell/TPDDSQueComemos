@@ -2,6 +2,9 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.ArrayList
 import java.util.HashMap
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 
 public class RecetaCompuesta extends Receta {
 	

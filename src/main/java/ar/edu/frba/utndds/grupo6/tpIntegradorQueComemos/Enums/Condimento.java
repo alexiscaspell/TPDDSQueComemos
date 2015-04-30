@@ -1,6 +1,6 @@
-package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos;
+package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums;
 
-enum Condimento {
+public enum Condimento {
 	SAL {
 		@Override
 		public int cantidadDeAzucar(int cantidadCondimento) {

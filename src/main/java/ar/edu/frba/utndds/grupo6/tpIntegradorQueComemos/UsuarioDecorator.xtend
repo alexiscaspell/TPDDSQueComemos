@@ -3,7 +3,10 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import org.eclipse.xtend.lib.annotations.Accessors
 
 import java.util.ArrayList
-import java.util.HashMap
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
+import java.util.Map
 
 @Accessors
 abstract class UsuarioDecorator implements Usuario {
@@ -18,8 +21,8 @@ abstract class UsuarioDecorator implements Usuario {
 		decorado = usuario
 	}
 	
-	override modificarReceta(String nombreReceta, String nuevo_nombre, HashMap<Ingrediente, Integer> ingredientes,
-		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+	override modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
 		ArrayList<Temporada> temporada) {
 		decorado.modificarReceta( nombreReceta, nuevo_nombre, ingredientes,condimentos, explicacion, dificultad, temporada  )
 	}	

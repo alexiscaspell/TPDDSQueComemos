@@ -3,13 +3,20 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import org.junit.Test
 import org.junit.Assert
 import java.util.Date
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 
 class UsuarioTestSuite {
 
 	Usuario diabetico
 	Usuario hipertenso
 	Usuario vegano
-	Date fecha = new Date(1970,01,04)	
+	
+	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
+	Date fecha = format.parse("01-04-1970")
 
 	@Test
 	def void unTipoAlto() {

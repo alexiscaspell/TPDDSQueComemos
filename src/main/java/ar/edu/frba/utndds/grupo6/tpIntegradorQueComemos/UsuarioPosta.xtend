@@ -2,9 +2,13 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.Date
 import java.util.ArrayList
-import java.util.HashMap
 import java.util.Map
 import java.util.List
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 
 public class UsuarioPosta implements Usuario {
 
@@ -129,8 +133,8 @@ public class UsuarioPosta implements Usuario {
 		this.rutina = rutina
 	}
 	
-	override modificarReceta(String nombreReceta, String nuevo_nombre, HashMap<Ingrediente, Integer> ingredientes,
-		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+	override modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
 		ArrayList<Temporada> temporada) {
 					
 		val receta = getReceta( nombreReceta ) 

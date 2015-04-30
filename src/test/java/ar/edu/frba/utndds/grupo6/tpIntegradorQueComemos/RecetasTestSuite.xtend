@@ -5,10 +5,39 @@ import org.junit.Assert
 import java.util.HashMap
 import java.util.ArrayList
 import java.util.Date
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 
 class RecetasTestSuite {
 	
-	Date fecha = new Date(1970,01,04)
+	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
+	Date fecha = format.parse("01-04-1970")
+	
+	@Test(expected=RecetaInvalidaExc)
+	def void recetaInvalida()
+	{
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val nombre = "Receta 1"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.PAPA, 1000)
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.SAL, 10)
+		val explicacion = "1 - Paso 1\n" + 
+						  "2 - Paso 2\n" +
+						  "3 - Paso 3\n" +
+						  "4 - Paso 4\n"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)		  
+		val invalida = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		invalida.calorias = 4
+		invalida.validar()
+	}
 	
 	@Test
 	def void recetaPure()
@@ -45,8 +74,7 @@ class RecetasTestSuite {
 	}		
 	
 	def Receta getRecetaPure()
-	{
-		
+	{	
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()

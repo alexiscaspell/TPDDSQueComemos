@@ -3,6 +3,10 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Map
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 public abstract class Receta {
 	

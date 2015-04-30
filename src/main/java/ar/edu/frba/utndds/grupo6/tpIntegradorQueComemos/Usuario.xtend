@@ -1,14 +1,19 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.ArrayList
-import java.util.HashMap
 import java.util.List
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import java.util.Map
 
 public interface Usuario {	
 
 	//Métodos
 	
-	def void modificarReceta(String nombreReceta, String nuevo_nombre, HashMap<Ingrediente, Integer> ingredientes,
-		HashMap<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+	def void modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
 		ArrayList<Temporada> temporada)
 	
 	def Receta getReceta(String nombre)

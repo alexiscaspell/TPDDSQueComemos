@@ -2,6 +2,12 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.ArrayList
 import java.util.HashMap
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
+import org.eclipse.xtend.lib.annotations.Accessors
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 public class RecetaSimple extends Receta 
 {
@@ -9,7 +15,8 @@ public class RecetaSimple extends Receta
 	
 	private String explicacion
 	
-	private int calorias
+	@Accessors
+	private int calorias //Las calorias deberian calcularse a partir de los ingredientes y condimentos. Le hago un Getter y Setter para ponerlo a mano mientras tanto	
 	
 	private HashMap<Ingrediente, Integer> ingredientes
 			
@@ -28,6 +35,7 @@ public class RecetaSimple extends Receta
 		this.explicacion = explicacion
 		this.dificultad = dificultad
 		this.temporada = temporada
+		//this.validar()
 	}
 	
 	public override validar() 
@@ -44,9 +52,7 @@ public class RecetaSimple extends Receta
 		if (condimentos.containsKey(Condimento.SAL) || condimentos.containsKey(Condimento.CALDO))
 		{
 			condicionesInadecuadas.add(Condicion.HIPERTENSO)
-		}
-		
-		
+		}		
 		
 		if (cantidadDeAzucar() > 100)
 		{
@@ -75,12 +81,5 @@ public class RecetaSimple extends Receta
 	
 	override getExplicacion() {
 		explicacion
-	}
-	
-	override getCalorias() {
-		calorias
-	}
-	
-	
-	
+	}	
 }

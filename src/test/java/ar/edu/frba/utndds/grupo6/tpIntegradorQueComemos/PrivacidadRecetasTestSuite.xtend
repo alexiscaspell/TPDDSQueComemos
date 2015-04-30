@@ -5,10 +5,18 @@ import java.util.Date
 import java.util.HashMap
 import java.util.ArrayList
 import org.junit.Assert
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 
 class PrivacidadRecetasTestSuite {
 	
-	Date fecha = new Date(1970,01,04)
+	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
+	Date fecha = format.parse("01-04-1970")
 	
 	Usuario usuario1 = getUsuario1();
 	Usuario usuario2 = getUsuario2();

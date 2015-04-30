@@ -1,4 +1,4 @@
-package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos;
+package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums;
 
 public enum Rutina {
 	LEVE {

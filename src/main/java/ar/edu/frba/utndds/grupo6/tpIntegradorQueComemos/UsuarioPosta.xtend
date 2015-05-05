@@ -91,59 +91,65 @@ public class UsuarioPosta implements Usuario {
 	override List<Ingrediente> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias
 	}
-	
-	override getSexo(){
-		sexo
-	}
 
-	override usuarioValido() {
+	override usuarioValido() 
+	{
 		return (cumpleCamposObligatorios() && nombreCorrecto())
 	}
 
 	//Setters
-	def void setNombre(String unNombre) {
+	def void setNombre(String unNombre) 
+	{
 		this.nombre = unNombre
 	}
 
-	def void setFechaNacimiento(Date unaFecha) {
+	def void setFechaNacimiento(Date unaFecha) 
+	{
 		this.fechaNacimiento = unaFecha
 	}
 
-	def void setPeso(double peso) {
+	def void setPeso(double peso) 
+	{
 		this.peso = peso;
 	}
 
-	def void setAltura(double altura) {
+	def void setAltura(double altura) 
+	{
 		this.altura = altura;
 	}
 	
-	def void setSexo(Sexo sexo){
+	def void setSexo(Sexo sexo)
+	{
 		this.sexo=sexo;
 	}
 
-	def void setPreferenciasAlimenticias(Map<Ingrediente, Integer> alimentos) {
+	def void setPreferenciasAlimenticias(Map<Ingrediente, Integer> alimentos) 
+	{
 		this.preferenciasAlimenticias = alimentos
 	}
 
-	def void setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos) {
+	def void setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos) 
+	{
 		this.platosQueNoLeGustan = listaDeAlimentos;
 	}
 
-	def void setRutina(Rutina rutina) {
+	def void setRutina(Rutina rutina) 
+	{
 		this.rutina = rutina
 	}
 	
 	override modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada) {
+		ArrayList<Temporada> temporada) 
+	{
 					
-		val receta = getReceta( nombreReceta ) 
-		receta.setNombre( nombre ) 
-		receta.setIngredientes( ingredientes )
-		receta.setCondimentos( condimentos ) 
-		receta.setExplicacion( explicacion ) 
-		receta.setDificultad( dificultad ) 
-		receta.setTemporadas( temporada ) 
+		val receta = getReceta(nombreReceta) 
+		receta.setNombre(nombre) 
+		receta.setIngredientes(ingredientes)
+		receta.setCondimentos(condimentos) 
+		receta.setExplicacion(explicacion) 
+		receta.setDificultad(dificultad) 
+		receta.setTemporadas(temporada) 
 	}
 	
 	override getReceta(String nombre){
@@ -154,6 +160,10 @@ public class UsuarioPosta implements Usuario {
 	def agregarReceta(Receta receta) 
 	{
 		recetas.add(receta)
+	}
+	
+	override getSexo() {
+		sexo
 	}
 	
 }

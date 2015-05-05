@@ -23,7 +23,6 @@ class RecetasTestSuite {
 	def void recetaInvalidaPorCaloriasInsuficientes()
 	{
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
-		val nombre = "Receta 1"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.PAPA, 1000)
 		val condimentos = new HashMap<Condimento, Integer>()
@@ -34,7 +33,7 @@ class RecetasTestSuite {
 						  "4 - Paso 4\n"
 		val temporadas = new ArrayList<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)		  
-		val invalida = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val invalida = new Receta(usuario, "Receta 1", ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		invalida.calorias = 4
 		invalida.validar()
 	}
@@ -54,7 +53,7 @@ class RecetasTestSuite {
 						  "4 - Paso 4\n"
 		val temporadas = new ArrayList<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)		  
-		val invalida = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val invalida = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		invalida.calorias = 6000
 		invalida.validar()
 	}
@@ -73,7 +72,7 @@ class RecetasTestSuite {
 						  "4 - Paso 4\n"
 		val temporadas = new ArrayList<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)		  
-		val invalida = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val invalida = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		invalida.calorias = 6000
 		invalida.validar()
 	}
@@ -88,31 +87,29 @@ class RecetasTestSuite {
 	@Test
 	def void crearRecetaMilanesasConPure()
 	{
-		val recetasSimples = new ArrayList<Receta>()
-		recetasSimples.add(getRecetaPure())
-		recetasSimples.add(getRecetaMilanesas())	
-		val recetaMilanesasConPure = new RecetaCompuesta(recetasSimples)
-		Assert.assertEquals(100, recetaMilanesasConPure.cantidadDeAzucar(), 0.01)		
+		val pure = getRecetaPure()
+		val milanesasConPure = getRecetaMilanesas()
+		milanesasConPure.agregarSubReceta(pure)
+		Assert.assertEquals(100, milanesasConPure.cantidadDeAzucar(), 0.01)		
 	}
 	
 	@Test
 	def void cantidadIngredientesPure()
 	{
 		val pure = getRecetaPure()
-		Assert.assertTrue(pure.getIngredientes().values.length == 1)
+		Assert.assertTrue(pure.getIngredientes().size == 1)
 	}
 	
 	@Test
 	def void cantidadIngredientesMilanesasConPure()
 	{
-		val recetasSimples = new ArrayList<Receta>()
-		recetasSimples.add(getRecetaPure())
-		recetasSimples.add(getRecetaMilanesas())	
-		val recetaMilanesasConPure = new RecetaCompuesta(recetasSimples)
-		Assert.assertTrue(recetaMilanesasConPure.getIngredientes().values.length == 4)
+		val pure = getRecetaPure()
+		val milanesasConPure = getRecetaMilanesas()
+		milanesasConPure.agregarSubReceta(pure)
+		Assert.assertTrue(milanesasConPure.getIngredientes().values.length == 4)
 	}		
 	
-	def Receta getRecetaPure()
+	private def Receta getRecetaPure()
 	{	
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
@@ -131,11 +128,11 @@ class RecetasTestSuite {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		recetaSimple
 	}
 	
-	def Receta getRecetaMilanesas()
+	private def Receta getRecetaMilanesas()
 	{
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
@@ -155,7 +152,7 @@ class RecetasTestSuite {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new RecetaSimple(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		recetaSimple
 	}
 }

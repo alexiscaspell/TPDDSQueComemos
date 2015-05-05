@@ -7,8 +7,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import java.util.List
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
 
-public abstract class Receta {
+public class Receta implements IReceta {
 	
 	@Accessors
 	private Usuario usuarioCreador
@@ -20,7 +22,7 @@ public abstract class Receta {
 	private Dificultad dificultad
 	
 	@Accessors
-	private ArrayList<Temporada> temporada	
+	private List<Temporada> temporadas	
 	
 	@Accessors
 	private TipoReceta tipo
@@ -32,20 +34,114 @@ public abstract class Receta {
 	private Map<Condimento, Integer> condimentos
 	
 	@Accessors
-	private String explicacion	
+	private int calorias
 	
-	def abstract int getCalorias()
+	@Accessors
+	private String explicacion
 	
-	def abstract String getExplicacion()
+	private ArrayList<IReceta> subRecetas;
 	
-	def abstract void validar()
+	new(Usuario usuario, String nombre, Map<Ingrediente, Integer> ingredientes, 
+		Map<Condimento, Integer> condimentos, String explicacion, 
+		Dificultad dificultad, ArrayList<Temporada> temporadas
+	) 
+	{
+		this.usuarioCreador = usuario
+		this.nombre = nombre
+		this.ingredientes = ingredientes
+		this.condimentos = condimentos
+		this.explicacion = explicacion
+		this.dificultad = dificultad
+		this.temporadas = temporadas
+		this.subRecetas = new ArrayList<IReceta>()
+	}
 	
-	def abstract ArrayList<Condicion> condicionesInadecuadas()
+	override validar() 
+	{
+		if (ingredientes.values.length == 0 || getCalorias() < 5 || getCalorias() > 5000)
+		{
+			throw new RecetaInvalidaExc()
+		}
+		
+		subRecetas.forEach[e | e.validar()]		
+	}
 	
-	def abstract int cantidadDeAzucar()
+	override condicionesInadecuadas() 
+	{
+		val condicionesInadecuadas = new ArrayList<Condicion>()
+		
+		if (condimentos.containsKey(Condimento.SAL) || condimentos.containsKey(Condimento.CALDO))
+		{
+			condicionesInadecuadas.add(Condicion.HIPERTENSO)
+		}		
+		
+		if (cantidadDeAzucar() > 100)
+		{
+			condicionesInadecuadas.add(Condicion.DIABETICO)
+		}
+		
+		if (ingredientes.keySet.exists[x | x.contieneCarne()])
+		{
+			condicionesInadecuadas.add(Condicion.VEGANO)
+		}		
+		
+		subRecetas.forEach[x | condicionesInadecuadas.addAll((x.condicionesInadecuadas()))]
+		
+		return condicionesInadecuadas
+	}
+	
+	override cantidadDeAzucar() 
+	{		
+		val recetasConAzucar = subRecetas.filter[x | x.condimentos.containsKey(Condimento.AZUCAR)]
+		recetasConAzucar.fold(cantidadDeAzucarEnLosCondimentos(), [acum, receta | acum + receta.cantidadDeAzucar()])
+	}
+	
+	override getIngredientes() 
+	{
+		for(i : 0..<subRecetas.length)
+		{
+			val receta = subRecetas.get(i)
+			ingredientes.putAll(receta.getIngredientes())
+		}
+		ingredientes
+	}
+	
+	override getCondimentos() 
+	{
+		for(i : 0..<subRecetas.length)
+		{
+			val receta = subRecetas.get(i)
+			condimentos.putAll(receta.getCondimentos())
+		}
+		condimentos
+	}
+	
+	override getExplicacion() {
+		
+		val explicacion = ""
+		
+		subRecetas.forEach[receta | String.join(explicacion, receta.getExplicacion())]
+		
+		String.join(explicacion, this.explicacion)
+	}
+	
+	override getCalorias() {
+		subRecetas.fold(this.calorias, [acum, receta | acum + receta.calorias])
+	}	
 	
 	def boolean puedeSerModificada(Usuario usuario) 
 	{
 		usuarioCreador.equals(usuario) || tipo == TipoReceta.PUBLICA
 	}
+	
+	private def int cantidadDeAzucarEnLosCondimentos() 
+	{
+		condimentos.keySet.fold(0, [acum, condimento | acum + condimento.cantidadDeAzucar(condimentos.get(condimento))])
+	}
+	
+	override agregarSubReceta(IReceta receta) 
+	{
+		this.subRecetas.add(receta)
+	}
+	
 }

@@ -143,7 +143,7 @@ public class UsuarioPosta implements Usuario {
 		receta.setCondimentos( condimentos ) 
 		receta.setExplicacion( explicacion ) 
 		receta.setDificultad( dificultad ) 
-		receta.setTemporada( temporada ) 
+		receta.setTemporadas( temporada ) 
 	}
 	
 	override getReceta(String nombre){

@@ -50,6 +50,10 @@ abstract class UsuarioDecorator implements Usuario {
 		decorado.getAltura()
 	}
 	
+	override getPlatosQueNoLeGustan(){
+		decorado.getPlatosQueNoLeGustan
+	}
+	
 	override getPreferenciasAlimenticias(){
 		decorado.getPreferenciasAlimenticias()
 	}

@@ -166,4 +166,15 @@ public class UsuarioPosta implements Usuario {
 		sexo
 	}
 	
+	
+	def getRecetasConocidas() {
+		// MODIFICAR!
+		val recetasConocidas = new ArrayList<Receta>()
+		return recetasConocidas 
+	}
+	
+	override List<String> getPlatosQueNoLeGustan(){
+		platosQueNoLeGustan
+	}
+	
 }

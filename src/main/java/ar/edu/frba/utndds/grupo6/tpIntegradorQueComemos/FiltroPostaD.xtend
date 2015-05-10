@@ -9,9 +9,7 @@ public class FiltroPostaD extends Filtro {
 	
 	override aplicarFiltro (List<Receta> recetasConocidas, Usuario unUsuario)
 	{
-	   
-	   //return recetasConocidas
-	   
+	  return recetasConocidas   
 	}
 	
 }

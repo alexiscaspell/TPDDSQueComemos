@@ -65,6 +65,10 @@ abstract class UsuarioDecorator implements Usuario {
 	override getRutina(){
 		decorado.getRutina()		
 	}	
+	
+	override getRecetasConocidas(){
+		decorado.getRecetasConocidas
+	}
 			
 	override usuarioValido(){
 		decorado.usuarioValido()

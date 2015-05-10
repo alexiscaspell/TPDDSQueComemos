@@ -37,4 +37,6 @@ public interface Usuario {
 	def Recetario getRecetario()
 	
 	def List<String> getPlatosQueNoLeGustan()
+	
+	def List<Receta> getRecetasConocidas() 
 }

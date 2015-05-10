@@ -167,10 +167,9 @@ public class UsuarioPosta implements Usuario {
 	}
 	
 	
-	def getRecetasConocidas() {
+	override getRecetasConocidas() {
 		// MODIFICAR!
-		val recetasConocidas = new ArrayList<Receta>()
-		return recetasConocidas 
+		return recetas 
 	}
 	
 	override List<String> getPlatosQueNoLeGustan(){

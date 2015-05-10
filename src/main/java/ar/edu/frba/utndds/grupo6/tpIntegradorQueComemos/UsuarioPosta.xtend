@@ -157,7 +157,7 @@ public class UsuarioPosta implements Usuario {
 	}
 	
 	//Métodos
-	def agregarReceta(Receta receta) 
+	override agregarReceta(Receta receta) 
 	{
 		recetas.add(receta)
 	}

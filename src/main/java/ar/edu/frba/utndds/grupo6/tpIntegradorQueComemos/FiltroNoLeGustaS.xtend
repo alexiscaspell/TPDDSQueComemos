@@ -5,7 +5,7 @@ import java.util.List
 class FiltroNoLeGustaS implements TipoDeFiltroS {
 	
 	override aplicarFiltro(List<Receta> recetasConocidas, Usuario usuario) {
-		return recetasConocidas.filter[ ! usuario.getPlatosQueNoLeGustan().contains( recetasConocidas )].toList() 
+		return recetasConocidas.filter[ ! usuario.getPlatosQueNoLeGustan().contains( it.nombre )].toList() 
 	}
 	
 }

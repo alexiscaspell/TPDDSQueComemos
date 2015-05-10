@@ -31,6 +31,10 @@ abstract class UsuarioDecorator implements Usuario {
 		decorado.estadoRutina()
 	}	
 	
+	override agregarReceta(Receta receta){
+		decorado.agregarReceta( receta )
+	}
+	
 	//Getters
 	
 	override getReceta(String nombre){

@@ -11,6 +11,7 @@ import java.util.HashMap
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
+import org.junit.Assert
 
 class FiltroStrategyTestSuite {
 
@@ -19,18 +20,22 @@ class FiltroStrategyTestSuite {
 	Usuario usuario1 = getUsuario();
 	
 	@Test
-	def void FiltroStrategyDisgusta() {
+	def void FiltroStrategyDisgustaElimina() {
 		val FiltroDisgusta = new FiltroPostaS()
 		FiltroDisgusta.agregarFiltroNoLeGusta()
+		usuario1.agregarReceta( getRecetaPure )
 		val listaFiltrada  = FiltroDisgusta.aplicarFiltro( usuario1.recetasConocidas, usuario1 )
+		println("La cantidad de elementos en la lista filtrada es = " + listaFiltrada.size )
+		Assert.assertTrue( listaFiltrada.size == 0 )
+		
 			
 	}
 	
 	def getUsuario(){
 		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		val platosQueNoLeGustan = new ArrayList<String>()
-		platosQueNoLeGustan.add("CARNE")
 		platosQueNoLeGustan.add("CHORI")
+		platosQueNoLeGustan.add("Pure")
 		pepe.platosQueNoLeGustan = platosQueNoLeGustan
 		// Agregar Recetas que conoce		
 		return pepe

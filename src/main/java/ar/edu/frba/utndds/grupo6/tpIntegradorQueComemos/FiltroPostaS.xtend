@@ -1,12 +1,15 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.List
+import java.util.ArrayList
 
 class FiltroPostaS extends Filtro {
 	
 	List<TipoDeFiltroS> Filtros
 	
-	
+	new (){
+		Filtros = new ArrayList<TipoDeFiltroS>
+	}
 	
 	def void agregarFiltroNoLeGusta(){
 		Filtros.add( new FiltroNoLeGustaS )

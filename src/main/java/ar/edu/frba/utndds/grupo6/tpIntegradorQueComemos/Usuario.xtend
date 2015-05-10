@@ -21,6 +21,9 @@ public interface Usuario {
 	def boolean estadoRutina()	
 	
 	def boolean usuarioValido()		
+	
+	def void agregarReceta(Receta receta) 
+	
 			
 	//Getters	
 	

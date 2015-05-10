@@ -25,10 +25,14 @@ class FiltroPostaS extends Filtro {
 	}
 	
 	override aplicarFiltro( List<Receta> recetasConocidas, Usuario usuario ){
-		// Funciona ? 
-		Filtros.forEach [ aplicarFiltro( recetasConocidas, usuario ) ]
-		return recetasConocidas
-	}
+		if ( Filtros.size > 0 ) {
+			val listaFiltrada = Filtros.head.aplicarFiltro( recetasConocidas, usuario ) 
+			Filtros.remove(0)
+			aplicarFiltro( listaFiltrada, usuario )  
+			} else {
+				return recetasConocidas
+			}
+}
 	
-	
+
 }

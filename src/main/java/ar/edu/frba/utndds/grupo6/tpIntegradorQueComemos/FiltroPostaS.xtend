@@ -2,7 +2,7 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.List
 
-class FiltroPostaS implements FiltroS {
+class FiltroPostaS extends Filtro {
 	
 	List<TipoDeFiltroS> Filtros
 	
@@ -24,7 +24,11 @@ class FiltroPostaS implements FiltroS {
 		Filtros.add( new FiltroCarosS )
 	}
 	
-	override aplicarFiltro( List<Receta> recetasConocidas ){
-		
+	override aplicarFiltro( List<Receta> recetasConocidas, Usuario usuario ){
+		// Funciona ? 
+		Filtros.forEach [ aplicarFiltro( recetasConocidas, usuario ) ]
+		return recetasConocidas
 	}
+	
+	
 }

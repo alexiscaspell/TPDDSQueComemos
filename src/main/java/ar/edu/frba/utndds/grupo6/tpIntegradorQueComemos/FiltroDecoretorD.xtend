@@ -6,9 +6,9 @@ import java.util.ArrayList
 
 @Accessors
 
-abstract class FiltroDecoratorD implements FiltroInterfazD {
+abstract class FiltroDecoratorD extends Filtro {
 	
-	FiltroInterfazD filtroDecorado
+	Filtro filtroDecorado
 	
 	override aplicarFiltro(List<Receta> recetasConocidas, Usuario unUsuario)
 	{

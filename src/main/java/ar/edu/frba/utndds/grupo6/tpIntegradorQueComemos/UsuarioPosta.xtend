@@ -12,23 +12,25 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 
 public class UsuarioPosta implements Usuario {
 
-	private double altura;
+	private double altura
 
-	private double peso;
+	private double peso
 	
-	private Sexo sexo;
+	private Sexo sexo
 
-	private Rutina rutina;
+	private Rutina rutina
 
-	private String nombre;
+	private String nombre
 
-	private Date fechaNacimiento;
+	private Date fechaNacimiento
 
-	private List<Ingrediente> preferenciasAlimenticias; 
+	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
-	private List<String> platosQueNoLeGustan = new ArrayList<String>();
+	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
-	private List<Receta> recetas = new ArrayList<Receta>;
+	private List<Receta> recetas = new ArrayList<Receta>()
+	
+	private List<Grupo> grupos = new ArrayList<Grupo>()
 		
 	private Recetario recetario	
 	
@@ -40,7 +42,6 @@ public class UsuarioPosta implements Usuario {
 		this.fechaNacimiento=fechaNacimiento
 		this.nombre=nombre
 		this.sexo=sexo
-		preferenciasAlimenticias = new ArrayList<Ingrediente>();
 		recetario = Recetario.getInstance()
 	}
 
@@ -174,6 +175,10 @@ public class UsuarioPosta implements Usuario {
 	
 	override List<String> getPlatosQueNoLeGustan(){
 		platosQueNoLeGustan
+	}
+	
+	override comparteGrupo(Usuario usuario) {
+		grupos.exists[x | x.contieneAlUsuario(usuario)]
 	}
 	
 }

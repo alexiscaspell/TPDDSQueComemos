@@ -26,7 +26,7 @@ class PrivacidadRecetasTestSuite {
 	{
 		val receta = getRecetaPure()
 		receta.tipo = TipoReceta.PRIVADA
-		Assert.assertTrue(receta.puedeSerModificada(usuario1))			
+		Assert.assertTrue(receta.puedeModificar(usuario1))			
 	}
 	
 	@Test 
@@ -34,7 +34,7 @@ class PrivacidadRecetasTestSuite {
 	{
 		val receta = getRecetaPure()
 		receta.tipo = TipoReceta.PRIVADA
-		Assert.assertFalse(receta.puedeSerModificada(usuario2))			
+		Assert.assertFalse(receta.puedeModificar(usuario2))			
 	}
 	
 	@Test
@@ -42,7 +42,7 @@ class PrivacidadRecetasTestSuite {
 	{
 		val receta = getRecetaPure()
 		receta.tipo = TipoReceta.PUBLICA
-		Assert.assertTrue(receta.puedeSerModificada(usuario2))	
+		Assert.assertTrue(receta.puedeModificar(usuario2))	
 	}
 	
 	def Usuario getUsuario1()

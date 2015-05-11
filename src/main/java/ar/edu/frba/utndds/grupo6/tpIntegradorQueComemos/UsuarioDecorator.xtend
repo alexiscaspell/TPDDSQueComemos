@@ -77,4 +77,8 @@ abstract class UsuarioDecorator implements Usuario {
 	override usuarioValido(){
 		decorado.usuarioValido()
 	}
+	
+	override comparteGrupo(Usuario usuario) {
+		decorado.comparteGrupo(usuario)
+	}
 }

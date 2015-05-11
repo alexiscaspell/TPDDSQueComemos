@@ -1,8 +1,5 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import org.eclipse.xtend.lib.annotations.Accessors
-
-@Accessors
 class UsuarioHipertenso extends UsuarioDecorator 
 {	
 	new(Usuario decorado) 

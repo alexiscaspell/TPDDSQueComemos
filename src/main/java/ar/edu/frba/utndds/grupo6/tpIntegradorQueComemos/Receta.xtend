@@ -129,7 +129,7 @@ public class Receta implements IReceta {
 		subRecetas.fold(this.calorias, [acum, receta | acum + receta.calorias])
 	}	
 	
-	def boolean puedeSerModificada(Usuario usuario) 
+	def boolean puedeModificar(Usuario usuario) 
 	{
 		usuarioCreador.equals(usuario) || tipo == TipoReceta.PUBLICA
 	}

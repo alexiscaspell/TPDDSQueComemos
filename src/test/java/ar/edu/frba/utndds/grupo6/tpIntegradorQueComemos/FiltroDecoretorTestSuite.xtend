@@ -31,6 +31,16 @@ class FiltroDecoretorTestSuite {
 			
 	}
 	
+	@Test
+	def void FiltroDecoretorExcesoCalorias()
+	{
+		val FiltroCalorias = new FiltroPostaD();
+		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
+		usuario1.agregarReceta(getRecetaPure)
+		Assert.assertTrue(filtroCalorias.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)
+		
+			
+	}
 
 	def Receta getRecetaPure()
 	{		
@@ -51,6 +61,7 @@ class FiltroDecoretorTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.calorias=1000
 		recetaSimple
 	}
 

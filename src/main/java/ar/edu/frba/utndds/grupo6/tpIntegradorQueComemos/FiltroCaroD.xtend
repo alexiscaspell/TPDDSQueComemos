@@ -5,6 +5,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.IngredienteCaro
 
 class FiltroCarosD extends FiltroDecoratorD {
 	
+		new(Filtro decorado) 
+	{
+		super(decorado)
+	}
 	
 		
 	

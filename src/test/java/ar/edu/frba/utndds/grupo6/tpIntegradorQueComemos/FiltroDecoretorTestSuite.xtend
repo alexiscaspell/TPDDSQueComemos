@@ -17,15 +17,16 @@ class FiltroDecoretorTestSuite {
 	
 	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
 	Date fecha = format.parse("01-04-1970")
-	//Usuario usuario1 = getUsuario1();
+	Usuario usuario1 = getUsuario();
 	
 	
 	@Test
 	def void FiltroDecoretorDisgusta()
 	{
-		val FiltroDisgusta = new FiltroNoLeGustaD();
-		///val List<Receta>= new
-		//Assert.assertTrue(FiltroDisgusta.aplicarFiltro(getUsuario.recetasConocidas, getUsuario),)
+		val FiltroDisgusta = new FiltroPostaD();
+		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
+		usuario1.agregarReceta(getRecetaPure)
+		Assert.assertTrue(filtroDisgusta.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)
 		
 			
 	}
@@ -49,19 +50,19 @@ class FiltroDecoretorTestSuite {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(getUsuario(), nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		recetaSimple
 	}
 
 
-	def getUsuario(){
+def getUsuario(){
 		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		val platosQueNoLeGustan = new ArrayList<String>()
-		platosQueNoLeGustan.add("CARNE")
 		platosQueNoLeGustan.add("CHORI")
+		platosQueNoLeGustan.add("Pure")
 		pepe.platosQueNoLeGustan = platosQueNoLeGustan
-		// Agregar Recetas que conoce
-		return pepe 					
+		// Agregar Recetas que conoce		
+		return pepe
 	}
 	
 }

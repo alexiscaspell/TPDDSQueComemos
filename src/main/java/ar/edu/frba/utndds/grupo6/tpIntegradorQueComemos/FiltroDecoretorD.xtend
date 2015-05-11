@@ -10,6 +10,11 @@ abstract class FiltroDecoratorD extends Filtro {
 	
 	Filtro filtroDecorado
 	
+	new(Filtro filtro) 
+	{
+		filtroDecorado= filtro
+	}
+	
 	override aplicarFiltro(List<Receta> recetasConocidas, Usuario unUsuario)
 	{
 		filtroDecorado.aplicarFiltro(recetasConocidas, unUsuario)

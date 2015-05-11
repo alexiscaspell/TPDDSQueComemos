@@ -6,6 +6,12 @@ import java.util.ArrayList
 class FiltroCondicionesPreexistentesD extends FiltroDecoratorD {
 	
 	
+		new(Filtro decorado) 
+	{
+		super(decorado)
+	}
+	
+	
 	override aplicarFiltro(List <Receta> recetasConocidas , Usuario unUsuario)
 	{
 		//HACERRR!!

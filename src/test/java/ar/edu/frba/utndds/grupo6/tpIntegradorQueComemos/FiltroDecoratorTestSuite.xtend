@@ -19,35 +19,16 @@ class FiltroDecoratorTestSuite {
 	Date fecha = format.parse("01-04-1970")
 	Usuario usuario1 = getUsuario();
 	
-	
-	@Test
-	def void FiltroDecoretorDisgusta()
+	def getUsuario() 
 	{
-		val FiltroDisgusta = new FiltroPostaD();
-		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
-		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroDisgusta.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
+		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		val platosQueNoLeGustan = new ArrayList<String>()
+		platosQueNoLeGustan.add("CHORI")
+		platosQueNoLeGustan.add("Pure")
+		pepe.platosQueNoLeGustan = platosQueNoLeGustan
+	   	return pepe
 	}
 	
-	@Test
-	def void FiltroDecoretorExcesoCalorias()
-	{
-		val FiltroCalorias = new FiltroPostaD();
-		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
-		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroCalorias.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
-	}
-	
-	@Test
-	def void FiltroDecoretorCaro()
-	{
-		val FiltroCaro = new FiltroPostaD();
-		val filtroCaro = new FiltroCarosD(FiltroCaro);
-		usuario1.agregarReceta(getRecetaLechon)
-		Assert.assertTrue(filtroCaro.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
-	}
-	
-
 	def Receta getRecetaPure()
 	{		
 		val nombre = "Pure"
@@ -67,7 +48,7 @@ class FiltroDecoratorTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
-		recetaSimple.calorias=1000
+		recetaSimple.calorias=100
 		recetaSimple
 	}
 
@@ -93,15 +74,118 @@ class FiltroDecoratorTestSuite {
 		recetaSimple.calorias=1000
 		recetaSimple
 	}
-
-	def getUsuario() {
-		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		val platosQueNoLeGustan = new ArrayList<String>()
-		platosQueNoLeGustan.add("CHORI")
-		platosQueNoLeGustan.add("Pure")
-		pepe.platosQueNoLeGustan = platosQueNoLeGustan
-		// Agregar Recetas que conoce		
-		return pepe
+	
+/*-------------------------------------Test FiltroNoLeGustaD----------------------------------------------------------*/
+//Caso de testeo cuando el usuario posee RecetaPure, sabiendo que el pure no le gusta.
+		
+	@Test
+	def void NoLeGustaPure()
+	{
+		val FiltroDisgusta = new FiltroPostaD();
+		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
+		usuario1.agregarReceta(getRecetaPure)
+		Assert.assertTrue(filtroDisgusta.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
 	}
 	
+
+//Caso de testeo cuando el usuario posee RecetaLechon, sabiendo que el lechon le gusta.
+
+	@Test
+	def void LeGustaLechon()
+	{
+		val FiltroDisgusta = new FiltroPostaD();
+		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
+		usuario1.agregarReceta(getRecetaLechon)
+		Assert.assertTrue(filtroDisgusta.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==1)			
+	}
+
+
+//Caso de testeo cuando el usuario posee RecetaLechon y RecetaPure, sabiendo que el lechon le gusta y el pure no.
+
+	@Test
+	def void LeGustaLechonNoLeGustaPure()
+	{
+		val FiltroDisgusta = new FiltroPostaD();
+		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
+		usuario1.agregarReceta(getRecetaLechon)
+		usuario1.agregarReceta(getRecetaPure)
+		Assert.assertTrue(filtroDisgusta.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==1)			
+	}
+
+/*-------------------------------------Test FiltroExcesoCaloriasD---------------------------------------------------- */
+
+//Caso de testeo cuando el usuario posee RecetaPuer que no se excede en calorias.
+	
+	@Test
+	def void PurePocasCalorias()
+	{
+		val FiltroCalorias = new FiltroPostaD();
+		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
+		usuario1.agregarReceta(getRecetaPure)
+		Assert.assertTrue(filtroCalorias.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==1)			
+	}
+	
+	
+//Caso de testeo cuando el usuario posee RecetaLechon que se excede en calorias.
+	
+	@Test
+	def void LechonMuchasCalorias()
+	{
+		val FiltroCalorias = new FiltroPostaD();
+		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
+		usuario1.agregarReceta(getRecetaLechon)
+		Assert.assertTrue(filtroCalorias.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
+	}
+
+
+//Caso de testeo cuando el usuario posee RecetaPure y RecetaLechon.
+	
+	@Test
+	def void ExcesoCaloriasPureLechon()
+	{
+		val FiltroCalorias = new FiltroPostaD();
+		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
+		usuario1.agregarReceta(getRecetaLechon)
+		usuario1.agregarReceta(getRecetaPure)
+		Assert.assertTrue(filtroCalorias.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==1)			
+	}
+
+/*-----------------------------------Test FiltroCaroD---------------------------------------------------------------- */
+//Caso de testeo cuando el usuario posee RecetaPure y RecetaLechon, sabiendo que lechon es un ingrediente caro.
+	
+	@Test
+	def void CaroLechonPure()
+	{
+		val FiltroCaro = new FiltroPostaD();
+		val filtroCaro = new FiltroCarosD(FiltroCaro);
+		usuario1.agregarReceta(getRecetaLechon)
+		usuario1.agregarReceta(getRecetaPure)
+		Assert.assertTrue(filtroCaro.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==1)			
+	}
+	
+	
+//Caso de testeo cuando el usuario posee RecetaPure.
+	
+	@Test
+	def void PureNoEsCaro()
+	{
+		val FiltroCaro = new FiltroPostaD();
+		val filtroCaro = new FiltroCarosD(FiltroCaro);
+		usuario1.agregarReceta(getRecetaPure)
+		Assert.assertTrue(filtroCaro.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==1)			
+	}
+	
+	
+//Caso de testeo cuando el usuario solo posee RecetaLechon.
+
+	@Test
+	def void LechonEsCaro()
+	{
+		val FiltroCaro = new FiltroPostaD();
+		val filtroCaro = new FiltroCarosD(FiltroCaro);
+		usuario1.agregarReceta(getRecetaLechon)
+		Assert.assertTrue(filtroCaro.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
+	}
+	
+
 }

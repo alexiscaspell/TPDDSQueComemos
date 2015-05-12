@@ -27,6 +27,8 @@ public class UsuarioPosta implements Usuario {
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
+	
+	private Map<Ingrediente, Integer> ingredientesFeos
 
 	private List<Receta> recetas = new ArrayList<Receta>()
 	
@@ -179,6 +181,19 @@ public class UsuarioPosta implements Usuario {
 	
 	override comparteGrupo(Usuario usuario) {
 		grupos.exists[x | x.contieneAlUsuario(usuario)]
+	}
+	
+	override puedeComer(Receta receta) {
+		return true
+	}
+	
+	public def boolean tieneIngredientesFeos(Map<Ingrediente, Integer> ingredientes){
+		return ( ingredientesFeos.keySet.forall[ingredienteFeo | ingredientes.keySet.contains(ingredienteFeo)] )
+	}
+		
+	override sePuedeSugerir(Receta receta){
+		
+		return(!tieneIngredientesFeos(receta.getIngredientes()))
 	}
 	
 }

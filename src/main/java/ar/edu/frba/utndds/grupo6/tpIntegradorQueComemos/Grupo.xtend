@@ -9,19 +9,31 @@ public class Grupo {
 	private String nombre
 	
 	@Accessors
-	private List<Usuario> usuarios
+	private List<Usuario> integrantes
 	
 	@Accessors
-	private List<String> preferenciasAlimenticias
+	private List<Receta> recetasPreferidas 
 	
-	new(List<Usuario> usuarios, List<String> preferenciasAlimenticias)
+	new(List<Usuario> usuarios, List<Receta> recetasPreferidas)
 	{
-		this.usuarios = usuarios		
-		this.preferenciasAlimenticias = preferenciasAlimenticias
+		integrantes = usuarios		
+		this.recetasPreferidas= recetasPreferidas
 	}
 	
 	def contieneAlUsuario(Usuario usuario) {
-		usuarios.contains(usuario)
+		integrantes.contains(usuario)
 	}
 	
+	def sePuedeSugerir(Receta receta){
+		
+		return(puedeComer(receta)&&esPreferida(receta))		
+	}
+	def esPreferida(Receta receta){
+		return(recetasPreferidas.contains(receta))		
+	}
+	
+	def puedeComer(Receta receta){
+		
+		return(integrantes.forall[integrante|integrante.puedeComer(receta)])
+	}
 }

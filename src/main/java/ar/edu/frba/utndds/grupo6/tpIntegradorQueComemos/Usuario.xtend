@@ -43,5 +43,9 @@ public interface Usuario {
 	
 	def List<Receta> getRecetasConocidas()
 	
-	def boolean comparteGrupo(Usuario usuario) 
+	def boolean comparteGrupo(Usuario usuario)
+	
+	def boolean puedeComer(Receta receta) 
+	
+	def boolean sePuedeSugerir(Receta receta)
 }

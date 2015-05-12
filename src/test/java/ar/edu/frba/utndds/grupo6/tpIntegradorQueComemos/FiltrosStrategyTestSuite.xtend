@@ -26,10 +26,10 @@ class FiltroStrategyTestSuite {
 		FiltroCompleto.agregarFiltroNoLeGusta()
 		FiltroCompleto.agregarFiltroExcesoCalorias()
 		FiltroCompleto.agregarFiltroCaros()
-		//FiltroCompleto.agregarFiltroCondicionesPreexistentes()
+		FiltroCompleto.agregarFiltroCondicionesPreexistentes()
 		val listaFiltrada  = FiltroCompleto.aplicarFiltro( usuario1.recetasConocidas, usuario1 )
 		//println( "La cantidad de elementos en la lista filtrada = " + listaFiltrada.size )
-		Assert.assertTrue( listaFiltrada.size == 1 ) // CORREGIR!!
+		Assert.assertTrue( listaFiltrada.size == 0 ) // CORREGIR!!
 	}
 	
 	@Test

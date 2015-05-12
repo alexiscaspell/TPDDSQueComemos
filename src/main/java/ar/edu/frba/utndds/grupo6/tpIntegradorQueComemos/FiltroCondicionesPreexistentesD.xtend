@@ -13,8 +13,6 @@ class FiltroCondicionesPreexistentesD extends FiltroDecoratorD {
 	
 	override aplicarFiltro(List <Receta> recetasConocidas , Usuario unUsuario)
 	{
-		//HACERRR!!
-		//unUsuario.		
-		return recetasConocidas.filter[unaReceta |!(unUsuario.getPlatosQueNoLeGustan()).contains(unaReceta.getNombre()) ].toList()		
+		return recetasConocidas.filter[ condicionesInadecuadas.contains( unUsuario.getClass().getName() ) ].toList()			
 	}
 }

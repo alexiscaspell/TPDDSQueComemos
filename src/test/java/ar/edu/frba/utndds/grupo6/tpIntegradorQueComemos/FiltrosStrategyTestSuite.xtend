@@ -29,7 +29,7 @@ class FiltroStrategyTestSuite {
 		//FiltroCompleto.agregarFiltroCondicionesPreexistentes()
 		val listaFiltrada  = FiltroCompleto.aplicarFiltro( usuario1.recetasConocidas, usuario1 )
 		//println( "La cantidad de elementos en la lista filtrada = " + listaFiltrada.size )
-		Assert.assertTrue( listaFiltrada.size == 2 ) // CORREGIR!!
+		Assert.assertTrue( listaFiltrada.size == 1 ) // CORREGIR!!
 	}
 	
 	@Test
@@ -42,7 +42,7 @@ class FiltroStrategyTestSuite {
 		
 		val listaFiltrada  = FiltroCarosCaloriasYNoLeGusta.aplicarFiltro( usuario1.recetasConocidas, usuario1 )
 		//println( "La cantidad de elementos en la lista filtrada = " + listaFiltrada.size )
-		Assert.assertTrue( listaFiltrada.size == 2 )
+		Assert.assertTrue( listaFiltrada.size == 1 )
 	}
 	
 	@Test
@@ -108,6 +108,7 @@ class FiltroStrategyTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.calorias=100
 		recetaSimple
 	}
 	
@@ -130,6 +131,7 @@ class FiltroStrategyTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.calorias=150
 		recetaSimple
 	}
 	
@@ -152,6 +154,7 @@ class FiltroStrategyTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.calorias=600
 		recetaSimple
 	}
 	
@@ -174,6 +177,7 @@ class FiltroStrategyTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.calorias=300
 		recetaSimple
 	}
 }

@@ -3,7 +3,7 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 
-public class Grupo {
+public class Grupo implements Consumidor {
 	
 	@Accessors
 	private String nombre
@@ -24,16 +24,15 @@ public class Grupo {
 		integrantes.contains(usuario)
 	}
 	
-	def sePuedeSugerir(Receta receta){
-		
-		return(puedeComer(receta)&&esPreferida(receta))		
+	override sePuedeSugerir(Receta receta){		
+		puedeComer(receta)&&esPreferida(receta)		
 	}
+	
 	def esPreferida(Receta receta){
 		return(recetasPreferidas.contains(receta))		
 	}
 	
-	def puedeComer(Receta receta){
-		
-		return(integrantes.forall[integrante|integrante.puedeComer(receta)])
+	def puedeComer(Receta receta) {		
+		integrantes.forall[integrante|integrante.puedeComer(receta)]
 	}
 }

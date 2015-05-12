@@ -10,7 +10,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 
-public class UsuarioPosta implements Usuario {
+public class UsuarioPosta implements Usuario, Consumidor {
 
 	private double altura
 
@@ -172,7 +172,7 @@ public class UsuarioPosta implements Usuario {
 	
 	override getRecetasConocidas() {
 		// MODIFICAR!
-		return recetas 
+		recetas 
 	}
 	
 	override List<String> getPlatosQueNoLeGustan(){
@@ -184,16 +184,15 @@ public class UsuarioPosta implements Usuario {
 	}
 	
 	override puedeComer(Receta receta) {
-		return true
+		true
 	}
 	
 	public def boolean tieneIngredientesFeos(Map<Ingrediente, Integer> ingredientes){
-		return ( ingredientesFeos.keySet.forall[ingredienteFeo | ingredientes.keySet.contains(ingredienteFeo)] )
+		ingredientesFeos.keySet.forall[ingredienteFeo | ingredientes.keySet.contains(ingredienteFeo)]
 	}
 		
-	override sePuedeSugerir(Receta receta){
-		
-		return(!tieneIngredientesFeos(receta.getIngredientes()))
+	override sePuedeSugerir(Receta receta) {		
+		!tieneIngredientesFeos(receta.getIngredientes())
 	}
 	
 }

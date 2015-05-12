@@ -45,7 +45,5 @@ public interface Usuario {
 	
 	def boolean comparteGrupo(Usuario usuario)
 	
-	def boolean puedeComer(Receta receta) 
-	
-	def boolean sePuedeSugerir(Receta receta)
+	def boolean puedeComer(Receta receta)
 }

@@ -9,7 +9,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import java.util.Map
 
 @Accessors
-abstract class UsuarioDecorator implements Usuario {
+abstract class UsuarioDecorator implements Usuario, Consumidor {
 	
 	Usuario decorado
 	

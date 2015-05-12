@@ -38,6 +38,8 @@ public class UsuarioPosta implements Usuario, Consumidor {
 		
 	private RepositorioRecetas recetario		
 	
+	private PostCondiciones postcondicion
+	
 	new(double peso, double altura, Rutina rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
 	{
 		this.altura = altura
@@ -169,6 +171,7 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	
 	override getRecetasConocidas() {
 		// MODIFICAR!
+		if ( postcondicion != null ) return postcondicion.aplicarPostCondicion( recetas  )	
 		recetas 
 	}
 	

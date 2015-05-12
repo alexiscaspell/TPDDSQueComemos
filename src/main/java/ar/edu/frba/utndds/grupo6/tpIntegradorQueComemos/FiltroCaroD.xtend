@@ -1,7 +1,8 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.IngredienteCaro
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import java.util.Map
 
 class FiltroCarosD extends FiltroDecoratorD {
 	
@@ -11,11 +12,17 @@ class FiltroCarosD extends FiltroDecoratorD {
 	}
 	
 		
+	override aplicarFiltro(List<Receta> recetasConocidas, Usuario usuario) {
+		return recetasConocidas.filter[ getSoloIngrediente( it.getIngredientes() ) ].toList() 
+	}
+
 	
-	override aplicarFiltro(List <Receta> recetasConocidas, Usuario unUsuario)
+	def boolean getSoloIngrediente(Map<Ingrediente, Integer> ingrediente)
 	{
-		return recetasConocidas.filter[unaReceta |!(unaReceta.getIngredientes()).containsKey( IngredienteCaro )].toList()
-		//caros.add(Ingrediente.CARNE)
-		
+		for ( Ingrediente key : ingrediente.keySet()) {
+			if ( key.esCaro() ) return false
+			
+		}
+		return true
 	}
 }

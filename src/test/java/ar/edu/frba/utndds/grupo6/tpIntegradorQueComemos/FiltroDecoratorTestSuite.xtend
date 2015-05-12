@@ -37,6 +37,16 @@ class FiltroDecoratorTestSuite {
 		usuario1.agregarReceta(getRecetaPure)
 		Assert.assertTrue(filtroCalorias.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
 	}
+	
+	@Test
+	def void FiltroDecoretorCaro()
+	{
+		val FiltroCaro = new FiltroPostaD();
+		val filtroCaro = new FiltroCarosD(FiltroCaro);
+		usuario1.agregarReceta(getRecetaLechon)
+		Assert.assertTrue(filtroCaro.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
+	}
+	
 
 	def Receta getRecetaPure()
 	{		
@@ -61,6 +71,28 @@ class FiltroDecoratorTestSuite {
 		recetaSimple
 	}
 
+	def Receta getRecetaLechon()
+	{		
+		val nombre = "Lechon"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.LECHON, 1000)
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.SAL, 10)
+		condimentos.put(Condimento.ACEITE, 10)
+		condimentos.put(Condimento.AZUCAR, 100)
+		val explicacion = "1 - Pelar las papas\n" + 
+						  "2 - Hervir las papas 20 minutos" +
+						  "3 - Pisar las papas con un pisapapas" +
+						  "4 - Condimentar"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)
+		temporadas.add(Temporada.OTONIO)
+		temporadas.add(Temporada.PRIMAVERA)
+		temporadas.add(Temporada.VERANO)						  
+		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.calorias=1000
+		recetaSimple
+	}
 
 	def getUsuario() {
 		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)

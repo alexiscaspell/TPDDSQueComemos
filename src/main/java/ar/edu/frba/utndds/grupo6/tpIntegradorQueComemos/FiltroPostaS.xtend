@@ -7,6 +7,7 @@ class FiltroPostaS extends Filtro {
 	
 	List<TipoDeFiltroS> Filtros
 	
+	
 	new (){
 		Filtros = new ArrayList<TipoDeFiltroS>
 	}

@@ -7,6 +7,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import java.util.Map
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
 public interface Usuario {	
 

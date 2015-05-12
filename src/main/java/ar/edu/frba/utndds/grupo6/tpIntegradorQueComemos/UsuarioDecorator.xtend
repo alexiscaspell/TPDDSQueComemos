@@ -7,6 +7,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import java.util.Map
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
 @Accessors
 public abstract class UsuarioDecorator implements Usuario, Consumidor {

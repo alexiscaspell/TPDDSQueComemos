@@ -9,6 +9,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
 public class Receta implements IReceta {
 	

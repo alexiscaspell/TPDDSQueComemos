@@ -129,7 +129,6 @@ public enum Ingrediente {
 			return false;
 		}
 	},
-	
 	LECHON {
 		@Override
 		public boolean contieneCarne() {
@@ -146,7 +145,6 @@ public enum Ingrediente {
 			return true;
 		}
 	},
-	
 	ALCAPARRAS {
 		@Override
 		public boolean contieneCarne() {
@@ -163,7 +161,6 @@ public enum Ingrediente {
 			return true;
 		}
 	},
-	
 	SALMON {
 		@Override
 		public boolean contieneCarne() {
@@ -180,7 +177,6 @@ public enum Ingrediente {
 			return true;
 		}
 	},
-		
 	LOMO {
 		@Override
 		public boolean contieneCarne() {

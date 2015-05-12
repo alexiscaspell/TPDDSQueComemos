@@ -12,6 +12,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
 class PrivacidadRecetasTestSuite {
 	

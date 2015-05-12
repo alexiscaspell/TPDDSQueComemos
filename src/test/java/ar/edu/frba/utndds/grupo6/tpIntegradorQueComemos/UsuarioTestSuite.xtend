@@ -179,6 +179,7 @@ class UsuarioTestSuite {
 		hipertenso = new UsuarioHipertenso(usuarioHipertensoNoValido)
 		Assert.assertFalse( hipertenso.usuarioValido() )
 	} 
+	
 	@Test
 	def void noPuedeComerUnVeganoDiabeticoPureConAzucar()
 	{
@@ -186,32 +187,63 @@ class UsuarioTestSuite {
 		vegano = new UsuarioVegano(diabetico)
 		Assert.assertFalse(vegano.puedeComer(recetaPureConAzucar))		
 	}
-		@Test
+		
+	@Test
 	def void noPuedeComerUnVeganoMilanesas()
 	{
 		vegano = new UsuarioVegano( getUsuarioPepe())
 		Assert.assertFalse(vegano.puedeComer(recetaMilanesas))		
 	}
-		@Test
+		
+	@Test
 	def void noPuedeComerUnHipertensoPureConSal()
 	{
 		hipertenso = new UsuarioHipertenso( getUsuarioPepe())
 		Assert.assertFalse(hipertenso.puedeComer(recetaPureConSal))		
 	}
-		@Test
+		
+	@Test
 	def void puedeComerUnVeganoPureConSal()
 	{
 		vegano = new UsuarioVegano(usuarioPepe)
 		Assert.assertTrue(vegano.puedeComer(recetaPureConSal))		
 	}	
-		@Test
+		
+	@Test
 	def void puedeComerUnDiabeticoPureConSal()
 	{
 		diabetico = new UsuarioDiabetico(usuarioPepe)
 		Assert.assertTrue(diabetico.puedeComer(recetaPureConSal))		
 	}
 	
-			private def Receta getRecetaPureConSal()
+	@Test
+	def void recetasQuePuedeVerUnUsuario()
+	{
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+				
+		val recetario = RepositorioRecetas.getInstance()
+		
+		recetario.agregar(getReceta(usuario, "Pure"))
+		
+		Assert.assertEquals(usuario.getRecetasConAcceso(recetario.listarTodas()).size, 1)
+	}
+	
+	@Test
+	def void recetasQuePuedeVerUnUsuarioConGrupo()
+	{
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val pepe = getUsuarioPepe()
+		val grupo = new Grupo()
+		grupo.agregar(usuario)
+		grupo.agregar(pepe)		
+		
+		val recetario = RepositorioRecetas.getInstance()
+		recetario.agregar(getReceta(pepe, "Receta1"))
+		
+		Assert.assertEquals(usuario.getRecetasConAcceso(recetario.listarTodas()).size, 1)
+	}
+	
+	private def Receta getRecetaPureConSal()
 	{	
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
@@ -234,7 +266,7 @@ class UsuarioTestSuite {
 		recetaSimple
 	}
 	
-			private def Receta getRecetaPureConAzucar()
+	private def Receta getRecetaPureConAzucar()
 	{	
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 		val nombre = "Pure"
@@ -281,8 +313,27 @@ class UsuarioTestSuite {
 		recetaSimple
 	}
 	
+	private def Receta getReceta(Usuario usuario, String nombre)
+	{
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.PAPA, 1000)
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.SAL, 10)
+		condimentos.put(Condimento.ACEITE, 10)
+		val explicacion = "1 - Pelar las papas\n" + 
+						  "2 - Hervir las papas 20 minutos" +
+						  "3 - Pisar las papas con un pisapapas" +
+						  "4 - Condimentar"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)
+		temporadas.add(Temporada.OTONIO)
+		temporadas.add(Temporada.PRIMAVERA)
+		temporadas.add(Temporada.VERANO)						  
+		val receta = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		receta
+	}
 	
-	private def  getUsuarioPepe(){
+	private def getUsuarioPepe(){
 		val Usuario pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
 		pepe
 	}

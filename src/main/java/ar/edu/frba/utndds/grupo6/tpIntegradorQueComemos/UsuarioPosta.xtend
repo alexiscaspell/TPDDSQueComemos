@@ -174,7 +174,10 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	
 	override getRecetasConocidas() {
 		// MODIFICAR!
-		if ( postcondicion != null ) return postcondicion.aplicarPostCondicion( recetas  )	
+		if ( postcondicion != null ) 
+		{
+			return postcondicion.aplicarPostCondicion(recetas)
+		}	
 		recetas 
 	}
 	
@@ -200,6 +203,24 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	
 	override marcarComoFavorita(Receta receta) {
 		favoritas.add(receta)
+	}
+	
+	override getRecetasConAcceso(List<Receta> recetas) 
+	{
+		val recetasConAcceso = new ArrayList<Receta>()
+		
+		recetas.forEach[receta |
+			if (receta.puedeVer(this))
+			{
+				recetasConAcceso.add(receta)
+			}
+		]
+		
+		return recetasConAcceso
+	}
+	
+	override agregarGrupo(Grupo grupo){
+		grupos.add(grupo)
 	}
 	
 }

@@ -8,6 +8,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import java.util.Map
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import java.util.List
 
 @Accessors
 public abstract class UsuarioDecorator implements Usuario, Consumidor {
@@ -94,4 +95,14 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
     {  	
     	return(puedeComer(receta)&&decorado.sePuedeSugerir(receta))
     }
+    
+    override getRecetasConAcceso(List<Receta> recetas) 
+	{
+		decorado.getRecetasConAcceso(recetas)
+	}
+	
+	override agregarGrupo(Grupo grupo)
+	{
+		decorado.agregarGrupo(grupo)
+	}
 }

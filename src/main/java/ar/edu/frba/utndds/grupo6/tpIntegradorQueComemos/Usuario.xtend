@@ -48,4 +48,8 @@ public interface Usuario {
 	def boolean sePuedeSugerir(Receta receta)
 	
 	def void marcarComoFavorita(Receta receta)
+	
+	def List<Receta>getRecetasConAcceso(List<Receta> recetas)
+	
+	def void agregarGrupo(Grupo grupo)
 }

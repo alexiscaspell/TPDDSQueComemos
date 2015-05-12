@@ -145,4 +145,10 @@ public class Receta implements IReceta {
 		this.subRecetas.add(receta)
 	}
 	
+	def boolean puedeVer(Usuario usuario) {
+		usuarioCreador.equals(usuario) || 
+		tipo == TipoReceta.PUBLICA ||
+		usuarioCreador.comparteGrupo(usuario)
+	}
+	
 }

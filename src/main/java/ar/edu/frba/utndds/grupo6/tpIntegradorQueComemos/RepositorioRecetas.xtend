@@ -42,7 +42,7 @@ class RepositorioRecetas {
 	}
 
 	def getReceta(String nombre) 
-	{
+{
 		recetas.findFirst[x | x.nombre == nombre]
 	}
 }

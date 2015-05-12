@@ -2,6 +2,7 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import java.util.ArrayList
 
 public class Grupo implements Consumidor {
 	
@@ -9,16 +10,10 @@ public class Grupo implements Consumidor {
 	private String nombre
 	
 	@Accessors
-	private List<Usuario> integrantes
+	private List<Usuario> integrantes = new ArrayList<Usuario>()
 	
 	@Accessors
-	private List<Receta> recetasPreferidas 
-	
-	new(List<Usuario> usuarios, List<Receta> recetasPreferidas)
-	{
-		integrantes = usuarios		
-		this.recetasPreferidas= recetasPreferidas
-	}
+	private List<Receta> recetasPreferidas
 	
 	def contieneAlUsuario(Usuario usuario) {
 		integrantes.contains(usuario)
@@ -34,5 +29,11 @@ public class Grupo implements Consumidor {
 	
 	def puedeComer(Receta receta) {		
 		integrantes.forall[integrante|integrante.puedeComer(receta)]
+	}
+	
+	def agregar(Usuario usuario)
+	{
+		integrantes.add(usuario)
+		usuario.agregarGrupo(this)
 	}
 }

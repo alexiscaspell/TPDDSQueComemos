@@ -8,6 +8,10 @@ import java.text.SimpleDateFormat
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import java.util.HashMap
+import java.util.ArrayList
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 
 class UsuarioTestSuite {
 
@@ -174,5 +178,111 @@ class UsuarioTestSuite {
 		hipertenso = new UsuarioHipertenso(usuarioHipertensoNoValido)
 		Assert.assertFalse( hipertenso.usuarioValido() )
 	} 
+	@Test
+	def void noPuedeComerUnVeganoDiabeticoPureConAzucar()
+	{
+		diabetico = new UsuarioDiabetico( getUsuarioPepe())
+		vegano = new UsuarioVegano(diabetico)
+		Assert.assertFalse(vegano.puedeComer(recetaPureConAzucar))		
+	}
+		@Test
+	def void noPuedeComerUnVeganoMilanesas()
+	{
+		vegano = new UsuarioVegano( getUsuarioPepe())
+		Assert.assertFalse(vegano.puedeComer(recetaMilanesas))		
+	}
+		@Test
+	def void noPuedeComerUnHipertensoPureConSal()
+	{
+		hipertenso = new UsuarioHipertenso( getUsuarioPepe())
+		Assert.assertFalse(hipertenso.puedeComer(recetaPureConSal))		
+	}
+		@Test
+	def void puedeComerUnVeganoPureConSal()
+	{
+		vegano = new UsuarioVegano(usuarioPepe)
+		Assert.assertTrue(vegano.puedeComer(recetaPureConSal))		
+	}	
+		@Test
+	def void puedeComerUnDiabeticoPureConSal()
+	{
+		diabetico = new UsuarioDiabetico(usuarioPepe)
+		Assert.assertTrue(diabetico.puedeComer(recetaPureConSal))		
+	}
 	
+			private def Receta getRecetaPureConSal()
+	{	
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val nombre = "Pure"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.PAPA, 1000)
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.SAL, 10)
+		condimentos.put(Condimento.ACEITE, 10)
+		//condimentos.put(Condimento.AZUCAR, 100)
+		val explicacion = "1 - Pelar las papas\n" + 
+						  "2 - Hervir las papas 20 minutos" +
+						  "3 - Pisar las papas con un pisapapas" +
+						  "4 - Condimentar"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)
+		temporadas.add(Temporada.OTONIO)
+		temporadas.add(Temporada.PRIMAVERA)
+		temporadas.add(Temporada.VERANO)						  
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple
+	}
+	
+			private def Receta getRecetaPureConAzucar()
+	{	
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val nombre = "Pure"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.PAPA, 1000)
+		val condimentos = new HashMap<Condimento, Integer>()
+		//condimentos.put(Condimento.SAL, 10)
+		condimentos.put(Condimento.ACEITE, 10)
+		condimentos.put(Condimento.AZUCAR, 100)
+		val explicacion = "1 - Pelar las papas\n" + 
+						  "2 - Hervir las papas 20 minutos" +
+						  "3 - Pisar las papas con un pisapapas" +
+						  "4 - Condimentar"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)
+		temporadas.add(Temporada.OTONIO)
+		temporadas.add(Temporada.PRIMAVERA)
+		temporadas.add(Temporada.VERANO)						  
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple
+	}
+
+	private def Receta getRecetaMilanesas()
+	{
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val nombre = "Milanesas"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.CARNE, 1000)
+		ingredientes.put(Ingrediente.HUEVO, 6)
+		ingredientes.put(Ingrediente.PAN_RAYADO, 6)
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.SAL, 10)
+		condimentos.put(Condimento.ACEITE, 10)		
+		val explicacion = "1 - Cortar la carne\n" + 
+						  "2 - Pasar la carne por el huevo" +
+						  "3 - Pasar la carne por pan rayado" +
+						  "4 - Hornear 25 minutos"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)
+		temporadas.add(Temporada.OTONIO)
+		temporadas.add(Temporada.PRIMAVERA)
+		temporadas.add(Temporada.VERANO)						  
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple
+	}
+	
+	
+	private def  getUsuarioPepe(){
+		val Usuario pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
+		pepe
+	}
 }

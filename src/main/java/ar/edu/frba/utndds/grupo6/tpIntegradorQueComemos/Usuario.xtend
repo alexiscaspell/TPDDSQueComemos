@@ -44,5 +44,7 @@ public interface Usuario {
 	
 	def boolean puedeComer(Receta receta)
 	
+	def boolean sePuedeSugerir(Receta receta)
+	
 	def void marcarComoFavorita(Receta receta)
 }

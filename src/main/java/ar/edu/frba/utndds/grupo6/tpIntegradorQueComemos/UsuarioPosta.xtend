@@ -202,7 +202,10 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	}
 	
 	override marcarComoFavorita(Receta receta) {
-		favoritas.add(receta)
+		if (receta.puedeVer(this))
+		{
+			favoritas.add(receta)			
+		}
 	}
 	
 	override getRecetasConAcceso(List<Receta> recetas) 

@@ -18,15 +18,11 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 	override usuarioValido()
 	{
   		return ((decorado.preferenciasAlimenticias.size > 0) && (decorado.sexo != null) && decorado.usuarioValido())  		
-	}
-	
-	override sePuedeSugerir(Receta receta)
-	{    	
-    	return(puedeComer(receta)&&decorado.puedeComer(receta))
     }
     
-    override puedeComer(Receta receta) 
+    
+    override cumpleCondicion(Receta receta) 
     {
-        return ((receta.cantidadDeAzucar() == 0 ) &&decorado.puedeComer(receta))
+        return ((receta.cantidadDeAzucar() == 0 ))
     }
 }

@@ -81,4 +81,16 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 	{
 		decorado.marcarComoFavorita(receta)
 	}
+	
+	override puedeComer(Receta receta) 
+	{
+      return (cumpleCondicion(receta) &&decorado.puedeComer(receta))
+    }
+    
+    def boolean cumpleCondicion(Receta receta)
+    
+    override sePuedeSugerir(Receta receta)
+    {  	
+    	return(puedeComer(receta)&&decorado.sePuedeSugerir(receta))
+    }
 }

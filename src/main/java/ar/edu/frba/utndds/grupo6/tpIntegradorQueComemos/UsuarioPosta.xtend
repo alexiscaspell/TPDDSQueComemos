@@ -9,6 +9,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
+import org.eclipse.xtend.lib.annotations.Accessors
 
 public class UsuarioPosta implements Usuario, Consumidor {
 
@@ -28,7 +29,8 @@ public class UsuarioPosta implements Usuario, Consumidor {
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 	
-	private Map<Ingrediente, Integer> ingredientesFeos
+	@Accessors
+	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	private List<Receta> recetas = new ArrayList<Receta>()
 	
@@ -188,7 +190,7 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	}
 	
 	public def boolean tieneIngredientesFeos(Map<Ingrediente, Integer> ingredientes){
-		ingredientesFeos.keySet.forall[ingredienteFeo | ingredientes.keySet.contains(ingredienteFeo)]
+		ingredientesFeos.forall[ingredienteFeo | ingredientes.keySet.contains(ingredienteFeo)]
 	}
 		
 	override sePuedeSugerir(Receta receta) {		

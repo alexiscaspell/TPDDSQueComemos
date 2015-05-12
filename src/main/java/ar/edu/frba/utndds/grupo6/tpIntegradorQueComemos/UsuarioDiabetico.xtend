@@ -21,8 +21,7 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 	}
 	
 	override sePuedeSugerir(Receta receta)
-	{
-    	
+	{    	
     	return(puedeComer(receta)&&decorado.puedeComer(receta))
     }
     

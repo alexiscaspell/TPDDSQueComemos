@@ -19,6 +19,39 @@ class RecetasTestSuite {
 	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
 	Date fecha = format.parse("01-04-1970")
 	
+	@Test
+	def void sugerenciaAUnUsuarioDeUnaReceta()
+	{
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		usuario.ingredientesFeos.add(Ingrediente.CARNE)
+		
+		val receta = getRecetaPure()
+		
+		Assert.assertTrue(usuario.sePuedeSugerir(receta))
+	}
+	
+	@Test
+	def void noSePuedeSugerirUnaRecetaAUnUsuario()
+	{
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		usuario.ingredientesFeos.add(Ingrediente.PAPA)
+		
+		val receta = getRecetaPure()
+		
+		Assert.assertFalse(usuario.sePuedeSugerir(receta))
+	}
+	
+	@Test
+	def void noSePuedeSugerirUnaTortaAUnDiabetico()
+	{
+		val usuario = new UsuarioPosta(100,1.78,Rutina.INTENSIVO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		val usuarioDiabetico = new UsuarioDiabetico(usuario)
+		
+		val receta = getRecetaTorta()
+		
+		Assert.assertFalse(usuarioDiabetico.sePuedeSugerir(receta))
+	}	
+	
 	@Test(expected=RecetaInvalidaExc)
 	def void recetaInvalidaPorCaloriasInsuficientes()
 	{
@@ -147,6 +180,25 @@ class RecetasTestSuite {
 						  "2 - Pasar la carne por el huevo" +
 						  "3 - Pasar la carne por pan rayado" +
 						  "4 - Hornear 25 minutos"
+		val temporadas = new ArrayList<Temporada>()		
+		temporadas.add(Temporada.INVIERNO)
+		temporadas.add(Temporada.OTONIO)
+		temporadas.add(Temporada.PRIMAVERA)
+		temporadas.add(Temporada.VERANO)						  
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple
+	}
+	
+	def Receta getRecetaTorta() {
+		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
+		val nombre = "Torta"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.HARINA, 1000)
+		ingredientes.put(Ingrediente.HUEVO, 3)
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.AZUCAR, 100)
+		condimentos.put(Condimento.ACEITE, 10)		
+		val explicacion = "No se hacer una torta"
 		val temporadas = new ArrayList<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)

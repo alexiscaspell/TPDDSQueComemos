@@ -334,7 +334,7 @@ class UsuarioTestSuite {
 	}
 	
 	private def getUsuarioPepe(){
-		val Usuario pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
+		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
 		pepe
 	}
 }

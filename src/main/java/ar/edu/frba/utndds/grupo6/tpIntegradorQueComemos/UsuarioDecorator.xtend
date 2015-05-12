@@ -9,15 +9,15 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import java.util.Map
 
 @Accessors
-abstract class UsuarioDecorator implements Usuario, Consumidor {
+public abstract class UsuarioDecorator implements Usuario, Consumidor {
 	
 	Usuario decorado
 	
-	private Recetario recetario
+	private RepositorioRecetas recetario
 	
 	new(Usuario usuario) 
 	{
-		recetario = Recetario.getInstance()
+		recetario = RepositorioRecetas.getInstance()
 		decorado = usuario
 	}
 	
@@ -39,12 +39,7 @@ abstract class UsuarioDecorator implements Usuario, Consumidor {
 	
 	override getReceta(String nombre){
 		decorado.getReceta(nombre)
-	}	
-	
-	override getRecetario()
-	{
-		recetario
-	}	
+	}
 	
 	override getPeso(){
 		decorado.getPeso()
@@ -80,5 +75,10 @@ abstract class UsuarioDecorator implements Usuario, Consumidor {
 	
 	override comparteGrupo(Usuario usuario) {
 		decorado.comparteGrupo(usuario)
+	}
+	
+	override marcarComoFavorita(Receta receta)
+	{
+		decorado.marcarComoFavorita(receta)
 	}
 }

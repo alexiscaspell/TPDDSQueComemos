@@ -13,7 +13,7 @@ import java.util.HashMap
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 
-class FiltroDecoretorTestSuite {
+class FiltroDecoratorTestSuite {
 	
 	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
 	Date fecha = format.parse("01-04-1970")
@@ -26,9 +26,7 @@ class FiltroDecoretorTestSuite {
 		val FiltroDisgusta = new FiltroPostaD();
 		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
 		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroDisgusta.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)
-		
-			
+		Assert.assertTrue(filtroDisgusta.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
 	}
 	
 	@Test
@@ -37,9 +35,7 @@ class FiltroDecoretorTestSuite {
 		val FiltroCalorias = new FiltroPostaD();
 		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
 		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroCalorias.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)
-		
-			
+		Assert.assertTrue(filtroCalorias.aplicarFiltro(usuario1.recetasConocidas,usuario1).size==0)			
 	}
 
 	def Receta getRecetaPure()
@@ -66,7 +62,7 @@ class FiltroDecoretorTestSuite {
 	}
 
 
-def getUsuario(){
+	def getUsuario() {
 		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		val platosQueNoLeGustan = new ArrayList<String>()
 		platosQueNoLeGustan.add("CHORI")

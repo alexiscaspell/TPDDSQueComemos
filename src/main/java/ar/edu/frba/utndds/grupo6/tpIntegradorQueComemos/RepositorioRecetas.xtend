@@ -3,17 +3,17 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.ArrayList
 import java.util.List
 
-class Recetario {
+class RepositorioRecetas {
 	
 	private ArrayList<Receta> recetas;
 	
-	private static Recetario instance;
+	private static RepositorioRecetas instance;
 	
-	static def Recetario getInstance()
+	static def RepositorioRecetas getInstance()
 	{
 		if (instance == null)
 		{
-			new Recetario()
+			new RepositorioRecetas()
 		}
 		else
 		{

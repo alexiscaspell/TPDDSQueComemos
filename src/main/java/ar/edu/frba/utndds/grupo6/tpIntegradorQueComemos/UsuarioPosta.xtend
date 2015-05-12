@@ -33,8 +33,10 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	private List<Receta> recetas = new ArrayList<Receta>()
 	
 	private List<Grupo> grupos = new ArrayList<Grupo>()
+	
+	private List<Receta> favoritas = new ArrayList<Receta>()
 		
-	private Recetario recetario	
+	private RepositorioRecetas recetario		
 	
 	new(double peso, double altura, Rutina rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
 	{
@@ -44,7 +46,7 @@ public class UsuarioPosta implements Usuario, Consumidor {
 		this.fechaNacimiento=fechaNacimiento
 		this.nombre=nombre
 		this.sexo=sexo
-		recetario = Recetario.getInstance()
+		recetario = RepositorioRecetas.getInstance()
 	}
 
 	def boolean cumpleCamposObligatorios() 
@@ -73,11 +75,6 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	}
 
 	//Getters
-	
-	override getRecetario()
-	{
-		recetario
-	}
 	
 	override getPeso() {
 		peso
@@ -193,6 +190,10 @@ public class UsuarioPosta implements Usuario, Consumidor {
 		
 	override sePuedeSugerir(Receta receta) {		
 		!tieneIngredientesFeos(receta.getIngredientes())
+	}
+	
+	override marcarComoFavorita(Receta receta) {
+		favoritas.add(receta)
 	}
 	
 }

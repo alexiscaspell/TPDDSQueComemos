@@ -22,8 +22,7 @@ public interface Usuario {
 	
 	def boolean usuarioValido()		
 	
-	def void agregarReceta(Receta receta) 
-	
+	def void agregarReceta(Receta receta)	
 			
 	//Getters	
 	
@@ -37,8 +36,6 @@ public interface Usuario {
 
 	def List<Ingrediente> getPreferenciasAlimenticias()
 	
-	def Recetario getRecetario()
-	
 	def List<String> getPlatosQueNoLeGustan()
 	
 	def List<Receta> getRecetasConocidas()
@@ -46,4 +43,6 @@ public interface Usuario {
 	def boolean comparteGrupo(Usuario usuario)
 	
 	def boolean puedeComer(Receta receta)
+	
+	def void marcarComoFavorita(Receta receta)
 }

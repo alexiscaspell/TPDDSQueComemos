@@ -196,10 +196,23 @@ public enum Ingrediente {
 		public boolean esCaro() {
 			return true;
 		}
+	},	
+	HARINA {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
 	};
-		
-		
-	
 	
 	public abstract boolean contieneCarne();
 	public abstract boolean esCaro();

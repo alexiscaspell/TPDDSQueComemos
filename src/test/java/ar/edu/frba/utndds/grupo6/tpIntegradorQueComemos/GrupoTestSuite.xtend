@@ -24,7 +24,6 @@ class GrupoTestSuite {
 	
 	
 	/*-----------------USUARIOS-----------------*/
-	Usuario diabetico
 	Usuario hipertenso
 	Usuario vegano
 	
@@ -95,16 +94,11 @@ class GrupoTestSuite {
 			listaRecetasPreferidas.add( pureConAzucarYSinSal() )
 		
 		val Grupo grupoDePruebas = new Grupo()
-			grupoDePruebas.integrantes = listaUsuariosDelGrupo
-			grupoDePruebas.recetasPreferidas = listaRecetasPreferidas
-		
+		grupoDePruebas.integrantes = listaUsuariosDelGrupo
+		grupoDePruebas.recetasPreferidas = listaRecetasPreferidas		
 		
 		grupoDePruebas
 	}
-	/*---------------FIN GRUPOS---------------*/
-	
-	
-	/*------------------TEST--------------------- */
 	
 	@Test
 	def void grupoDePruebaPuedeComerPureConAzucarYSinSal()
@@ -112,11 +106,10 @@ class GrupoTestSuite {
 		val grupoDePruebas = getGrupoDePrueba()			
 		val pure = pureConAzucarYSinSal()
 		
-		Assert.assertTrue( grupoDePruebas.puedeComer(pure) )
-				
+		Assert.assertTrue(grupoDePruebas.puedeComer(pure))				
 	}
 		
-		@Test
+	@Test
 	def void usuariosCompartenGrupo()
 	{
 		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Pepe",Sexo.MASCULINO, fecha)

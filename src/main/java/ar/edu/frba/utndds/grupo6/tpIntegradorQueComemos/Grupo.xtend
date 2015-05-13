@@ -13,7 +13,7 @@ public class Grupo implements Consumidor {
 	private List<Usuario> integrantes = new ArrayList<Usuario>()
 	
 	@Accessors
-	private List<Receta> recetasPreferidas
+	private List<Receta> recetasPreferidas = new ArrayList<Receta>()
 	
 	def contieneAlUsuario(Usuario usuario) {
 		integrantes.contains(usuario)

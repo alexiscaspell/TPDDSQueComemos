@@ -12,6 +12,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvali
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
 public class Receta implements IReceta {
+
 	
 	@Accessors
 	private Usuario usuarioCreador
@@ -39,6 +40,12 @@ public class Receta implements IReceta {
 	
 	@Accessors
 	private String explicacion
+	
+		//@Override
+	//override hashCode(){
+		
+		//return nombre.length();
+	//}
 	
 	private ArrayList<IReceta> subRecetas;
 	
@@ -150,5 +157,17 @@ public class Receta implements IReceta {
 		tipo == TipoReceta.PUBLICA ||
 		usuarioCreador.comparteGrupo(usuario)
 	}
+	
+	def boolean esIgual(Receta receta){
+		
+		return(nombre==receta.nombre)
+	}
+	
+	def boolean estaContenido(List<Receta> recetas){
+		
+		return(recetas.exists[receta|esIgual(receta)])
+	}
+	
+
 	
 }

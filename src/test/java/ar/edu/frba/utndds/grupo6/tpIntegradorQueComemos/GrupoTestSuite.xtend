@@ -65,7 +65,7 @@ class GrupoTestSuite {
 		ingredientes.put(Ingrediente.HUEVO, 6)
 		ingredientes.put(Ingrediente.PAN_RAYADO, 6)
 		val condimentos = new HashMap<Condimento, Integer>()
-		condimentos.put(Condimento.SAL, 10)
+		//condimentos.put(Condimento.SAL, 10)
 		condimentos.put(Condimento.ACEITE, 10)		
 		val explicacion = "1 - Cortar la carne\n" + 
 						  "2 - Pasar la carne por el huevo" +
@@ -99,6 +99,22 @@ class GrupoTestSuite {
 		
 		grupoDePruebas
 	}
+		public def getGrupoDePrueba2(){
+		
+		val List<Usuario> listaUsuariosDelGrupo = new ArrayList()
+			//listaUsuariosDelGrupo.add( vegano = new UsuarioVegano(pepe) )
+			listaUsuariosDelGrupo.add( hipertenso = new UsuarioHipertenso(raul) )
+			listaUsuariosDelGrupo.add( carlos )	
+		
+		val List<Receta> listaRecetasPreferidas = new ArrayList()
+			listaRecetasPreferidas.add( pureConAzucarYSinSal() )
+		
+		val Grupo grupoDePruebas = new Grupo()
+		grupoDePruebas.integrantes = listaUsuariosDelGrupo
+		grupoDePruebas.recetasPreferidas = listaRecetasPreferidas		
+		
+		grupoDePruebas
+	}
 	
 	@Test
 	def void grupoDePruebaPuedeComerPureConAzucarYSinSal()
@@ -108,7 +124,39 @@ class GrupoTestSuite {
 		
 		Assert.assertTrue(grupoDePruebas.puedeComer(pure))				
 	}
+	 @Test
+	def void sePuedeSugerirAGrupoDePruebaPureConAzucarYSinSal()
+	{
+		val grupoDePruebas = getGrupoDePrueba()			
+		val pure = pureConAzucarYSinSal()
 		
+		Assert.assertTrue(grupoDePruebas.puedeComer(pure))				
+	}
+		 @Test
+	def void noSePuedeSugerirAGrupoDePruebaMilangaXNoSerFavorita()
+	{
+		val grupoDePruebas = getGrupoDePrueba2()			
+		val milanga = recetaMilanesas
+		
+		Assert.assertFalse(grupoDePruebas.sePuedeSugerir(milanga))				
+	}
+	 @Test
+		def void noSePuedeSugerirAGrupoDePruebaMilangaXNoPoderSerComida()
+	{
+		val grupoDePruebas = getGrupoDePrueba()			
+		val milanga =recetaMilanesas
+		
+		Assert.assertFalse(grupoDePruebas.sePuedeSugerir(milanga))				
+	}
+		@Test
+	def void esPreferidaEnGrupoDePruebaPureConAzucarYSinSal()
+	{
+		val grupoDePruebas = getGrupoDePrueba()			
+		val pure = pureConAzucarYSinSal()
+		
+		Assert.assertTrue(grupoDePruebas.esPreferida(pure))				
+	}
+
 	@Test
 	def void usuariosCompartenGrupo()
 	{

@@ -24,7 +24,7 @@ public class Grupo implements Consumidor {
 	}
 	
 	def esPreferida(Receta receta){
-		return(recetasPreferidas.contains(receta))		
+		return(receta.estaContenido(recetasPreferidas))		
 	}
 	
 	def puedeComer(Receta receta) {		

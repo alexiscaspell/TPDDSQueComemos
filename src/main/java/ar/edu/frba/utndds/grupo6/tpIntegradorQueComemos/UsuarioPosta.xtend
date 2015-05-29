@@ -12,7 +12,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
-public class UsuarioPosta implements Usuario, Consumidor {
+public class UsuarioPosta implements Usuario, Consumidor  {
 
 	private double altura
 
@@ -29,6 +29,8 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
+	
+	private ArrayList<Observador> Observadores = new ArrayList<Observador>()
 	
 	@Accessors
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
@@ -52,57 +54,9 @@ public class UsuarioPosta implements Usuario, Consumidor {
 		this.nombre=nombre
 		this.sexo=sexo
 		recetario = RepositorioRecetas.getInstance()
-	}
+	}	
 
-	def boolean cumpleCamposObligatorios() 
-	{
-		return (nombre != null && peso > 0 && altura > 0 && fechaNacimiento != null && rutina != null);
-	}
-
-	def boolean fechaNacimientoValida() 
-	{
-		return (fechaNacimiento.before(new Date()))
-	}
-
-	def boolean nombreCorrecto()
-	{
-		return (nombre.length > 4);
-	}
-
-	def double getIMC()
-	{
-		peso / (altura * altura)
-	}
-
-	override estadoRutina() 
-	{
-		return ( this.getIMC > 18 && this.getIMC < 30 ) 
-	}
-
-	//Getters
-	
-	override getPeso() {
-		peso
-	}
-
-	override getAltura() {
-		altura
-	}
-
-	override getRutina() {
-		rutina
-	}
-
-	override List<Ingrediente> getPreferenciasAlimenticias() {
-		preferenciasAlimenticias
-	}
-
-	override usuarioValido() 
-	{
-		return (cumpleCamposObligatorios() && nombreCorrecto())
-	}
-
-	//Setters
+// ------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String unNombre) 
 	{
 		this.nombre = unNombre
@@ -143,6 +97,64 @@ public class UsuarioPosta implements Usuario, Consumidor {
 		this.rutina = rutina
 	}
 	
+//	------------------------------------------- Getters -------------------------------------------
+	override getReceta(String nombre){
+		recetario.getReceta(nombre)
+	}
+	
+	override getSexo() {
+		sexo
+	}
+	
+	override getRecetasConocidas() {
+		// MODIFICAR!
+		if ( postcondicion != null ) 
+		{
+			return postcondicion.aplicarPostCondicion(recetas)
+		}	
+		recetas 
+	}
+	
+	override List<String> getPlatosQueNoLeGustan(){
+		platosQueNoLeGustan
+	}
+	
+	override getRecetasConAcceso(List<Receta> recetas) 
+	{
+		val recetasConAcceso = new ArrayList<Receta>()
+		
+		recetas.forEach[receta |
+			if (receta.puedeVer(this))
+			{
+				recetasConAcceso.add(receta)
+			}
+		]
+		
+		return recetasConAcceso
+	}
+
+	override getPeso() {
+		peso
+	}
+
+	override getAltura() {
+		altura
+	}
+
+	override getRutina() {
+		rutina
+	}
+
+	override List<Ingrediente> getPreferenciasAlimenticias() {
+		preferenciasAlimenticias
+	}
+	
+	def double getIMC()
+	{
+		peso / (altura * altura)
+	}
+	
+//	------------------------------------------- Metodos -------------------------------------------
 	override modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
 		ArrayList<Temporada> temporada) 
@@ -157,32 +169,9 @@ public class UsuarioPosta implements Usuario, Consumidor {
 		receta.setTemporadas(temporada) 
 	}
 	
-	override getReceta(String nombre){
-		recetario.getReceta(nombre)
-	}
-	
-	//Métodos
 	override agregarReceta(Receta receta) 
 	{
 		recetas.add(receta)
-	}
-	
-	override getSexo() {
-		sexo
-	}
-	
-	
-	override getRecetasConocidas() {
-		// MODIFICAR!
-		if ( postcondicion != null ) 
-		{
-			return postcondicion.aplicarPostCondicion(recetas)
-		}	
-		recetas 
-	}
-	
-	override List<String> getPlatosQueNoLeGustan(){
-		platosQueNoLeGustan
 	}
 	
 	override comparteGrupo(Usuario usuario) {
@@ -207,23 +196,52 @@ public class UsuarioPosta implements Usuario, Consumidor {
 			favoritas.add(receta)			
 		}
 	}
-	
-	override getRecetasConAcceso(List<Receta> recetas) 
-	{
-		val recetasConAcceso = new ArrayList<Receta>()
 		
-		recetas.forEach[receta |
-			if (receta.puedeVer(this))
-			{
-				recetasConAcceso.add(receta)
-			}
-		]
-		
-		return recetasConAcceso
-	}
-	
 	override agregarGrupo(Grupo grupo){
 		grupos.add(grupo)
 	}
+	
+	def boolean cumpleCamposObligatorios() 
+	{
+		return (nombre != null && peso > 0 && altura > 0 && fechaNacimiento != null && rutina != null);
+	}
+
+	def boolean fechaNacimientoValida() 
+	{
+		return (fechaNacimiento.before(new Date()))
+	}
+
+	def boolean nombreCorrecto()
+	{
+		return (nombre.length > 4);
+	}
+
+	override estadoRutina() 
+	{
+		return ( this.getIMC > 18 && this.getIMC < 30 ) 
+	}
+	
+	override usuarioValido() 
+	{
+		return (cumpleCamposObligatorios() && nombreCorrecto())
+	}
+// ------------------------------------------------ Metodos Observer ------------------------------------------------
+	
+	def addObservador( Observador observador )
+ 	{
+		Observadores.add( observador )
+	}
+	 
+	def removeObservador( Observador observador )
+	{
+		Observadores.remove( observador )
+	}
+	 
+	def notificar()
+	{
+		Observadores.forEach[ actualizar( this )]
+	}
+	
+ 
 	
 }

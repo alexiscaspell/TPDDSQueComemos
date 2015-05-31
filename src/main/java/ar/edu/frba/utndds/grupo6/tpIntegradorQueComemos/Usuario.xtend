@@ -34,12 +34,12 @@ public interface Usuario {
 	def double getAltura()
 	
 	def Rutina getRutina()
+	
+	def List<Receta> getRecetas() 
 
 	def List<Ingrediente> getPreferenciasAlimenticias()
 	
 	def List<String> getPlatosQueNoLeGustan()
-	
-	def List<Receta> getRecetasConocidas()
 	
 	def boolean comparteGrupo(Usuario usuario)
 	

@@ -5,17 +5,13 @@ import java.util.Map
 
 class ConsultasXSexo implements Observador {
 	
-	private Map< Sexo, Integer > consultasXSexo
+	private Map< Sexo, Integer > consultasXFemenino
+	private Map< Sexo, Integer > consultasXMasculino
 	
 	
-	override actualizar( UsuarioPosta usuario ) {
-		
-		// Buscar manera de agregar fuera de la funcion el par ( hombre, 0 ) y ( mujer, 0 )
-		// if sexo hombre y mujer ya estan la lista 
-		consultasXSexo.put( usuario.getSexo() , consultasXSexo.get( usuario.getSexo() ) + 1 )
-		// else
-		
-	}
-	
-	
+	override actualizar( UsuarioPosta usuario ) {	
+		//if  ( ! consultasXSexo.containsKey( Sexo.MASCULINO) ) consultasXSexo.put( Sexo.MASCULINO, 0 )
+		//if  ( ! consultasXSexo.containsKey( Sexo.FEMENINO) ) consultasXSexo.put( Sexo.FEMENINO, 0 )
+		//consultasXSexo.put( usuario.getSexo() , consultasXSexo.get( usuario.getSexo() ) + 1 )		
+	}	
 }

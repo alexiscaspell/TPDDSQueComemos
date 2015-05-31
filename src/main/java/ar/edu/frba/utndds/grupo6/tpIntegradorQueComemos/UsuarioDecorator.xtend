@@ -47,6 +47,10 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 		decorado.getPeso()
 	}
 	
+	override getRecetas(){
+		decorado.getRecetas()
+	}
+	
 	override getAltura(){
 		decorado.getAltura()
 	}
@@ -67,10 +71,6 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 		decorado.getRutina()		
 	}	
 	
-	override getRecetasConocidas(){
-		decorado.getRecetasConocidas
-	}
-			
 	override usuarioValido(){
 		decorado.usuarioValido()
 	}

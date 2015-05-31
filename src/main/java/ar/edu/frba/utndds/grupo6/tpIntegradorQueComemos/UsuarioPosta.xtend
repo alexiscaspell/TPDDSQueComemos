@@ -43,8 +43,6 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 		
 	private RepositorioRecetas recetario		
 	
-	private PostCondiciones postcondicion
-	
 	new(double peso, double altura, Rutina rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
 	{
 		this.altura = altura
@@ -96,6 +94,7 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 	{
 		this.rutina = rutina
 	}
+		
 	
 //	------------------------------------------- Getters -------------------------------------------
 	override getReceta(String nombre){
@@ -106,13 +105,8 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 		sexo
 	}
 	
-	override getRecetasConocidas() {
-		// MODIFICAR!
-		if ( postcondicion != null ) 
-		{
-			return postcondicion.aplicarPostCondicion(recetas)
-		}	
-		recetas 
+	override getRecetas(){
+		recetas
 	}
 	
 	override List<String> getPlatosQueNoLeGustan(){

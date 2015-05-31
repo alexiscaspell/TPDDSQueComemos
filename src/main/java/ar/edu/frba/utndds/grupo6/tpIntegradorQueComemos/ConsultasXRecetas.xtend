@@ -2,7 +2,7 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.Map
 
-class RecetasConsultadas implements Observador {
+class ConsultasXRecetas implements Observador {
 	
 	private Map< String, Integer > RecetasConsultadas
 	

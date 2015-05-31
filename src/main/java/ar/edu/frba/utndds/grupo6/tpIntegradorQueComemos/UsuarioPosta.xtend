@@ -174,6 +174,7 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 	override agregarReceta(Receta receta) 
 	{
 		recetas.add(receta)
+		
 	}
 	
 	override comparteGrupo(Usuario usuario) {

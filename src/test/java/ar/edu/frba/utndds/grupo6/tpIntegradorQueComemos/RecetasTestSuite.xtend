@@ -141,7 +141,7 @@ class RecetasTestSuite {
 		val milanesasConPure = getRecetaMilanesas()
 		milanesasConPure.agregarSubReceta(pure)
 		Assert.assertTrue(milanesasConPure.getIngredientes().values.length == 4)
-	}		
+	}
 	
 	private def Receta getRecetaPure()
 	{	

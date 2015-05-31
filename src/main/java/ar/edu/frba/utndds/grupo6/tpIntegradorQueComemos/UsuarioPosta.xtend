@@ -37,6 +37,8 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 
 	private List<Receta> recetas = new ArrayList<Receta>()
 	
+	private List<Receta> Consultas = new ArrayList<Receta>()
+	
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 	
 	private List<Receta> favoritas = new ArrayList<Receta>()
@@ -115,16 +117,17 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 	
 	override getRecetasConAcceso(List<Receta> recetas) 
 	{
-		val recetasConAcceso = new ArrayList<Receta>()
+		Consultas.clear()
 		
 		recetas.forEach[receta |
 			if (receta.puedeVer(this))
 			{
-				recetasConAcceso.add(receta)
+				Consultas.add(receta)
 			}
 		]
 		
-		return recetasConAcceso
+		Observadores.forEach[ actualizar( this ) ]
+		return Consultas
 	}
 
 	override getPeso() {
@@ -146,6 +149,11 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 	def double getIMC()
 	{
 		peso / (altura * altura)
+	}
+	
+	override List<Receta> getConsultas()
+	{
+		Consultas	
 	}
 	
 //	------------------------------------------- Metodos -------------------------------------------
@@ -221,17 +229,17 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 	}
 // ------------------------------------------------ Metodos Observer ------------------------------------------------
 	
-	def addObservador( Observador observador )
+	override addObservador( Observador observador )
  	{
 		Observadores.add( observador )
 	}
 	 
-	def removeObservador( Observador observador )
+	override removeObservador( Observador observador )
 	{
 		Observadores.remove( observador )
 	}
 	 
-	def notificar()
+	override notificar()
 	{
 		Observadores.forEach[ actualizar( this )]
 	}

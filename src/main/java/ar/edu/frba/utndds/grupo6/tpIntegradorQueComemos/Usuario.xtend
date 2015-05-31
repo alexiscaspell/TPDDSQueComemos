@@ -41,6 +41,8 @@ public interface Usuario {
 	
 	def List<String> getPlatosQueNoLeGustan()
 	
+	def List<Receta> getConsultas()
+	
 	def boolean comparteGrupo(Usuario usuario)
 	
 	def boolean puedeComer(Receta receta)
@@ -52,4 +54,9 @@ public interface Usuario {
 	def List<Receta>getRecetasConAcceso(List<Receta> recetas)
 	
 	def void agregarGrupo(Grupo grupo)
+	
+	def void addObservador( Observador observador )
+	def void removeObservador( Observador observador )
+	def void notificar()
+	
 }

@@ -7,8 +7,10 @@ class ConsultasXRecetas implements Observador {
 	private Map< String, Integer > RecetasConsultadas
 	
 	override actualizar(UsuarioPosta usuario) {
-		// Mirar recetas conocidas por el usuario y agregar +1 a cada uno..?
-		// Como evitar repeticion de recetas ya contadas
+		usuario.getConsultas().forEach[
+			if ( ! RecetasConsultadas.containsKey( it.nombre )) RecetasConsultadas.put( it.nombre, 1 )
+			else RecetasConsultadas.put(  it.nombre , RecetasConsultadas.get( it.nombre ) + 1)
+		]
 	}
 	
 }

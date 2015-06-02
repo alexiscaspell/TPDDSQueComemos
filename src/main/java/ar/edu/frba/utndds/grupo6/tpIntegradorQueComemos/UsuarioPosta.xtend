@@ -107,6 +107,10 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 		sexo
 	}
 	
+	override getNombre(){
+		nombre
+	}
+	
 	override getRecetas(){
 		recetas
 	}
@@ -122,8 +126,10 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 		Consultas.clear()
 		
 		recetas.forEach[receta |
+			println("En Recetario = " + receta.nombre)
 			if (receta.puedeVer(this))
 			{
+				println("El usuario " + this.nombre + " puede ver " + receta.nombre)
 				Consultas.add(receta)
 			}
 		]

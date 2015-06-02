@@ -1,6 +1,7 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import org.junit.Test
+import org.junit.Assert
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.text.DateFormat
 import java.util.Date
@@ -9,30 +10,97 @@ import java.util.HashMap
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+
 import java.util.ArrayList
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import java.util.List
 import queComemos.entrega3.dominio.Dificultad
+import java.util.Calendar
 
 class MonitoreoConsultasTestSuite {
 	
 	private DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
 	private Date fecha = format.parse("01-04-1970")
-	private Usuario usuarioFemenino = getUsuarioFemenino();
-	private Usuario usuarioMasculino = getUsuarioMasculino();
-	private Recetario recetario
+	private Calendar calendario = Calendar.getInstance();
+	private Recetario  recetario =  Recetario .getInstance()
 	
-	def void unaConsulta(){
-		recetario.agregar( getLechon() )
-		// Agrego las recetas por las que se va a consultar
-		recetario.agregar( getPure )
-		recetario.agregar( getTorta )
-		recetario.agregar( getLechon )
-		
+	// Observadores
+	private ConsultasXSexo ConsultasXSexo =  new ConsultasXSexo()
+	private ConsultasXRecetas ConsultasXRecetas =  new ConsultasXRecetas()
+	private ConsultasXVeganos ConsultasXVeganos =  new ConsultasXVeganos()
+	private ConsultasXHora ConsultasXHora =  new ConsultasXHora()
+	
+	// Usuarios
+	private Usuario usuarioFemenino = getUsuarioFemenino();
+	private Usuario usuarioMasculino = getUsuarioMasculino();		
+	
+	@Test
+	def void CantidadDeConsultasTest(){
+		// Seteo del resetario para pruebas
+		println("____Consultas X CANTIDAD____")
+		seteoRecetario()
+			
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()
 		
+		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Lechon") == 2 )
+		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Torta") == 1 )
+		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Pure") == 1 )
+		Assert.assertTrue(  ConsultasXHora.getEstadistica.get(calendario.get( Calendar.HOUR_OF_DAY )) == 2 )
 		
+		//ConsultasXRecetas.reset()
+		
+		recetario.reset()
+		}
+		
+		
+	@Test 
+	def void CantidadDeConsultasXSexoTest(){
+		// Seteo del resetario para pruebas
+		println("____Consultas X SEXO____")
+		seteoRecetario()
+			
+		usuarioFemenino.getRecetasConAcceso()
+		usuarioMasculino.getRecetasConAcceso()
+		
+		Assert.assertTrue(  ConsultasXSexo.getEstadisticaFemenino().get("Lechon") == 1 )
+		Assert.assertTrue(  ConsultasXSexo.getEstadisticaFemenino().get("Torta") == 1 )
+		Assert.assertTrue(  ConsultasXSexo.getEstadisticaMasculino().get("Pure") == 1 )
+		Assert.assertTrue(  ConsultasXSexo.getEstadisticaMasculino().get("Lechon") == 1 )
+		
+		//ConsultasXSexo.reset()
+		recetario.reset()
+	}
+	
+	@Test
+	def void CantiadDeConsultasXHora(){
+		println("____Consultas X HORA____")
+		seteoRecetario()
+	
+		usuarioFemenino.getRecetasConAcceso()
+		usuarioMasculino.getRecetasConAcceso()	
+		
+		Assert.assertTrue(  ConsultasXHora.getEstadistica.get(calendario.get( Calendar.HOUR_OF_DAY )) == 2 )
+		
+		//ConsultasXHora.reset()
+		recetario.reset()
+	}
+	
+	@Test
+	def void CantidadDeConsultasXVeganos(){
+		println("____Consultas X HORA____")
+		
+		usuarioFemenino.getRecetasConAcceso()
+		usuarioMasculino.getRecetasConAcceso()	
+		
+		ConsultasXVeganos.reset()
+		//Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 ) 
+	}
+		
+	
+	def seteoRecetario(){
+		recetario.agregar( getPure )
+		recetario.agregar( getTorta )
+		recetario.agregar( getLechon )
 	}
 	
 	def getUsuarioMasculino() {
@@ -40,23 +108,25 @@ class MonitoreoConsultasTestSuite {
 		// Agregar Recetas que conoce
 		pepe.agregarReceta( getPure )
 		// Agregar Observadores
-		pepe.addObservador( new ConsultasXSexo() )
-		pepe.addObservador( new ConsultasXRecetas() )
-		pepe.addObservador( new ConsultasXVeganos() )
-		pepe.addObservador( new ConsultasXHora() )
+		pepe.addObservador(  ConsultasXSexo )
+		pepe.addObservador(  ConsultasXRecetas )
+		pepe.addObservador(  ConsultasXVeganos )
+		pepe.addObservador(  ConsultasXHora )
 		return pepe
 	}
 	
 	def getUsuarioFemenino(){
 		val mariana = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Mariana Lopez",Sexo.FEMENINO,fecha)
-		val vegano = new UsuarioVegano( mariana )
+	
 		// Agregar Recetas que conoce
-		vegano.agregarReceta( getTorta )
-		vegano.addObservador( new ConsultasXSexo() )
-		vegano.addObservador( new ConsultasXRecetas() )
-		vegano.addObservador( new ConsultasXVeganos() )
-		vegano.addObservador( new ConsultasXHora() )
+		mariana.agregarReceta( getTorta )
+		mariana.addObservador(  ConsultasXSexo )
+		mariana.addObservador(  ConsultasXRecetas )
 		
+		mariana.addObservador(  ConsultasXHora )
+		val vegano = new UsuarioVegano( mariana )
+		vegano.addObservador(  ConsultasXVeganos )
+			
 		return vegano
 	}
 	
@@ -125,6 +195,7 @@ class MonitoreoConsultasTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuarioFemenino, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.setPublica()
 		recetaSimple.calorias=150
 		recetaSimple
 	}

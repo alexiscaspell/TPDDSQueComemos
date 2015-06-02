@@ -31,6 +31,8 @@ public interface Usuario {
 	
 	def Sexo getSexo()
 	
+	def String getNombre()
+	
 	def double getAltura()
 	
 	def Rutina getRutina()

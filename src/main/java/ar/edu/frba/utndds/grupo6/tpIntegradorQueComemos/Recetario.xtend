@@ -76,4 +76,8 @@ public class Recetario {
             String author = (String) jsonObject.get("Author"); */
 	}
 	
+	def reset(){
+		recetas.clear()
+	}
+	
 }

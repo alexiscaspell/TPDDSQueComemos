@@ -8,9 +8,9 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import queComemos.entrega3.dominio.Dificultad
 
 public class UsuarioPosta implements Usuario, Consumidor  {
 
@@ -43,7 +43,7 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 	
 	private List<Receta> favoritas = new ArrayList<Receta>()
 		
-	private RepositorioRecetas recetario		
+	private Recetario recetario		
 	
 	new(double peso, double altura, Rutina rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
 	{
@@ -53,7 +53,7 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 		this.fechaNacimiento=fechaNacimiento
 		this.nombre=nombre
 		this.sexo=sexo
-		recetario = RepositorioRecetas.getInstance()
+		recetario = Recetario.getInstance()
 	}	
 
 // ------------------------------------------- Setters -------------------------------------------

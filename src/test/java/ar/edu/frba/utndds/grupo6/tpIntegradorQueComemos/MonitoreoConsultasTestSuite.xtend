@@ -9,10 +9,10 @@ import java.util.HashMap
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import java.util.ArrayList
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import java.util.List
+import queComemos.entrega3.dominio.Dificultad
 
 class MonitoreoConsultasTestSuite {
 	
@@ -20,7 +20,7 @@ class MonitoreoConsultasTestSuite {
 	private Date fecha = format.parse("01-04-1970")
 	private Usuario usuarioFemenino = getUsuarioFemenino();
 	private Usuario usuarioMasculino = getUsuarioMasculino();
-	private RepositorioRecetas recetario
+	private Recetario recetario
 	private List<Receta> recetas = new ArrayList<Receta>()		
 	
 	def void unaConsulta(){

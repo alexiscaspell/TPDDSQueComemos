@@ -3,13 +3,13 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Map
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import queComemos.entrega3.dominio.Dificultad
 
 public class Receta implements IReceta {
 

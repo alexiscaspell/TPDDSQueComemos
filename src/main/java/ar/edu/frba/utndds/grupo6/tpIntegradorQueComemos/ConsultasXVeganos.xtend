@@ -1,7 +1,8 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
+import queComemos.entrega3.dominio.Dificultad
+
 //import java.util.ArrayList
 //import java.util.List
 

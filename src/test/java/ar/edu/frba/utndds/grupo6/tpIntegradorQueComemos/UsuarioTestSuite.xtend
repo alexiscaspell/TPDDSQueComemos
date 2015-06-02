@@ -11,8 +11,8 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import java.util.HashMap
 import java.util.ArrayList
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import queComemos.entrega3.dominio.Dificultad
 
 class UsuarioTestSuite {
 
@@ -221,7 +221,7 @@ class UsuarioTestSuite {
 	{
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 				
-		val recetario = RepositorioRecetas.getInstance()
+		val recetario = Recetario.getInstance()
 		
 		recetario.agregar(getReceta(usuario, "Pure"))
 		
@@ -237,7 +237,7 @@ class UsuarioTestSuite {
 		grupo.agregar(usuario)
 		grupo.agregar(pepe)		
 		
-		val recetario = RepositorioRecetas.getInstance()
+		val recetario = Recetario.getInstance()
 		recetario.agregar(getReceta(pepe, "Receta1"))
 		
 		Assert.assertEquals(usuario.getRecetasConAcceso(recetario.listarTodas()).size, 1)

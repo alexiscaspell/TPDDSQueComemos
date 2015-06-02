@@ -5,21 +5,21 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.ArrayList
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Dificultad
 import java.util.Map
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import java.util.List
+import queComemos.entrega3.dominio.Dificultad
 
 @Accessors
 public abstract class UsuarioDecorator implements Usuario, Consumidor {
 	
 	Usuario decorado
 	
-	private RepositorioRecetas recetario
+	private Recetario recetario
 	
 	new(Usuario usuario) 
 	{
-		recetario = RepositorioRecetas.getInstance()
+		recetario = Recetario.getInstance()
 		decorado = usuario
 	}
 	

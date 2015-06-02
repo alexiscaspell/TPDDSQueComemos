@@ -11,21 +11,8 @@ import queComemos.entrega3.dominio.Dificultad
 
 public interface Usuario {	
 
-	//Métodos
-	
-	def void modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
-		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada)
-	
+	//	------------------------------------------- Getters -------------------------------------------	
 	def Receta getReceta(String nombre)
-	
-	def boolean estadoRutina()	
-	
-	def boolean usuarioValido()		
-	
-	def void agregarReceta(Receta receta)	
-			
-	//Getters	
 	
 	def double getPeso()
 	
@@ -37,13 +24,25 @@ public interface Usuario {
 	
 	def Rutina getRutina()
 	
-	def List<Receta> getRecetas() 
-
+	def List<Receta> getRecetas()
+	
 	def List<Ingrediente> getPreferenciasAlimenticias()
 	
 	def List<String> getPlatosQueNoLeGustan()
 	
 	def List<Receta> getConsultas()
+	
+	def List<Receta>getRecetasConAcceso() 
+//	------------------------------------------- Metodos -------------------------------------------
+	def void modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
+		ArrayList<Temporada> temporada)
+	
+	def boolean estadoRutina()	
+	
+	def boolean usuarioValido()		
+	
+	def void agregarReceta(Receta receta)	
 	
 	def boolean comparteGrupo(Usuario usuario)
 	
@@ -53,12 +52,17 @@ public interface Usuario {
 	
 	def void marcarComoFavorita(Receta receta)
 	
-	def List<Receta>getRecetasConAcceso()
-	
 	def void agregarGrupo(Grupo grupo)
-	
+		// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
 	def void addObservador( Observador observador )
+	
 	def void removeObservador( Observador observador )
+	
 	def void notificar()
 	
+	def void addConsultas(String consulta)
+	
+	def void removeConsultas(String consulta)
+	
+	def void notificarConsultas() 
 }

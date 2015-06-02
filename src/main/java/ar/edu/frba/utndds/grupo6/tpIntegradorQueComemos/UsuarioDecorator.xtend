@@ -78,12 +78,24 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 		decorado.addObservador( observador )
 	}
 	
+	override addConsultas( String consulta ){
+		decorado.addConsultas( consulta )
+	}
+	
 	override removeObservador( Observador observador ){
 		decorado.removeObservador( observador )
 	}
 	
+	override removeConsultas( String consulta ){
+		decorado.removeConsultas( consulta )
+	}
+	
 	override notificar(){
 		decorado.notificar()
+	}
+	
+	override notificarConsultas(){
+		decorado.notificarConsultas
 	}
 	
 	override getRutina(){

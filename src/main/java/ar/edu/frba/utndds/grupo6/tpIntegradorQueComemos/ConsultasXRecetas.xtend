@@ -5,22 +5,22 @@ import java.util.HashMap
 
 class ConsultasXRecetas implements Observador {
 	
-	private Map< String, Integer > RecetasConsultadas = new HashMap< String, Integer >
+	private Map< String, Integer > recetasConsultadas = new HashMap< String, Integer >
 	
 	override actualizar(UsuarioPosta usuario) {
 		println("EN ACTUALIZAR CONSULTAS X CANTIDAD")
 		usuario.getConsultas().forEach[
-			if ( ! RecetasConsultadas.containsKey( it.nombre )) RecetasConsultadas.put( it.nombre, 1 )
-			else RecetasConsultadas.put(  it.nombre , RecetasConsultadas.get( it.nombre ) + 1)
+			if ( ! recetasConsultadas.containsKey( it.nombre )) recetasConsultadas.put( it.nombre, 1 )
+			else recetasConsultadas.put(  it.nombre , recetasConsultadas.get( it.nombre ) + 1)
 		]
 	}
 	
 	def Map< String, Integer > getEstadistica(){
-		RecetasConsultadas
+		recetasConsultadas
 	}
 	
 	override reset() {
-		RecetasConsultadas.class
+		recetasConsultadas.class
 	}
 	
 }

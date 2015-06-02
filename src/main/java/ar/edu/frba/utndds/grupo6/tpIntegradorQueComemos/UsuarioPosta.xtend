@@ -12,12 +12,12 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
 
-public class UsuarioPosta implements Usuario, Consumidor  {
+public class UsuarioPosta implements Usuario, Consumidor {
 
 	private double altura
 
 	private double peso
-	
+
 	private Sexo sexo
 
 	private Rutina rutina
@@ -29,112 +29,105 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
-	
+
 	private ArrayList<Observador> Observadores = new ArrayList<Observador>()
-	
+
+	private ArrayList<String> ConsultasSingleton = new ArrayList<String>()
+
 	@Accessors
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	private List<Receta> recetas = new ArrayList<Receta>()
-	
+
 	private List<Receta> Consultas = new ArrayList<Receta>()
-	
+
 	private List<Grupo> grupos = new ArrayList<Grupo>()
-	
+
 	private List<Receta> favoritas = new ArrayList<Receta>()
-		
-	private Recetario recetario		
+
+	private Recetario recetario
 	
-	new(double peso, double altura, Rutina rutina, String nombre,Sexo sexo, Date fechaNacimiento) 
-	{
+	private Consultoria consultoria = Consultoria.getInstance()
+
+	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo, Date fechaNacimiento) {
 		this.altura = altura
 		this.peso = peso
 		this.rutina = rutina
-		this.fechaNacimiento=fechaNacimiento
-		this.nombre=nombre
-		this.sexo=sexo
+		this.fechaNacimiento = fechaNacimiento
+		this.nombre = nombre
+		this.sexo = sexo
 		recetario = Recetario.getInstance()
-	}	
+	}
 
-// ------------------------------------------- Setters -------------------------------------------
-	def void setNombre(String unNombre) 
-	{
+	// ------------------------------------------- Setters -------------------------------------------
+	def void setNombre(String unNombre) {
 		this.nombre = unNombre
 	}
 
-	def void setFechaNacimiento(Date unaFecha) 
-	{
+	def void setFechaNacimiento(Date unaFecha) {
 		this.fechaNacimiento = unaFecha
 	}
 
-	def void setPeso(double peso) 
-	{
+	def void setPeso(double peso) {
 		this.peso = peso;
 	}
 
-	def void setAltura(double altura) 
-	{
+	def void setAltura(double altura) {
 		this.altura = altura;
 	}
-	
-	def void setSexo(Sexo sexo)
-	{
-		this.sexo=sexo;
+
+	def void setSexo(Sexo sexo) {
+		this.sexo = sexo;
 	}
 
-	def void setPreferenciasAlimenticias(Map<Ingrediente, Integer> alimentos) 
-	{
+	def void setPreferenciasAlimenticias(Map<Ingrediente, Integer> alimentos) {
 		this.preferenciasAlimenticias = alimentos
 	}
 
-	def void setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos) 
-	{
+	def void setPlatosQueNoLeGustan(ArrayList<String> listaDeAlimentos) {
 		this.platosQueNoLeGustan = listaDeAlimentos;
 	}
 
-	def void setRutina(Rutina rutina) 
-	{
+	def void setRutina(Rutina rutina) {
 		this.rutina = rutina
 	}
-		
-	
-//	------------------------------------------- Getters -------------------------------------------
-	override getReceta(String nombre){
+
+	//	------------------------------------------- Getters -------------------------------------------
+	override getReceta(String nombre) {
 		recetario.getReceta(nombre)
 	}
-	
+
 	override getSexo() {
 		sexo
 	}
-	
-	override getNombre(){
+
+	override getNombre() {
 		nombre
 	}
-	
-	override getRecetas(){
+
+	override getRecetas() {
 		recetas
 	}
-	
-	override List<String> getPlatosQueNoLeGustan(){
+
+	override List<String> getPlatosQueNoLeGustan() {
 		platosQueNoLeGustan
 	}
-	
-	override getRecetasConAcceso() 
-	{
+
+	override getRecetasConAcceso() {
 		val recetario = Recetario.getInstance();
 		val recetas = recetario.listarTodas();
 		Consultas.clear()
-		
-		recetas.forEach[receta |
+
+		recetas.forEach [ receta |
 			println("En Recetario = " + receta.nombre)
-			if (receta.puedeVer(this))
-			{
+			if (receta.puedeVer(this)) {
 				println("El usuario " + this.nombre + " puede ver " + receta.nombre)
 				Consultas.add(receta)
 			}
 		]
-		
-		Observadores.forEach[ actualizar( this ) ]
+
+		consultoria.actualizar( this, ConsultasSingleton )
+		Observadores.forEach[actualizar(this)]
 		return Consultas
 	}
 
@@ -153,106 +146,104 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 	override List<Ingrediente> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias
 	}
-	
-	def double getIMC()
-	{
+
+	def double getIMC() {
 		peso / (altura * altura)
 	}
-	
-	override List<Receta> getConsultas()
-	{
-		Consultas	
+
+	override List<Receta> getConsultas() {
+		Consultas
 	}
-	
-//	------------------------------------------- Metodos -------------------------------------------
+
+	//	------------------------------------------- Metodos -------------------------------------------
 	override modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada) 
-	{
-					
-		val receta = getReceta(nombreReceta) 
-		receta.setNombre(nombre) 
+		ArrayList<Temporada> temporada) {
+
+		val receta = getReceta(nombreReceta)
+		receta.setNombre(nombre)
 		receta.setIngredientes(ingredientes)
-		receta.setCondimentos(condimentos) 
-		receta.setExplicacion(explicacion) 
-		receta.setDificultad(dificultad) 
-		receta.setTemporadas(temporada) 
+		receta.setCondimentos(condimentos)
+		receta.setExplicacion(explicacion)
+		receta.setDificultad(dificultad)
+		receta.setTemporadas(temporada)
 	}
-	
-	override agregarReceta(Receta receta) 
-	{
+
+	override agregarReceta(Receta receta) {
 		recetas.add(receta)
-		
+
 	}
-	
+
 	override comparteGrupo(Usuario usuario) {
-		grupos.exists[x | x.contieneAlUsuario(usuario)]
+		grupos.exists[x|x.contieneAlUsuario(usuario)]
 	}
-	
+
 	override puedeComer(Receta receta) {
 		true
 	}
-	
-	public def boolean tieneIngredientesFeos(Map<Ingrediente, Integer> ingredientes){
-		ingredientesFeos.forall[ingredienteFeo | ingredientes.keySet.contains(ingredienteFeo)]
+
+	public def boolean tieneIngredientesFeos(Map<Ingrediente, Integer> ingredientes) {
+		ingredientesFeos.forall[ingredienteFeo|ingredientes.keySet.contains(ingredienteFeo)]
 	}
-		
-	override sePuedeSugerir(Receta receta) {		
+
+	override sePuedeSugerir(Receta receta) {
 		!tieneIngredientesFeos(receta.getIngredientes())
 	}
-	
+
 	override marcarComoFavorita(Receta receta) {
-		if (receta.puedeVer(this))
-		{
-			favoritas.add(receta)			
+		if (receta.puedeVer(this)) {
+			favoritas.add(receta)
 		}
 	}
-		
-	override agregarGrupo(Grupo grupo){
+
+	override agregarGrupo(Grupo grupo) {
 		grupos.add(grupo)
 	}
-	
-	def boolean cumpleCamposObligatorios() 
-	{
+
+	def boolean cumpleCamposObligatorios() {
 		return (nombre != null && peso > 0 && altura > 0 && fechaNacimiento != null && rutina != null);
 	}
 
-	def boolean fechaNacimientoValida() 
-	{
+	def boolean fechaNacimientoValida() {
 		return (fechaNacimiento.before(new Date()))
 	}
 
-	def boolean nombreCorrecto()
-	{
+	def boolean nombreCorrecto() {
 		return (nombre.length > 4);
 	}
 
-	override estadoRutina() 
-	{
-		return ( this.getIMC > 18 && this.getIMC < 30 ) 
+	override estadoRutina() {
+		return ( this.getIMC > 18 && this.getIMC < 30 )
 	}
-	
-	override usuarioValido() 
-	{
+
+	override usuarioValido() {
 		return (cumpleCamposObligatorios() && nombreCorrecto())
 	}
-// ------------------------------------------------ Metodos Observer ------------------------------------------------
-	
-	override addObservador( Observador observador )
- 	{
-		Observadores.add( observador )
+
+	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
+	override addObservador(Observador observador) {
+		Observadores.add(observador)
 	}
-	 
-	override removeObservador( Observador observador )
-	{
-		Observadores.remove( observador )
+
+	override addConsultas(String consulta) {
+		ConsultasSingleton.add(consulta)
 	}
-	 
-	override notificar()
-	{
-		Observadores.forEach[ actualizar( this )]
+
+	override removeObservador(Observador observador) {
+		Observadores.remove(observador)
 	}
-	
- 
-	
+
+	override removeConsultas(String consulta) {
+		ConsultasSingleton.remove(consulta)
+	}
+
+	override notificar() {
+		Observadores.forEach[actualizar(this)]
+	}
+
+	override notificarConsultas() {
+		consultoria.actualizar( this, ConsultasSingleton )
+
+	}
+
 }

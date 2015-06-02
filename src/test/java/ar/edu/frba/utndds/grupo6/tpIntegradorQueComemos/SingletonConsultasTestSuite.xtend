@@ -37,15 +37,58 @@ class SingletonConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()
 		
-		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Lechon") == 2 )
-		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Torta") == 1 )
-		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Pure") == 1 )
-		Assert.assertTrue( consultoria.getConsultasXHora().get(calendario.get( Calendar.HOUR_OF_DAY )) == 2 )
+		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Lechon") == 4 )
+		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Torta") == 2 )
+		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Pure") == 2 )
+		Assert.assertTrue( consultoria.getConsultasXHora().get(calendario.get( Calendar.HOUR_OF_DAY )) == 4 )
 		
 		//ConsultasXRecetas.reset()
 		
 		recetario.reset()
 		}
+		
+	@Test 
+	def void CantidadDeConsultasXSexoTest(){
+		// Seteo del resetario para pruebas
+		println("____Consultas X SEXO____")
+		seteoRecetario()
+			
+		usuarioFemenino.getRecetasConAcceso()
+		usuarioMasculino.getRecetasConAcceso()
+		
+		Assert.assertTrue(  consultoria.getConsultasFemenino().get("Lechon") == 1 )
+		Assert.assertTrue(  consultoria.getConsultasFemenino().get("Torta") == 1 )
+		Assert.assertTrue(  consultoria.getConsultasMasculino().get("Pure") == 1 )
+		Assert.assertTrue(  consultoria.getConsultasMasculino().get("Lechon") == 1 )
+		
+		//ConsultasXSexo.reset()
+		recetario.reset()
+	}
+	
+	@Test
+	def void CantiadDeConsultasXHora(){
+		println("____Consultas X HORA____")
+		seteoRecetario()
+	
+		usuarioFemenino.getRecetasConAcceso()
+		usuarioMasculino.getRecetasConAcceso()	
+		
+		Assert.assertTrue(  consultoria.getConsultasXHora().get(calendario.get( Calendar.HOUR_OF_DAY )) == 6 )
+		
+		//ConsultasXHora.reset()
+		recetario.reset()
+	}
+	
+	@Test
+	def void CantidadDeConsultasXVeganos(){
+		println("____Consultas X VEGANOS")
+		
+		//usuarioFemenino.getRecetasConAcceso()
+		//usuarioMasculino.getRecetasConAcceso()	
+		
+		//ConsultasXVeganos.reset()
+		//Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 ) 
+	}
 	
 	def seteoRecetario(){
 		recetario.agregar( getPure )

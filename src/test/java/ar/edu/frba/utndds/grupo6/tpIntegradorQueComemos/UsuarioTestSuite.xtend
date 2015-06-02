@@ -225,7 +225,7 @@ class UsuarioTestSuite {
 		
 		recetario.agregar(getReceta(usuario, "Pure"))
 		
-		Assert.assertEquals(usuario.getRecetasConAcceso(recetario.listarTodas()).size, 1)
+		Assert.assertEquals(usuario.getRecetasConAcceso().size, 1)
 	}
 	
 	@Test
@@ -240,7 +240,7 @@ class UsuarioTestSuite {
 		val recetario = Recetario.getInstance()
 		recetario.agregar(getReceta(pepe, "Receta1"))
 		
-		Assert.assertEquals(usuario.getRecetasConAcceso(recetario.listarTodas()).size, 1)
+		Assert.assertEquals(usuario.getRecetasConAcceso().size, 1)
 	}
 	
 	private def Receta getRecetaPureConSal()

@@ -7,7 +7,6 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import java.util.Map
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import java.util.List
 import queComemos.entrega3.dominio.Dificultad
 
 @Accessors
@@ -112,9 +111,9 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
     	return(puedeComer(receta)&&decorado.sePuedeSugerir(receta))
     }
     
-    override getRecetasConAcceso(List<Receta> recetas) 
+    override getRecetasConAcceso() 
 	{
-		decorado.getRecetasConAcceso(recetas)
+		decorado.getRecetasConAcceso()
 	}
 	
 	override agregarGrupo(Grupo grupo)

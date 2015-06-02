@@ -4,9 +4,12 @@ import java.util.ArrayList
 import java.util.List
 import queComemos.entrega3.repositorio.RepoRecetas
 import queComemos.entrega3.repositorio.BusquedaRecetas
-import com.google.gson.JsonElement
+import org.json.simple.parser.JSONParser
+import org.json.simple.JSONObject
 
-class Recetario {
+public class Recetario {
+	
+	private JSONParser parser = new JSONParser();
 	
 	private RepoRecetas repoRecetas = new RepoRecetas();
 	
@@ -18,7 +21,7 @@ class Recetario {
 	{
 		if (instance == null)
 		{
-			new Recetario()
+			instance = new Recetario()
 		}
 		else
 		{
@@ -43,15 +46,11 @@ class Recetario {
 	
 	def List<Receta> listarTodas()
 	{
-		val busqueda = new BusquedaRecetas();
+		/*val busqueda = new BusquedaRecetas();
 		val recetasExternas = repoRecetas.getRecetas(busqueda);
-		val parser = new com.google.gson.JsonParser();
-		parser.parse(recetasExternas).asJsonArray.toList().forEach[x | CargarReceta(x)]			
+		val json = parser.parse(recetasExternas) as JSONArray;
+		json.forEach[receta | recetas.add(CargarReceta(receta as JSONObject))]*/		
 		recetas;
-	}
-	
-	def Receta CargarReceta(JsonElement element) {
-		//TODO: Crear una receta segun los campos del elemento JSON
 	}
 
 	def getReceta(String nombre) 
@@ -66,9 +65,15 @@ class Recetario {
 			val busqueda = new BusquedaRecetas();
 			busqueda.nombre = nombre;
 			val recetasExternas = repoRecetas.getRecetas(busqueda);
-			val parser = new com.google.gson.JsonParser();
-			CargarReceta(parser.parse(recetasExternas).asJsonArray.toList().findFirst[x | x.asString == nombre]);
+			val json = parser.parse(recetasExternas) as JSONObject;
+			CargarReceta(json);
 		}
+	}
+	
+	def Receta CargarReceta(JSONObject object) {
+		//TODO: Crear una receta segun los campos del elemento JSON
+		/*String name = (String) jsonObject.get("Name");
+            String author = (String) jsonObject.get("Author"); */
 	}
 	
 }

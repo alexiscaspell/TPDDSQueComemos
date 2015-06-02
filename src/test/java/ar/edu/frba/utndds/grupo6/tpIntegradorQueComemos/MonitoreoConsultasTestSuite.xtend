@@ -21,17 +21,16 @@ class MonitoreoConsultasTestSuite {
 	private Usuario usuarioFemenino = getUsuarioFemenino();
 	private Usuario usuarioMasculino = getUsuarioMasculino();
 	private Recetario recetario
-	private List<Receta> recetas = new ArrayList<Receta>()		
 	
 	def void unaConsulta(){
 		recetario.agregar( getLechon() )
 		// Agrego las recetas por las que se va a consultar
-		recetas.add( getPure )
-		recetas.add( getTorta )
-		recetas.add( getLechon )
+		recetario.agregar( getPure )
+		recetario.agregar( getTorta )
+		recetario.agregar( getLechon )
 		
-		usuarioFemenino.getRecetasConAcceso( recetas )
-		usuarioMasculino.getRecetasConAcceso( recetas )
+		usuarioFemenino.getRecetasConAcceso()
+		usuarioMasculino.getRecetasConAcceso()
 		
 		
 	}

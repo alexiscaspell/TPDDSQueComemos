@@ -115,8 +115,10 @@ public class UsuarioPosta implements Usuario, Consumidor  {
 		platosQueNoLeGustan
 	}
 	
-	override getRecetasConAcceso(List<Receta> recetas) 
+	override getRecetasConAcceso() 
 	{
+		val recetario = Recetario.getInstance();
+		val recetas = recetario.listarTodas();
 		Consultas.clear()
 		
 		recetas.forEach[receta |

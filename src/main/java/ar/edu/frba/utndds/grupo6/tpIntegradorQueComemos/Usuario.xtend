@@ -51,7 +51,7 @@ public interface Usuario {
 	
 	def void marcarComoFavorita(Receta receta)
 	
-	def List<Receta>getRecetasConAcceso(List<Receta> recetas)
+	def List<Receta>getRecetasConAcceso()
 	
 	def void agregarGrupo(Grupo grupo)
 	

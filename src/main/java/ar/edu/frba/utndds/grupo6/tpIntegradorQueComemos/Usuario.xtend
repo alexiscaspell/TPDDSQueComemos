@@ -8,6 +8,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import java.util.Map
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 public interface Usuario {	
 
@@ -31,6 +32,8 @@ public interface Usuario {
 	def List<String> getPlatosQueNoLeGustan()
 	
 	def List<Receta> getConsultas()
+	
+	def List<Condicion> getCondicion()
 	
 	def List<Receta>getRecetasConAcceso() 
 //	------------------------------------------- Metodos -------------------------------------------

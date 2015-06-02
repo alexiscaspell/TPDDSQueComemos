@@ -20,6 +20,7 @@ public class Consultoria {
 	private int consultasXVeganos 
 	
 	def void actualizar( UsuarioPosta usuario, List<String> consultas ){
+		println( usuario.getNombre() )
 		consultas.forEach[
 			switch ( it ){
 				case "ConsultasXHora": 
@@ -45,14 +46,22 @@ public class Consultoria {
 					]	
 				
 				case "ConsultasXVegano":
-					if ( usuario.getClass().getName() == Condicion.VEGANO ) {
-						usuario.getConsultas().forEach[ 
-							if ( it.getDificultad() == Dificultad.DIFICIL ) consultasXVeganos++
-						]	
-					}
-			}		
-		]
-	}
+					if ( usuario.getCondicion().contains( Condicion.VEGANO ) ) {
+						println("ES VEGANA")
+						usuario.getConsultas().forEach[ if ( it.getDificultad() == Dificultad.DIFICIL ) consultasXVeganos++ ]
+					} }
+					//if ( usuario.getCondicion().contains( Condicion.VEGANO ) ) {
+						//usuario.getConsultas().forEach[ if ( it.getDificultad() == Dificultad.DIFICIL ) consultasXVeganos++ ]
+					//} 
+				//}	
+			]	
+		}		
+				
+				
+				
+			
+			
+
 	
 	private new()
 	{

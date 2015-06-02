@@ -87,13 +87,17 @@ class MonitoreoConsultasTestSuite {
 	
 	@Test
 	def void CantidadDeConsultasXVeganos(){
-		println("____Consultas X HORA____")
+		println("____Consultas X VEGANOS____")
+		seteoRecetario()
 		
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()	
 		
-		ConsultasXVeganos.reset()
-		//Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 ) 
+		
+		Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 )
+		//ConsultasXVeganos.reset()
+		recetario.reset()
+		 
 	}
 		
 	

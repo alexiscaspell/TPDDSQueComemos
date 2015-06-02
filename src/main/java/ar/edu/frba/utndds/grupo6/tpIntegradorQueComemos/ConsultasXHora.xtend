@@ -12,7 +12,7 @@ class ConsultasXHora implements Observador {
 	
 	override actualizar( UsuarioPosta usuario ) {
 		
-		println("EN ACTUALIZAR CONSULTAS X HORA ")
+		//println("EN ACTUALIZAR CONSULTAS X HORA ")
 		
 		 
 		if ( consultasXHora.containsKey( calendario.get(Calendar.HOUR_OF_DAY ) )) {
@@ -21,7 +21,7 @@ class ConsultasXHora implements Observador {
 			
 			consultasXHora.put( calendario.get( Calendar.HOUR_OF_DAY ), 1 )
 		}
-		println("Cantidad de consultas x hora hechas " + consultasXHora.get( Calendar.HOUR_OF_DAY ))
+		//println("Cantidad de consultas x hora hechas " + consultasXHora.get( Calendar.HOUR_OF_DAY ))
 	}
 	
 	def Map< Integer , Integer> getEstadistica(){

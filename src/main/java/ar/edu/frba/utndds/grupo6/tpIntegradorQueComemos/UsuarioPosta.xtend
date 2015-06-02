@@ -11,6 +11,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 public class UsuarioPosta implements Usuario, Consumidor {
 
@@ -25,6 +26,8 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	private String nombre
 
 	private Date fechaNacimiento
+	
+	private List<Condicion> condiciones = new ArrayList<Condicion>()
 
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
@@ -119,9 +122,9 @@ public class UsuarioPosta implements Usuario, Consumidor {
 		Consultas.clear()
 
 		recetas.forEach [ receta |
-			println("En Recetario = " + receta.nombre)
+			//println("En Recetario = " + receta.nombre)
 			if (receta.puedeVer(this)) {
-				println("El usuario " + this.nombre + " puede ver " + receta.nombre)
+				//println("El usuario " + this.nombre + " puede ver " + receta.nombre)
 				Consultas.add(receta)
 			}
 		]
@@ -141,6 +144,10 @@ public class UsuarioPosta implements Usuario, Consumidor {
 
 	override getRutina() {
 		rutina
+	}
+	
+	override getCondicion() {
+		condiciones
 	}
 
 	override List<Ingrediente> getPreferenciasAlimenticias() {

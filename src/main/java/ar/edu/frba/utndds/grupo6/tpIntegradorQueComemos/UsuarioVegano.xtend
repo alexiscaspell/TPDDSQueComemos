@@ -1,9 +1,12 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+
 class UsuarioVegano extends UsuarioDecorator 
 {
 	new(Usuario decorado) {		
 		super(decorado)
+		decorado.condicion.add( Condicion.VEGANO )
 	}
 
 	override estadoRutina() 

@@ -42,6 +42,10 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 		decorado.getReceta(nombre)
 	}
 	
+	override getCondicion(){
+		decorado.getCondicion()
+	}
+	
 	override getPeso(){
 		decorado.getPeso()
 	}

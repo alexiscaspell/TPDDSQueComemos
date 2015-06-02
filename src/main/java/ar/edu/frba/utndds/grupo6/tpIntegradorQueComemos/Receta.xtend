@@ -154,9 +154,9 @@ public class Receta implements IReceta {
 	
 	def boolean puedeVer(Usuario usuario) 
 	{
-		println( "El usuario creador es " + usuarioCreador.sexo )
-		if ( usuarioCreador.getNombre().equals(usuario.getNombre() ) ) println("Agregada por usuario creador")
-		if (  tipo == TipoReceta.PUBLICA )  println("Agregada por publica")
+		//println( "El usuario creador es " + usuarioCreador.sexo )
+		//if ( usuarioCreador.getNombre().equals(usuario.getNombre() ) ) println("Agregada por usuario creador")
+		//if (  tipo == TipoReceta.PUBLICA )  println("Agregada por publica")
 		usuarioCreador.getNombre().equals(usuario.getNombre()) || 
 		tipo == TipoReceta.PUBLICA ||
 		usuarioCreador.comparteGrupo(usuario)

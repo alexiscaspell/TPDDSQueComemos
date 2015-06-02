@@ -9,12 +9,13 @@ import queComemos.entrega3.dominio.Dificultad
 class ConsultasXVeganos implements Observador {
 	
 	private int consultasXVeganos = 0
-	//private List<Receta> ultimaVersion = new ArrayList<Receta>() 
+	 
 	
 	override actualizar(UsuarioPosta usuario) {
-		println("EN ACTUALIZAR CONSULTAS X VEGANOS")
-		if ( usuario.getClass().getName() == Condicion.VEGANO )
+		//println("EN ACTUALIZAR CONSULTAS X VEGANOS")
+		if ( usuario.getCondicion().contains( Condicion.VEGANO ) )
 		{
+		println("EL usuario " + usuario.nombre + "es VEGANO")	
 		usuario.getConsultas().forEach[ 
 			if ( it.getDificultad() == Dificultad.DIFICIL ) consultasXVeganos++
 		]	

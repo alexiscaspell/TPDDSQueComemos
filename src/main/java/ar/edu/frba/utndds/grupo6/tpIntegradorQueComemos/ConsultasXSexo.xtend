@@ -11,7 +11,7 @@ class ConsultasXSexo implements Observador {
 	
 	
 	override actualizar( UsuarioPosta usuario ) {
-		println("EN ACTUALIZAR CONSULTAS X SEXO")
+		//println("EN ACTUALIZAR CONSULTAS X SEXO")
 		usuario.getConsultas().forEach[
 			if ( ! consultasXFemenino.containsKey( it.nombre )) consultasXFemenino.put( it.nombre, 0 )
 			if ( ! consultasXMasculino.containsKey( it.nombre )) consultasXMasculino.put( it.nombre, 0 )

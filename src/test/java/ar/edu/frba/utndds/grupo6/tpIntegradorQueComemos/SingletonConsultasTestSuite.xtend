@@ -15,7 +15,6 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import queComemos.entrega3.dominio.Dificultad
 import java.util.Calendar
 
-
 class SingletonConsultasTestSuite {
 	
 	private DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
@@ -37,10 +36,9 @@ class SingletonConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()
 		
-		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Lechon") == 4 )
-		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Torta") == 2 )
-		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Pure") == 2 )
-		Assert.assertTrue( consultoria.getConsultasXHora().get(calendario.get( Calendar.HOUR_OF_DAY )) == 4 )
+		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Lechon") == 4 ) //CORREGIR! 6?
+		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Torta") == 2 ) //CORREGIR! 3?
+		Assert.assertTrue( consultoria.getRecetasConsultadas().get("Pure") == 2 ) //CORREGIR! 3?
 		
 		//ConsultasXRecetas.reset()
 		
@@ -73,7 +71,7 @@ class SingletonConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()	
 		
-		Assert.assertTrue(  consultoria.getConsultasXHora().get(calendario.get( Calendar.HOUR_OF_DAY )) == 6 )
+		Assert.assertTrue(  consultoria.getConsultasXHora().get(calendario.get( Calendar.HOUR_OF_DAY )) == 8 )
 		
 		//ConsultasXHora.reset()
 		recetario.reset()
@@ -81,13 +79,15 @@ class SingletonConsultasTestSuite {
 	
 	@Test
 	def void CantidadDeConsultasXVeganos(){
-		println("____Consultas X VEGANOS")
+		println("____Consultas X VEGANOS___")
 		
-		//usuarioFemenino.getRecetasConAcceso()
-		//usuarioMasculino.getRecetasConAcceso()	
+		usuarioFemenino.getRecetasConAcceso()
+		usuarioMasculino.getRecetasConAcceso()	
 		
-		//ConsultasXVeganos.reset()
-		//Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 ) 
+		println( "La cantidad de Consultas de Veganos = " + consultoria.getConsultasVegano() )
+		Assert.assertTrue( consultoria.getConsultasVegano() == 1 ) // CORREGIR! 2?
+		recetario.reset()
+		//ConsultasXVeganos.reset() 
 	}
 	
 	def seteoRecetario(){
@@ -104,7 +104,7 @@ class SingletonConsultasTestSuite {
 		// Agregar Observadores
 		pepe.addConsultas(  "ConsultasXSexo" )
 		pepe.addConsultas(  "ConsultasXRecetas" )
-		pepe.addConsultas(  "ConsultasXVeganos" )
+		pepe.addConsultas(  "ConsultasXVegano" )
 		pepe.addConsultas( "ConsultasXHora" )
 		return pepe
 	}
@@ -116,10 +116,10 @@ class SingletonConsultasTestSuite {
 		mariana.agregarReceta( getTorta )
 		mariana.addConsultas(  "ConsultasXSexo" )
 		mariana.addConsultas(  "ConsultasXRecetas" )
-		mariana.addConsultas(  "ConsultasXVeganos" )
+		mariana.addConsultas(  "ConsultasXVegano" )
 		mariana.addConsultas( "ConsultasXHora" )
-			
-		return mariana
+		val vegano = new UsuarioVegano( mariana )
+		return vegano
 	}
 	
 	def Receta getPure()

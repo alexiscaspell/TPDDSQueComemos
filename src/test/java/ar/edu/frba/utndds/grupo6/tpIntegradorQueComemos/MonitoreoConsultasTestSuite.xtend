@@ -35,6 +35,7 @@ class MonitoreoConsultasTestSuite {
 	
 	@Test
 	def void CantidadDeConsultasTest(){
+		Recetario.getInstance().reset();
 		// Seteo del resetario para pruebas
 		println("____Consultas X CANTIDAD____")
 		seteoRecetario()
@@ -55,6 +56,7 @@ class MonitoreoConsultasTestSuite {
 		
 	@Test 
 	def void CantidadDeConsultasXSexoTest(){
+		Recetario.getInstance().reset();
 		// Seteo del resetario para pruebas
 		println("____Consultas X SEXO____")
 		seteoRecetario()
@@ -73,6 +75,7 @@ class MonitoreoConsultasTestSuite {
 	
 	@Test
 	def void CantiadDeConsultasXHora(){
+		Recetario.getInstance().reset();
 		println("____Consultas X HORA____")
 		seteoRecetario()
 	
@@ -87,6 +90,7 @@ class MonitoreoConsultasTestSuite {
 	
 	@Test
 	def void CantidadDeConsultasXVeganos(){
+		Recetario.getInstance().reset();
 		println("____Consultas X VEGANOS____")
 		seteoRecetario()
 		

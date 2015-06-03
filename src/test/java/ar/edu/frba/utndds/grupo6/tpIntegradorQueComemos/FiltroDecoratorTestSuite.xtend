@@ -76,16 +76,20 @@ class FiltroDecoratorTestSuite {
 		recetaSimple
 	}
 	
+	
 /*-------------------------------------Test FiltroNoLeGustaD----------------------------------------------------------*/
 //Caso de testeo cuando el usuario posee RecetaPure, sabiendo que el pure no le gusta.
 		
 	@Test
 	def void NoLeGustaPure()
 	{
+		Recetario.getInstance().reset()
 		val FiltroDisgusta = new FiltroPostaD();
 		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
-		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroDisgusta.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==0)			
+		usuario1.agregarReceta(getRecetaPure())
+		val recetasConAcceso = usuario1.getRecetasConAcceso();
+		val tamanio = filtroDisgusta.aplicarFiltro(recetasConAcceso, usuario1).size;
+		Assert.assertEquals(tamanio, 0);			
 	}
 	
 
@@ -94,10 +98,13 @@ class FiltroDecoratorTestSuite {
 	@Test
 	def void LeGustaLechon()
 	{
+		Recetario.getInstance().reset()
 		val FiltroDisgusta = new FiltroPostaD();
 		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
 		usuario1.agregarReceta(getRecetaLechon)
-		Assert.assertTrue(filtroDisgusta.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==1)			
+		val recetasConAcceso = usuario1.getRecetasConAcceso();
+		val tamanio = filtroDisgusta.aplicarFiltro(recetasConAcceso, usuario1).size;
+		Assert.assertEquals(tamanio, 1);			
 	}
 
 
@@ -106,11 +113,12 @@ class FiltroDecoratorTestSuite {
 	@Test
 	def void LeGustaLechonNoLeGustaPure()
 	{
+		Recetario.getInstance().reset()
 		val FiltroDisgusta = new FiltroPostaD();
 		val filtroDisgusta = new FiltroNoLeGustaD(FiltroDisgusta);
 		usuario1.agregarReceta(getRecetaLechon)
 		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroDisgusta.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==1)			
+		Assert.assertTrue(filtroDisgusta.aplicarFiltro(  usuario1.getRecetasConAcceso(),usuario1).size==1)			
 	}
 
 /*-------------------------------------Test FiltroExcesoCaloriasD---------------------------------------------------- */
@@ -120,10 +128,11 @@ class FiltroDecoratorTestSuite {
 	@Test
 	def void PurePocasCalorias()
 	{
+		Recetario.getInstance().reset()
 		val FiltroCalorias = new FiltroPostaD();
 		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
 		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroCalorias.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==1)			
+		Assert.assertTrue(filtroCalorias.aplicarFiltro(  usuario1.getRecetasConAcceso(),usuario1).size==1)			
 	}
 	
 	
@@ -132,10 +141,11 @@ class FiltroDecoratorTestSuite {
 	@Test
 	def void LechonMuchasCalorias()
 	{
+		Recetario.getInstance().reset()
 		val FiltroCalorias = new FiltroPostaD();
 		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
 		usuario1.agregarReceta(getRecetaLechon)
-		Assert.assertTrue(filtroCalorias.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==0)			
+		Assert.assertTrue(filtroCalorias.aplicarFiltro(  usuario1.getRecetasConAcceso(),usuario1).size==0)			
 	}
 
 
@@ -144,11 +154,12 @@ class FiltroDecoratorTestSuite {
 	@Test
 	def void ExcesoCaloriasPureLechon()
 	{
+		Recetario.getInstance().reset()
 		val FiltroCalorias = new FiltroPostaD();
 		val filtroCalorias = new FiltroExcesoCaloriasD(FiltroCalorias);
 		usuario1.agregarReceta(getRecetaLechon)
 		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroCalorias.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==1)			
+		Assert.assertTrue(filtroCalorias.aplicarFiltro(  usuario1.getRecetasConAcceso(),usuario1).size==1)			
 	}
 
 /*-----------------------------------Test FiltroCaroD---------------------------------------------------------------- */
@@ -157,11 +168,12 @@ class FiltroDecoratorTestSuite {
 	@Test
 	def void CaroLechonPure()
 	{
+		Recetario.getInstance().reset()
 		val FiltroCaro = new FiltroPostaD();
 		val filtroCaro = new FiltroCarosD(FiltroCaro);
 		usuario1.agregarReceta(getRecetaLechon)
 		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroCaro.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==1)			
+		Assert.assertTrue(filtroCaro.aplicarFiltro(  usuario1.getRecetasConAcceso(),usuario1).size==1)			
 	}
 	
 	
@@ -170,10 +182,11 @@ class FiltroDecoratorTestSuite {
 	@Test
 	def void PureNoEsCaro()
 	{
+		Recetario.getInstance().reset()
 		val FiltroCaro = new FiltroPostaD();
 		val filtroCaro = new FiltroCarosD(FiltroCaro);
 		usuario1.agregarReceta(getRecetaPure)
-		Assert.assertTrue(filtroCaro.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==1)			
+		Assert.assertTrue(filtroCaro.aplicarFiltro(  usuario1.getRecetasConAcceso(),usuario1).size==1)			
 	}
 	
 	
@@ -182,10 +195,11 @@ class FiltroDecoratorTestSuite {
 	@Test
 	def void LechonEsCaro()
 	{
+		Recetario.getInstance().reset()
 		val FiltroCaro = new FiltroPostaD();
 		val filtroCaro = new FiltroCarosD(FiltroCaro);
 		usuario1.agregarReceta(getRecetaLechon)
-		Assert.assertTrue(filtroCaro.aplicarFiltro(  usuario1.getRecetas(),usuario1).size==0)			
+		Assert.assertTrue(filtroCaro.aplicarFiltro(  usuario1.getRecetasConAcceso(),usuario1).size==0)			
 	}
 	
 

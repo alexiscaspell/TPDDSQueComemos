@@ -42,7 +42,7 @@ public class UsuarioPosta implements Usuario, Consumidor {
 
 	private List<Receta> recetas = new ArrayList<Receta>()
 
-	private List<Receta> Consultas = new ArrayList<Receta>()
+	private List<Receta> consultas = new ArrayList<Receta>()
 
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
@@ -119,19 +119,17 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	override getRecetasConAcceso() {
 		val recetario = Recetario.getInstance();
 		val recetas = recetario.listarTodas();
-		Consultas.clear()
+		consultas.clear()
 
 		recetas.forEach [ receta |
-			//println("En Recetario = " + receta.nombre)
 			if (receta.puedeVer(this)) {
-				//println("El usuario " + this.nombre + " puede ver " + receta.nombre)
-				Consultas.add(receta)
+				consultas.add(receta)
 			}
 		]
 
 		consultoria.actualizar( this, ConsultasSingleton )
 		Observadores.forEach[actualizar(this)]
-		return Consultas
+		return consultas
 	}
 
 	override getPeso() {
@@ -159,7 +157,7 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	}
 
 	override List<Receta> getConsultas() {
-		Consultas
+		consultas
 	}
 
 	//	------------------------------------------- Metodos -------------------------------------------
@@ -178,7 +176,7 @@ public class UsuarioPosta implements Usuario, Consumidor {
 
 	override agregarReceta(Receta receta) {
 		recetas.add(receta)
-
+		Recetario.getInstance().agregar(receta)
 	}
 
 	override comparteGrupo(Usuario usuario) {

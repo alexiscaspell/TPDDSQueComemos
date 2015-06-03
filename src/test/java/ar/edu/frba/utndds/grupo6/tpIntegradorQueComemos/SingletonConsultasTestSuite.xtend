@@ -29,6 +29,7 @@ class SingletonConsultasTestSuite {
 	
 	@Test
 	def void CantidadDeConsultasTest(){
+		Recetario.getInstance().reset();
 		// Seteo del resetario para pruebas
 		println("____Consultas X CANTIDAD____")
 		seteoRecetario()
@@ -48,6 +49,7 @@ class SingletonConsultasTestSuite {
 	@Test 
 	def void CantidadDeConsultasXSexoTest(){
 		// Seteo del resetario para pruebas
+		Recetario.getInstance().reset();
 		println("____Consultas X SEXO____")
 		seteoRecetario()
 			
@@ -65,6 +67,7 @@ class SingletonConsultasTestSuite {
 	
 	@Test
 	def void CantiadDeConsultasXHora(){
+		Recetario.getInstance().reset();
 		println("____Consultas X HORA____")
 		seteoRecetario()
 	
@@ -79,6 +82,7 @@ class SingletonConsultasTestSuite {
 	
 	@Test
 	def void CantidadDeConsultasXVeganos(){
+		Recetario.getInstance().reset();
 		println("____Consultas X VEGANOS___")
 		
 		usuarioFemenino.getRecetasConAcceso()

@@ -10,7 +10,7 @@ class ConsultasXSexo implements Observador {
 	private Map< String, Integer > consultasXMasculino = new HashMap< String, Integer >
 	
 	
-	override actualizar( UsuarioPosta usuario ) {
+	override actualizar( Usuario usuario ) {
 		//println("EN ACTUALIZAR CONSULTAS X SEXO")
 		usuario.getConsultas().forEach[
 			if ( ! consultasXFemenino.containsKey( it.nombre )) consultasXFemenino.put( it.nombre, 0 )

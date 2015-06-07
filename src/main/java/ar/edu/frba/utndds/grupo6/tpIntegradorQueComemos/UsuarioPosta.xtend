@@ -13,7 +13,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
-public class UsuarioPosta implements Usuario, Consumidor {
+public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 
 	private double altura
 
@@ -32,7 +32,7 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
-
+	
 	private ArrayList<Observador> Observadores = new ArrayList<Observador>()
 
 	@Accessors
@@ -221,6 +221,8 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	}
 
 	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
+	
+
 	override addObservador(Observador observador) {
 		Observadores.add(observador)
 	}
@@ -228,9 +230,10 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	override removeObservador(Observador observador) {
 		Observadores.remove(observador)
 	}
-
+	
 	override notificar() {
-		Observadores.forEach[actualizar(this)]
+		Observadores.forEach[actualizar( this )]
 	}
+	
 
 }

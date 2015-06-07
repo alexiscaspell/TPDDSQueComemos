@@ -7,7 +7,7 @@ class ConsultasXRecetas implements Observador {
 	
 	private Map< String, Integer > recetasConsultadas = new HashMap< String, Integer >
 	
-	override actualizar(UsuarioPosta usuario) {
+	override actualizar( Usuario usuario ) {
 		//println("EN ACTUALIZAR CONSULTAS X CANTIDAD")
 		usuario.getConsultas().forEach[
 			if ( ! recetasConsultadas.containsKey( it.nombre )) recetasConsultadas.put( it.nombre, 1 )

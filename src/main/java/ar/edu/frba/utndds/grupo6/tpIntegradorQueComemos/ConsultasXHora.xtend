@@ -10,7 +10,7 @@ class ConsultasXHora implements Observador {
 	private Calendar calendario = Calendar.getInstance();
 	
 	
-	override actualizar( UsuarioPosta usuario ) {
+	override actualizar( Usuario usuario ) {
 		
 		//println("EN ACTUALIZAR CONSULTAS X HORA ")
 		

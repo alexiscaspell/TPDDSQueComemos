@@ -63,9 +63,4 @@ public interface Usuario {
 	
 	def void notificar()
 	
-	def void addConsultas(String consulta)
-	
-	def void removeConsultas(String consulta)
-	
-	def void notificarConsultas() 
 }

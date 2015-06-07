@@ -35,8 +35,6 @@ public class UsuarioPosta implements Usuario, Consumidor {
 
 	private ArrayList<Observador> Observadores = new ArrayList<Observador>()
 
-	private ArrayList<String> ConsultasSingleton = new ArrayList<String>()
-
 	@Accessors
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
@@ -49,8 +47,6 @@ public class UsuarioPosta implements Usuario, Consumidor {
 	private List<Receta> favoritas = new ArrayList<Receta>()
 
 	private Recetario recetario
-	
-	private Consultoria consultoria = Consultoria.getInstance()
 
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo, Date fechaNacimiento) {
 		this.altura = altura
@@ -127,7 +123,6 @@ public class UsuarioPosta implements Usuario, Consumidor {
 			}
 		]
 
-		consultoria.actualizar( this, ConsultasSingleton )
 		Observadores.forEach[actualizar(this)]
 		return consultas
 	}
@@ -230,25 +225,12 @@ public class UsuarioPosta implements Usuario, Consumidor {
 		Observadores.add(observador)
 	}
 
-	override addConsultas(String consulta) {
-		ConsultasSingleton.add(consulta)
-	}
-
 	override removeObservador(Observador observador) {
 		Observadores.remove(observador)
 	}
 
-	override removeConsultas(String consulta) {
-		ConsultasSingleton.remove(consulta)
-	}
-
 	override notificar() {
 		Observadores.forEach[actualizar(this)]
-	}
-
-	override notificarConsultas() {
-		consultoria.actualizar( this, ConsultasSingleton )
-
 	}
 
 }

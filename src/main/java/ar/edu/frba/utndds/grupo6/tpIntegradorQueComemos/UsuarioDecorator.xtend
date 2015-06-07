@@ -1,16 +1,10 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import org.eclipse.xtend.lib.annotations.Accessors
-
-import java.util.ArrayList
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
-import java.util.Map
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import queComemos.entrega3.dominio.Dificultad
+import java.util.List
 
 @Accessors
-public abstract class UsuarioDecorator implements Usuario, Consumidor {
+public abstract class UsuarioDecorator implements SujetoObservado ,Usuario, Consumidor {
 	
 	Usuario decorado
 	
@@ -21,27 +15,7 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 		recetario = Recetario.getInstance()
 		decorado = usuario
 	}
-	
-	override modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
-		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada) {
-		decorado.modificarReceta( nombreReceta, nuevo_nombre, ingredientes,condimentos, explicacion, dificultad, temporada  )
-	}	
-	
-	override estadoRutina(){
-		decorado.estadoRutina()
-	}	
-	
-	override agregarReceta(Receta receta){
-		decorado.agregarReceta( receta )
-	}
-	
-	//Getters
-	
-	override getReceta(String nombre){
-		decorado.getReceta(nombre)
-	}
-	
+	//	------------------------------------------- Getters -------------------------------------------
 	override getCondicion(){
 		decorado.getCondicion()
 	}
@@ -58,14 +32,6 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 		decorado.getConsultas()
 	}
 	
-	override getRecetas(){
-		decorado.getRecetas()
-	}
-	
-	override getAltura(){
-		decorado.getAltura()
-	}
-	
 	override getPlatosQueNoLeGustan(){
 		decorado.getPlatosQueNoLeGustan
 	}
@@ -78,22 +44,19 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 		decorado.getSexo()
 	}
 	
-	override addObservador( Observador observador ){
-		decorado.addObservador( observador )
-	}
-	
-	override removeObservador( Observador observador ){
-		decorado.removeObservador( observador )
-	}
-	
-	override notificar(){
-		decorado.notificar()
-	}
-	
 	override getRutina(){
 		decorado.getRutina()		
 	}	
 	
+	override List<Receta> getRecetas(){
+		decorado.getRecetas()
+	}
+	
+	override List<Receta> getRecetasConAcceso(){
+		decorado.getRecetasConAcceso()
+	} 	
+	
+	//	------------------------------------------- Metodos -------------------------------------------
 	override usuarioValido(){
 		decorado.usuarioValido()
 	}
@@ -102,30 +65,35 @@ public abstract class UsuarioDecorator implements Usuario, Consumidor {
 		decorado.comparteGrupo(usuario)
 	}
 	
-	override marcarComoFavorita(Receta receta)
-	{
-		decorado.marcarComoFavorita(receta)
-	}
-	
 	override puedeComer(Receta receta) 
 	{
-      return (cumpleCondicion(receta) &&decorado.puedeComer(receta))
+      return ( cumpleCondicion(receta) && decorado.puedeComer(receta) )
     }
     
     def boolean cumpleCondicion(Receta receta)
     
     override sePuedeSugerir(Receta receta)
     {  	
-    	return(puedeComer(receta)&&decorado.sePuedeSugerir(receta))
+    	return( puedeComer(receta)&& decorado.sePuedeSugerir( receta ) )
     }
     
-    override getRecetasConAcceso() 
-	{
-		decorado.getRecetasConAcceso()
-	}
-	
-	override agregarGrupo(Grupo grupo)
+   override agregarGrupo(Grupo grupo)
 	{
 		decorado.agregarGrupo(grupo)
 	}
+	
+	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
+	
+	
+	override addObservador(Observador observador) {
+		decorado.addObservador( observador )
+	}
+
+	override removeObservador(Observador observador) {
+		decorado.removeObservador( observador )
+	}
+	
+	override notificar() {
+		decorado.notificar()
+	} 
 }

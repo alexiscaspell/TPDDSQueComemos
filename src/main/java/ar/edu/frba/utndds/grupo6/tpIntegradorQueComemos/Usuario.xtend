@@ -1,66 +1,52 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
-import java.util.ArrayList
+
 import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import java.util.Map
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 
-public interface Usuario {	
+public interface Usuario {
 
-	//	------------------------------------------- Getters -------------------------------------------	
-	def Receta getReceta(String nombre)
-	
-	def double getPeso()
+	//	------------------------------------------- Getters -------------------------------------------
+	def List<Receta> getConsultas()
 	
 	def Sexo getSexo()
 	
-	def String getNombre()
-	
-	def double getAltura()
-	
-	def Rutina getRutina()
-	
-	def List<Receta> getRecetas()
-	
-	def List<Ingrediente> getPreferenciasAlimenticias()
-	
 	def List<String> getPlatosQueNoLeGustan()
 	
-	def List<Receta> getConsultas()
+	def String getNombre()
 	
 	def List<Condicion> getCondicion()
 	
-	def List<Receta>getRecetasConAcceso() 
-//	------------------------------------------- Metodos -------------------------------------------
-	def void modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
-		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada)
+	def Rutina getRutina()
 	
-	def boolean estadoRutina()	
+	def double getPeso()
 	
-	def boolean usuarioValido()		
+	def List<Ingrediente> getPreferenciasAlimenticias()
 	
-	def void agregarReceta(Receta receta)	
+	def List<Receta> getRecetas()
 	
-	def boolean comparteGrupo(Usuario usuario)
+	def List<Receta> getRecetasConAcceso() 	
+	//	------------------------------------------- Metodos -------------------------------------------
+	def void agregarGrupo(Grupo grupo)
 	
 	def boolean puedeComer(Receta receta)
 	
-	def boolean sePuedeSugerir(Receta receta)
+	def boolean comparteGrupo(Usuario usuario)
 	
-	def void marcarComoFavorita(Receta receta)
+	def boolean estadoRutina()
 	
-	def void agregarGrupo(Grupo grupo)
-		// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
-	def void addObservador( Observador observador )
+	def boolean usuarioValido()
 	
-	def void removeObservador( Observador observador )
+	def boolean sePuedeSugerir(Receta receta) 
 	
-	def void notificar()
+	// -------------------------------------------- Metodos Observer y Alternativa---------------------
+	
+	def void addObservador(Observador observador) 
+
+	def void removeObservador(Observador observador) 
+	
+	def void notificar() 
 	
 }

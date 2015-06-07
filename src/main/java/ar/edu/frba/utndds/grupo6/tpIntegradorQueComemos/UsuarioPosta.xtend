@@ -92,7 +92,7 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 	}
 
 	//	------------------------------------------- Getters -------------------------------------------
-	override getReceta(String nombre) {
+	def getReceta(String nombre) {
 		recetario.getReceta(nombre)
 	}
 
@@ -131,7 +131,7 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 		peso
 	}
 
-	override getAltura() {
+	def getAltura() {
 		altura
 	}
 
@@ -156,7 +156,7 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 	}
 
 	//	------------------------------------------- Metodos -------------------------------------------
-	override modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
+	def modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
 		ArrayList<Temporada> temporada) {
 
@@ -169,7 +169,7 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 		receta.setTemporadas(temporada)
 	}
 
-	override agregarReceta(Receta receta) {
+	def agregarReceta(Receta receta) {
 		recetas.add(receta)
 		Recetario.getInstance().agregar(receta)
 	}
@@ -190,7 +190,7 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 		!tieneIngredientesFeos(receta.getIngredientes())
 	}
 
-	override marcarComoFavorita(Receta receta) {
+	def marcarComoFavorita(Receta receta) {
 		if (receta.puedeVer(this)) {
 			favoritas.add(receta)
 		}

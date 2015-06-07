@@ -28,7 +28,7 @@ public class Grupo implements Consumidor {
 	}
 	
 	def puedeComer(Receta receta) {		
-		integrantes.forall[integrante|integrante.puedeComer(receta)]
+		integrantes.forall[ integrante | integrante.puedeComer( receta ) ]
 	}
 	
 	def agregar(Usuario usuario)

@@ -25,7 +25,7 @@ class UsuarioVegano extends UsuarioDecorator
     }	
     
     override notificar(){
-    	decorado.getObservadores().forEach[actualizar( this )]
+    	getObservadores().forEach[actualizar( this )]
     }
     
     override getRecetasConAcceso() {

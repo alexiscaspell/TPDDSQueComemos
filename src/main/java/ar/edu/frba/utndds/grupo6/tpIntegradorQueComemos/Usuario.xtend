@@ -44,12 +44,4 @@ public interface Usuario {
 	
 	def boolean sePuedeSugerir(Receta receta) 
 	
-	// -------------------------------------------- Metodos Observer y Alternativa---------------------
-	
-	def void addObservador(Observador observador) 
-
-	def void removeObservador(Observador observador) 
-	
-	def void notificar() 
-	
 }

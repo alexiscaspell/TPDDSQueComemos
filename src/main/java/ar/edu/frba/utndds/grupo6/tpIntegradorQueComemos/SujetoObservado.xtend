@@ -1,10 +1,29 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-interface SujetoObservado  {
+import java.util.ArrayList
+
+abstract class SujetoObservado  {
+	
+	private ArrayList<Observador> Observadores = new ArrayList<Observador>()	
 		
-	def void addObservador(Observador observador);
-	def void removeObservador(Observador observador);
-	def void notificar();
+		
+	def addObservador(Observador observador) {
+		Observadores.add(observador)
+	}
+
+	def removeObservador(Observador observador) {
+		Observadores.remove(observador)
+	}
+	
+	def getObservadores(){
+		Observadores
+	}
+	
+	def void notificar()
+	
+	
+	
+	
 	
 		
 }

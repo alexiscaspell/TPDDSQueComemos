@@ -11,8 +11,7 @@ class ConsultasXVeganos implements Observador {
 	 
 	
 	override actualizar(Usuario usuario) {		
-		if ( usuario.getClass().getName() == "ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano" ){
-			println("EL usuario " + usuario.nombre + "es VEGANO")	
+		if ( usuario.getClass().getName() == "ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano" ){	
 			usuario.getConsultas().forEach[ 
 			if ( it.getDificultad() == Dificultad.DIFICIL ) consultasXVeganos++
 			]

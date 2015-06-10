@@ -13,7 +13,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
-public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
+public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
 
 	private double altura
 
@@ -33,7 +33,7 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 	
-	private ArrayList<Observador> Observadores = new ArrayList<Observador>()
+	
 
 	@Accessors
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
@@ -142,10 +142,6 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 	override getCondicion() {
 		condiciones
 	}
-	
-	override getObservadores(){
-		Observadores
-	}
 
 	override List<Ingrediente> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias
@@ -223,21 +219,13 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 	override usuarioValido() {
 		return (cumpleCamposObligatorios() && nombreCorrecto())
 	}
-
+	
+	
+	
 	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
 	
-
-	override addObservador(Observador observador) {
-		Observadores.add(observador)
+	override notificar(){
+		getObservadores().forEach[ actualizar( this ) ]
 	}
-
-	override removeObservador(Observador observador) {
-		Observadores.remove(observador)
-	}
-	
-	override notificar() {
-		Observadores.forEach[actualizar( this )]
-	}
-	
 
 }

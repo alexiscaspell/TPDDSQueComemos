@@ -37,12 +37,11 @@ class MonitoreoConsultasTestSuite {
 	def void CantidadDeConsultasTest(){
 		Recetario.getInstance().reset();
 		// Seteo del resetario para pruebas
-		println("____Consultas X CANTIDAD____")
 		seteoRecetario()
 			
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()
-		
+						
 		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Lechon") == 2 )
 		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Torta") == 1 )
 		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Pure") == 1 )
@@ -58,11 +57,12 @@ class MonitoreoConsultasTestSuite {
 	def void CantidadDeConsultasXSexoTest(){
 		Recetario.getInstance().reset();
 		// Seteo del resetario para pruebas
-		println("____Consultas X SEXO____")
 		seteoRecetario()
 			
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()
+		
+		
 		
 		Assert.assertTrue(  ConsultasXSexo.getEstadisticaFemenino().get("Lechon") == 1 )
 		Assert.assertTrue(  ConsultasXSexo.getEstadisticaFemenino().get("Torta") == 1 )
@@ -76,7 +76,6 @@ class MonitoreoConsultasTestSuite {
 	@Test
 	def void CantiadDeConsultasXHora(){
 		Recetario.getInstance().reset();
-		println("____Consultas X HORA____")
 		seteoRecetario()
 	
 		usuarioFemenino.getRecetasConAcceso()
@@ -91,13 +90,11 @@ class MonitoreoConsultasTestSuite {
 	@Test
 	def void CantidadDeConsultasXVeganos(){
 		Recetario.getInstance().reset();
-		println("____Consultas X VEGANOS____")
 		seteoRecetario()
 		
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()	
 		
-		println("La cantidad de veganos que consultaron es = " + ConsultasXVeganos.getEstadistica )
 		Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 )
 		//ConsultasXVeganos.reset()
 		recetario.reset()
@@ -128,11 +125,10 @@ class MonitoreoConsultasTestSuite {
 	
 		// Agregar Recetas que conoce
 		mariana.agregarReceta( getTorta )
-		mariana.addObservador(  ConsultasXSexo )
-		mariana.addObservador(  ConsultasXRecetas )
-		
-		mariana.addObservador(  ConsultasXHora )
 		val vegano = new UsuarioVegano( mariana )
+		vegano.addObservador(  ConsultasXSexo )
+		vegano.addObservador(  ConsultasXRecetas )
+		vegano.addObservador(  ConsultasXHora )
 		vegano.addObservador(  ConsultasXVeganos )
 			
 		return vegano

@@ -4,7 +4,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 
 @Accessors
-public abstract class UsuarioDecorator implements SujetoObservado ,Usuario, Consumidor {
+public abstract class UsuarioDecorator  extends SujetoObservado implements Usuario, Consumidor {
 	
 	Usuario decorado
 	
@@ -52,10 +52,6 @@ public abstract class UsuarioDecorator implements SujetoObservado ,Usuario, Cons
 		decorado.getRecetas()
 	}
 	
-	override getObservadores(){
-		decorado.getObservadores()
-	} 	
-	
 	//	------------------------------------------- Metodos -------------------------------------------
 	override usuarioValido(){
 		decorado.usuarioValido()
@@ -83,14 +79,5 @@ public abstract class UsuarioDecorator implements SujetoObservado ,Usuario, Cons
 	}
 	
 	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
-	
-	
-	override addObservador(Observador observador) {
-		decorado.addObservador( observador )
-	}
-
-	override removeObservador(Observador observador) {
-		decorado.removeObservador( observador )
-	}
 	
 }

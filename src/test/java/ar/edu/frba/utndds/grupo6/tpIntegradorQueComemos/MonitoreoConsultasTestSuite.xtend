@@ -97,7 +97,7 @@ class MonitoreoConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()	
 		
-		
+		println("La cantidad de veganos que consultaron es = " + ConsultasXVeganos.getEstadistica )
 		Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 )
 		//ConsultasXVeganos.reset()
 		recetario.reset()

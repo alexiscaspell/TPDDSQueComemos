@@ -28,4 +28,23 @@ public class UsuarioDiabetico extends UsuarioDecorator {
     {
         return ((receta.cantidadDeAzucar() == 0 ))
     }
+    
+     override notificar(){
+    	decorado.getObservadores().forEach[actualizar( this )]
+    }
+    
+    override getRecetasConAcceso() {
+    	val recetario = Recetario.getInstance();
+		val recetas = recetario.listarTodas();
+		consultas.clear()
+
+		recetas.forEach [ receta |
+			if ( receta.puedeVer(this)) {
+				consultas.add(receta)
+			}
+		]
+
+		notificar()
+		return consultas
+    }
 }

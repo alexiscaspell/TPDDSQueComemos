@@ -26,4 +26,23 @@ class UsuarioHipertenso extends UsuarioDecorator
 		return(!receta.condimentos.containsKey(Condimento.SAL))
 	}
 	
+	 override notificar(){
+    	decorado.getObservadores().forEach[actualizar( this )]
+    }
+    
+    override getRecetasConAcceso() {
+    	val recetario = Recetario.getInstance();
+		val recetas = recetario.listarTodas();
+		consultas.clear()
+
+		recetas.forEach [ receta |
+			if ( receta.puedeVer(this)) {
+				consultas.add(receta)
+			}
+		]
+
+		notificar()
+		return consultas
+    }
+	
 }

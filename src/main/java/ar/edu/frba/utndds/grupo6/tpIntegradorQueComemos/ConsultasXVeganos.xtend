@@ -10,17 +10,13 @@ class ConsultasXVeganos implements Observador {
 	private int consultasXVeganos = 0
 	 
 	
-	override actualizar(Usuario usuario) {
-		println("EN ACTUALIZAR CONSULTAS X VEGANOS " + usuario.getClass().getName() )
-		
-		/*
-		if ( usuario.getCondicion().contains( Condicion.VEGANO ) )
-		{
-		println("EL usuario " + usuario.nombre + "es VEGANO")	
-		usuario.getConsultas().forEach[ 
+	override actualizar(Usuario usuario) {		
+		if ( usuario.getClass().getName() == "ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano" ){
+			println("EL usuario " + usuario.nombre + "es VEGANO")	
+			usuario.getConsultas().forEach[ 
 			if ( it.getDificultad() == Dificultad.DIFICIL ) consultasXVeganos++
-		]	
-		} */		    
+			]
+		}
 	}
 	
 	def int getEstadistica(){

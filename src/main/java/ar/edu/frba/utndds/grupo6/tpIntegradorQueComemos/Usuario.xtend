@@ -5,6 +5,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import java.util.ArrayList
 
 public interface Usuario {
 
@@ -22,6 +23,8 @@ public interface Usuario {
 	def Rutina getRutina()
 	
 	def double getPeso()
+	
+	def ArrayList<Observador> getObservadores()
 	
 	def List<Ingrediente> getPreferenciasAlimenticias()
 	

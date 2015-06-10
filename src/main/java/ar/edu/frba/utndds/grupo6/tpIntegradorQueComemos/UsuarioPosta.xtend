@@ -123,7 +123,7 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 			}
 		]
 
-		Observadores.forEach[actualizar(this)]
+		notificar()
 		return consultas
 	}
 
@@ -141,6 +141,10 @@ public class UsuarioPosta implements Usuario, Consumidor, SujetoObservado {
 	
 	override getCondicion() {
 		condiciones
+	}
+	
+	override getObservadores(){
+		Observadores
 	}
 
 	override List<Ingrediente> getPreferenciasAlimenticias() {

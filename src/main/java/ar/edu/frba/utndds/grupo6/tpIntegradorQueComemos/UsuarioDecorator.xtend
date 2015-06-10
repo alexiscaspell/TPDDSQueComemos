@@ -52,8 +52,8 @@ public abstract class UsuarioDecorator implements SujetoObservado ,Usuario, Cons
 		decorado.getRecetas()
 	}
 	
-	override List<Receta> getRecetasConAcceso(){
-		decorado.getRecetasConAcceso()
+	override getObservadores(){
+		decorado.getObservadores()
 	} 	
 	
 	//	------------------------------------------- Metodos -------------------------------------------
@@ -93,7 +93,4 @@ public abstract class UsuarioDecorator implements SujetoObservado ,Usuario, Cons
 		decorado.removeObservador( observador )
 	}
 	
-	override notificar() {
-		decorado.notificar()
-	} 
 }

@@ -13,12 +13,17 @@ import queComemos.entrega3.dominio.Dificultad
 
 public class Receta implements IReceta {
 
-	
 	@Accessors
 	private Usuario usuarioCreador
 	
 	@Accessors
 	private String nombre
+	
+	@Accessors
+	private int anio
+	
+	@Accessors
+	private int tiempoPreparacion
 	
 	@Accessors
 	private Dificultad dificultad
@@ -40,13 +45,7 @@ public class Receta implements IReceta {
 	
 	@Accessors
 	private String explicacion
-	
-		//@Override
-	//override hashCode(){
 		
-		//return nombre.length();
-	//}
-	
 	private ArrayList<IReceta> subRecetas;
 	
 	new(Usuario usuario, String nombre, Map<Ingrediente, Integer> ingredientes, 
@@ -63,6 +62,8 @@ public class Receta implements IReceta {
 		this.temporadas = temporadas
 		this.subRecetas = new ArrayList<IReceta>()
 	}
+	
+	new(){}
 	
 	override validar() 
 	{

@@ -13,6 +13,7 @@ import java.util.ArrayList
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
+import org.junit.Before
 
 class UsuarioTestSuite {
 
@@ -22,6 +23,12 @@ class UsuarioTestSuite {
 	
 	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
 	Date fecha = format.parse("01-04-1970")
+	
+	@Before
+	def void SetUp()
+	{
+		Recetario.getInstance().reset();
+	}
 
 	@Test
 	def void unTipoAlto() {
@@ -225,7 +232,7 @@ class UsuarioTestSuite {
 		
 		recetario.agregar(getReceta(usuario, "Pure"))
 		
-		Assert.assertEquals(usuario.getRecetasConAcceso().size, 1)
+		Assert.assertEquals(usuario.getRecetasConAcceso().size, 13)
 	}
 	
 	@Test
@@ -240,7 +247,7 @@ class UsuarioTestSuite {
 		val recetario = Recetario.getInstance()
 		recetario.agregar(getReceta(pepe, "Receta1"))
 		
-		Assert.assertEquals(usuario.getRecetasConAcceso().size, 1)
+		Assert.assertEquals(usuario.getRecetasConAcceso().size, 13)
 	}
 	
 	private def Receta getRecetaPureConSal()

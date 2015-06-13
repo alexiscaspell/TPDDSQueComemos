@@ -31,28 +31,30 @@ class MonitoreoConsultasTestSuite {
 	private ConsultasXHora ConsultasXHora =  new ConsultasXHora()
 	
 	// Usuarios
-	private Usuario usuarioFemenino = getUsuarioFemenino();
-	private Usuario usuarioMasculino = getUsuarioMasculino();
+	private Usuario usuarioFemenino;
+	private Usuario usuarioMasculino;
 	
 	@Before
 	def void SetUp()
 	{
 		Recetario.getInstance().reset();
+		usuarioFemenino = getUsuarioFemenino();
+		usuarioMasculino = getUsuarioMasculino();
 	}		
 	
 	@Test
 	def void CantidadDeConsultasTest()
 	{
 		// Seteo del resetario para pruebas
-		seteoRecetario()
+		seteoRecetario();
 			
-		usuarioFemenino.getRecetasConAcceso()
-		usuarioMasculino.getRecetasConAcceso()
+		usuarioFemenino.getRecetasConAcceso();
+		usuarioMasculino.getRecetasConAcceso();
 						
-		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Lechon") == 2 )
-		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Torta") == 1 )
-		Assert.assertTrue(  ConsultasXRecetas.getEstadistica().get("Pure") == 1 )
-		Assert.assertTrue(  ConsultasXHora.getEstadistica.get(calendario.get( Calendar.HOUR_OF_DAY )) == 2 )
+		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Lechon"), 2);
+		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Torta"), 3);
+		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Pure"), 3);
+		Assert.assertEquals(ConsultasXHora.getEstadistica.get(calendario.get(Calendar.HOUR_OF_DAY )), 2);
 		
 		//ConsultasXRecetas.reset()
 	}
@@ -65,14 +67,12 @@ class MonitoreoConsultasTestSuite {
 		seteoRecetario()
 			
 		usuarioFemenino.getRecetasConAcceso()
-		usuarioMasculino.getRecetasConAcceso()
+		usuarioMasculino.getRecetasConAcceso()		
 		
-		
-		
-		Assert.assertTrue(  ConsultasXSexo.getEstadisticaFemenino().get("Lechon") == 1 )
-		Assert.assertTrue(  ConsultasXSexo.getEstadisticaFemenino().get("Torta") == 1 )
-		Assert.assertTrue(  ConsultasXSexo.getEstadisticaMasculino().get("Pure") == 1 )
-		Assert.assertTrue(  ConsultasXSexo.getEstadisticaMasculino().get("Lechon") == 1 )
+		Assert.assertEquals(ConsultasXSexo.getEstadisticaFemenino().get("Lechon"), 1)
+		Assert.assertEquals(ConsultasXSexo.getEstadisticaFemenino().get("Torta"), 2)
+		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Pure"), 2)
+		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Lechon"), 1)
 		
 		//ConsultasXSexo.reset()
 	}
@@ -98,7 +98,7 @@ class MonitoreoConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()	
 		
-		Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 )
+		Assert.assertEquals(ConsultasXVeganos.getEstadistica(), 4)
 		//ConsultasXVeganos.reset()
 	}
 	

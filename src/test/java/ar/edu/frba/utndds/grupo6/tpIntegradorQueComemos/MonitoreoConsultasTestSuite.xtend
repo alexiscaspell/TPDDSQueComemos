@@ -2,6 +2,7 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import org.junit.Test
 import org.junit.Assert
+import org.junit.Before
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.text.DateFormat
 import java.util.Date
@@ -31,11 +32,17 @@ class MonitoreoConsultasTestSuite {
 	
 	// Usuarios
 	private Usuario usuarioFemenino = getUsuarioFemenino();
-	private Usuario usuarioMasculino = getUsuarioMasculino();		
+	private Usuario usuarioMasculino = getUsuarioMasculino();
+	
+	@Before
+	def void SetUp()
+	{
+		Recetario.getInstance().reset();
+	}		
 	
 	@Test
-	def void CantidadDeConsultasTest(){
-		Recetario.getInstance().reset();
+	def void CantidadDeConsultasTest()
+	{
 		// Seteo del resetario para pruebas
 		seteoRecetario()
 			
@@ -48,14 +55,12 @@ class MonitoreoConsultasTestSuite {
 		Assert.assertTrue(  ConsultasXHora.getEstadistica.get(calendario.get( Calendar.HOUR_OF_DAY )) == 2 )
 		
 		//ConsultasXRecetas.reset()
-		
-		recetario.reset()
-		}
+	}
 		
 		
 	@Test 
-	def void CantidadDeConsultasXSexoTest(){
-		Recetario.getInstance().reset();
+	def void CantidadDeConsultasXSexoTest()
+	{
 		// Seteo del resetario para pruebas
 		seteoRecetario()
 			
@@ -70,12 +75,11 @@ class MonitoreoConsultasTestSuite {
 		Assert.assertTrue(  ConsultasXSexo.getEstadisticaMasculino().get("Lechon") == 1 )
 		
 		//ConsultasXSexo.reset()
-		recetario.reset()
 	}
 	
 	@Test
-	def void CantiadDeConsultasXHora(){
-		Recetario.getInstance().reset();
+	def void CantiadDeConsultasXHora()
+	{
 		seteoRecetario()
 	
 		usuarioFemenino.getRecetasConAcceso()
@@ -84,12 +88,11 @@ class MonitoreoConsultasTestSuite {
 		Assert.assertTrue(  ConsultasXHora.getEstadistica.get(calendario.get( Calendar.HOUR_OF_DAY )) == 2 )
 		
 		//ConsultasXHora.reset()
-		recetario.reset()
 	}
 	
 	@Test
-	def void CantidadDeConsultasXVeganos(){
-		Recetario.getInstance().reset();
+	def void CantidadDeConsultasXVeganos()
+	{
 		seteoRecetario()
 		
 		usuarioFemenino.getRecetasConAcceso()
@@ -97,10 +100,7 @@ class MonitoreoConsultasTestSuite {
 		
 		Assert.assertTrue( ConsultasXVeganos.getEstadistica == 1 )
 		//ConsultasXVeganos.reset()
-		recetario.reset()
-		 
 	}
-		
 	
 	def seteoRecetario(){
 		recetario.agregar( getPure )

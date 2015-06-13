@@ -124,6 +124,7 @@ class GrupoTestSuite {
 		
 		Assert.assertTrue(grupoDePruebas.puedeComer(pure))				
 	}
+	
 	 @Test
 	def void sePuedeSugerirAGrupoDePruebaPureConAzucarYSinSal()
 	{
@@ -132,7 +133,8 @@ class GrupoTestSuite {
 		
 		Assert.assertTrue(grupoDePruebas.puedeComer(pure))				
 	}
-		 @Test
+	
+ 	@Test
 	def void noSePuedeSugerirAGrupoDePruebaMilangaXNoSerFavorita()
 	{
 		val grupoDePruebas = getGrupoDePrueba2()			
@@ -140,15 +142,17 @@ class GrupoTestSuite {
 		
 		Assert.assertFalse(grupoDePruebas.sePuedeSugerir(milanga))				
 	}
-	 @Test
-		def void noSePuedeSugerirAGrupoDePruebaMilangaXNoPoderSerComida()
+	
+ 	@Test
+	def void noSePuedeSugerirAGrupoDePruebaMilangaXNoPoderSerComida()
 	{
 		val grupoDePruebas = getGrupoDePrueba()			
-		val milanga =recetaMilanesas
+		val milanga = recetaMilanesas
 		
 		Assert.assertFalse(grupoDePruebas.sePuedeSugerir(milanga))				
 	}
-		@Test
+	
+	@Test
 	def void esPreferidaEnGrupoDePruebaPureConAzucarYSinSal()
 	{
 		val grupoDePruebas = getGrupoDePrueba()			

@@ -22,6 +22,7 @@ public class RecetasExternasTestSuite {
 		repo = new RepoRecetas();
 		gson = new Gson();
 		adapter = new RecetaAdapter();
+		Recetario.getInstance().reset();
 	}
 	
 	//El RepoRecetas devuelve 12 Recetas en forma JSON	
@@ -35,6 +36,13 @@ public class RecetasExternasTestSuite {
 		(new JsonParser().parse(recetas) as JsonArray).forEach[x | 
 			val recetaGson = gson.fromJson(x, queComemos.entrega3.dominio.Receta);
 			listRecetas.add(recetaGson);	
+		]
+		
+		listRecetas.forEach[x |
+			println(x.nombre)
+			x.ingredientes.forEach[y|
+				println("    " + y);
+			]
 		]
 		
 		Assert.assertEquals(listRecetas.size, 12);		
@@ -58,5 +66,15 @@ public class RecetasExternasTestSuite {
 		]
 		
 		Assert.assertEquals(listRecetas.size, recetasAdaptadas.size);
+	}
+	
+	@Test
+	def void ObtencionDeRecetasExternasDelRecetario()
+	{
+		val recetario = Recetario.getInstance();
+		
+		val recetasExternas = recetario.getRecetasExternas();
+		
+		Assert.assertEquals(recetasExternas.size, 12);
 	}
 }

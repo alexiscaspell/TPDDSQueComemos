@@ -3,10 +3,18 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.ArrayList
 import java.util.List
 import queComemos.entrega3.repositorio.RepoRecetas
+import queComemos.entrega3.repositorio.BusquedaRecetas
+import com.google.gson.JsonParser
+import com.google.gson.JsonArray
+import com.google.gson.Gson
 
 public class Recetario {
 	
 	private RepoRecetas repoRecetas = new RepoRecetas();
+	
+	private Gson gson = new Gson();
+	
+	private RecetaAdapter adapter = new RecetaAdapter();
 	
 	private ArrayList<Receta> recetas;
 	
@@ -41,6 +49,7 @@ public class Recetario {
 	
 	def List<Receta> listarTodas()
 	{
+		recetas.addAll(getRecetasExternas());
 		recetas;
 	}
 
@@ -53,4 +62,22 @@ public class Recetario {
 		recetas.clear()
 	}
 	
+	def List<Receta> getRecetasExternas()
+	{
+		val recetasJson = repoRecetas.getRecetas(new BusquedaRecetas());
+		
+		val listRecetasExternas = new ArrayList<queComemos.entrega3.dominio.Receta>();
+		
+		(new JsonParser().parse(recetasJson) as JsonArray).forEach[x | 
+			val recetaGson = gson.fromJson(x, queComemos.entrega3.dominio.Receta);
+			listRecetasExternas.add(recetaGson);]
+		
+		val recetasAdaptadas = new ArrayList<Receta>();
+		
+		listRecetasExternas.forEach[x|
+			recetasAdaptadas.add(adapter.getReceta(x));
+		]
+		
+		recetasAdaptadas.filter[x| !recetas.contains(x)].toList() as ArrayList<Receta>;
+	}
 }

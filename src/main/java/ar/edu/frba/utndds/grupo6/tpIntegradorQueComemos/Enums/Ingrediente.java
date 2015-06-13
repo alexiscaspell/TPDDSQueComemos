@@ -208,6 +208,534 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
+	},
+	LECHUGA
+	{
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	CROUTONS 
+	{
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	PARMESANO
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	MANZANA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return true;
+		}
+	},	
+	NUECES
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	LIMON
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return true;
+		}
+	},	
+	BERBERECHOS
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	AJO
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	MEJILLONES
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	TOMATE
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return true;
+		}
+	},	
+	LANGOSTINOS
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	ZANAHORIA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	CALABAZA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	ACEITE
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	BIFE_ANGOSTO
+ {
+		@Override
+		public boolean contieneCarne() {
+			return true;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	TOMILLO
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	ALBAHACA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},	
+	MOZZARELLA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	TAPA_DE_PANQUEQUE
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	RICOTA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	ACELGA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	PURE_DE_TOMATE
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	ARROZ_YAMANI
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	ALGA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	PALTA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	WHISKY
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	BOURBON
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	GINEBRA
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return true;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	LECHE
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	HELADO_CHOCOLATE
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+	},
+	HELADO_FRITULLA
+	
+ {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
 	};
 	
 	public abstract boolean contieneCarne();

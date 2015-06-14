@@ -31,9 +31,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
-	private List<String> platosQueNoLeGustan = new ArrayList<String>()
-	
-	
+	private List<String> platosQueNoLeGustan = new ArrayList<String>()	
 
 	@Accessors
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
@@ -183,7 +181,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	public def boolean tieneIngredientesFeos(Map<Ingrediente, Integer> ingredientes) {
-		ingredientesFeos.forall[ingredienteFeo|ingredientes.keySet.contains(ingredienteFeo)]
+		ingredientesFeos.exists[ingredienteFeo|ingredientes.keySet.contains(ingredienteFeo)]
 	}
 
 	override sePuedeSugerir(Receta receta) {
@@ -226,6 +224,10 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	
 	override notificar(){
 		getObservadores().forEach[ actualizar( this ) ]
+	}
+	
+	override esVegano() {
+		return false;
 	}
 
 }

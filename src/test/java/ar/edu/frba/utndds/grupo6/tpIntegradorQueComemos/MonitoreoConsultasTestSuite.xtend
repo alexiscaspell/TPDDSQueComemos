@@ -99,7 +99,6 @@ class MonitoreoConsultasTestSuite {
 		usuarioMasculino.getRecetasConAcceso()	
 		
 		Assert.assertEquals(ConsultasXVeganos.getEstadistica(), 4)
-		//ConsultasXVeganos.reset()
 	}
 	
 	def seteoRecetario(){

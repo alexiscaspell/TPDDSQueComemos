@@ -42,6 +42,8 @@ public interface Usuario {
 	
 	def boolean usuarioValido()
 	
-	def boolean sePuedeSugerir(Receta receta) 
+	def boolean sePuedeSugerir(Receta receta)
+	
+	def boolean esVegano()
 	
 }

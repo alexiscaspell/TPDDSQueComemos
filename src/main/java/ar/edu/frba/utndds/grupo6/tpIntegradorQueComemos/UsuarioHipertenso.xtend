@@ -44,5 +44,9 @@ class UsuarioHipertenso extends UsuarioDecorator
 		notificar()
 		return consultas
     }
+				
+	override esVegano() {
+		return false;
+	}
 	
 }

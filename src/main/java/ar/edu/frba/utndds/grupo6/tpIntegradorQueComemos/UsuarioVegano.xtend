@@ -42,5 +42,9 @@ class UsuarioVegano extends UsuarioDecorator
 		notificar()
 		return consultas
     }
+				
+	override esVegano() {
+		return true;
+	}
     
 }

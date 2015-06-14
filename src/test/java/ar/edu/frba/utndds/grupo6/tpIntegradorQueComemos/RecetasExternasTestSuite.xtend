@@ -35,15 +35,7 @@ public class RecetasExternasTestSuite {
 		
 		(new JsonParser().parse(recetas) as JsonArray).forEach[x | 
 			val recetaGson = gson.fromJson(x, queComemos.entrega3.dominio.Receta);
-			listRecetas.add(recetaGson);	
-		]
-		
-		listRecetas.forEach[x |
-			println(x.nombre)
-			x.ingredientes.forEach[y|
-				println("    " + y);
-			]
-		]
+			listRecetas.add(recetaGson);]
 		
 		Assert.assertEquals(listRecetas.size, 12);		
 	}
@@ -61,8 +53,8 @@ public class RecetasExternasTestSuite {
 		
 		val recetasAdaptadas = new ArrayList<Receta>();
 		
-		listRecetas.forEach[x|
-			recetasAdaptadas.add(adapter.getReceta(x));
+		listRecetas.forEach[receta|
+			recetasAdaptadas.add(adapter.getReceta(receta));
 		]
 		
 		Assert.assertEquals(listRecetas.size, recetasAdaptadas.size);

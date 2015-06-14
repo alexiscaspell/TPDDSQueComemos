@@ -2,9 +2,6 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import queComemos.entrega3.dominio.Dificultad
 
-//import java.util.ArrayList
-//import java.util.List
-
 class ConsultasXVeganos implements Observador {
 	
 	private int consultasXVeganos = 0	 

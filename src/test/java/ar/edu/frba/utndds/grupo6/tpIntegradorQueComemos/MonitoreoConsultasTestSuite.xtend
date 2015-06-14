@@ -55,8 +55,6 @@ class MonitoreoConsultasTestSuite {
 		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Torta"), 3);
 		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Pure"), 3);
 		Assert.assertEquals(ConsultasXHora.getEstadistica.get(calendario.get(Calendar.HOUR_OF_DAY )), 2);
-		
-		//ConsultasXRecetas.reset()
 	}
 		
 		
@@ -73,8 +71,6 @@ class MonitoreoConsultasTestSuite {
 		Assert.assertEquals(ConsultasXSexo.getEstadisticaFemenino().get("Torta"), 2)
 		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Pure"), 2)
 		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Lechon"), 1)
-		
-		//ConsultasXSexo.reset()
 	}
 	
 	@Test
@@ -86,8 +82,6 @@ class MonitoreoConsultasTestSuite {
 		usuarioMasculino.getRecetasConAcceso()	
 		
 		Assert.assertTrue(  ConsultasXHora.getEstadistica.get(calendario.get( Calendar.HOUR_OF_DAY )) == 2 )
-		
-		//ConsultasXHora.reset()
 	}
 	
 	@Test
@@ -112,10 +106,10 @@ class MonitoreoConsultasTestSuite {
 		// Agregar Recetas que conoce
 		pepe.agregarReceta( getPure )
 		// Agregar Observadores
-		pepe.addObservador(  ConsultasXSexo )
-		pepe.addObservador(  ConsultasXRecetas )
-		pepe.addObservador(  ConsultasXVeganos )
-		pepe.addObservador(  ConsultasXHora )
+		pepe.addObservador(ConsultasXSexo)
+		pepe.addObservador(ConsultasXRecetas)
+		pepe.addObservador(ConsultasXVeganos)
+		pepe.addObservador(ConsultasXHora)
 		return pepe
 	}
 	
@@ -123,12 +117,12 @@ class MonitoreoConsultasTestSuite {
 		val mariana = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Mariana Lopez",Sexo.FEMENINO,fecha)
 	
 		// Agregar Recetas que conoce
-		mariana.agregarReceta( getTorta )
-		val vegano = new UsuarioVegano( mariana )
-		vegano.addObservador(  ConsultasXSexo )
-		vegano.addObservador(  ConsultasXRecetas )
-		vegano.addObservador(  ConsultasXHora )
-		vegano.addObservador(  ConsultasXVeganos )
+		mariana.agregarReceta(getTorta)
+		val vegano = new UsuarioVegano(mariana)
+		vegano.addObservador(ConsultasXSexo)
+		vegano.addObservador(ConsultasXRecetas)
+		vegano.addObservador(ConsultasXHora)
+		vegano.addObservador(ConsultasXVeganos)
 			
 		return vegano
 	}

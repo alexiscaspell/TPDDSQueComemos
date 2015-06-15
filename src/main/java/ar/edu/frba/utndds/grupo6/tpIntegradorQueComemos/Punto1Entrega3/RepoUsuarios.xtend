@@ -1,18 +1,41 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Punto1Entrega3
 
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import org.uqbar.commons.model.CollectionBasedHome
+import org.uqbar.commons.model.Entity
 import java.util.List
 
-public interface RepoUsuarios {
+public class RepoUsuarios extends CollectionBasedHome{
 	
-	def void add(Usuario usuario)
+	override protected getCriterio(Entity arg0) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
 	
-	def void remove(Usuario usuario)
+	override createExample() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
 	
-	def void update(Usuario usuario)
+	override getEntityType() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
 	
-	def Usuario get(Usuario usuario)
+	/**********************FUNCIONES******************************/
 	
-	def List<Usuario> list(Usuario usuario)	
+	public def void add(UsuarioEntity usuario){
+		effectiveCreate(usuario)		
+	}
 	
+	public def void remove(UsuarioEntity usuario){
+		effectiveDelete(usuario)
+	}
+	
+	public def Entity get(UsuarioEntity usuario){
+		
+		val List<Entity> listaUsuario = searchByExample(usuario)
+		return listaUsuario.head
+	} 
+	
+	public def List<Entity> list(UsuarioEntity usuario){
+		return searchByExample(usuario)
+	}
+ 
 }

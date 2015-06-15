@@ -31,5 +31,6 @@ public class RepoUsuarios implements IRepoUsuarios{
 	}
 	
 	override list(Usuario usuario) {
+		
 	}	
 }

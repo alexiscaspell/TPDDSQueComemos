@@ -5,32 +5,43 @@ import java.util.List
 
 public class RepoUsuarios implements IRepoUsuarios{
 	
-	private List<Usuario> usuarios = new ArrayList<Usuario>()
+	private List<Usuario> listaUsuarios = new ArrayList<Usuario>()
+	
+	public def Boolean existe(Usuario usuario){
+		
+		listaUsuarios.contains(usuario)
+	}
 	
 	override add(Usuario usuario) {
-		usuarios.add(usuario)
+		listaUsuarios.add(usuario)
 	}
 	
 	override remove(Usuario usuario) {
-		usuarios.remove(usuarios)
+		listaUsuarios.remove(listaUsuarios)
 	}
 	
 	override update(Usuario usuario) {
-		val usuarioEncontrado = usuarios.findFirst[x | x.nombre.equals(usuario.nombre)]
-		usuarios.remove(usuarioEncontrado)
-		usuarios.add(usuario)
+		val usuarioEncontrado = get(usuario)
+		
+		listaUsuarios.remove(usuarioEncontrado)
+		
+		listaUsuarios.add(usuario)
 	}
 	
 	override get(Usuario usuario) {
-		usuarios.findFirst[x | x.nombre.equals(usuario.nombre)]
+		listaUsuarios.findFirst[x | x.nombre.equals(usuario.nombre)]
 	}
 	
 	def Usuario get(String nombre)
 	{
-		usuarios.findFirst[x | x.nombre.equals(nombre)]
+		listaUsuarios.findFirst[x | x.nombre.equals(nombre)]
 	}
 	
-	override list(Usuario usuario) {
-		
-	}	
+	
+ public override List<Usuario> list(Usuario usuario) {
+ 	
+  val List<Usuario> listaUsuariosConElMismoNombre = listaUsuarios.filter[x | x.nombre.equals(usuario.nombre)].toList
+  
+  return listaUsuariosConElMismoNombre.filter[ usuarioFiltrado | usuarioFiltrado.condicion.equals(usuario.condicion)].toList
+ }
 }

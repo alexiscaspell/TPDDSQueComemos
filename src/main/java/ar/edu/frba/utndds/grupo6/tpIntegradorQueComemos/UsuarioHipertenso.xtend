@@ -1,6 +1,6 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
+
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 class UsuarioHipertenso extends UsuarioDecorator 
 {	

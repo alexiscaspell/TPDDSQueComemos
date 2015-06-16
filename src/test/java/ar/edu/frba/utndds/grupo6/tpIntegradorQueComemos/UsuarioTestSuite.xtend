@@ -224,6 +224,38 @@ class UsuarioTestSuite {
 	}
 	
 	@Test
+	def void usuarioModificaUnaRecetaPropia()
+	{
+		var usuario = usuarioPepe
+		var receta = getReceta(usuario, "Receta 1");
+		Recetario.getInstance().agregar(receta)
+		
+		usuario.modificarReceta("Receta 1", "Nuevo nombre", receta.ingredientes, receta.condimentos,
+			receta.explicacion, receta.dificultad, receta.temporadas);
+			
+		Assert.assertEquals("Nuevo nombre", receta.nombre);
+	}
+	
+	@Test
+	def void usuarioModificaUnaRecetaNoPropia()
+	{
+		var usuario = usuarioPepe
+		var usuario1 = usuarioPancho
+		var receta = getReceta(usuario1, "Receta 1");
+		receta.tipo = TipoReceta.PUBLICA;
+		Recetario.getInstance().agregar(receta)
+		
+		usuario.modificarReceta("Receta 1", "Nuevo nombre", receta.ingredientes, receta.condimentos,
+			receta.explicacion, receta.dificultad, receta.temporadas);
+		
+		//El nombre de la receta en el Recetario no cambia	
+		Assert.assertEquals("Receta 1", receta.nombre);
+		
+		//El usuario ahora tiene una receta con el nombre nuevo
+		Assert.assertTrue(usuario.recetas.exists[rec | rec.nombre.equals("Nuevo nombre")])
+	}
+	
+	@Test
 	def void recetasQuePuedeVerUnUsuario()
 	{
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
@@ -337,11 +369,17 @@ class UsuarioTestSuite {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val receta = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		receta.tipo = TipoReceta.PRIVADA;
 		receta
 	}
 	
 	private def getUsuarioPepe(){
 		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)		
 		pepe
+	}
+	
+	private def getUsuarioPancho(){
+		val pancho = new UsuarioPosta(90.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Francisco Jose Lopez",Sexo.MASCULINO,fecha)		
+		pancho
 	}
 }

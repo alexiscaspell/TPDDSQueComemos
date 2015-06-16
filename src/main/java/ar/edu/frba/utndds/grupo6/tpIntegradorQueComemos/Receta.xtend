@@ -11,7 +11,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvali
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
 
-public class Receta implements IReceta {
+public class Receta implements IReceta, Cloneable {
 
 	@Accessors
 	private Usuario usuarioCreador
@@ -174,6 +174,19 @@ public class Receta implements IReceta {
 	def void setPublica(){
 		tipo = TipoReceta.PUBLICA
 	}
-
 	
+	override Receta clone()
+	{
+		val nueva = new Receta();
+		nueva.nombre = nombre;
+		nueva.ingredientes = ingredientes;
+		nueva.condimentos = condimentos;
+		nueva.anio = anio;
+		nueva.usuarioCreador = usuarioCreador;
+		nueva.explicacion = explicacion;
+		nueva.dificultad = dificultad;
+		nueva.temporadas = temporadas;
+		nueva.subRecetas = subRecetas;		
+		nueva;
+	}
 }

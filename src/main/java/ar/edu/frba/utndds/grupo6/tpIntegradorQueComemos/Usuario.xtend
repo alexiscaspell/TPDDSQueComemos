@@ -1,11 +1,10 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.util.ArrayList
+import java.util.List
 
 public interface Usuario {
 

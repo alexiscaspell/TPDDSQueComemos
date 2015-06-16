@@ -1,17 +1,16 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import java.util.Date
-import java.util.ArrayList
-import java.util.Map
-import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import org.eclipse.xtend.lib.annotations.Accessors
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import java.util.ArrayList
+import java.util.Date
+import java.util.List
+import java.util.Map
+import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
 
@@ -154,17 +153,37 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	//	------------------------------------------- Metodos -------------------------------------------
-	def modificarReceta(String nombreReceta, String nuevo_nombre, Map<Ingrediente, Integer> ingredientes,
+	def modificarReceta(String nombreRecetaAModificar, String nombreReceta, 
+		Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad,
-		ArrayList<Temporada> temporada) {
+		List<Temporada> temporada) {
 
-		val receta = getReceta(nombreReceta)
-		receta.setNombre(nombre)
-		receta.setIngredientes(ingredientes)
-		receta.setCondimentos(condimentos)
-		receta.setExplicacion(explicacion)
-		receta.setDificultad(dificultad)
-		receta.setTemporadas(temporada)
+		val receta = getReceta(nombreRecetaAModificar)
+		
+		if (receta.puedeModificar(this))
+		{
+			if (receta.usuarioCreador.equals(this))
+			{
+				receta.setNombre(nombreReceta)
+				receta.setIngredientes(ingredientes)
+				receta.setCondimentos(condimentos)
+				receta.setExplicacion(explicacion)
+				receta.setDificultad(dificultad)
+				receta.setTemporadas(temporada)
+			}
+			else
+			{
+				val receta1 = receta.clone();
+				receta1.setNombre(nombreReceta)
+				receta1.setIngredientes(ingredientes)
+				receta1.setCondimentos(condimentos)
+				receta1.setExplicacion(explicacion)
+				receta1.setDificultad(dificultad)
+				receta1.setTemporadas(temporada)
+				receta1.setUsuarioCreador(this)
+				recetas.add(receta1)
+			}			
+		}		
 	}
 
 	def agregarReceta(Receta receta) {

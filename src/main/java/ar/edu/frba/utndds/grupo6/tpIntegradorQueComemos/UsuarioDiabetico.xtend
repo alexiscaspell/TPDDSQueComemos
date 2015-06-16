@@ -50,5 +50,14 @@ public class UsuarioDiabetico extends UsuarioDecorator
 	override esVegano() {
 		return false;
 	}
+	
+				
+	override esHipertenso() {
+		return false;
+	}
+	
+	override esDiabetico() {
+		return true;
+	}
 				
 }

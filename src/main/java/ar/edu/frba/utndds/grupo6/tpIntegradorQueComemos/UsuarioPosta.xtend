@@ -229,5 +229,13 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	override esVegano() {
 		return false;
 	}
+	
+	override esHipertenso() {
+		return false;
+	}
+	
+	override esDiabetico() {
+		return false;
+	}
 
 }

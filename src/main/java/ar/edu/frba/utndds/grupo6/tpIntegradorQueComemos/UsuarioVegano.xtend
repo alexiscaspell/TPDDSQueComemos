@@ -46,5 +46,14 @@ class UsuarioVegano extends UsuarioDecorator
 	override esVegano() {
 		return true;
 	}
+	
+				
+	override esHipertenso() {
+		return false;
+	}
+	
+	override esDiabetico() {
+		return false;
+	}
     
 }

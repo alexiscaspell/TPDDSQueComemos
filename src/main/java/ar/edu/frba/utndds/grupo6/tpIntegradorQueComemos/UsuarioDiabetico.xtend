@@ -1,13 +1,11 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-
 public class UsuarioDiabetico extends UsuarioDecorator 
 {	
 	new(Usuario decorado) 
 	{
 		super(decorado)
-		decorado.condicion.add( Condicion.DIABETICO )
+		//decorado.condicion.add( Condicion.DIABETICO )
 	}
 	
 	override estadoRutina()
@@ -48,12 +46,12 @@ public class UsuarioDiabetico extends UsuarioDecorator
     }
 				
 	override esVegano() {
-		return false;
+		return false || decorado.esVegano();
 	}
 	
 				
 	override esHipertenso() {
-		return false;
+		return false || decorado.esHipertenso();
 	}
 	
 	override esDiabetico() {

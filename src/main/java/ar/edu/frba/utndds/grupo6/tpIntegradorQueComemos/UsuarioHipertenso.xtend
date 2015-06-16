@@ -7,7 +7,7 @@ class UsuarioHipertenso extends UsuarioDecorator
 	new(Usuario decorado) 
 	{
 		super(decorado)
-		decorado.condicion.add( Condicion.HIPERTENSO )
+		//decorado.condicion.add( Condicion.HIPERTENSO )
 	}
 	
 	override estadoRutina()
@@ -46,7 +46,7 @@ class UsuarioHipertenso extends UsuarioDecorator
     }
 	
 	override esVegano() {
-		return false;
+		return false || decorado.esVegano();
 	}
 	
 				
@@ -55,6 +55,6 @@ class UsuarioHipertenso extends UsuarioDecorator
 	}
 	
 	override esDiabetico() {
-		return false;
+		return false || decorado.esDiabetico();
 	}
 }

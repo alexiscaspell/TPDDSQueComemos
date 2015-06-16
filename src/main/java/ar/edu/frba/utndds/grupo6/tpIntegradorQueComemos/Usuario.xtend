@@ -18,7 +18,7 @@ public interface Usuario {
 	
 	def String getNombre()
 	
-	def List<Condicion> getCondicion()
+	//def List<Condicion> getCondicion()
 	
 	def Rutina getRutina()
 	

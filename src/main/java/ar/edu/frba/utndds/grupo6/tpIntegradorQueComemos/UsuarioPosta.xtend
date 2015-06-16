@@ -27,7 +27,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	private Date fechaNacimiento
 	
-	private List<Condicion> condiciones = new ArrayList<Condicion>()
+	//private List<Condicion> condiciones = new ArrayList<Condicion>()
 
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
@@ -137,9 +137,9 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		rutina
 	}
 	
-	override getCondicion() {
-		condiciones
-	}
+	//override getCondicion() {
+		//condiciones
+	//}
 
 	override List<Ingrediente> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias

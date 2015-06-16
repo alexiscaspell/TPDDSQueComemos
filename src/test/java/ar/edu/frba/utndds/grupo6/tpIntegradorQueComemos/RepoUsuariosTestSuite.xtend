@@ -91,11 +91,11 @@ class RepoUsuariosTestSuite {
 	
 	vegano = new UsuarioVegano(pepe)
 	
-	vegano.condicion.add(Condicion.VEGANO)
+	//vegano.condicion.add(Condicion.VEGANO)
 	
 	diabetico = new UsuarioDiabetico(pepe)
 	
-	diabetico.condicion.add(Condicion.DIABETICO)
+	//diabetico.condicion.add(Condicion.DIABETICO)
 	
 	repositorio.add(diabetico)
 	

@@ -57,4 +57,9 @@ class UsuarioHipertenso extends UsuarioDecorator
 	override esDiabetico() {
 		return false || decorado.esDiabetico();
 	}
+	
+		override cumpleMismasCondiciones(Usuario usuario){
+		
+		usuario.esHipertenso()&&decorado.cumpleMismasCondiciones(usuario)
+	}
 }

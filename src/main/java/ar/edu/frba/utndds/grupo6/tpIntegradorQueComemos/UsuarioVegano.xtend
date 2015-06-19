@@ -54,4 +54,8 @@ class UsuarioVegano extends UsuarioDecorator
 		return false || decorado.esDiabetico();
 	}
     
+    	override cumpleMismasCondiciones(Usuario usuario){
+		
+		usuario.esVegano()&&decorado.cumpleMismasCondiciones(usuario)
+	}
 }

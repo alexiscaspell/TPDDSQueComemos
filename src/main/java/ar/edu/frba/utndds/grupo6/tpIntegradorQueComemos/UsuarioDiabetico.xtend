@@ -57,5 +57,10 @@ public class UsuarioDiabetico extends UsuarioDecorator
 	override esDiabetico() {
 		return true;
 	}
+	
+	override cumpleMismasCondiciones(Usuario usuario){
+		
+		usuario.esDiabetico()&&decorado.cumpleMismasCondiciones(usuario)
+	}
 				
 }

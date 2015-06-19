@@ -40,8 +40,8 @@ public class RepoUsuarios implements IRepoUsuarios{
 	
  public override List<Usuario> list(Usuario usuario) 
  {
- 	listaUsuarios.filter[x | x.nombre.equals(usuario.nombre)].toList()
+ 	val listaUsuariosConElMismoNombre = listaUsuarios.filter[x | x.nombre.equals(usuario.nombre)].toList()
   
-  	//return listaUsuariosConElMismoNombre.filter[ usuarioFiltrado | usuarioFiltrado.condicion.equals(usuario.condicion)].toList
+  	return listaUsuariosConElMismoNombre.filter[usuarioFiltrado|usuarioFiltrado.cumpleMismasCondiciones(usuario)].toList
  }
 }

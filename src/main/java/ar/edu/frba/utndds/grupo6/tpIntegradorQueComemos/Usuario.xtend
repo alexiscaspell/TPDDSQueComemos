@@ -48,4 +48,6 @@ public interface Usuario {
 	def boolean esHipertenso()
 	
 	def boolean esDiabetico()
+	
+	def Boolean cumpleMismasCondiciones(Usuario usuario)
 }

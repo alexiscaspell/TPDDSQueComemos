@@ -237,6 +237,10 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		return (cumpleCamposObligatorios() && nombreCorrecto())
 	}
 	
+		override cumpleMismasCondiciones(Usuario usuario){
+		
+		true
+	}
 	
 	
 	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------

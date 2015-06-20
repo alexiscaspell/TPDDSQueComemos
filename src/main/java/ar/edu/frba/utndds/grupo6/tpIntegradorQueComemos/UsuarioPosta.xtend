@@ -59,7 +59,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	// ------------------------------------------- Setters -------------------------------------------
-	def void setNombre(String unNombre) {
+	override void setNombre(String unNombre) {
 		this.nombre = unNombre
 	}
 
@@ -243,6 +243,14 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		override cumpleMismasCondiciones(Usuario usuario){
 		
 		true
+	}
+	
+	override crearPerfil(){
+		
+		val UsuarioPosta usuarioCopia = new UsuarioPosta(peso,altura,rutina,nombre,sexo,fechaNacimiento)
+		
+		return usuarioCopia
+		
 	}
 	
 	

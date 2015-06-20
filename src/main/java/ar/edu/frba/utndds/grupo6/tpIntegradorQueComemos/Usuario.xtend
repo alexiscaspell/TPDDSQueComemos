@@ -7,6 +7,10 @@ import java.util.ArrayList
 import java.util.List
 
 public interface Usuario {
+	
+	//	------------------------------------------- Setters -------------------------------------------
+	
+	def void setNombre(String nombre)
 
 	//	------------------------------------------- Getters -------------------------------------------
 	def List<Receta> getConsultas()
@@ -50,4 +54,6 @@ public interface Usuario {
 	def boolean esDiabetico()
 	
 	def Boolean cumpleMismasCondiciones(Usuario usuario)
+	
+	def Usuario crearPerfil()
 }

@@ -15,6 +15,13 @@ public abstract class UsuarioDecorator  extends SujetoObservado implements Usuar
 		recetario = Recetario.getInstance()
 		decorado = usuario
 	}
+	
+	//	------------------------------------------- Getters -------------------------------------------
+	
+	override setNombre(String nombre){
+		
+		decorado.setNombre(nombre)
+	}
 	//	------------------------------------------- Getters -------------------------------------------
 	//override getCondicion(){
 		//decorado.getCondicion()
@@ -77,6 +84,8 @@ public abstract class UsuarioDecorator  extends SujetoObservado implements Usuar
 	{
 		decorado.agregarGrupo(grupo)
 	}
+	
+
 	
 	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
 	

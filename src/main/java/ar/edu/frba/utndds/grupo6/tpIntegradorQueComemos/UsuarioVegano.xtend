@@ -58,4 +58,11 @@ class UsuarioVegano extends UsuarioDecorator
 		
 		usuario.esVegano()&&decorado.cumpleMismasCondiciones(usuario)
 	}
+	
+			override crearPerfil(){
+		
+		val UsuarioVegano usuarioCopia = new UsuarioVegano(decorado.crearPerfil)
+			
+		return usuarioCopia
+	}
 }

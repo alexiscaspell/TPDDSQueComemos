@@ -106,6 +106,21 @@ class RepoUsuariosTestSuite {
 		Assert.assertTrue(listaUsuarios.contains(vegano)&&!listaUsuarios.contains(diabetico))		
 	}
 	
+	@Test
+	def void crearPerfilDeUsuarioClonaYNoReferencia(){
+		
+			pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		
+			vegano = new UsuarioVegano(pepe)
+			
+			val Usuario clonVegano = vegano.crearPerfil
+			
+			clonVegano.nombre = "Satan"
+			
+			Assert.assertFalse(vegano.nombre.equals(clonVegano.nombre))
+		
+	}
+	
 	
 	
 }

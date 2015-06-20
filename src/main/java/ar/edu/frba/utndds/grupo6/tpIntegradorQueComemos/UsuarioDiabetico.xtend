@@ -62,5 +62,12 @@ public class UsuarioDiabetico extends UsuarioDecorator
 		
 		usuario.esDiabetico()&&decorado.cumpleMismasCondiciones(usuario)
 	}
+	
+		override crearPerfil(){
+		
+		val UsuarioDiabetico usuarioCopia = new UsuarioDiabetico(decorado.crearPerfil)
+			
+		return usuarioCopia
+	}
 				
 }

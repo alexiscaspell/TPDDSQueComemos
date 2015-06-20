@@ -62,4 +62,11 @@ class UsuarioHipertenso extends UsuarioDecorator
 		
 		usuario.esHipertenso()&&decorado.cumpleMismasCondiciones(usuario)
 	}
+	
+			override crearPerfil(){
+		
+		val UsuarioHipertenso usuarioCopia = new UsuarioHipertenso(decorado.crearPerfil)
+			
+		return usuarioCopia
+	}
 }

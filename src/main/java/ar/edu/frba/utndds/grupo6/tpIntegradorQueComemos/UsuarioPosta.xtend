@@ -11,6 +11,7 @@ import java.util.List
 import java.util.Map
 import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
+import org.apache.log4j.Logger
 
 public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
 
@@ -31,6 +32,8 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()	
+
+	final static Logger logger = Logger.getLogger( "Logers" );
 
 	@Accessors
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
@@ -119,7 +122,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 				consultas.add(receta)
 			}
 		]
-
+		if ( consultas.size >= 20 ) logger.warn("Consulta con mas de 100 resultados")
 		notificar()
 		return consultas
 	}

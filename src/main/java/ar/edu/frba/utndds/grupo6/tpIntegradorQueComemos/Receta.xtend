@@ -63,7 +63,10 @@ public class Receta implements IReceta, Cloneable {
 		this.subRecetas = new ArrayList<IReceta>()
 	}
 	
-	new(){}
+	new()
+	{
+		this.subRecetas = new ArrayList<IReceta>()
+	}
 	
 	override validar() 
 	{

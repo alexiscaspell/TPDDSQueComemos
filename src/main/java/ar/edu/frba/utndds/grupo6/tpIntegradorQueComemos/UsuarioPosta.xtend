@@ -27,6 +27,8 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	private Date fechaNacimiento
 	
+	private String email
+	
 	//private List<Condicion> condiciones = new ArrayList<Condicion>()
 
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
@@ -98,6 +100,10 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	override getSexo() {
 		sexo
+	}
+	
+	override getEmail() {
+		email
 	}
 
 	override getNombre() {
@@ -271,5 +277,4 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	override esDiabetico() {
 		return false;
 	}
-
 }

@@ -19,6 +19,8 @@ public interface Usuario {
 	
 	def List<String> getPlatosQueNoLeGustan()
 	
+	def String getEmail()
+	
 	def String getNombre()
 	
 	//def List<Condicion> getCondicion()

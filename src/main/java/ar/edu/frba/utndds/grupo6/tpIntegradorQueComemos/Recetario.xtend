@@ -7,8 +7,12 @@ import queComemos.entrega3.repositorio.BusquedaRecetas
 import com.google.gson.JsonParser
 import com.google.gson.JsonArray
 import com.google.gson.Gson
+import org.eclipse.xtend.lib.annotations.Accessors
 
 public class Recetario {
+	
+	@Accessors
+	private Command sendMailCommand;
 	
 	private RepoRecetas repoRecetas = new RepoRecetas();
 	
@@ -79,5 +83,31 @@ public class Recetario {
 		]
 		
 		recetasAdaptadas.filter[x| !recetas.contains(x)].toList() as ArrayList<Receta>;
+	}
+	
+	def ResultadoConsulta getRecetasQueCumplen(Usuario usuario, Receta receta)
+	{
+		val recetasQueCoinciden = recetas.filter[x | x.puedeVer(usuario) && 
+			receta.nombre == null || receta.nombre.equals(x.nombre) &&
+			receta.anio == 0 || receta.anio == x.anio &&
+			receta.dificultad == null || receta.dificultad == x.dificultad && 
+			receta.explicacion == null || receta.explicacion.equals(x.explicacion)
+		].toList();
+		 
+		val resultado = new ResultadoConsulta(receta, recetasQueCoinciden, usuario)
+		
+		sendMailCommand.execute(resultado);
+		
+		if (recetasQueCoinciden.size > 100)
+		{
+			//TODO: Ejecutar comando de Log
+		}
+		
+		//if (el perfil del usuario tiene marcado el check de marcar todas las recetas como favoritas)
+		//{
+		//	Ejecutar Comando de Marcar Favoritas
+		//}
+		
+		return resultado;
 	}
 }

@@ -6,8 +6,6 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import java.util.ArrayList
 import java.util.List
 
 

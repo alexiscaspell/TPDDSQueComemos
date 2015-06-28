@@ -22,22 +22,22 @@ public class SendMailCommand implements Command
 		
 		if (receta.getNombre() != null)
 		{
-			stringBuilder.append(receta.getNombre())
+			stringBuilder.append("Nombre: " + receta.getNombre())
 		}
 		
 		if (receta.getAnio() != 0)
 		{
-			stringBuilder.append(receta.getAnio())
+			stringBuilder.append("Anio: " + receta.getAnio())
 		}
 		
 		if (receta.getDificultad() != null)
 		{
-			stringBuilder.append(receta.getDificultad());
+			stringBuilder.append("Anio: " + receta.getDificultad());
 		}
 		
 		if (receta.getExplicacion() != null)
 		{
-			stringBuilder.append(receta.getExplicacion());
+			stringBuilder.append("Explicacion: " + receta.getExplicacion());
 		}
 		
 		return stringBuilder.toString();

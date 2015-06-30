@@ -18,4 +18,8 @@ public class ResultadoConsulta {
 		this.recetasEncontradas = recetas;
 		this.usuario = usuario;
 	}	
+	
+	def getCantidadRecetas(){
+		recetasEncontradas.size()
+	}
 }

@@ -7,40 +7,43 @@ import java.text.SimpleDateFormat
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.util.List
-
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import java.util.ArrayList
+import java.util.Arrays
+import java.util.concurrent.locks.Condition
 
 class RepoUsuariosTestSuite {
 	
 	Administrador admin = new Administrador
 	
-	RepoUsuarios repositorio = new RepoUsuarios
+	RepoUsuarios repositorio = new RepoUsuarios	
 	
-	Usuario user
-	
-	Usuario pepe
-	
-	Usuario vegano
-	
-	Usuario diabetico
+	List<Condicion> listaCondicion 
 		
 	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
 	
 	Date fecha = format.parse("01-04-1970")
 	
+	FabricaPerfilUsuario fabrica
+	
+	Usuario usuarioFabricado
+	
+	Usuario user
+	
+	UsuarioPosta pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		
 	@Test
 	def void agregarUsuarioARepoUsuarios(){
-		
-	val Usuario pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-				
+						
 	admin.agregarSolicitud(pepe)
 	
 	admin.repoUsuario = repositorio
 	
 	admin.aceptarUsuario(pepe)
-	
+		
 	user = repositorio.get(pepe)	
 	
-		Assert.assertTrue(user.equals(pepe))
+	Assert.assertTrue(user.equals(pepe))
 		
 	}
 	
@@ -49,67 +52,78 @@ class RepoUsuariosTestSuite {
 		
 	pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 	
-	vegano = new UsuarioVegano(pepe)
+	listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)
 	
-	diabetico = new UsuarioDiabetico(vegano)
+	fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)
+	
+	usuarioFabricado = fabrica.crearPerfil()
 				
-	admin.agregarSolicitud(diabetico)
+	admin.agregarSolicitud(usuarioFabricado)
 	
 	admin.repoUsuario = repositorio
 	
-	admin.aceptarUsuario(diabetico)
+	admin.aceptarUsuario(usuarioFabricado)
 	
-	user = repositorio.get(diabetico)	
+	user = repositorio.get(usuarioFabricado)	
 	
-		Assert.assertTrue(user.equals(diabetico))
+		Assert.assertTrue(user.equals(user))
 		
 	}
 	
 		@Test
 	def void actualizarUsuarioConCondicionesARepoUsuarios(){
-		
-	pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+			
+	listaCondicion = Arrays.asList(Condicion.VEGANO)	
 	
-	vegano = new UsuarioVegano(pepe)
+	val FabricaPerfilUsuario fabrica2 = new FabricaPerfilUsuario(listaCondicion,pepe)
 	
-	diabetico = new UsuarioDiabetico(vegano)
+	val Usuario userVegano = fabrica2.crearPerfil()
 	
-	repositorio.update(	diabetico)
+	repositorio.add(userVegano)
 	
-	user = repositorio.get(diabetico)	
+	listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)	
 	
-		Assert.assertTrue(!repositorio.existe(vegano)&&user.equals(diabetico))		
+	fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)
+	
+	val Usuario userVeganoDiabetico = fabrica.crearPerfil()
+	
+	repositorio.update(	userVeganoDiabetico)
+	
+	user = repositorio.get(userVeganoDiabetico)	
+	
+	Assert.assertTrue(!repositorio.existe(userVegano)&&user.equals(userVegano))		
+	
 	}
 	
 	@Test
 	
-	def void listUsuarioConCondicionesEnRepoUsuarios(){//El list al parecer filtra todo
+	def void listUsuarioConCondicionesEnRepoUsuarios(){
 		
-	pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		listaCondicion = Arrays.asList(Condicion.VEGANO)
+		
+		fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)
+		
+		val Usuario vegano = fabrica.crearPerfil() 
+		
+		listaCondicion = Arrays.asList(Condicion.DIABETICO)
+		
+		val FabricaPerfilUsuario fabrica2 = new FabricaPerfilUsuario(listaCondicion,pepe)		
 	
-	vegano = new UsuarioVegano(pepe)
+		val Usuario diabetico = fabrica2.crearPerfil()
+		
+		repositorio.add(diabetico)
 	
-	//vegano.condicion.add(Condicion.VEGANO)
+		repositorio.add(vegano)
 	
-	diabetico = new UsuarioDiabetico(pepe)
-	
-	//diabetico.condicion.add(Condicion.DIABETICO)
-	
-	repositorio.add(diabetico)
-	
-	repositorio.add(vegano)
-	
-	val List<Usuario> listaUsuarios = repositorio.list(vegano)
+		val List<Usuario> listaUsuarios = repositorio.list(vegano)
 	
 		Assert.assertTrue(listaUsuarios.contains(vegano)&&!listaUsuarios.contains(diabetico))		
 	}
 	
 	@Test
 	def void crearPerfilDeUsuarioClonaYNoReferencia(){
-		
-			pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-		
-			vegano = new UsuarioVegano(pepe)
+				
+			val vegano = new UsuarioVegano(pepe)
 			
 			val Usuario clonVegano = vegano.crearPerfil
 			

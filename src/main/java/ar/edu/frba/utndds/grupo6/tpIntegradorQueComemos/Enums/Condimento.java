@@ -19,7 +19,19 @@ public enum Condimento {
 			return cantidadCondimento;
 		}
 	},
+	CREMA {
+		@Override
+		public int cantidadDeAzucar(int cantidadCondimento) {
+			return 0;
+		}
+	},
 	ACEITE {
+		@Override
+		public int cantidadDeAzucar(int cantidadCondimento) {
+			return 0;
+		}
+	},
+	LEVADURA {
 		@Override
 		public int cantidadDeAzucar(int cantidadCondimento) {
 			return 0;

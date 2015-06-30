@@ -33,6 +33,22 @@ public enum Ingrediente {
 			return false;
 		}
 	},
+	REMOLACHA {
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return false;
+		}
+		
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+	},
 	CHIVITO {
 		@Override
 		public boolean contieneCarne() {
@@ -207,6 +223,23 @@ public enum Ingrediente {
 		@Override
 		public boolean contieneFruta() {
 			return false;
+		}
+	},
+	
+	FRUTILLA{
+		@Override
+		public boolean contieneCarne() {
+			return false;
+		}
+
+		@Override
+		public boolean esCaro() {
+			return false;
+		}
+
+		@Override
+		public boolean contieneFruta() {
+			return true;
 		}
 	},
 	LECHUGA

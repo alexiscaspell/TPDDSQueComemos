@@ -30,6 +30,7 @@ class recetaConSal implements recetaFactory {
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.calorias=100
 		recetaSimple
 }
 

@@ -29,7 +29,10 @@ override Receta cumple( Usuario usuario)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.calorias=600
 		recetaSimple
+		
+		
 	
 }
 

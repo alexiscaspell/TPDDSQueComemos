@@ -7,14 +7,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.text.DateFormat
 import java.util.Date
 import java.text.SimpleDateFormat
-import java.util.HashMap
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-
-import java.util.ArrayList
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConAzucar
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConSal
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConCarne
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import queComemos.entrega3.dominio.Dificultad
 import java.util.Calendar
 
 class MonitoreoConsultasTestSuite {
@@ -23,6 +19,9 @@ class MonitoreoConsultasTestSuite {
 	private Date fecha = format.parse("01-04-1970")
 	private Calendar calendario = Calendar.getInstance();
 	private Recetario  recetario =  Recetario .getInstance()
+	recetaConAzucar recetaAzucar = new recetaConAzucar()
+	recetaConSal recetaSal = new recetaConSal()
+	recetaConCarne recetaCarne = new recetaConCarne()
 	
 	// Observadores
 	private ConsultasXSexo ConsultasXSexo =  new ConsultasXSexo()
@@ -51,7 +50,7 @@ class MonitoreoConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso();
 		usuarioMasculino.getRecetasConAcceso();
 						
-		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Lechon"), 2);
+		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Milanesas"), 1);
 		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Torta"), 3);
 		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Pure"), 3);
 		Assert.assertEquals(ConsultasXHora.getEstadistica.get(calendario.get(Calendar.HOUR_OF_DAY )), 2);
@@ -67,10 +66,10 @@ class MonitoreoConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()		
 		
-		Assert.assertEquals(ConsultasXSexo.getEstadisticaFemenino().get("Lechon"), 1)
+		Assert.assertEquals(ConsultasXSexo.getEstadisticaFemenino().get("Milanesas"), 1)
 		Assert.assertEquals(ConsultasXSexo.getEstadisticaFemenino().get("Torta"), 2)
 		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Pure"), 2)
-		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Lechon"), 1)
+		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Milanesas"), 0)
 	}
 	
 	@Test
@@ -92,19 +91,19 @@ class MonitoreoConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso()
 		usuarioMasculino.getRecetasConAcceso()	
 		
-		Assert.assertEquals(ConsultasXVeganos.getEstadistica(), 4)
+		Assert.assertEquals(ConsultasXVeganos.getEstadistica(), 2)
 	}
 	
 	def seteoRecetario(){
-		recetario.agregar( getPure )
-		recetario.agregar( getTorta )
-		recetario.agregar( getLechon )
+		recetario.agregar( recetaSal.cumple(usuarioMasculino) )
+		recetario.agregar( recetaAzucar.cumple(usuarioFemenino) )
+		recetario.agregar( recetaCarne.cumple(usuarioFemenino) )
 	}
 	
 	def getUsuarioMasculino() {
 		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		// Agregar Recetas que conoce
-		pepe.agregarReceta( getPure )
+		pepe.agregarReceta( recetaSal.cumple(usuarioMasculino) )
 		// Agregar Observadores
 		pepe.addObservador(ConsultasXSexo)
 		pepe.addObservador(ConsultasXRecetas)
@@ -117,7 +116,7 @@ class MonitoreoConsultasTestSuite {
 		val mariana = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Mariana Lopez",Sexo.FEMENINO,fecha)
 	
 		// Agregar Recetas que conoce
-		mariana.agregarReceta(getTorta)
+		mariana.agregarReceta(recetaAzucar.cumple(usuarioFemenino))
 		val vegano = new UsuarioVegano(mariana)
 		vegano.addObservador(ConsultasXSexo)
 		vegano.addObservador(ConsultasXRecetas)
@@ -127,6 +126,7 @@ class MonitoreoConsultasTestSuite {
 		return vegano
 	}
 	
+/*	
 	def Receta getPure()
 	{		
 		val nombre = "Pure"
@@ -196,7 +196,7 @@ class MonitoreoConsultasTestSuite {
 		recetaSimple.calorias=150
 		recetaSimple
 	}
-	
+*/	
 	
 	
 	

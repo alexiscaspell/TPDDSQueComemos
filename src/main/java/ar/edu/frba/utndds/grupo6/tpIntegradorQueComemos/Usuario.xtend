@@ -36,6 +36,8 @@ public interface Usuario {
 	def List<Receta> getRecetas()
 	
 	def List<Receta> getRecetasConAcceso() 	
+	
+	def List<Receta> getRecetasBuscadasFavoritas() 
 	//	------------------------------------------- Metodos -------------------------------------------
 	def void agregarGrupo(Grupo grupo)
 	

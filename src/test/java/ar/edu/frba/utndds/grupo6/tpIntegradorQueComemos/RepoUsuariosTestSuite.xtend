@@ -1,16 +1,15 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
-import org.junit.Test
-import org.junit.Assert
-import java.util.Date
-import java.text.DateFormat
-import java.text.SimpleDateFormat
+
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import java.util.ArrayList
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.Arrays
-import java.util.concurrent.locks.Condition
+import java.util.Date
+import java.util.List
+import org.junit.Assert
+import org.junit.Test
 
 class RepoUsuariosTestSuite {
 	
@@ -73,25 +72,21 @@ class RepoUsuariosTestSuite {
 		@Test
 	def void actualizarUsuarioConCondicionesARepoUsuarios(){
 			
-	listaCondicion = Arrays.asList(Condicion.VEGANO)	
-	
-	val FabricaPerfilUsuario fabrica2 = new FabricaPerfilUsuario(listaCondicion,pepe)
-	
+	listaCondicion = Arrays.asList(Condicion.VEGANO)		
+	val FabricaPerfilUsuario fabrica2 = new FabricaPerfilUsuario(listaCondicion,pepe)	
 	val Usuario userVegano = fabrica2.crearPerfil()
 	
 	repositorio.add(userVegano)
 	
-	listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)	
-	
-	fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)
-	
+	listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)		
+	fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)	
 	val Usuario userVeganoDiabetico = fabrica.crearPerfil()
 	
 	repositorio.update(	userVeganoDiabetico)
 	
 	user = repositorio.get(userVeganoDiabetico)	
 	
-	Assert.assertTrue(!repositorio.existe(userVegano)&&user.equals(userVegano))		
+	Assert.assertTrue(!repositorio.existe(userVegano)&&user.equals(userVeganoDiabetico))		
 	
 	}
 	

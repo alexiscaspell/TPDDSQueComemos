@@ -34,6 +34,8 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()	
+	
+	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 
 	
 
@@ -92,6 +94,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	def void setRutina(Rutina rutina) {
 		this.rutina = rutina
 	}
+	
 
 	//	------------------------------------------- Getters -------------------------------------------
 	def getReceta(String nombre) {
@@ -158,6 +161,10 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	override List<Receta> getConsultas() {
 		consultas
+	}
+	
+	override List<Receta> getRecetasBuscadasFavoritas(){
+		recetasBuscadasFavoritas
 	}
 
 	//	------------------------------------------- Metodos -------------------------------------------

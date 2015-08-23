@@ -1,9 +1,15 @@
 /domain/target/
-/domain/ui/
-/src/main/generated-sources/
-/src/test/generated-sources/
-.project
-.classpath
-.settings
+/domain/src/main/generated-sources/
+/domain/src/test/generated-sources/
+/domain/.project
+/domain/.classpath
+/domain/.settings
+/domain/bin/
 
-/bin/
+/ui/target/
+/ui/src/main/generated-sources/
+/ui/src/test/generated-sources/
+/ui/.project
+/ui/.classpath
+/ui/.settings
+/ui/bin/

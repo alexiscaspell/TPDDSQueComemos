@@ -1,4 +1,5 @@
-/target/
+/domain/target/
+/domain/ui/
 /src/main/generated-sources/
 /src/test/generated-sources/
 .project

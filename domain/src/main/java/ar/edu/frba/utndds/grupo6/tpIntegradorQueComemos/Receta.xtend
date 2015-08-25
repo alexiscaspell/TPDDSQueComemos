@@ -10,43 +10,36 @@ import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
+import org.uqbar.commons.utils.Observable
 
+@Observable
+@Accessors
 public class Receta implements IReceta, Cloneable {
 
-	@Accessors
+	
 	private Usuario usuarioCreador
-	
-	@Accessors
+		
 	private String nombre
-	
-	@Accessors
+		
 	private int anio
-	
-	@Accessors
+		
 	private int tiempoPreparacion
 	
-	@Accessors
 	private Dificultad dificultad
 	
-	@Accessors
 	private List<Temporada> temporadas	
 	
-	@Accessors
 	private TipoReceta tipo
 	
-	@Accessors
 	private Map<Ingrediente, Integer> ingredientes
 	
-	@Accessors
 	private Map<Condimento, Integer> condimentos
 	
-	@Accessors
 	private int calorias
 	
-	@Accessors
 	private String explicacion
 		
-	private ArrayList<IReceta> subRecetas;
+	private List<IReceta> subRecetas;
 	
 	new(Usuario usuario, String nombre, Map<Ingrediente, Integer> ingredientes, 
 		Map<Condimento, Integer> condimentos, String explicacion, 

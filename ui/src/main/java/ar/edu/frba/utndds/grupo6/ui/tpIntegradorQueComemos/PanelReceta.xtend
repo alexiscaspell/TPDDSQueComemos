@@ -11,7 +11,7 @@ import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Button
 
-class PanelUsuario extends MainWindow<Receta>{
+class PanelReceta extends MainWindow<Receta>{
 
 	new() {
 		super(new Receta() )
@@ -66,7 +66,7 @@ class PanelUsuario extends MainWindow<Receta>{
 	}
 	
 	def static main(String[] args) {
-		new PanelUsuario().startApplication
+		new PanelReceta().startApplication
 	}
 	
 	

@@ -1,6 +1,5 @@
 package ar.edu.frba.utndds.grupo6.ui.tpIntegradorQueComemos
 
-import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.Panel
 
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
@@ -10,14 +9,16 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 
-class PanelReceta extends MainWindow<Receta>{
+class PanelReceta extends SimpleWindow<Receta>{
 
-	new() {
-		super(new Receta() )
+	new( Receta receta ,WindowOwner parent ) {
+		super( parent,receta )
 	}
 
-	override createContents(Panel mainPanel) {
+	override protected createFormPanel(Panel mainPanel) {
 		this.setTitle("Detalle de Receta")
 		
 		// Panel Superior
@@ -57,17 +58,16 @@ class PanelReceta extends MainWindow<Receta>{
 		new Panel( mainPanel ) => [
 			new Label( it ).text = "Proceso de Preparacion"
 			new Label( it ).text = "Bind a Descipcion de Preparacion"
-			new Button( it ) => [
-				it.caption = "Volver"
-			]
-   	 						
+			   	 						
 		]
 					
 	}
 	
-	def static main(String[] args) {
-		new PanelReceta().startApplication
+	override protected addActions(Panel actionsPanel) {
+		new Button( actionsPanel ) => [
+				it.caption = "Volver"
+			]
+		
 	}
-	
 	
 }

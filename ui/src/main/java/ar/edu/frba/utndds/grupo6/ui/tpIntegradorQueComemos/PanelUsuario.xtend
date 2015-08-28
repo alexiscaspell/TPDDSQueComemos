@@ -17,11 +17,14 @@ import org.uqbar.arena.windows.WindowOwner
 
 class PanelUsuario extends SimpleWindow<Usuario>{
 
+	
 	override protected addActions(Panel actionsPanel) {
-		new Button(actionsPanel) => [
-			caption = "Buscar"
-			setAsDefault
-			disableOnError
+		// Panel Inferior
+		new Panel( actionsPanel ) => [
+			new Button( it ) => [
+				it.caption = "Ver"
+			]
+		
 		]
 	}
 	
@@ -37,37 +40,40 @@ class PanelUsuario extends SimpleWindow<Usuario>{
 		// Panel Medio
 		new Panel( mainPanel ) => [
 			//layout = new HorizontalLayout
-			var table = new Table<Receta>( it, typeof(Receta ))
-			new Column<Receta>(table) => [
- 			  title = "Nombre"
- 			  fixedSize = 150
- 			  bindContentsToProperty("nombre")
+			var table = new Table<Receta>( it, typeof(Receta )) =>[
+				bindItemsToProperty("favoritas")
 			]
-			new Column<Receta>(table) => [
- 			  title = "Calorias"
- 			  fixedSize = 150
- 			  bindContentsToProperty("calorias")
-			]
-			new Column<Receta>(table) => [
- 			  title = "Dificultad"
- 			  fixedSize = 150
- 			  bindContentsToProperty("dificultad")
-			]
-			new Column<Receta>(table) => [
- 			  title = "Temporada"
- 			  fixedSize = 150
- 			  bindContentsToProperty("temporada")
-			]
+			this.ResultadoRecetas( table )
 		]
-		
-		// Panel Inferior
-		new Panel( mainPanel ) => [
-			new Button( it ) => [
-				it.caption = "Ver"
-			]
-		]
-					
 	}
+		
+		
+	def void ResultadoRecetas(Table<Receta> table) { 
+		new Column<Receta>(table) => [
+ 		  title = "Nombre"
+ 		  fixedSize = 100
+ 		  bindContentsToProperty("nombre")
+		]
+		new Column<Receta>(table) => [
+ 		  title = "Calorias"
+ 		  fixedSize = 40
+ 		  bindContentsToProperty("calorias")
+		]
+		new Column<Receta>(table) => [
+ 		  title = "Dificultad"
+ 		  fixedSize = 60
+ 		  bindContentsToProperty("dificultad")
+		]
+		new Column<Receta>(table) => [
+ 		  title = "Temporada"
+ 		  fixedSize = 250
+ 		  bindContentsToProperty("temporadas")
+		]
+	}
+		
+		
+					
+	
 
 	new( Usuario usuario,WindowOwner parent ) {
 		super( parent,usuario )

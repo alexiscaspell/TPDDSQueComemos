@@ -1,10 +1,11 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.ArrayList
+import java.util.List
 
 abstract class SujetoObservado  {
 	
-	private ArrayList<Observador> Observadores = new ArrayList<Observador>()	
+	private List<Observador> Observadores = new ArrayList<Observador>()	
 		
 		
 	def addObservador(Observador observador) {

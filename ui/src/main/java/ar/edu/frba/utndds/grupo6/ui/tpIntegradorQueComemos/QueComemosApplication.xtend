@@ -11,15 +11,17 @@ import org.uqbar.arena.windows.Window
 
 class QueComemosApplication extends Application {
 	
+	val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO)
 	
 	static def void main(String[] args) { 
 		new QueComemosApplication().start()
 	}
 
 	
+		
 	
-		override protected Window<?> createMainWindow() {
-		return new PanelReceta( )
+	override protected Window<?> createMainWindow() {
+		return new PanelUsuario( pepe, this)
 	}
 	
 	

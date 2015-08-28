@@ -20,7 +20,7 @@ public class Recetario {
 	
 	private RecetaAdapter adapter = new RecetaAdapter();
 	
-	private ArrayList<Receta> recetas;
+	private List<Receta> recetas;
 	
 	private static Recetario instance;
 	

@@ -1,6 +1,6 @@
 package ar.edu.frba.utndds.grupo6.ui.tpIntegradorQueComemos
 
-import org.uqbar.arena.windows.MainWindow
+
 import org.uqbar.arena.widgets.Panel
 
 
@@ -12,20 +12,20 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 
-class PanelUsuario extends MainWindow<Usuario>{
+class PanelUsuario extends SimpleWindow<Usuario>{
 
-	/*new( Usuario usuario) {
-		super( usuario )
-	}*/
-
-
-	new( ) {
-		super( new UsuarioPosta(10, "Lucas") )
+	override protected addActions(Panel actionsPanel) {
+		new Button(actionsPanel) => [
+			caption = "Buscar"
+			setAsDefault
+			disableOnError
+		]
 	}
-
-
-	override createContents(Panel mainPanel) {
+	
+	override protected createFormPanel(Panel mainPanel) {
 		this.setTitle("Bienvenido a Que Comemos?")
 		
 		// Panel Superior
@@ -68,9 +68,11 @@ class PanelUsuario extends MainWindow<Usuario>{
 		]
 					
 	}
-	
-	def static main(String[] args) {
-		new PanelUsuario().startApplication
+
+	new( Usuario usuario,WindowOwner parent ) {
+		super( parent,usuario )
 	}
-	
+
 }
+
+	

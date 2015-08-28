@@ -1,6 +1,7 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.ArrayList
+import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import java.util.Map
@@ -14,7 +15,7 @@ public interface IReceta {
 	
 	def void validar()
 	
-	def ArrayList<Condicion> condicionesInadecuadas()
+	def List<Condicion> condicionesInadecuadas()
 	
 	def int cantidadDeAzucar()
 	

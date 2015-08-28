@@ -11,8 +11,10 @@ import java.util.List
 import java.util.Map
 import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
+import org.uqbar.commons.utils.Observable
 
-
+@Observable
+@Accessors
 public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
 
 	private double altura
@@ -37,9 +39,6 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 
-	
-
-	@Accessors
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	private List<Receta> recetas = new ArrayList<Receta>()
@@ -62,6 +61,15 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		recetario = Recetario.getInstance()
 	}
 
+	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo ) {
+		this.altura = altura
+		this.peso = peso
+		this.rutina = rutina
+		this.nombre = nombre
+		this.sexo = sexo
+		recetario = Recetario.getInstance()
+		
+		}
 	// ------------------------------------------- Setters -------------------------------------------
 	override void setNombre(String unNombre) {
 		this.nombre = unNombre

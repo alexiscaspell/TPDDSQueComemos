@@ -43,7 +43,7 @@ public class Receta implements IReceta, Cloneable {
 	
 	new(Usuario usuario, String nombre, Map<Ingrediente, Integer> ingredientes, 
 		Map<Condimento, Integer> condimentos, String explicacion, 
-		Dificultad dificultad, ArrayList<Temporada> temporadas
+		Dificultad dificultad, List<Temporada> temporadas
 	) 
 	{
 		this.usuarioCreador = usuario

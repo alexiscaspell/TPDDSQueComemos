@@ -29,7 +29,7 @@ public interface Usuario {
 	
 	def double getPeso()
 	
-	def ArrayList<Observador> getObservadores()
+	def List<Observador> getObservadores()
 	
 	def List<Ingrediente> getPreferenciasAlimenticias()
 	

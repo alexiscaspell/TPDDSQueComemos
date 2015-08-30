@@ -1,18 +1,12 @@
 package ar.edu.frba.utndds.grupo6.ui.tpIntegradorQueComemos
 
-import org.uqbar.arena.Application
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import java.util.Date
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import org.uqbar.arena.windows.Window
-
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConAzucar
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConSal
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConCarne
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaValida
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import org.uqbar.arena.Application
+import org.uqbar.arena.windows.Window
 
 class QueComemosApplication extends Application {
 	
@@ -34,6 +28,7 @@ class QueComemosApplication extends Application {
 		pepe.marcarComoFavorita( recetaAzucar.cumple(pepe))
 		pepe.marcarComoFavorita( recetaAzucar.noCumple(pepe))
 		return new PanelUsuario( pepe, this)
+//		return new PanelReceta(this, new Receta())
 	}
 	
 	

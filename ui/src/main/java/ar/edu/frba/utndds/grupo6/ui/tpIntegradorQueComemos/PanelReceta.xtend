@@ -14,8 +14,8 @@ import org.uqbar.arena.windows.WindowOwner
 
 class PanelReceta extends SimpleWindow<Receta>{
 
-	new( Receta receta ,WindowOwner parent ) {
-		super( parent,receta )
+	new(WindowOwner parent, Receta receta) {
+		super(parent, receta)
 	}
 
 	override protected createFormPanel(Panel mainPanel) {

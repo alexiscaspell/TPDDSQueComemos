@@ -25,10 +25,8 @@ class PanelUsuario extends SimpleWindow<Usuario>{
 		new Panel( actionsPanel ) => [
 			new Button( it ) => [
 				it.caption = "Boton Extra"
-				//onClick = [new PanelReceta( elementSelected , this)]
-				
+				onClick = [new PanelReceta(this, new Receta()).open]
 			]
-		
 		]
 	}		
 	

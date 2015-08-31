@@ -5,6 +5,7 @@
 /domain/.classpath
 /domain/.settings
 /domain/bin/
+/domain/.metadata
 
 /ui/target/
 /ui/src/main/generated-sources/
@@ -13,3 +14,4 @@
 /ui/.classpath
 /ui/.settings
 /ui/bin/
+/ui/.metadata

@@ -1,50 +1,33 @@
 package ar.edu.frba.utndds.grupo6.ui.tpIntegradorQueComemos
 
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.widgets.Button
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.tables.Column
-import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import org.uqbar.arena.bindings.NotNullObservable
+import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
 
-class PanelUsuario extends SimpleWindow<Usuario>{
+class PanelUsuario extends SimpleWindow<AplicationModel>{
 
-	
+	// Panel de Botones 
 	override protected addActions(Panel actionsPanel) {
-		new Panel( actionsPanel ) => [
-			new Button( it ) => [
-				it.caption = "Boton Extra"
-				onClick = [
-					val receta = new Receta()
-					receta.nombre = "Receta 1"
-					receta.calorias = 100
-					val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO)
-					receta.usuarioCreador = pepe
-					receta.explicacion = "Explicacion de receta"
-					new PanelReceta(this, receta).open
-				]
-			]
-		]
-	}		
-	
-	def void createGridActions(Panel mainPanel) {
-		//val elementSelected = new NotNullObservable("nombre")
-		new Button( mainPanel ) => [
+		val elementSelected = new NotNullObservable("recetaSeleccionada")
+		new Button( actionsPanel ) => [
 			it.caption = "Ver"
-			//onClick = [new PanelReceta( elementSelected , this)]
-			//bindEnabled(elementSelected)
+			it.width = 460
+			onClick = [new PanelReceta(this, modelObject.getSeleccionada()).open]
+			bindEnabled(elementSelected)
 		]
 	}
+			
 	
-				
+	// Crea las columnas de la tabla Recetas 				
 	def void ResultadoRecetas(Table<Receta> table) { 
 		new Column<Receta>(table) => [
  		  title = "Nombre"
@@ -67,13 +50,14 @@ class PanelUsuario extends SimpleWindow<Usuario>{
  		  bindContentsToProperty("temporadas")
 		]
 	}
-		
+
+	// Crea la tabla de Recetas		
 	def protected createResultsGrid(Panel mainPanel) {
 		// Crea la table de Recetas
 		var table = new Table<Receta>( mainPanel, typeof(Receta )) =>[
-				bindItemsToProperty("favoritas")
-				it.height =  500
-				//bindValueToProperty("recetaSeleccionado")
+				bindItemsToProperty("resultados")
+				it.height =  800
+				bindValueToProperty("recetaSeleccionada")
 			]
 		this.ResultadoRecetas( table )
 	}
@@ -82,27 +66,29 @@ class PanelUsuario extends SimpleWindow<Usuario>{
 		// Llama a las funciones
 		setTitle("Bienvenido a Que Comemos?")
 		taskDescription = "Seleccione la receta que quiere ver"
-		super.createMainTemplate(mainPanel)
-
+		
+		//super.createMainTemplate(mainPanel)
+		createFormPanel( mainPanel )
 		this.createResultsGrid( mainPanel )
-		this.createGridActions(mainPanel)
+		addActions( mainPanel ) 
+		
 	}
 	
 
-	new( Usuario usuario,WindowOwner parent ) {
-		super( parent,usuario )
+	new( Usuario usuario,WindowOwner parent, AplicationModel aplication ) {
+		super( parent,aplication )
+		modelObject.resultadosRecetas( usuario )
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		new Panel( mainPanel ) => [
 			layout = new HorizontalLayout
-			new Label(mainPanel).text = "Recetas Favortias / Recetas Consultadas / Recetas mas vistas"
-			new Label(mainPanel).text = "Recetas Consultadas / Recetas mas vistas"
-			new Label(mainPanel).text = "Recetas mas vistas"
-			]
+			new Label(mainPanel)=> [
+				it.text = "Recetas Favortias / Recetas Consultadas / Recetas mas vistas"
+				it.fontSize = 14 
+			]			
+		]
 	}
 	
 	
 }
-
-	

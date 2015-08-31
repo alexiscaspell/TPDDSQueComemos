@@ -7,6 +7,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import org.uqbar.arena.Application
 import org.uqbar.arena.windows.Window
+import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
 
 class QueComemosApplication extends Application {
 	
@@ -24,8 +25,7 @@ class QueComemosApplication extends Application {
 		pepe.marcarComoFavorita( recetaEsValida.noCumple(pepe))			
 		pepe.marcarComoFavorita( recetaAzucar.cumple(pepe))
 		pepe.marcarComoFavorita( recetaAzucar.noCumple(pepe))
-		return new PanelUsuario( pepe, this)
-	}
-	
+		return new PanelUsuario( pepe, this, new AplicationModel() )
+	}	
 	
 }

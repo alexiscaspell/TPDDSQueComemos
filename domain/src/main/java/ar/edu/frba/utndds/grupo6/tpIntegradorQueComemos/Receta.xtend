@@ -185,4 +185,9 @@ public class Receta implements IReceta, Cloneable {
 		nueva.subRecetas = subRecetas;		
 		nueva;
 	}
+	
+	def String autor()
+	{
+		return this.usuarioCreador.nombre
+	}
 }

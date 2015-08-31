@@ -1,22 +1,19 @@
 package ar.edu.frba.utndds.grupo6.ui.tpIntegradorQueComemos
 
-
-import org.uqbar.arena.widgets.Panel
-
-
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.tables.Table
-import org.uqbar.arena.widgets.Button
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.bindings.NotNullObservable
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.layout.ColumnLayout
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
 class PanelUsuario extends SimpleWindow<Usuario>{
 
@@ -25,7 +22,15 @@ class PanelUsuario extends SimpleWindow<Usuario>{
 		new Panel( actionsPanel ) => [
 			new Button( it ) => [
 				it.caption = "Boton Extra"
-				onClick = [new PanelReceta(this, new Receta()).open]
+				onClick = [
+					val receta = new Receta()
+					receta.nombre = "Receta 1"
+					receta.calorias = 100
+					val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO)
+					receta.usuarioCreador = pepe
+					receta.explicacion = "Explicacion de receta"
+					new PanelReceta(this, receta).open
+				]
 			]
 		]
 	}		

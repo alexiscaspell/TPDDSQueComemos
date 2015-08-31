@@ -14,11 +14,13 @@ import org.uqbar.arena.windows.WindowOwner
 
 class PanelReceta extends SimpleWindow<Receta>{
 
-	new(WindowOwner parent, Receta receta) {
+	new(WindowOwner parent, Receta receta) 
+	{
 		super(parent, receta)
 	}
 
-	override protected createFormPanel(Panel mainPanel) {
+	override protected createFormPanel(Panel mainPanel) 
+	{
 		this.setTitle("Detalle de Receta")
 		
 		// Panel Superior
@@ -27,47 +29,44 @@ class PanelReceta extends SimpleWindow<Receta>{
 			
 			new Panel( it ) => [
 				layout = new HorizontalLayout
-				new Label(it).text = "Bind a Calorias"	
-				new Label(it).text = "Bind a nombre creador?"
+				new Label(it).bindValueToProperty("calorias")	
+				new Label(it).bindValueToProperty("autor")
 			]	
 		]
-		
-	
+			
 		// Panel Medio
 		new Panel( mainPanel ) => [
-			layout = new HorizontalLayout
-			
+			layout = new HorizontalLayout			
 			new Panel( it ) => [
-				new Label( it ).text = "Dificultad"
-				new Label( it ).text = "Bind a Dificultad"
-				new Label( it ).text = "Ingredientes"
-				new Table( it, Receta )
-				new CheckBox( it )	
+				new Label(it).text = "Dificultad"
+				new Label(it).bindValueToProperty("dificultad")
+				new Label(it).text = "Ingredientes"
+				new Table(it, Receta )
+				new CheckBox(it)	
 			]
 			new Panel( it ) => [
-				new Label( it ).text = "Temporada"
-				new Label( it ).text = "Bind a Temporada"
-				new Label( it ).text = "Condimentos"
-				new List( it )
-				new Label( it ).text = "Condiciones Preexistentes"
-				new List( it )
+				new Label(it).text = "Temporada"
+//				new Label(it).bindValueToProperty("temporada")
+				new Label(it).text = "Condimentos"
+				new List(it)
+				new Label(it).text = "Condiciones Preexistentes"
+				new List(it)
 			]
 		]
 		
 		// Panel Inferior
-		new Panel( mainPanel ) => [
-			new Label( it ).text = "Proceso de Preparacion"
-			new Label( it ).text = "Bind a Descipcion de Preparacion"
-			   	 						
+		new Panel(mainPanel) => [
+			new Label(it).text = "Proceso de Preparacion"
+			new Label(it).bindValueToProperty("explicacion")			   	 						
 		]
 					
 	}
 	
-	override protected addActions(Panel actionsPanel) {
+	override protected addActions(Panel actionsPanel) 
+	{
 		new Button( actionsPanel ) => [
 				it.caption = "Volver"
-			]
-		
+			]		
 	}
 	
 }

@@ -17,10 +17,7 @@ class QueComemosApplication extends Application {
 	
 	static def void main(String[] args) { 
 		new QueComemosApplication().start()
-	}
-
-	
-		
+	}		
 	
 	override protected Window<?> createMainWindow() {
 		pepe.marcarComoFavorita( recetaEsValida.cumple(pepe))
@@ -28,7 +25,6 @@ class QueComemosApplication extends Application {
 		pepe.marcarComoFavorita( recetaAzucar.cumple(pepe))
 		pepe.marcarComoFavorita( recetaAzucar.noCumple(pepe))
 		return new PanelUsuario( pepe, this)
-//		return new PanelReceta(this, new Receta())
 	}
 	
 	

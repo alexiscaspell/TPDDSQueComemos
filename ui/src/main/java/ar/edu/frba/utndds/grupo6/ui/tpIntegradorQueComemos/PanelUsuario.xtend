@@ -9,37 +9,26 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.Button
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.bindings.NotNullObservable
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.layout.ColumnLayout
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
 
 class PanelUsuario extends SimpleWindow<AplicationModel>{
 
 	// Panel de Botones 
 	override protected addActions(Panel actionsPanel) {
-		new Panel( actionsPanel ) => [
-			new Button( it ) => [
-				it.caption = "Boton Extra"
-				onClick = [new PanelReceta(this, new Receta()).open]
-			]
-		]
-	}		
-	
-	/*
-	def void createGridActions(Panel mainPanel) {
-		//val elementSelected = new NotNullObservable("nombre")
-		new Button( mainPanel ) => [
+		val elementSelected = new NotNullObservable("recetaSeleccionada")
+		new Button( actionsPanel ) => [
 			it.caption = "Ver"
-			//onClick = [new PanelReceta( elementSelected , this)]
-			//bindEnabled(elementSelected)
+			it.width = 460
+			onClick = [new PanelReceta(this, modelObject.getSeleccionada()).open]
+			bindEnabled(elementSelected)
 		]
-	} */
+	}
+			
 	
 	// Crea las columnas de la tabla Recetas 				
 	def void ResultadoRecetas(Table<Receta> table) { 
@@ -70,8 +59,8 @@ class PanelUsuario extends SimpleWindow<AplicationModel>{
 		// Crea la table de Recetas
 		var table = new Table<Receta>( mainPanel, typeof(Receta )) =>[
 				bindItemsToProperty("resultados")
-				it.height =  500
-				//bindValueToProperty("recetaSeleccionado")
+				it.height =  800
+				bindValueToProperty("recetaSeleccionada")
 			]
 		this.ResultadoRecetas( table )
 	}
@@ -80,26 +69,28 @@ class PanelUsuario extends SimpleWindow<AplicationModel>{
 		// Llama a las funciones
 		setTitle("Bienvenido a Que Comemos?")
 		taskDescription = "Seleccione la receta que quiere ver"
-		super.createMainTemplate(mainPanel)
-
+		
+		//super.createMainTemplate(mainPanel)
+		createFormPanel( mainPanel )
 		this.createResultsGrid( mainPanel )
 		addActions( mainPanel ) 
-		//this.createGridActions(mainPanel)
+		
 	}
 	
 
 	new( Usuario usuario,WindowOwner parent, AplicationModel aplication ) {
 		super( parent,aplication )
-		aplication.resultadosRecetas( usuario )
+		modelObject.resultadosRecetas( usuario )
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		new Panel( mainPanel ) => [
 			layout = new HorizontalLayout
-			new Label(mainPanel).text = "Recetas Favortias / Recetas Consultadas / Recetas mas vistas"
-			new Label(mainPanel).text = "Recetas Consultadas / Recetas mas vistas"
-			new Label(mainPanel).text = "Recetas mas vistas"
-			]
+			new Label(mainPanel)=> [
+				it.text = "Recetas Favortias / Recetas Consultadas / Recetas mas vistas"
+				it.fontSize = 14 
+			]			
+		]
 	}
 	
 	

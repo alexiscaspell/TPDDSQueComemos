@@ -12,7 +12,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class AplicationModel {
 	
 	
-	
+	Receta recetaSeleccionada
 	List<Receta> resultados
 
 	// Busca las recetas a mostrar del usuario 
@@ -24,4 +24,7 @@ class AplicationModel {
 		
 	}
 	
+	def Receta getSeleccionada(){
+		recetaSeleccionada 
+	}
 }

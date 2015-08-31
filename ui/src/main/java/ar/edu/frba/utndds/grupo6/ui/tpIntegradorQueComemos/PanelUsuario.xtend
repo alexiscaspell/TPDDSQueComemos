@@ -12,6 +12,7 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.bindings.NotNullObservable
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
+import ar.edu.frba.utndds.grupo6.ui.AplicationModel.DetalleReceta
 
 class PanelUsuario extends SimpleWindow<AplicationModel>{
 
@@ -21,7 +22,10 @@ class PanelUsuario extends SimpleWindow<AplicationModel>{
 		new Button( actionsPanel ) => [
 			it.caption = "Ver"
 			it.width = 460
-			onClick = [new PanelReceta(this, modelObject.getSeleccionada()).open]
+			onClick = [
+				val detalleReceta = new DetalleReceta(modelObject.getSeleccionada())
+				new PanelReceta(this, detalleReceta).open
+			]
 			bindEnabled(elementSelected)
 		]
 	}

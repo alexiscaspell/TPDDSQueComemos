@@ -1,22 +1,23 @@
 package ar.edu.frba.utndds.grupo6.ui.tpIntegradorQueComemos
 
-import org.uqbar.arena.widgets.Panel
-
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.ui.AplicationModel.DetalleReceta
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
-import org.uqbar.arena.widgets.CheckBox
-import org.uqbar.arena.widgets.List
-import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.CheckBox
 
-class PanelReceta extends SimpleWindow<Receta>{
+class PanelReceta extends SimpleWindow<DetalleReceta>{
 
-	new(WindowOwner parent, Receta receta) 
+	new(WindowOwner parent, DetalleReceta detalleReceta) 
 	{
-		super(parent, receta)
+		super(parent, detalleReceta)
 	}
 
 	override protected createFormPanel(Panel mainPanel) 
@@ -25,39 +26,39 @@ class PanelReceta extends SimpleWindow<Receta>{
 		
 		// Panel Superior
 		new Panel(mainPanel) => [		
-			new Label(it).bindValueToProperty("nombre")
-			
-			new Panel( it ) => [
+			new Label(it).bindValueToProperty("nombreReceta")			
+			new Panel(it) => [
 				layout = new HorizontalLayout
-				new Label(it).bindValueToProperty("calorias")	
-				new Label(it).bindValueToProperty("autor")
+				new Label(it).bindValueToProperty("caloriasReceta")	
+				new Label(it).bindValueToProperty("autorReceta")
 			]	
 		]
 			
 		// Panel Medio
-		new Panel( mainPanel ) => [
-			layout = new HorizontalLayout			
-			new Panel( it ) => [
+		new Panel(mainPanel) => [
+			new Panel(it) => [
 				new Label(it).text = "Dificultad"
-				new Label(it).bindValueToProperty("dificultad")
+				new Label(it).bindValueToProperty("dificultadReceta")
 				new Label(it).text = "Ingredientes"
-				new Table(it, Receta )
-				new CheckBox(it)	
+//				this.createGridIngredientes(mainPanel)
 			]
 			new Panel( it ) => [
-				new Label(it).text = "Temporada"
+				new Label(it).text = "Temporadas"
+				this.createGridTemporada(mainPanel)
 //				new Label(it).bindValueToProperty("temporada")
-				new Label(it).text = "Condimentos"
-				new List(it)
-				new Label(it).text = "Condiciones Preexistentes"
-				new List(it)
+//				new Label(it).text = "Condimentos"
+//				new List(it)
+//				new Label(it).text = "Condiciones Preexistentes"
+//				new List(it)
 			]
+			addActions(mainPanel);			
+			new CheckBox(mainPanel).bindValueToProperty("esFavorita")
 		]
 		
 		// Panel Inferior
 		new Panel(mainPanel) => [
 			new Label(it).text = "Proceso de Preparacion"
-			new Label(it).bindValueToProperty("explicacion")			   	 						
+			new Label(it).bindValueToProperty("explicacionReceta")			   	 						
 		]
 					
 	}
@@ -69,4 +70,37 @@ class PanelReceta extends SimpleWindow<Receta>{
 			]		
 	}
 	
+	def void setTableIngredientes(Table<Ingrediente> table) { 
+		new Column<Ingrediente>(table) => [
+ 		  title = "Nombre"
+ 		  fixedSize = 200
+ 		  bindContentsToProperty("nombre")
+		]
+	}
+	
+	def void setTableTemporadas(Table<Temporada> table) { 
+		new Column<Temporada>(table) => [
+ 		  title = "Nombre"
+ 		  fixedSize = 200
+ 		  bindContentsToProperty("nombre")
+		]
+	}
+	
+	def protected createGridIngredientes(Panel mainPanel) {
+		// Crea la table de Recetas
+		var table = new Table<Ingrediente>(mainPanel, typeof(Ingrediente)) =>[
+				bindItemsToProperty("ingredientesReceta")
+				it.height =  800
+			]
+		this.setTableIngredientes(table)
+	}
+	
+	def protected createGridTemporada(Panel mainPanel) {
+		// Crea la table de Recetas
+		var table = new Table<Temporada>(mainPanel, typeof(Temporada)) =>[
+				bindItemsToProperty("temporadasReceta")
+				it.height =  800
+			]
+		this.setTableTemporadas(table)
+	}	
 }

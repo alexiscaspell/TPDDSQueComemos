@@ -40,6 +40,9 @@ public abstract class UsuarioDecorator  extends SujetoObservado implements Usuar
 		decorado.getNombre()
 	}
 	
+	override getFavoritas(){
+		decorado.getFavoritas()
+	}
 	override getConsultas(){
 		decorado.getConsultas()
 	}

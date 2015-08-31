@@ -29,6 +29,8 @@ public interface Usuario {
 	
 	def double getPeso()
 	
+	def List<Receta> getFavoritas()
+	
 	def List<Observador> getObservadores()
 	
 	def List<Ingrediente> getPreferenciasAlimenticias()

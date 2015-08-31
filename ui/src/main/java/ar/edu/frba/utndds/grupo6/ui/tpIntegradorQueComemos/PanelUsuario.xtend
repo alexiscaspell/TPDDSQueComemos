@@ -17,10 +17,11 @@ import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.bindings.NotNullObservable
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.layout.ColumnLayout
+import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
 
-class PanelUsuario extends SimpleWindow<Usuario>{
+class PanelUsuario extends SimpleWindow<AplicationModel>{
 
-	
+	// Panel de Botones 
 	override protected addActions(Panel actionsPanel) {
 		new Panel( actionsPanel ) => [
 			new Button( it ) => [
@@ -30,6 +31,7 @@ class PanelUsuario extends SimpleWindow<Usuario>{
 		]
 	}		
 	
+	/*
 	def void createGridActions(Panel mainPanel) {
 		//val elementSelected = new NotNullObservable("nombre")
 		new Button( mainPanel ) => [
@@ -37,9 +39,9 @@ class PanelUsuario extends SimpleWindow<Usuario>{
 			//onClick = [new PanelReceta( elementSelected , this)]
 			//bindEnabled(elementSelected)
 		]
-	}
+	} */
 	
-				
+	// Crea las columnas de la tabla Recetas 				
 	def void ResultadoRecetas(Table<Receta> table) { 
 		new Column<Receta>(table) => [
  		  title = "Nombre"
@@ -62,11 +64,12 @@ class PanelUsuario extends SimpleWindow<Usuario>{
  		  bindContentsToProperty("temporadas")
 		]
 	}
-		
+
+	// Crea la tabla de Recetas		
 	def protected createResultsGrid(Panel mainPanel) {
 		// Crea la table de Recetas
 		var table = new Table<Receta>( mainPanel, typeof(Receta )) =>[
-				bindItemsToProperty("favoritas")
+				bindItemsToProperty("resultados")
 				it.height =  500
 				//bindValueToProperty("recetaSeleccionado")
 			]
@@ -80,12 +83,14 @@ class PanelUsuario extends SimpleWindow<Usuario>{
 		super.createMainTemplate(mainPanel)
 
 		this.createResultsGrid( mainPanel )
-		this.createGridActions(mainPanel)
+		addActions( mainPanel ) 
+		//this.createGridActions(mainPanel)
 	}
 	
 
-	new( Usuario usuario,WindowOwner parent ) {
-		super( parent,usuario )
+	new( Usuario usuario,WindowOwner parent, AplicationModel aplication ) {
+		super( parent,aplication )
+		aplication.resultadosRecetas( usuario )
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

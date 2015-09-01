@@ -13,8 +13,12 @@ import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.bindings.NotNullObservable
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.DetalleReceta
+import java.awt.Color
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class PanelUsuario extends SimpleWindow<AplicationModel>{
+
+	  boolean aux
 
 	// Panel de Botones 
 	override protected addActions(Panel actionsPanel) {
@@ -37,6 +41,7 @@ class PanelUsuario extends SimpleWindow<AplicationModel>{
  		  title = "Nombre"
  		  fixedSize = 100
  		  bindContentsToProperty("nombre")
+ 		  bindForeground("tipo").transformer = [ TipoReceta recibe |  modelObject.getColor()  ]
 		]
 		new Column<Receta>(table) => [
  		  title = "Calorias"
@@ -81,7 +86,8 @@ class PanelUsuario extends SimpleWindow<AplicationModel>{
 
 	new( Usuario usuario,WindowOwner parent, AplicationModel aplication ) {
 		super( parent,aplication )
-		modelObject.resultadosRecetas( usuario )
+		modelObject.resultadosRecetas(  usuario )
+		modelObject.ApilcarAlgoritmoColor( usuario )
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

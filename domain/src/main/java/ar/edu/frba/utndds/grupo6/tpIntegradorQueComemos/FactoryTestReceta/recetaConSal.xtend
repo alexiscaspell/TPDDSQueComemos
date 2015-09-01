@@ -53,8 +53,9 @@ override Receta noCumple(Usuario usuario)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.MEDIANA, temporadas)
 		recetaSimple.tipo=TipoReceta.PRIVADA
+		recetaSimple.calorias=240
 		recetaSimple
 }
 }

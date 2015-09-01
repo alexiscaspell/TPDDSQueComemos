@@ -5,7 +5,6 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import org.eclipse.xtend.lib.annotations.Accessors
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
 import java.util.Map
 import java.awt.Color
 import java.util.ArrayList
@@ -16,13 +15,15 @@ class AplicationModel {
 	
 	AlgoritmoReceta algoritmoReceta = new AlgoritmoReceta()
 	Receta recetaSeleccionada
+	String RecetasMostradas
 	List<Receta> resultados
 	Map<String,Integer> consultas 
 	List<Color> colores = new ArrayList<Color>
 	int PosColor = -1
+	List<Receta> diezUltimas = new ArrayList<Receta>
 
-	new( ConsultasXRecetas consultas ) {
-		this.consultas = consultas.estadistica
+	new( Map<String, Integer> map ) {
+		this.consultas = map
 	}
 
 	// Busca las recetas a mostrar del usuario 
@@ -30,13 +31,24 @@ class AplicationModel {
 		
 	
 		// if perfilUsuario.login = primeraVez
-		if ( false ) algoritmoReceta.aplicar( consultas )
-			// perfilUsuario.login = No PrimeraVez
-		else {	
-			if ( usuario.favoritas == 0 ) resultados = usuario.consultas.subList(0,9)
-			else resultados = usuario.favoritas
+		if ( false ) {
+			resultados = diezUltimas( algoritmoReceta.aplicar( consultas ) )
+			RecetasMostradas = "Recetas Mas Consultadas en Que Comemos? son : " 
+			// perfilUsuario.login = No PrimeraVez	
+		} else {	
+			if ( usuario.favoritas == 0 ) {
+				resultados =  diezUltimas( usuario.getConsultas() )
+				RecetasMostradas = "Tus ultimas Recetas Consultadas son : "	
+			}  
+			else {
+				RecetasMostradas = "Tus Recetas Favoritas son : "
+				resultados = diezUltimas( usuario.favoritas )
+				  
 			}
+		 
 		}
+		
+	}
 				
 	def Receta getSeleccionada() {
 		recetaSeleccionada 
@@ -51,7 +63,15 @@ class AplicationModel {
 		resultados.forEach[
 			if ( it.esPublica() )  colores.add(Color.red) 
 			else if ( it.usuarioCreador == usuario )  colores.add(Color.blue) 
-			else ( it.usuarioCreador.comparteGrupo( usuario ) )  colores.add(Color.green) 
+			else if ( it.usuarioCreador.comparteGrupo( usuario ) )  colores.add(Color.green) 
 		]
-	}	
+	}
+	
+	def List<Receta> diezUltimas( List<Receta> lista ){
+		(0..lista.size-1).forEach[ if ( it > (lista.size - 10 ) ) diezUltimas.add( lista.get( it ) )	]
+		return diezUltimas
+	}
+		
 }
+
+	

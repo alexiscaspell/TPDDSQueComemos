@@ -13,12 +13,10 @@ import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.bindings.NotNullObservable
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.DetalleReceta
-import java.awt.Color
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class PanelUsuario extends SimpleWindow<AplicationModel>{
 
-	  boolean aux
 
 	// Panel de Botones 
 	override protected addActions(Panel actionsPanel) {

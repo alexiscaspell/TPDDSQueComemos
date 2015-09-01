@@ -24,7 +24,7 @@ class recetaValida implements recetaFactory {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.DIFICIL, temporadas)
 		recetaSimple.tipo= TipoReceta.PUBLICA
 		recetaSimple	
 	

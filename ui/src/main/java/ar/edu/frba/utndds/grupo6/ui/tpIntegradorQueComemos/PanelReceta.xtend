@@ -12,6 +12,10 @@ import org.uqbar.arena.windows.WindowOwner
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.CheckBox
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.widgets.Selector
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.RadioSelector
 
 class PanelReceta extends SimpleWindow<DetalleReceta>{
 
@@ -22,43 +26,51 @@ class PanelReceta extends SimpleWindow<DetalleReceta>{
 
 	override protected createFormPanel(Panel mainPanel) 
 	{
+		mainPanel.layout = new VerticalLayout
 		this.setTitle("Detalle de Receta")
 		
 		// Panel Superior
 		new Panel(mainPanel) => [		
-			new Label(it).bindValueToProperty("nombreReceta")			
+			new Label(it) => [
+				value <=> "nombreReceta"
+			]			
 			new Panel(it) => [
-				layout = new HorizontalLayout
-				new Label(it).bindValueToProperty("caloriasReceta")	
-				new Label(it).bindValueToProperty("autorReceta")
+				it.layout = new HorizontalLayout
+				new Label(it) => [
+					value <=> "caloriasReceta"
+				]	
+				new Label(it) => [
+					value <=> "autorReceta"
+				]
 			]	
 		]
 			
 		// Panel Medio
 		new Panel(mainPanel) => [
+			it.layout = new HorizontalLayout
 			new Panel(it) => [
 				new Label(it).text = "Dificultad"
 				new Label(it).bindValueToProperty("dificultadReceta")
 				new Label(it).text = "Ingredientes"
 //				this.createGridIngredientes(mainPanel)
+				new CheckBox(mainPanel)=>[
+					value <=> "esFavorita"
+				]
 			]
-			new Panel( it ) => [
+			new Panel(it) => [
 				new Label(it).text = "Temporadas"
-				this.createGridTemporada(mainPanel)
-//				new Label(it).bindValueToProperty("temporada")
-//				new Label(it).text = "Condimentos"
-//				new List(it)
-//				new Label(it).text = "Condiciones Preexistentes"
-//				new List(it)
+				new Table(it, typeof(Ingrediente)) => [
+					items <=> "temporadasReceta"										
+				]
 			]
-			addActions(mainPanel);			
-			new CheckBox(mainPanel).bindValueToProperty("esFavorita")
 		]
 		
 		// Panel Inferior
 		new Panel(mainPanel) => [
 			new Label(it).text = "Proceso de Preparacion"
-			new Label(it).bindValueToProperty("explicacionReceta")			   	 						
+			new Label(it) => [
+				value <=> "explicacionReceta"
+			]			   	 						
 		]
 					
 	}
@@ -70,37 +82,37 @@ class PanelReceta extends SimpleWindow<DetalleReceta>{
 			]		
 	}
 	
-	def void setTableIngredientes(Table<Ingrediente> table) { 
-		new Column<Ingrediente>(table) => [
- 		  title = "Nombre"
- 		  fixedSize = 200
- 		  bindContentsToProperty("nombre")
-		]
-	}
+//	def void setTableIngredientes(Table<Ingrediente> table) { 
+//		new Column<Ingrediente>(table) => [
+// 		  title = "Nombre"
+// 		  fixedSize = 200
+// 		  bindContentsToProperty("nombre")
+//		]
+//	}
 	
-	def void setTableTemporadas(Table<Temporada> table) { 
-		new Column<Temporada>(table) => [
- 		  title = "Nombre"
- 		  fixedSize = 200
- 		  bindContentsToProperty("nombre")
-		]
-	}
+//	def void setTableTemporadas(Table<Temporada> table) { 
+//		new Column<Temporada>(table) => [
+// 		  title = "Nombre"
+// 		  fixedSize = 200
+// 		  bindContentsToProperty("nombre")
+//		]
+//	}
 	
-	def protected createGridIngredientes(Panel mainPanel) {
-		// Crea la table de Recetas
-		var table = new Table<Ingrediente>(mainPanel, typeof(Ingrediente)) =>[
-				bindItemsToProperty("ingredientesReceta")
-				it.height =  800
-			]
-		this.setTableIngredientes(table)
-	}
+//	def protected createGridIngredientes(Panel mainPanel) {
+//		// Crea la table de Recetas
+//		var table = new Table<Ingrediente>(mainPanel, typeof(Ingrediente)) =>[
+//				bindItemsToProperty("ingredientesReceta")
+//				it.height =  800
+//			]
+//		this.setTableIngredientes(table)
+//	}
 	
-	def protected createGridTemporada(Panel mainPanel) {
-		// Crea la table de Recetas
-		var table = new Table<Temporada>(mainPanel, typeof(Temporada)) =>[
-				bindItemsToProperty("temporadasReceta")
-				it.height =  800
-			]
-		this.setTableTemporadas(table)
-	}	
+//	def protected createGridTemporada(Panel mainPanel) {
+//		// Crea la table de Recetas
+//		var table = new Table<Temporada>(mainPanel, typeof(Temporada)) =>[
+//				bindItemsToProperty("temporadasReceta")
+//				it.height =  800
+//			]
+//		this.setTableTemporadas(table)
+//	}	
 }

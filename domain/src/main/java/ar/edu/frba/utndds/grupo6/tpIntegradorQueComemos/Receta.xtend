@@ -12,6 +12,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 import queComemos.entrega3.dominio.Dificultad
 import org.uqbar.commons.utils.Observable
+import java.util.HashMap
 
 @Observable
 @Accessors
@@ -32,7 +33,7 @@ public class Receta implements IReceta, Cloneable {
 	
 	private TipoReceta tipo
 	
-	private Map<Ingrediente, Integer> ingredientes
+	private Map<Ingrediente, Integer> ingredientes = new HashMap<Ingrediente, Integer>()
 	
 	private Map<Condimento, Integer> condimentos
 	
@@ -104,7 +105,7 @@ public class Receta implements IReceta, Cloneable {
 	
 	override getIngredientes() 
 	{
-		for(i : 0..<subRecetas.length)
+		for(i : 0..<subRecetas.size)
 		{
 			val receta = subRecetas.get(i)
 			ingredientes.putAll(receta.getIngredientes())
@@ -114,7 +115,7 @@ public class Receta implements IReceta, Cloneable {
 	
 	override getCondimentos() 
 	{
-		for(i : 0..<subRecetas.length)
+		for(i : 0..<subRecetas.size)
 		{
 			val receta = subRecetas.get(i)
 			condimentos.putAll(receta.getCondimentos())
@@ -190,10 +191,5 @@ public class Receta implements IReceta, Cloneable {
 		nueva.temporadas = temporadas;
 		nueva.subRecetas = subRecetas;		
 		nueva;
-	}
-	
-	def String autor()
-	{
-		return this.usuarioCreador.nombre
 	}
 }

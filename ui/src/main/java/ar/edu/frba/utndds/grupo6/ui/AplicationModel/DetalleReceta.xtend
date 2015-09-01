@@ -1,8 +1,8 @@
 package ar.edu.frba.utndds.grupo6.ui.AplicationModel
 
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import org.uqbar.commons.utils.Observable
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
@@ -50,6 +50,11 @@ class DetalleReceta {
 		return this.receta.temporadas
 	}
 	
+	def ingredientesReceta()
+	{
+		this.receta.ingredientes.keySet	
+	}
+	
 	def String explicacionReceta()
 	{
 		return this.receta.explicacion
@@ -57,7 +62,7 @@ class DetalleReceta {
 	
 	def esFavorita()
 	{
-		return true;
+		return this.receta.usuarioCreador.favoritas.contains(receta)
 	}
 	
 }	

@@ -3,19 +3,16 @@ package ar.edu.frba.utndds.grupo6.ui.tpIntegradorQueComemos
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.DetalleReceta
 import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.widgets.CheckBox
+
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.widgets.Selector
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.widgets.RadioSelector
 
 class PanelReceta extends SimpleWindow<DetalleReceta>{
 
@@ -52,7 +49,9 @@ class PanelReceta extends SimpleWindow<DetalleReceta>{
 				new Label(it).text = "Dificultad"
 				new Label(it).bindValueToProperty("dificultadReceta")
 				new Label(it).text = "Ingredientes"
-//				this.createGridIngredientes(mainPanel)
+				new Table(it, typeof(Ingrediente)) => [
+					items <=> "ingredientesReceta"										
+				]
 				new CheckBox(mainPanel)=>[
 					value <=> "esFavorita"
 				]

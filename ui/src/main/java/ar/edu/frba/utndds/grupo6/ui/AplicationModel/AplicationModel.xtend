@@ -53,6 +53,5 @@ class AplicationModel {
 			else if ( it.usuarioCreador == usuario )  colores.add(Color.blue) 
 			else ( it.usuarioCreador.comparteGrupo( usuario ) )  colores.add(Color.green) 
 		]
-	}
-		
+	}	
 }

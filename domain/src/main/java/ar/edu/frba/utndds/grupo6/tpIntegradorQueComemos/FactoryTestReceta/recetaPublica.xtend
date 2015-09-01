@@ -7,7 +7,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import queComemos.entrega3.dominio.Dificultad
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.TipoReceta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class recetaPublica implements recetaFactory {
 	//atributo "publica"

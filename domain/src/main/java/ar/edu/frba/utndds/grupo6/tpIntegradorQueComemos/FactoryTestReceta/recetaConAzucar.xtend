@@ -7,7 +7,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import queComemos.entrega3.dominio.Dificultad
-
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class recetaConAzucar implements recetaFactory {
 	
@@ -29,6 +29,7 @@ override Receta cumple( Usuario usuario)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.tipo=TipoReceta.PRIVADA
 		recetaSimple.calorias=600
 		recetaSimple
 		
@@ -54,6 +55,7 @@ override Receta noCumple(Usuario usuario)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
 		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		recetaSimple.tipo=TipoReceta.PUBLICA
 		recetaSimple
 }
 	

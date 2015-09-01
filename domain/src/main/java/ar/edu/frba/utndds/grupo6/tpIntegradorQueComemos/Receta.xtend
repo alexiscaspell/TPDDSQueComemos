@@ -9,6 +9,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 import queComemos.entrega3.dominio.Dificultad
 import org.uqbar.commons.utils.Observable
 
@@ -136,7 +137,7 @@ public class Receta implements IReceta, Cloneable {
 	
 	def boolean puedeModificar(Usuario usuario) 
 	{
-		usuarioCreador.equals(usuario) || tipo == TipoReceta.PUBLICA
+		usuarioCreador.equals(usuario) || tipo.esPublica()
 	}
 	
 	private def int cantidadDeAzucarEnLosCondimentos() 
@@ -153,7 +154,7 @@ public class Receta implements IReceta, Cloneable {
 	{
 		usuarioCreador == null ||
 		usuarioCreador.getNombre().equals(usuario.getNombre()) || 
-		tipo == TipoReceta.PUBLICA ||
+		tipo.esPublica()||
 		usuarioCreador.comparteGrupo(usuario)
 	}
 	
@@ -168,7 +169,12 @@ public class Receta implements IReceta, Cloneable {
 	}
 	
 	def void setPublica(){
-		tipo = TipoReceta.PUBLICA
+		tipo=TipoReceta.PUBLICA
+	}
+	
+	def boolean esPublica()
+	{
+		tipo.esPublica()
 	}
 	
 	override Receta clone()

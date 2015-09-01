@@ -50,9 +50,9 @@ class MonitoreoConsultasTestSuite {
 		usuarioFemenino.getRecetasConAcceso();
 		usuarioMasculino.getRecetasConAcceso();
 						
-		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Milanesas"), 1);
+		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Milanesas"), 2);
 		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Torta"), 3);
-		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Pure"), 3);
+		Assert.assertEquals(ConsultasXRecetas.getEstadistica().get("Pure"), 4);
 		Assert.assertEquals(ConsultasXHora.getEstadistica.get(calendario.get(Calendar.HOUR_OF_DAY )), 2);
 	}
 		
@@ -69,7 +69,7 @@ class MonitoreoConsultasTestSuite {
 		Assert.assertEquals(ConsultasXSexo.getEstadisticaFemenino().get("Milanesas"), 1)
 		Assert.assertEquals(ConsultasXSexo.getEstadisticaFemenino().get("Torta"), 2)
 		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Pure"), 2)
-		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Milanesas"), 0)
+		Assert.assertEquals(ConsultasXSexo.getEstadisticaMasculino().get("Milanesas"), 1)
 	}
 	
 	@Test

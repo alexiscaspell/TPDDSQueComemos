@@ -13,6 +13,8 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 class PanelReceta extends SimpleWindow<DetalleReceta>{
 
@@ -27,7 +29,7 @@ class PanelReceta extends SimpleWindow<DetalleReceta>{
 		this.setTitle("Detalle de Receta")
 		
 		// Panel Superior
-		new Panel(mainPanel) => [		
+		new Panel(mainPanel) => [
 			new Label(it) => [
 				value <=> "nombreReceta"
 			]			
@@ -44,7 +46,7 @@ class PanelReceta extends SimpleWindow<DetalleReceta>{
 			
 		// Panel Medio
 		new Panel(mainPanel) => [
-			it.layout = new HorizontalLayout
+			layout = new HorizontalLayout
 			new Panel(it) => [
 				new Label(it).text = "Dificultad"
 				new Label(it).bindValueToProperty("dificultadReceta")
@@ -52,8 +54,12 @@ class PanelReceta extends SimpleWindow<DetalleReceta>{
 				new Table(it, typeof(Ingrediente)) => [
 					items <=> "ingredientesReceta"										
 				]
-				new CheckBox(mainPanel)=>[
-					value <=> "esFavorita"
+				new Panel(it) => [
+					layout = new HorizontalLayout
+					new Label(it).text = "Favorita"
+					new CheckBox(it)=>[
+						value <=> "esFavorita"
+					]
 				]
 			]
 			new Panel(it) => [
@@ -61,23 +67,34 @@ class PanelReceta extends SimpleWindow<DetalleReceta>{
 				new Table(it, typeof(Ingrediente)) => [
 					items <=> "temporadasReceta"										
 				]
-			]
+				new Label(it).text = "Condimentos"
+				new Table(it, typeof(Condimento)) => [
+					items <=> "condimentosReceta"										
+				]
+				new Label(it).text = "Condiciones Preexistentes"
+				new Table(it, typeof(Condicion)) => [
+					items <=> "condicionesPreexistentes"										
+				]
+			]								
 		]
 		
-		// Panel Inferior
 		new Panel(mainPanel) => [
-			new Label(it).text = "Proceso de Preparacion"
-			new Label(it) => [
-				value <=> "explicacionReceta"
-			]			   	 						
-		]
-					
+				new Panel(it) => [				
+					new Label(it).text = "Proceso de Preparacion"
+					new Label(it) => [
+						value <=> "explicacionReceta"
+					]			   	 						
+				]
+			]
 	}
 	
 	override protected addActions(Panel actionsPanel) 
 	{
 		new Button( actionsPanel ) => [
 				it.caption = "Volver"
+				onClick = [
+					this.close
+				]
 			]		
 	}
 	

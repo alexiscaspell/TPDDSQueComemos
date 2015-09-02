@@ -55,6 +55,11 @@ class DetalleReceta {
 		this.receta.ingredientes.keySet	
 	}
 	
+	def condimentosReceta()
+	{
+		this.receta.condimentos.keySet	
+	}
+	
 	def String explicacionReceta()
 	{
 		return this.receta.explicacion
@@ -65,4 +70,8 @@ class DetalleReceta {
 		return this.receta.usuarioCreador.favoritas.contains(receta)
 	}
 	
+	def condicionesPreexistentes()
+	{
+		return this.receta.condicionesInadecuadas
+	}
 }	

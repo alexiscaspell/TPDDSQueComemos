@@ -16,6 +16,8 @@ import org.uqbar.commons.utils.Observable
 @Observable
 @Accessors
 public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
+	
+	private Login login
 
 	private double altura
 
@@ -104,6 +106,12 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	//	------------------------------------------- Getters -------------------------------------------
+	
+	override getLogin(){
+		
+		login		
+	}
+	
 	def getReceta(String nombre) {
 		recetario.getReceta(nombre)
 	}

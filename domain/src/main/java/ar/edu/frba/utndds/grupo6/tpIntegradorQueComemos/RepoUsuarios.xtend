@@ -42,4 +42,11 @@ public class RepoUsuarios implements IRepoUsuarios {
 		return listaUsuariosConElMismoNombre.filter[usuarioFiltrado|usuarioFiltrado.cumpleMismasCondiciones(usuario)].
 			toList
 	}
+	
+	def validarNickYContraseña(String nick,String pass){
+		
+		val Usuario usuarioCorrecto = listaUsuarios.findFirst[usuario|usuario.login.nickName.equals(nick)&&usuario.login.password.equals(pass)]
+		
+		return usuarioCorrecto
+	}
 }

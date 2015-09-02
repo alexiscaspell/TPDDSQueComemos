@@ -12,6 +12,9 @@ public interface Usuario {
 	def void setNombre(String nombre)
 
 	//	------------------------------------------- Getters -------------------------------------------
+	
+	def Login getLogin()
+	
 	def List<Receta> getConsultas()
 
 	def Sexo getSexo()

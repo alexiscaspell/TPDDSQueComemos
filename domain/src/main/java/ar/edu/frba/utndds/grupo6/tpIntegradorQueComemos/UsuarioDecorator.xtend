@@ -25,6 +25,11 @@ public abstract class UsuarioDecorator extends SujetoObservado implements Usuari
 	//override getCondicion(){
 	//decorado.getCondicion()
 	//}
+	
+	override getLogin(){
+		
+		decorado.getLogin()
+	}
 	override getPeso() {
 		decorado.getPeso()
 	}

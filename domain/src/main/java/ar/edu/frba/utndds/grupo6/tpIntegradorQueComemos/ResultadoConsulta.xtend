@@ -5,21 +5,20 @@ import java.util.List
 
 @Accessors
 public class ResultadoConsulta {
-	
+
 	private Receta recetaModelo;
-	
+
 	private List<Receta> recetasEncontradas;
-	
+
 	private Usuario usuario;
-	
-	new (Receta receta, List<Receta> recetas, Usuario usuario)
-	{
+
+	new(Receta receta, List<Receta> recetas, Usuario usuario) {
 		this.recetaModelo = receta;
 		this.recetasEncontradas = recetas;
 		this.usuario = usuario;
-	}	
-	
-	def getCantidadRecetas(){
+	}
+
+	def getCantidadRecetas() {
 		recetasEncontradas.size()
 	}
 }

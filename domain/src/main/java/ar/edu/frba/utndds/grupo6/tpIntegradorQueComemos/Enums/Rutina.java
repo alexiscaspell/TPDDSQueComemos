@@ -56,8 +56,8 @@ public enum Rutina {
 			return false;
 		}
 	};
-	
+
 	public abstract boolean rutinaActiva();
-	
+
 	public abstract boolean rutinaActivaConEjercicioAdicional();
 }

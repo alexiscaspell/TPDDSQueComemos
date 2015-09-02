@@ -1,4 +1,5 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta
+
 import java.util.HashMap
 import java.util.ArrayList
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
@@ -10,9 +11,8 @@ import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class recetaConSal implements recetaFactory {
-	
-	override Receta cumple(Usuario usuario)
-{
+
+	override Receta cumple(Usuario usuario) {
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.PAPA, 1000)
@@ -20,42 +20,38 @@ class recetaConSal implements recetaFactory {
 		condimentos.put(Condimento.SAL, 10)
 		condimentos.put(Condimento.ACEITE, 10)
 		condimentos.put(Condimento.AZUCAR, 100)
-		val explicacion = "1 - Pelar las papas\n" + 
-						  "2 - Hervir las papas 20 minutos" +
-						  "3 - Pisar las papas con un pisapapas" +
-						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val explicacion = "1 - Pelar las papas\n" + "2 - Hervir las papas 20 minutos" +
+			"3 - Pisar las papas con un pisapapas" + "4 - Condimentar"
+		val temporadas = new ArrayList<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
-		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
-		recetaSimple.calorias=100
-		recetaSimple.tipo=TipoReceta.PUBLICA
+		temporadas.add(Temporada.VERANO)
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
+			temporadas)
+		recetaSimple.calorias = 100
+		recetaSimple.tipo = TipoReceta.PUBLICA
 		recetaSimple
-}
+	}
 
-
-override Receta noCumple(Usuario usuario)
-{
+	override Receta noCumple(Usuario usuario) {
 		val nombre = "Frutillas a la crema"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.FRUTILLA, 1000)
 		val condimentos = new HashMap<Condimento, Integer>()
 		condimentos.put(Condimento.CREMA, 500)
 		condimentos.put(Condimento.AZUCAR, 800)
-		val explicacion = "1 - Cortar las frutillas\n" + 
-						  "2 - Preparar crema" +
-						  "3 - Agregar azucar a las frutillas" +
-						  "4 - Servir las frutillas junto con la crema"
-		val temporadas = new ArrayList<Temporada>()		
+		val explicacion = "1 - Cortar las frutillas\n" + "2 - Preparar crema" +
+			"3 - Agregar azucar a las frutillas" + "4 - Servir las frutillas junto con la crema"
+		val temporadas = new ArrayList<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
-		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.MEDIANA, temporadas)
-		recetaSimple.tipo=TipoReceta.PRIVADA
-		recetaSimple.calorias=240
+		temporadas.add(Temporada.VERANO)
+		val recetaSimple = new Receta(usuario, nombre, ingredientes, condimentos, explicacion, Dificultad.MEDIANA,
+			temporadas)
+		recetaSimple.tipo = TipoReceta.PRIVADA
+		recetaSimple.calorias = 240
 		recetaSimple
-}
+	}
 }

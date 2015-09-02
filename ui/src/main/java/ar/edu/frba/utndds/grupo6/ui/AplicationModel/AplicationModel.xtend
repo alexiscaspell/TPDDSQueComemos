@@ -11,67 +11,66 @@ import java.util.ArrayList
 
 @Observable
 @Accessors
-class AplicationModel {	
-	
+class AplicationModel {
+
 	AlgoritmoReceta algoritmoReceta = new AlgoritmoReceta()
 	Receta recetaSeleccionada
 	String RecetasMostradas
 	List<Receta> resultados
-	Map<String,Integer> consultas 
+	Map<String, Integer> consultas
 	List<Color> colores = new ArrayList<Color>
 	int PosColor = -1
 	List<Receta> diezUltimas = new ArrayList<Receta>
 
-	new( Map<String, Integer> map ) {
+	new(Map<String, Integer> map) {
 		this.consultas = map
 	}
 
 	// Busca las recetas a mostrar del usuario 
-	def void resultadosRecetas( Usuario usuario ) {
-		
-	
+	def void resultadosRecetas(Usuario usuario) {
+
 		// if perfilUsuario.login = primeraVez
-		if ( false ) {
-			resultados = diezUltimas( algoritmoReceta.aplicar( consultas ) )
-			RecetasMostradas = "Recetas Mas Consultadas en Que Comemos? son : " 
-			// perfilUsuario.login = No PrimeraVez	
-		} else {	
-			if ( usuario.favoritas == 0 ) {
-				resultados =  diezUltimas( usuario.getConsultas() )
-				RecetasMostradas = "Tus ultimas Recetas Consultadas son : "	
-			}  
-			else {
+		if (false) {
+			resultados = diezUltimas(algoritmoReceta.aplicar(consultas))
+			RecetasMostradas = "Recetas Mas Consultadas en Que Comemos? son : "
+
+		// perfilUsuario.login = No PrimeraVez	
+		} else {
+			if (usuario.favoritas == 0) {
+				resultados = diezUltimas(usuario.getConsultas())
+				RecetasMostradas = "Tus ultimas Recetas Consultadas son : "
+			} else {
 				RecetasMostradas = "Tus Recetas Favoritas son : "
-				resultados = diezUltimas( usuario.favoritas )
-				  
+				resultados = diezUltimas(usuario.favoritas)
+
 			}
-		 
+
 		}
-		
+
 	}
-				
+
 	def Receta getSeleccionada() {
-		recetaSeleccionada 
+		recetaSeleccionada
 	}
-	
+
 	def Color getColor() {
 		PosColor++
 		return colores.get(PosColor)
 	}
-	
-	def ApilcarAlgoritmoColor( Usuario usuario ){
-		resultados.forEach[
-			if ( it.esPublica() )  colores.add(Color.red) 
-			else if ( it.usuarioCreador == usuario )  colores.add(Color.blue) 
-			else if ( it.usuarioCreador.comparteGrupo( usuario ) )  colores.add(Color.green) 
+
+	def ApilcarAlgoritmoColor(Usuario usuario) {
+		resultados.forEach [
+			if (it.esPublica())
+				colores.add(Color.red)
+			else if (it.usuarioCreador == usuario)
+				colores.add(Color.blue)
+			else if(it.usuarioCreador.comparteGrupo(usuario)) colores.add(Color.green)
 		]
 	}
-	
-	def List<Receta> diezUltimas( List<Receta> lista ){
-		(0..lista.size-1).forEach[ if ( it > (lista.size - 10 ) ) diezUltimas.add( lista.get( it ) )	]
+
+	def List<Receta> diezUltimas(List<Receta> lista) {
+		(0 .. lista.size - 1).forEach[if(it > (lista.size - 10 )) diezUltimas.add(lista.get(it))]
 		return diezUltimas
 	}
-		
-}
 
-	
+}

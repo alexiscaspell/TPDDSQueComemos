@@ -1,9 +1,8 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 public class RecetaAdapter {
-	
-	def Receta getReceta(queComemos.entrega3.dominio.Receta rec)
-	{
+
+	def Receta getReceta(queComemos.entrega3.dominio.Receta rec) {
 		val receta = new Receta()
 		receta.setNombre(rec.getNombre());
 		receta.setTiempoPreparacion(rec.getTiempoPreparacion());

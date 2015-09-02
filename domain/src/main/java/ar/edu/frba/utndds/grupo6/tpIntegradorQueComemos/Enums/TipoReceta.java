@@ -1,24 +1,19 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums;
 
-
 public enum TipoReceta {
-	PUBLICA
-	{
+	PUBLICA {
 		@Override
-		public boolean esPublica()
-		{
+		public boolean esPublica() {
 			return true;
 		}
 	},
-	PRIVADA
-	{
+	PRIVADA {
 		@Override
-		public boolean esPublica()
-		{
+		public boolean esPublica() {
 			return false;
 		}
-		
+
 	};
-	
+
 	public abstract boolean esPublica();
 }

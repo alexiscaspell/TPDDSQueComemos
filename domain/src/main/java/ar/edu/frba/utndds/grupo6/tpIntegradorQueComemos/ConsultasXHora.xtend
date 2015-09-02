@@ -5,28 +5,26 @@ import java.util.Calendar
 import java.util.HashMap
 
 class ConsultasXHora implements Observador {
-	
-	private Map<Integer , Integer> consultasXHora = new HashMap<Integer, Integer>
-	private Calendar calendario = Calendar.getInstance();	
-	
+
+	private Map<Integer, Integer> consultasXHora = new HashMap<Integer, Integer>
+	private Calendar calendario = Calendar.getInstance();
+
 	override actualizar(Usuario usuario) {
-		
-		if (consultasXHora.containsKey(calendario.get(Calendar.HOUR_OF_DAY))) 
-		{
-			consultasXHora.put(calendario.get(Calendar.HOUR_OF_DAY ),consultasXHora.get(calendario.get(Calendar.HOUR_OF_DAY )) + 1)	
-		} 
-		else 
-		{			
-			consultasXHora.put(calendario.get( Calendar.HOUR_OF_DAY ), 1)
+
+		if (consultasXHora.containsKey(calendario.get(Calendar.HOUR_OF_DAY))) {
+			consultasXHora.put(calendario.get(Calendar.HOUR_OF_DAY),
+				consultasXHora.get(calendario.get(Calendar.HOUR_OF_DAY)) + 1)
+		} else {
+			consultasXHora.put(calendario.get(Calendar.HOUR_OF_DAY), 1)
 		}
 	}
-	
-	def Map< Integer , Integer> getEstadistica(){
+
+	def Map<Integer, Integer> getEstadistica() {
 		consultasXHora
 	}
-	
+
 	override reset() {
 		consultasXHora.clear
 	}
-	
+
 }

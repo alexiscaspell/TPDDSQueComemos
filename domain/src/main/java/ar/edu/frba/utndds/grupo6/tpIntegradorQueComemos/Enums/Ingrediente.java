@@ -11,7 +11,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -32,7 +32,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -53,7 +53,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -61,7 +61,7 @@ public enum Ingrediente {
 
 		@Override
 		public String nombre() {
-			return "Remolacha"; 
+			return "Remolacha";
 		}
 	},
 	CHIVITO {
@@ -74,7 +74,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -95,7 +95,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -116,7 +116,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -137,7 +137,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -158,7 +158,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return false;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -168,7 +168,7 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Pan Rayado";
 		}
-	},	
+	},
 	FRUTA {
 		@Override
 		public boolean contieneCarne() {
@@ -179,7 +179,7 @@ public enum Ingrediente {
 		public boolean contieneFruta() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return false;
@@ -195,12 +195,12 @@ public enum Ingrediente {
 		public boolean contieneCarne() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean contieneFruta() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return true;
@@ -216,12 +216,12 @@ public enum Ingrediente {
 		public boolean contieneCarne() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean contieneFruta() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return true;
@@ -237,12 +237,12 @@ public enum Ingrediente {
 		public boolean contieneCarne() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean contieneFruta() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return true;
@@ -258,12 +258,12 @@ public enum Ingrediente {
 		public boolean contieneCarne() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean contieneFruta() {
 			return true;
 		}
-		
+
 		@Override
 		public boolean esCaro() {
 			return true;
@@ -273,7 +273,7 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Lomo";
 		}
-	},	
+	},
 	HARINA {
 		@Override
 		public boolean contieneCarne() {
@@ -295,8 +295,8 @@ public enum Ingrediente {
 			return "Harina";
 		}
 	},
-	
-	FRUTILLA{
+
+	FRUTILLA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -318,8 +318,7 @@ public enum Ingrediente {
 			return null;
 		}
 	},
-	LECHUGA
-	{
+	LECHUGA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -340,8 +339,7 @@ public enum Ingrediente {
 			return "Harina";
 		}
 	},
-	CROUTONS 
-	{
+	CROUTONS {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -362,8 +360,7 @@ public enum Ingrediente {
 			return "Croutons";
 		}
 	},
-	PARMESANO
- {
+	PARMESANO {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -383,9 +380,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Parmesano";
 		}
-	},	
-	MANZANA
- {
+	},
+	MANZANA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -405,9 +401,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Manzana";
 		}
-	},	
-	NUECES
- {
+	},
+	NUECES {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -427,9 +422,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Nueces";
 		}
-	},	
-	LIMON
- {
+	},
+	LIMON {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -449,9 +443,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Limón";
 		}
-	},	
-	BERBERECHOS
- {
+	},
+	BERBERECHOS {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -471,9 +464,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Berberechos";
 		}
-	},	
-	AJO
- {
+	},
+	AJO {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -493,9 +485,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Ajo";
 		}
-	},	
-	MEJILLONES
- {
+	},
+	MEJILLONES {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -515,9 +506,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Mejillones";
 		}
-	},	
-	TOMATE
- {
+	},
+	TOMATE {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -537,9 +527,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Tomate";
 		}
-	},	
-	LANGOSTINOS
- {
+	},
+	LANGOSTINOS {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -559,9 +548,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Langostinos";
 		}
-	},	
-	ZANAHORIA
- {
+	},
+	ZANAHORIA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -582,8 +570,7 @@ public enum Ingrediente {
 			return "Zanahorias";
 		}
 	},
-	CALABAZA
- {
+	CALABAZA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -603,9 +590,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Calabaza";
 		}
-	},	
-	ACEITE
- {
+	},
+	ACEITE {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -626,8 +612,7 @@ public enum Ingrediente {
 			return "Aceite";
 		}
 	},
-	BIFE_ANGOSTO
- {
+	BIFE_ANGOSTO {
 		@Override
 		public boolean contieneCarne() {
 			return true;
@@ -647,9 +632,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Bife Angosto";
 		}
-	},	
-	TOMILLO
- {
+	},
+	TOMILLO {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -669,9 +653,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Tomillo";
 		}
-	},	
-	ALBAHACA
- {
+	},
+	ALBAHACA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -691,9 +674,8 @@ public enum Ingrediente {
 		public String nombre() {
 			return "Albahaca";
 		}
-	},	
-	MOZZARELLA
- {
+	},
+	MOZZARELLA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -714,8 +696,7 @@ public enum Ingrediente {
 			return "Mozzarella";
 		}
 	},
-	TAPA_DE_PANQUEQUE
- {
+	TAPA_DE_PANQUEQUE {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -736,8 +717,7 @@ public enum Ingrediente {
 			return "Tapa de Panqueque";
 		}
 	},
-	RICOTA
- {
+	RICOTA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -758,8 +738,7 @@ public enum Ingrediente {
 			return "Ricota";
 		}
 	},
-	ACELGA
- {
+	ACELGA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -780,8 +759,7 @@ public enum Ingrediente {
 			return "Acelga";
 		}
 	},
-	PURE_DE_TOMATE
- {
+	PURE_DE_TOMATE {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -802,8 +780,7 @@ public enum Ingrediente {
 			return "Puré de Tomate";
 		}
 	},
-	ARROZ_YAMANI
- {
+	ARROZ_YAMANI {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -824,8 +801,7 @@ public enum Ingrediente {
 			return "Arroz Yamaní";
 		}
 	},
-	ALGA
- {
+	ALGA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -846,8 +822,7 @@ public enum Ingrediente {
 			return "Alga";
 		}
 	},
-	PALTA
- {
+	PALTA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -868,8 +843,7 @@ public enum Ingrediente {
 			return "Palta";
 		}
 	},
-	WHISKY
- {
+	WHISKY {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -890,8 +864,7 @@ public enum Ingrediente {
 			return "Whisky";
 		}
 	},
-	BOURBON
- {
+	BOURBON {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -912,8 +885,7 @@ public enum Ingrediente {
 			return "Bourbon";
 		}
 	},
-	GINEBRA
- {
+	GINEBRA {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -934,8 +906,7 @@ public enum Ingrediente {
 			return "Ginebra";
 		}
 	},
-	LECHE
- {
+	LECHE {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -956,8 +927,7 @@ public enum Ingrediente {
 			return "Leche";
 		}
 	},
-	HELADO_CHOCOLATE
- {
+	HELADO_CHOCOLATE {
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -979,8 +949,8 @@ public enum Ingrediente {
 		}
 	},
 	HELADO_FRITULLA
-	
- {
+
+	{
 		@Override
 		public boolean contieneCarne() {
 			return false;
@@ -1001,9 +971,12 @@ public enum Ingrediente {
 			return "Helado de Frutilla";
 		}
 	};
-	
+
 	public abstract boolean contieneCarne();
+
 	public abstract boolean esCaro();
+
 	public abstract boolean contieneFruta();
+
 	public abstract String nombre();
 }

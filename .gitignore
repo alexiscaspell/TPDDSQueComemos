@@ -15,3 +15,13 @@
 /ui/.settings
 /ui/bin/
 /ui/.metadata
+
+/Web/target/
+/Web/src/main/generated-sources/
+/Web/src/test/generated-sources/
+/Web/.project
+/Web/.classpath
+/Web/.settings
+/Web/bin/
+/Web/.metadata
+

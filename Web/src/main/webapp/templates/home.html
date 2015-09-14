@@ -1,0 +1,35 @@
+
+<body data-ng-controller="QueComemosController as comemosCtrl">
+
+  <div>
+    <h1>Bienvenido a que Comemos?</h1>
+    <h2>{{recetas_para_mostrar}}</h2>
+  </div>  
+
+  <div class="panel-body">
+      <div class="adventure-selector col-md-4">
+        <div class="form-group">
+            <select
+              class="form-control" 
+              id="recetaSeleccionada" 
+              size="15"
+              ng-model="recetaSeleccionada"
+              ng-options="receta.nombre for receta in Resultado">
+
+          </select>
+        </div>
+      </div>
+      <div class="adventure-detail col-md-8">
+        <h3>Nombre</h3>
+        <p>{{recetaSeleccionada.nombre}}</p>
+        <h3>Calorias</h3>
+        <p>{{recetaSeleccionada.calorias}}</p>
+        <h3>Dificultad</h3>
+        <p>{{recetaSeleccionada.dificultad}}</p>
+        <h3>Temporada</h3>
+        <p>{{recetaSeleccionada.temporada}}</p>
+      </div>
+    </div>
+
+
+</body> 

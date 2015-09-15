@@ -1,0 +1,21 @@
+<div class="panel-body col-md-4">
+	<br>
+	Las recetas a mostar son : {{ recetas_a_mostar }}
+	<br>
+
+
+		<div class="receta-selector ">
+			<div class="form-group">
+				<select
+					class="form-control"
+					id="recetaSeleccionada"
+					size="15"
+					ng-model = "recetaSeleccionada"
+					ng-options="receta.nombre for receta in Resultado">
+				</select>{{recetaSeleccionada}}
+			</div>
+		</div>
+
+	<button ui-sref="View2">Mirar Receta Seleccionada</button>
+	<div ui-view></div>
+</div>

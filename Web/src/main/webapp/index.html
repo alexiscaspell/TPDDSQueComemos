@@ -1,21 +1,34 @@
-<html>
+<!doctype html>
+<html lang="en" ng-app="queComemosApp">
 <head>
-	<script src="node_modules/angular/angular.min.js"></script>
-	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-	<script src="app.js"></script>
-
-	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="node_modules/underscore/underscore-min.js"></script>
+<meta charset="utf-8">
+<title>¿Qué Comemos?</title>
+<link rel="stylesheet"
+	href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/underscore/underscore-min.js"></script>
 </head>
+<body ng-controller="TodosLasRecetasCtrl">
 
-<body ng-app="aplicacionApp">
-	<div class="titulo">
-	<h1>Bienvenido a que comemos?</h1>
+	<div class="receta-selector"
+		style="width: 30%; float: left; margin: 5px;">
+		<div class="form-group">
+			<select class="form-control" id="recetaSeleccionada" size="15"
+				ng-model="recetaSeleccionada"
+				ng-options="receta.nombre for receta in recetas">
+			</select>
+		</div>
 	</div>
-	<br>
-	<div ui-view></div>
 
+	<div style="width: 60%; float: left; margin: 5px;">
+		<p>Nombre: {{recetaSeleccionada.nombre}}</p>
+		<p>Año: {{recetaSeleccionada.anio}}</p>
+	</div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="app.js"></script>
+	<script src="controllers.js"></script>
 </body>
 </html>

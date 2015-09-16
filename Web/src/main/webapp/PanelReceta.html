@@ -1,4 +1,7 @@
-<h2> Receta : {{ recetaSeleccionada.nombre }}</h2>
-<input type="text" ng-model="name">{{ name + 'index' }}
-<button ui-sref="View1">Volver a listado de Recetas</button>
-<div ui-view></div>
+<div class="panel-receta col-md-4">
+	<h2> Receta : {{ recetaSeleccionada.nombre }}</h2>
+
+	<button ng-click="verListaRecetas()">Volver a Lista Recetas</button>
+	<!--<button ui-sref="View1">Volver a listado de Recetas</button>
+	<div ui-view></div>-->
+</div>

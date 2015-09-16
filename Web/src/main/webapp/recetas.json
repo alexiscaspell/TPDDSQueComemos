@@ -1,0 +1,22 @@
+[
+  {
+    "nombre" : "Pure",
+    "Dificultad" : "Dificil",
+    "Temporada" : " Invierno, Verano "
+  },
+  {
+    "nombre" : "Milanesa",
+    "Dificultad" : "Facil",
+    "Temporada" : " Invierno, Verano "
+  },
+  {
+    "nombre" : "Cerdo",
+    "Dificultad" : "Mediana",
+    "Temporada" : " Invierno, Primavera "
+  },
+  {
+    "nombre" : "Pasta",
+    "Dificultad" : "Facil",
+    "Temporada" : " Invierno"
+  }
+]

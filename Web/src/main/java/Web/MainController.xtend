@@ -1,8 +1,5 @@
 package Web
 
-
-
-
 import org.uqbar.xtrest.api.XTRest
 import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.http.ContentType
@@ -12,19 +9,30 @@ import org.uqbar.xtrest.api.Result
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import java.util.ArrayList
 import com.google.gson.Gson
+import AplicationModel.UsuarioTestBuilder
+import AplicationModel.PanelHomeAP
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
 
 //
 @Controller
 class MainController {
 
-	extension JSONUtils jsonUtils = new JSONUtils
-
+	extension JSONUtils jsonUtils = new JSONUtils	
+	//Observadores
+	private ConsultasXRecetas ConsultasXRecetas = new ConsultasXRecetas()
+	
+	var UsuarioTestBuilder = new UsuarioTestBuilder()
+	var panelHomeAP = new PanelHomeAP(ConsultasXRecetas.estadistica)
+	
 	def static void main(String[] args) {
 		XTRest.start(MainController, 9000)
 	}
 	
 	@Get("/recetas")
 	def Result libros() {
+		//val recetas = panelHomeAP.resultadosRecetas( UsuarioTestBuilder.usuarioBuilder() ))
+		
+		
     	val recetas = new ArrayList<Receta>();
     	
     	val receta1 = new Receta();
@@ -40,6 +48,6 @@ class MainController {
     	
 		response.contentType = ContentType.APPLICATION_JSON			
 						
-		ok(new Gson().toJson(recetas))
+		ok(new Gson().toJson( recetas ) )
 	}
 }

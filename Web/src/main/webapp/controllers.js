@@ -1,18 +1,22 @@
-angular.module('queComemosApp', []).controller('TodosLasRecetasCtrl',
-		function($scope) {
-			 $scope.recetas = [ {
-			 'nombre' : 'Receta 1',
-			 'anio' : '2013'
-			 }, {
-			 'nombre' : 'Receta 2',
-			 'anio' : '2014'
-			 }, {
-			 'nombre' : 'Receta 3',
-			 'anio' : '2015'
-			 } ];
-			 $scope.recetaSeleccionada = $scope.recetas[0];
+var queComemosApp = angular.module( 'queComemosApp', [] );
 
-//			$http.get("/recetas").success(function(response) {
-//				$scope.recetas = response;
-//			});
-		});
+queComemosApp.controller( 'TodosLasRecetasCtrl', [
+    '$scope',
+    '$http',
+    function( $scope, $http ){
+            $http.get("/recetas").success(function(response) {
+                    $scope.recetas = response;
+            });
+    }]);
+
+
+queComemosApp.service( 'queComemosService', [
+	'$http',
+	function( $http ){
+		this.getAll = function(){
+			return $http.get('/recetas')
+		};
+	}
+]);
+
+

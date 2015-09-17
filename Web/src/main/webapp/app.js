@@ -1,2 +1,2 @@
 'use strict';
-angular.module('queComemosApp', [ ])
+var queComemosApp = angular.module('queComemosApp', [ ])

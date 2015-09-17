@@ -13,6 +13,13 @@ import AplicationModel.UsuarioTestBuilder
 import AplicationModel.PanelHomeAP
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
 
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConAzucar
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConCarne
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConAzucar
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+
 //
 @Controller
 class MainController {
@@ -24,16 +31,23 @@ class MainController {
 	var UsuarioTestBuilder = new UsuarioTestBuilder()
 	var panelHomeAP = new PanelHomeAP(ConsultasXRecetas.estadistica)
 	
+	recetaConAzucar recetaAzucar = new recetaConAzucar()
+	recetaConCarne recetaCarne = new recetaConCarne()
+	val usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan Jose Lopez", Sexo.MASCULINO)	
+	
 	def static void main(String[] args) {
 		XTRest.start(MainController, 9000)
 	}
 	
 	@Get("/recetas")
 	def Result libros() {
-		//val recetas = panelHomeAP.resultadosRecetas( UsuarioTestBuilder.usuarioBuilder() ))
+		//val lista = panelHomeAP.resultadosRecetas( UsuarioTestBuilder.usuarioBuilder() ))
 		
-		
-    	val recetas = new ArrayList<Receta>();
+		val recetas = new ArrayList<Receta>();
+		recetas.add( recetaAzucar.cumple(usuario_test) )
+		recetas.add( recetaAzucar.noCumple(usuario_test) )
+		/*
+    	
     	
     	val receta1 = new Receta();
     	receta1.nombre = "Receta 1";
@@ -45,7 +59,7 @@ class MainController {
     	
     	recetas.add(receta1);
     	recetas.add(receta2);
-    	
+    	 */
 		response.contentType = ContentType.APPLICATION_JSON			
 						
 		ok(new Gson().toJson( recetas ) )

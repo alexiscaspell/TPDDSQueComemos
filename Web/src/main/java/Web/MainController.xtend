@@ -26,6 +26,8 @@ class MainController {
 
 	extension JSONUtils jsonUtils = new JSONUtils	
 	//Observadores
+	
+	/*
 	private ConsultasXRecetas ConsultasXRecetas = new ConsultasXRecetas()
 	
 	var UsuarioTestBuilder = new UsuarioTestBuilder()
@@ -33,7 +35,8 @@ class MainController {
 	
 	recetaConAzucar recetaAzucar = new recetaConAzucar()
 	recetaConCarne recetaCarne = new recetaConCarne()
-	val usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan Jose Lopez", Sexo.MASCULINO)	
+	val usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan Jose Lopez", Sexo.MASCULINO)
+	*/	
 	
 	def static void main(String[] args) {
 		XTRest.start(MainController, 9000)
@@ -44,9 +47,9 @@ class MainController {
 		//val lista = panelHomeAP.resultadosRecetas( UsuarioTestBuilder.usuarioBuilder() ))
 		
 		val recetas = new ArrayList<Receta>();
-		recetas.add( recetaAzucar.cumple(usuario_test) )
-		recetas.add( recetaAzucar.noCumple(usuario_test) )
-		/*
+		//recetas.add( recetaAzucar.cumple(usuario_test) )
+		//recetas.add( recetaAzucar.noCumple(usuario_test) )
+
     	
     	
     	val receta1 = new Receta();
@@ -59,9 +62,9 @@ class MainController {
     	
     	recetas.add(receta1);
     	recetas.add(receta2);
-    	 */
+
 		response.contentType = ContentType.APPLICATION_JSON			
 						
-		ok(new Gson().toJson( recetas ) )
+		ok( recetas.toJson )
 	}
 }

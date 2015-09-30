@@ -19,7 +19,7 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
                 controller: 'panelRecetaController',
                 resolve : {
                 	recetaSeleccionadaData: function( queComemosService ) {
-                		return queComemosService.getrecetaSeleccionada();
+                		return queComemosService.getRecetaSeleccionada();
                 	}
                 }
         });

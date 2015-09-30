@@ -27,7 +27,7 @@ queComemosApp.controller('panelHomeController', [
 		$scope.recetaSeleccionada = recetas[0]
 		$scope.recetas_a_mostar = 'REMPLAZAR POR TIPO DE RECETAS QUE SE ESTRAN MOSTRANDO';
 
-		$scope.verReceta = function ( nombre  ){
+		$scope.verReceta = function (){
             $state.go('View2');
 		};
 		

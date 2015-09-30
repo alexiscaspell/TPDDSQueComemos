@@ -1,4 +1,4 @@
-var aplicacionApp = angular.module('aplicacionApp',[ 'ui.router' ]);
+var queComemosApp = angular.module('queComemosApp',[ 'ui.router' ]);
 
 
 

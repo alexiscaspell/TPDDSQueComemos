@@ -43,7 +43,7 @@ class MainController {
 	}
 	
 	@Get("/recetas")
-	def Result libros() {
+	def Result recetas() {
 		//val lista = panelHomeAP.resultadosRecetas( UsuarioTestBuilder.usuarioBuilder() ))
 		
 		val recetas = new ArrayList<Receta>();

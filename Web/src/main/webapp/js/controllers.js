@@ -3,8 +3,10 @@
 queComemosApp.controller( 'panelRecetaController', [ 
 	'$scope', 
 	'$state', 
-	function( $scope, $state  ) {
-		$scope.recetaSeleccionada = { nombre: 'pure', ciudad: 'cuidad'};
+	'queComemosService',
+	'recetaSeleccionadaData',
+	function( $scope, $state, queComemosService, recetaSeleccionadaData  ) {
+		$scope.recetaSeleccionada = recetaSeleccionadaData.data;
 
 		$scope.verListaRecetas = function(){
             $state.go('View1')
@@ -19,31 +21,21 @@ queComemosApp.controller('panelHomeController', [
 	'recetasData',
 	function( $scope, $state,  $http, queComemosService, recetasData ) {		
 		
-		$scope.lista_recetas = recetasData.data
+		var recetas = recetasData.data
+		$scope.lista_recetas = recetasData.data 
 		
-		/*
-		$http.get( '/recetas').success( function( response ) {
-			//recetas = response;
-			$scope.lista_recetas = response
-            
-		});*/
-		
-		//$scope.lista_recetas = recetas;
-		
-		//$scope.recetaSeleccionada = recetas[0]
-		
-		$scope.recetas_a_mostar = 'Harcode recetas.json';
+		$scope.recetaSeleccionada = recetas[0]
+		$scope.recetas_a_mostar = 'REMPLAZAR POR TIPO DE RECETAS QUE SE ESTRAN MOSTRANDO';
 
 		$scope.verReceta = function ( nombre  ){
             $state.go('View2');
 		};
-		/*
+		
 		$scope.seleccionarReceta = function() {
-	        queComemosService.seleccionarReceta( $scope.recetaSeleccionada ).success(
+	        queComemosService.setRecetaSeleccionada( $scope.recetaSeleccionada ).success(
 	            function() {
 	              $scope.verReceta();
 	            });
-	     };
-	     */
+	    };
 }]);
 

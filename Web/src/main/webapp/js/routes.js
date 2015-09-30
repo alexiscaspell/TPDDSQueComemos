@@ -16,7 +16,12 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
         .state('View2', {
                 url: '/View2',
                 templateUrl: 'templates/PanelReceta.html',
-                controller: 'panelRecetaController'
+                controller: 'panelRecetaController',
+                resolve : {
+                	recetaSeleccionadaData: function( queComemosService ) {
+                		return queComemosService.getrecetaSeleccionada();
+                	}
+                }
         });
     $urlRouterProvider.otherwise('/View1');
 });

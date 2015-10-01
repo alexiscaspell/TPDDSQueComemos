@@ -17,8 +17,8 @@ class UsuarioTestBuilder {
 	recetaConSal recetaSal = new recetaConSal()
 	recetaConCarne recetaCarne = new recetaConCarne()
 	
-	def Usuario usuarioBuilder(){
-		val usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan Jose Lopez", Sexo.MASCULINO)	
+	def Usuario usuarioBuilder( String nombre ){
+		val usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre , Sexo.MASCULINO)	
 		usuario_test.marcarComoFavorita(recetaEsValida.cumple(usuario_test))
 		usuario_test.marcarComoFavorita(recetaEsValida.noCumple(usuario_test))
 		usuario_test.marcarComoFavorita(recetaAzucar.cumple(usuario_test))

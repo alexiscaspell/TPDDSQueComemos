@@ -16,7 +16,7 @@ class ListadoRecetas {
 	@Accessors
 	List<Receta> recetas = new ArrayList<Receta>;
 	UsuarioTestBuilder usuarioBuilder = new UsuarioTestBuilder();
-	Usuario usuario = usuarioBuilder.usuarioBuilder;
+	Usuario usuario = usuarioBuilder.usuarioBuilder( "UsuarioTest" );
 	
 	recetaValida recetaEsValida = new recetaValida()
 	recetaConAzucar recetaAzucar = new recetaConAzucar()

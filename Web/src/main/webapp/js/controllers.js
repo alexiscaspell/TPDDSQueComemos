@@ -4,11 +4,15 @@ queComemosApp.controller( 'panelLoginController', [
 	'$scope',
 	'$state',
     function( $scope, $state ){
-		$scope.login = function(){
-			$state.go('PanelHome')
-		}		
-	}
-
+		$scope.login = function() {
+			/*
+			$http.post('/login', {
+				nombre : $scope.nombre
+				pass : $scope.pass
+		    })*/
+		    $state.go('PanelHome');
+		}
+	}	   
 ]);
 
 

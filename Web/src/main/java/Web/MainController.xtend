@@ -15,18 +15,29 @@ import java.util.ArrayList
 
 // Aplication Model
 import AplicationModel.ListadoRecetas
-
+import AplicationModel.PedidoLogin
+import AplicationModel.UsuarioTestBuilder
 
 @Controller
 class MainController {
 
 	Receta recetaSeleccionada;
+	UsuarioTestBuilder usuarioTestBuilder = new UsuarioTestBuilder;
 		
 	extension JSONUtils jsonUtils = new JSONUtils	
 		
 	
 	def static void main(String[] args) {
 		XTRest.start(MainController, 9000)
+	}
+	
+	@Post("/login")
+	def Result login( @Body String body ){
+		var PedidoLogin pedido = body.fromJson(PedidoLogin)
+		//println( pedido.nombre )
+		//println( pedido.pass )
+		// Buscar usuario con nombre == pedido.nombre
+		ok
 	}
 	
 	@Post("/setRecetaSeleccionada")

@@ -1,23 +1,36 @@
-<div class="panel-body col-md-4">
-	<br>
-	Las recetas a mostar son : {{ recetas_a_mostar }}
-	<br>
+<div class="col-xs-3"></div>
 
+<div class="col-xs-6 center-block">
 
-		<div class="receta-selector ">
-			<div class="form-group">
-				<select
-					class="form-control"
-					id="recetaSeleccionada"
-					size="15"
-					ng-model = "recetaSeleccionada"
-					ng-options="receta.nombre for receta in lista_recetas">
-				</select>
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<h2> Las recetas a mostar son : {{ recetas_a_mostar }}</h2>
+		</div>
+
+		<div class="panel-body">
+			<div class="receta-selector ">
+				<div class="form-group">
+					<select
+						class="form-control"
+						id="recetaSeleccionada"
+						size="15"
+						ng-model = "recetaSeleccionada"
+						ng-options="receta.nombre for receta in lista_recetas">
+					</select>
+				</div>
 			</div>
 		</div>
 
-	<button ng-click="seleccionarReceta()">Ver Receta Seleccionada</button>
+		<div class="panel-footer"> 
+			<form>
+				<div class="form-group">
+					<button ng-click="seleccionarReceta()">Ver Receta Seleccionada</button>
+					<button ng-click="verUsuario()">Ver Usuario</button>
+				</div>				
+			</form>
+		</div>
 
 
-
+	</div>
 </div>

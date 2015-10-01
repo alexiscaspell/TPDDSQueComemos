@@ -2,8 +2,13 @@
 
 queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
     $stateProvider
-        .state('View1', {
-                url: '/View1',
+    	.state('PanelLogin', {
+    		url: '/PanelLogin',
+    		templateUrl: 'templates/PanelLogin.html',
+    		controller: 'panelLoginController'
+    	})
+        .state('PanelHome', {
+                url: '/PanelHome',
                 templateUrl: 'templates/PanelHome.html',
                 controller: 'panelHomeController',
                 resolve : {
@@ -12,9 +17,8 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
                         }]
                 }
         })
-
-        .state('View2', {
-                url: '/View2',
+        .state('PanelReceta', {
+                url: '/PanelReceta',
                 templateUrl: 'templates/PanelReceta.html',
                 controller: 'panelRecetaController',
                 resolve : {
@@ -22,6 +26,12 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
                 		return queComemosService.getRecetaSeleccionada();
                 	}
                 }
-        });
-    $urlRouterProvider.otherwise('/View1');
+        })
+    	.state('PanelUsuario', {
+    		url: '/PanelUsuario',
+    		templateUrl: 'templates/PanelUsuario.html',
+    		controller: 'panelUsuarioController'
+    	});
+    	
+    $urlRouterProvider.otherwise('/PanelLogin');
 });

@@ -1,5 +1,27 @@
 'use strict';
 
+queComemosApp.controller( 'panelLoginController', [
+	'$scope',
+	'$state',
+    function( $scope, $state ){
+		$scope.login = function(){
+			$state.go('PanelHome')
+		}		
+	}
+
+]);
+
+
+queComemosApp.controller( 'panelUsuarioController', [
+	'$scope',
+	'$state',
+	function( $scope, $state ){
+		$scope.irAHome = function(){
+			$state.go('PanelHome')
+		}
+	}
+]);
+
 queComemosApp.controller( 'panelRecetaController', [ 
 	'$scope', 
 	'$state', 
@@ -9,9 +31,9 @@ queComemosApp.controller( 'panelRecetaController', [
 		$scope.recetaSeleccionada = recetaSeleccionadaData.data;
 
 		$scope.verListaRecetas = function(){
-            $state.go('View1')
-    }
-}])
+            $state.go('PanelHome')
+		}
+}]);
 
 queComemosApp.controller('panelHomeController', [ 
 	'$scope', 
@@ -28,8 +50,12 @@ queComemosApp.controller('panelHomeController', [
 		$scope.recetas_a_mostar = 'REMPLAZAR POR TIPO DE RECETAS QUE SE ESTRAN MOSTRANDO';
 
 		$scope.verReceta = function (){
-            $state.go('View2');
+            $state.go('PanelReceta');
 		};
+		
+		$scope.verUsuario = function(){
+			$state.go('PanelUsuario')
+		}
 		
 		$scope.seleccionarReceta = function() {
 	        queComemosService.setRecetaSeleccionada( $scope.recetaSeleccionada ).success(

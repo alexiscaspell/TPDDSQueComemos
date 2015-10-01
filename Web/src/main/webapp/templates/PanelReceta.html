@@ -1,8 +1,25 @@
-<div class="panel-receta col-md-4">
-	<h2> Receta Seleccionada : {{ recetaSeleccionada.nombre }}</h2>
-	<div> Anio : {{ recetaSeleccionada.anio }} </div>
+<div class="col-xs-3"></div>
 
-	<button ng-click="verListaRecetas()">Volver a Lista Recetas</button>
-	<!--<button ui-sref="View1">Volver a listado de Recetas</button>
-	<div ui-view></div>-->
+<div class="col-xs-6 center-block">
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<h2> Receta Seleccionada : {{ recetaSeleccionada.nombre }}</h2>
+		</div>
+
+		<div class="panel-body">
+			 Anio : {{ recetaSeleccionada.anio }}
+		</div>
+
+		<div class="panel-footer"> 
+			<form>
+				<div class="form-group">
+					<button ng-click="verListaRecetas()">Volver a Lista Recetas</button>
+				</div>				
+			</form>
+		</div>
+
+		
+	</div>
 </div>

@@ -36,7 +36,8 @@ class PanelHomeAP {
 				//RecetasMostradas = "Tus ultimas Recetas Consultadas son : "
 			} else {
 				//RecetasMostradas = "Tus Recetas Favoritas son : "
-				diezUltimas(usuario.favoritas)
+				//diezUltimas(usuario.favoritas)
+				if ( usuario.favoritas != null ) usuario.favoritas
 				
 				
 				

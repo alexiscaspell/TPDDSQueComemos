@@ -8,7 +8,9 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaValida
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConSal
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConCarne
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class UsuarioTestBuilder {
 	
 	

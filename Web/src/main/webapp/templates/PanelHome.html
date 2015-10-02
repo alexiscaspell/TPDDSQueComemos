@@ -9,23 +9,32 @@
 		</div>
 
 		<div class="panel-body">
-			<div class="receta-selector ">
-				<div class="form-group">
-					<select
-						class="form-control"
-						id="recetaSeleccionada"
-						size="15"
-						ng-model = "recetaSeleccionada"
-						ng-options="receta.nombre for receta in lista_recetas">
-					</select>
-				</div>
-			</div>
+			<table class="table table-striped table-hover table-condensed example-animate-container">
+      		<tbody>
+      			<tr>
+	        		<th>Nombre</th>
+        			<th>Calorias</th>
+        			<th>Dificultad</th>
+        			<th>Temporadas</th>
+      				</tr>
+      				<tr data-ng-repeat="receta in lista_recetas" class="animate-repeat">
+        			<td class="col-xs-4">{{receta.nombre}}</td>
+        			<td class="col-xs-2">{{receta.calorias}}</td>
+        			<td class="col-xs-3">{{receta.dificultad}}</td>
+        			<td class="col-xs-2">{{receta.temporadas }}</td>
+        			<td nowrap class="col-xs-2">
+          			<button type="button" class="btn btn-default" ng-click="seleccionarReceta(receta)" aria-label="Cumplir">
+	            		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          			</button>
+        			</td>
+      			</tr>
+      		</tbody>
+    		</table>
 		</div>
 
 		<div class="panel-footer"> 
 			<form>
 				<div class="form-group">
-					<button ng-click="seleccionarReceta()">Ver Receta Seleccionada</button>
 					<button ng-click="verUsuario()">Ver Perfil de Usuario</button>
 					<button ng-click="verConsultas()">Ver Consultas de Recetas</button>
 					<button ng-click="verMonitoreo()">Ver Monitoreo de Recetas</button>
@@ -36,3 +45,10 @@
 
 	</div>
 </div>
+
+
+
+
+
+
+ 

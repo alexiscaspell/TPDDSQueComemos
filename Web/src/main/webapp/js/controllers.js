@@ -74,11 +74,11 @@ queComemosApp.controller('panelHomeController', [
 	'recetasData',
 	function( $scope, $state,  $http, queComemosService, recetasData ) {		
 		
-		var recetas = recetasData.data
-		$scope.lista_recetas = recetasData.data 
+		var recetas = recetasData.data.recetas
+		$scope.lista_recetas = recetasData.data.recetas 
 		
 		$scope.recetaSeleccionada = recetas[0]
-		$scope.recetas_a_mostar = 'REMPLAZAR POR TIPO DE RECETAS QUE SE ESTRAN MOSTRANDO';
+		$scope.recetas_a_mostar = recetasData.data.mostrando ;
 
 		$scope.verReceta = function (){
             $state.go('PanelReceta');
@@ -96,8 +96,8 @@ queComemosApp.controller('panelHomeController', [
 			$state.go('PanelMonitoreo')
 		}
 		
-		$scope.seleccionarReceta = function() {
-	        queComemosService.setRecetaSeleccionada( $scope.recetaSeleccionada ).success(
+		$scope.seleccionarReceta = function( receta ) {
+	        queComemosService.setRecetaSeleccionada( receta ).success(
 	            function() {
 	              $scope.verReceta();
 	            });

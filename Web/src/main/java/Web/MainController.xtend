@@ -9,25 +9,18 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
-
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import java.util.ArrayList
-
-// Aplication Model
-import AplicationModel.ListadoRecetas
 import AplicationModel.PedidoLogin
-import AplicationModel.UsuarioTestBuilder
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import AplicationModel.PedidoRecetas
+
 
 @Controller
 class MainController {
 
 	Receta recetaSeleccionada;
-	UsuarioTestBuilder usuarioTestBuilder = new UsuarioTestBuilder;
-		
 	extension JSONUtils jsonUtils = new JSONUtils	
 		
 	
@@ -66,24 +59,10 @@ class MainController {
 	
 	@Get("/recetas")
 	def Result recetas() {
-		
-
-		val recetas = new ArrayList<Receta>();
-		 		    	
-    	val receta1 = new Receta();
-    	receta1.nombre = "Receta 1";
-    	receta1.anio = 2015;
-    	
-    	val receta2 = new Receta();
-    	receta2.nombre = "Receta 2";
-    	receta2.anio = 2014;
-    	
-    	recetas.add(receta1);
-    	recetas.add(receta2);
- 		 
-		response.contentType = ContentType.APPLICATION_JSON			
-						
-		//ok( ( new ListadoRecetas() ).toJson )
+		response.contentType = ContentType.APPLICATION_JSON
+		var recetas = new PedidoRecetas()
+		recetas.setRecetas()
+		recetas.setMostrando()
 		ok( recetas.toJson )
 	}
 	
@@ -93,5 +72,7 @@ class MainController {
 	def Result getRecetaSeleccionada(){
 		ok( recetaSeleccionada.toJson )	
 	}
+	
+	
 	
 }

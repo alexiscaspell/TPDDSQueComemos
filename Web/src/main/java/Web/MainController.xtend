@@ -22,7 +22,7 @@ class MainController {
 
 	Receta recetaSeleccionada;
 	extension JSONUtils jsonUtils = new JSONUtils	
-		
+	UsuarioPosta usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "martin" , Sexo.MASCULINO)		
 	
 	def static void main(String[] args) {
 		XTRest.start(MainController, 9000)
@@ -31,9 +31,9 @@ class MainController {
 	@Post("/login")
 	def Result login( @Body String body ){
 		var PedidoLogin pedido = body.fromJson(PedidoLogin)
-		//println( pedido.nombre )
-		//println( pedido.pass )
 		// Buscar usuario con nombre == pedido.nombre
+		// verificar que pedido.pass == usuario encontrado pass
+		// setear usuario = usuario encontrado ( sacar el usuario hardcodeado )
 		ok
 	}
 	
@@ -51,8 +51,6 @@ class MainController {
 	
 	@Get("/usuario")
 	def Result usuario(){
-		var usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Jose" , Sexo.MASCULINO)
-		//var usuario = usuarioTestBuilder.usuarioBuilder( "Diego" );
 		response.contentType = ContentType.APPLICATION_JSON
 		ok( usuario.toJson )	
 	}
@@ -60,9 +58,8 @@ class MainController {
 	@Get("/recetas")
 	def Result recetas() {
 		response.contentType = ContentType.APPLICATION_JSON
-		var recetas = new PedidoRecetas()
+		var recetas = new PedidoRecetas( usuario )
 		recetas.setRecetas()
-		recetas.setMostrando()
 		ok( recetas.toJson )
 	}
 	

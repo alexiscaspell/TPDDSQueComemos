@@ -17,45 +17,57 @@ class PedidoRecetas {
 
 	String mostrando;
 	List<Receta> recetas = new ArrayList<Receta>();
-	UsuarioPosta usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "martin" , Sexo.MASCULINO)	
-	//recetaConAzucar recetaAzucar = new recetaConAzucar()
-	val temporadas = new ArrayList<Temporada>()
-	
-	new( ){
+	UsuarioPosta usuario;
+	val temporadas = new ArrayList<Temporada>();
+	Integer i = 0; // Eliminar! se usa para hardcodear solo una vez
+	new( UsuarioPosta usuario ){
+		this.usuario = usuario
+		
+		// Cambiar el usuarioPosta de parametro por un usuario 
+		// ( Es necesario el usuarioPosta para poder llamar a marcarComoFavorita y hardcodear las recetas ) 
 		// AGREGAR USUARIO COMO PARAMETRO DE NEW Y SACAR EL HARDCODEADO
 	}
 	
 	
 	
-	def setRecetas(){
-		var Receta receta1 = new Receta
-		var Receta receta2 = new Receta
-		receta1.nombre = "PAPA"
-		receta2.nombre = "Carne"
-		receta1.dificultad = Dificultad.FACIL
-		receta2.dificultad = Dificultad.MEDIANA
-		receta1.calorias = 500
-		receta2.calorias = 250
-		
-		temporadas.add(Temporada.INVIERNO)
-		temporadas.add(Temporada.OTONIO)
-		temporadas.add(Temporada.PRIMAVERA)
-		temporadas.add(Temporada.VERANO)
+	def hardcodeRecetas(){
+		if ( i == 0 ) {
+			var Receta receta1 = new Receta
+			var Receta receta2 = new Receta
+			receta1.nombre = "PAPA"
+			receta2.nombre = "Carne"
+			receta1.dificultad = Dificultad.FACIL
+			receta2.dificultad = Dificultad.MEDIANA
+			receta1.calorias = 500
+			receta2.calorias = 250
 			
-		receta1.temporadas = temporadas
-		usuario.marcarComoFavorita( receta1 )
-		
-		temporadas.remove(Temporada.INVIERNO)
-		temporadas.remove(Temporada.OTONIO)
-		receta2.temporadas = temporadas
-		usuario.marcarComoFavorita( receta2 )
-		
-		usuario.favoritas.forEach[ recetas.add( it )]
-	}
+			temporadas.add(Temporada.INVIERNO)
+			temporadas.add(Temporada.OTONIO)
+			temporadas.add(Temporada.PRIMAVERA)
+			temporadas.add(Temporada.VERANO)
+				
+			receta1.temporadas = temporadas
+			usuario.marcarComoFavorita( receta1 )
+			
+			temporadas.remove(Temporada.INVIERNO)
+			temporadas.remove(Temporada.OTONIO)
+			receta2.temporadas = temporadas
+			usuario.marcarComoFavorita( receta2 )
+			i++
+			}
+		}
 	
-	def setMostrando(){
+	def setRecetas(){
+		hardcodeRecetas()
 		// If de primer Login
-		if ( usuario.favoritas == 0 ) mostrando = "Tus ultimas Recetas Consultadas son :"
-		else mostrando = "Tus Recetas Favoritas son :" 
+		if ( usuario.favoritas == 0 ) {
+			mostrando = "Tus ultimas Recetas Consultadas"
+			// recetas = ultimas consultas
+		}
+		else {
+			mostrando = "Tus Recetas Favoritas"
+			usuario.favoritas.forEach[ recetas.add( it )]
+			 	
+		} 
 	}
 }

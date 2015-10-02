@@ -40,7 +40,12 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
     	.state('PanelUsuario', {
     		url: '/PanelUsuario',
     		templateUrl: 'templates/PanelUsuario.html',
-    		controller: 'panelUsuarioController'
+    		controller: 'panelUsuarioController',
+    		resolve : {
+               	usuarioData: ['queComemosService', function( queComemosService ) {
+               		return queComemosService.getUsuario();
+                }]
+           }
     	});
     	
     $urlRouterProvider.otherwise('/PanelLogin');

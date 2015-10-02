@@ -17,6 +17,10 @@ import java.util.ArrayList
 import AplicationModel.ListadoRecetas
 import AplicationModel.PedidoLogin
 import AplicationModel.UsuarioTestBuilder
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 
 @Controller
 class MainController {
@@ -40,10 +44,24 @@ class MainController {
 		ok
 	}
 	
+	/*
+	def obtenerJugador(HttpServletRequest request) {
+		repoJugadores.encontrarPorNombre(getCookie(request, "usuario"))
+	} */
+	
 	@Post("/setRecetaSeleccionada")
 	def Result setRecetaSeleccionada( @Body String body ){
 		recetaSeleccionada = body.fromJson( Receta )
 		ok
+	}
+	
+	
+	@Get("/usuario")
+	def Result usuario(){
+		var usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Jose" , Sexo.MASCULINO)
+		//var usuario = usuarioTestBuilder.usuarioBuilder( "Diego" );
+		response.contentType = ContentType.APPLICATION_JSON
+		ok( usuario.toJson )	
 	}
 	
 	@Get("/recetas")

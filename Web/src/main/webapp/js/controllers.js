@@ -19,7 +19,13 @@ queComemosApp.controller( 'panelLoginController', [
 queComemosApp.controller( 'panelUsuarioController', [
 	'$scope',
 	'$state',
-	function( $scope, $state ){
+	'queComemosService',
+	'usuarioData',
+	function( $scope, $state, queComemosService, usuarioData ){
+		
+		var usuario = usuarioData.data
+		$scope.usuario = usuario
+		
 		$scope.irAHome = function(){
 			$state.go('PanelHome')
 		}

@@ -9,7 +9,60 @@
 		</div>
 
 		<div class="panel-body">
-			Cuerpo del Panel [ Informacion del Usuario ]
+
+			<!-- PANEL IZQUIERDO -->
+			<section>
+			<div >
+				<b>Nombre</b>
+				<br> 
+				{{ usuario.nombre }}
+				<br>
+				<b>Complexion</b>
+				<br>
+				{{ usuario.complexion }}
+				<br>
+				<b>Preferencias Alimenticias</b>
+				<br>
+				[ List ]
+				<br>
+				<b>Condiciones Preexistentes</b>
+				<br>
+				[ List ]						
+			</div>
+			</section>
+			<!-- PANEL DERECHO -->
+			<aside>
+			<div >
+				<b>Sexo</b> 
+				{{ usuario.sexo }}
+				<br>
+				<b>Fecha de Nacimiento</b>
+				[ date ]
+				<br>
+				<b>Altura</b>
+				{{ usuario.altura }}				
+				<br>
+				<b>Peso</b>
+				{{ usuario.peso }}								
+				<br>
+				<b>IMC</b>
+				{{ usuario.imc }}								
+				<br>
+				<b>Comidas que le disgustan</b>
+				[ List ]					
+				<br>
+				<b>Rutina</b>
+				{{ usuario.rutina }}								
+			</div>
+			</aside>
+			<!-- PANEL INFERIOR -->
+			<footer>
+			<div>
+				<b>Recetas Favoritas</b>
+				[ List ]
+			</div>
+			</footer>
+			
 		</div>
 
 		<div class="panel-footer"> 

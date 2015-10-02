@@ -9,5 +9,8 @@ var queComemosService = queComemosApp.service('queComemosService', [ '$http',
       this.getRecetaSeleccionada = function() {
     	  return $http.get('/getRecetaSeleccionada');
         };
+       this.getUsuario = function(){
+    	   return $http.get('/usuario');
+       };
     }]);
 

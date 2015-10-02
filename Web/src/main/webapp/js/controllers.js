@@ -26,6 +26,27 @@ queComemosApp.controller( 'panelUsuarioController', [
 	}
 ]);
 
+queComemosApp.controller( 'panelConsultasController', [
+	'$scope',
+	'$state',
+	function( $scope, $state ){
+		$scope.irAHome = function(){
+			$state.go('PanelHome')
+		}
+	}
+]);
+
+queComemosApp.controller( 'panelMonitoreoController', [
+	'$scope',
+	'$state',
+	function( $scope, $state ){
+		$scope.irAHome = function(){
+			$state.go('PanelHome')
+		}
+	}
+])
+
+
 queComemosApp.controller( 'panelRecetaController', [ 
 	'$scope', 
 	'$state', 
@@ -57,8 +78,16 @@ queComemosApp.controller('panelHomeController', [
             $state.go('PanelReceta');
 		};
 		
+		$scope.verConsultas = function(){
+			$state.go('PanelConsultas');
+		}
+		
 		$scope.verUsuario = function(){
 			$state.go('PanelUsuario')
+		}
+		
+		$scope.verMonitoreo = function(){
+			$state.go('PanelMonitoreo')
 		}
 		
 		$scope.seleccionarReceta = function() {

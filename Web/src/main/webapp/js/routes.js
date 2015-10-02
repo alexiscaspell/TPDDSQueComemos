@@ -7,6 +7,16 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
     		templateUrl: 'templates/PanelLogin.html',
     		controller: 'panelLoginController'
     	})
+    	.state('PanelConsultas', {
+    		url: '/PanelConsultas',
+    		templateUrl: 'templates/PanelConsultaRecetas.html',
+    		controller: 'panelConsultasController'
+    	})
+    	.state('PanelMonitoreo', {
+    		url: '/PanelMonitoreo',
+    		templateUrl: 'templates/PanelMonitoreoRecetas.html',
+    		controller: 'panelMonitoreoController'
+    	})
         .state('PanelHome', {
                 url: '/PanelHome',
                 templateUrl: 'templates/PanelHome.html',

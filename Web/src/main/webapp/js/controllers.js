@@ -10,6 +10,7 @@ queComemosApp.controller( 'panelLoginController', [
 		          nombre : $scope.nombre
 		        }).success(function(data) {
 		          document.cookie = "usuario=" + data.nombre;
+		          
 		          $state.go('PanelHome');
 		        });
 		      }

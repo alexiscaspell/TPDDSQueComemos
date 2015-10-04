@@ -19,7 +19,7 @@ class RepoUsuarios {
 	}
 	
 	def getUsuario( String name ){
-		//println(name)
+		println( "[RepoUsuarios] getUsuario() de name = " + name)
 		usuarios.findFirst[ it.nombre == name ]
 	}
 	

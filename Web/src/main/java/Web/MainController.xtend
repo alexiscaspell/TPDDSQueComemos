@@ -24,7 +24,7 @@ class MainController {
 	@Post("/login")
 	def Result login( @Body String body ){
 		var PedidoLogin pedido = body.fromJson(PedidoLogin)
-		println(pedido.nombre)
+		println("[@Post login()] Haciendo login con nombre: " + pedido.nombre)
 		repoUsuarios.getUsuario( pedido.nombre )
 		// Buscar usuario con nombre == pedido.nombre
 		// verificar que pedido.pass == usuario encontrado pass
@@ -38,7 +38,11 @@ class MainController {
 	}
 	
 	def getCookie(HttpServletRequest request, String string) {
-		request.cookies.findFirst[it.name == string].value	
+		
+		println( "[MainController getCookie()] encontrada es = " + request.cookies.findFirst[it.name == string].value)
+		request.cookies.findFirst[it.name == string].value
+		// Para hacer funcionar, comentar lo de arriba y descomentar lo de abajo
+		//"Lucas"	
 	}
 	
 	@Post("/setRecetaSeleccionada")
@@ -57,7 +61,8 @@ class MainController {
 	@Get("/recetas")
 	def Result recetas() {
 		response.contentType = ContentType.APPLICATION_JSON
-		var recetas = new PedidoRecetas( obtenerJugador(request) )
+		var usuario = obtenerJugador(request)
+		var recetas = new PedidoRecetas( usuario  )
 		recetas.setRecetas()
 		ok( recetas.toJson )
 	}

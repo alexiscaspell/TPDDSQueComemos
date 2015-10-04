@@ -1,0 +1,27 @@
+package AplicationModel
+
+import java.util.List
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
+class RepoUsuarios {
+	
+	List<UsuarioPosta> usuarios = new ArrayList<UsuarioPosta>
+	UsuarioTestBuilder usuarioBuilder = new UsuarioTestBuilder()
+	
+	
+	new(){		
+		usuarios.add( usuarioBuilder.usuarioBuilder( "Lucas" ) )
+		usuarios.add( usuarioBuilder.usuarioBuilder( "Mariano" ) )
+		usuarios.add( usuarioBuilder.usuarioBuilder( "Juan" ) )
+	}
+	
+	def getUsuario( String name ){
+		//println(name)
+		usuarios.findFirst[ it.nombre == name ]
+	}
+	
+
+}

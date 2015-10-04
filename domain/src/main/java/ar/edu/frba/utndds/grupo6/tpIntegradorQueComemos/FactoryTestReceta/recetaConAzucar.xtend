@@ -9,7 +9,9 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Data
 class recetaConAzucar implements recetaFactory {
 
 	override Receta cumple(Usuario usuario) {

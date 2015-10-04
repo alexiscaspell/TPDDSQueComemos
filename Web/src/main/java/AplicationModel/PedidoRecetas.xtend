@@ -21,7 +21,12 @@ class PedidoRecetas {
 	val temporadas = new ArrayList<Temporada>();
 	Integer i = 0; // Eliminar! se usa para hardcodear solo una vez
 	new( UsuarioPosta usuario ){
-		this.usuario = usuario
+		if ( usuario == null ) println("USUARIO PARAMETRO DE NEW PEDIDO RECETAS == NULL ")
+		else {
+			println( usuario.nombre )
+			this.usuario = usuario
+			
+		}
 		
 		// Cambiar el usuarioPosta de parametro por un usuario 
 		// ( Es necesario el usuarioPosta para poder llamar a marcarComoFavorita y hardcodear las recetas ) 
@@ -31,31 +36,31 @@ class PedidoRecetas {
 	
 	
 	def hardcodeRecetas(){
-		if ( i == 0 ) {
-			var Receta receta1 = new Receta
-			var Receta receta2 = new Receta
-			receta1.nombre = "PAPA"
-			receta2.nombre = "Carne"
-			receta1.dificultad = Dificultad.FACIL
-			receta2.dificultad = Dificultad.MEDIANA
-			receta1.calorias = 500
-			receta2.calorias = 250
+
+		var Receta receta1 = new Receta
+		var Receta receta2 = new Receta
+		receta1.nombre = "PAPA"
+		receta2.nombre = "Carne"
+		receta1.dificultad = Dificultad.FACIL
+		receta2.dificultad = Dificultad.MEDIANA
+		receta1.calorias = 500
+		receta2.calorias = 250
+		
+		temporadas.add(Temporada.INVIERNO)
+		temporadas.add(Temporada.OTONIO)
+		temporadas.add(Temporada.PRIMAVERA)
+		temporadas.add(Temporada.VERANO)
 			
-			temporadas.add(Temporada.INVIERNO)
-			temporadas.add(Temporada.OTONIO)
-			temporadas.add(Temporada.PRIMAVERA)
-			temporadas.add(Temporada.VERANO)
-				
-			receta1.temporadas = temporadas
-			usuario.marcarComoFavorita( receta1 )
-			
-			temporadas.remove(Temporada.INVIERNO)
-			temporadas.remove(Temporada.OTONIO)
-			receta2.temporadas = temporadas
-			usuario.marcarComoFavorita( receta2 )
-			i++
-			}
-		}
+		receta1.temporadas = temporadas
+		usuario.marcarComoFavorita( receta1 )
+		
+		temporadas.remove(Temporada.INVIERNO)
+		temporadas.remove(Temporada.OTONIO)
+		receta2.temporadas = temporadas
+
+		usuario.marcarComoFavorita( receta2 )
+	}
+		
 	
 	def setRecetas(){
 		hardcodeRecetas()

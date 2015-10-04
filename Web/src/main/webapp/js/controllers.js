@@ -3,17 +3,17 @@
 queComemosApp.controller( 'panelLoginController', [
 	'$scope',
 	'$state',
-    function( $scope, $state ){
-		$scope.login = function() {
-			/*
-			$http.post('/login', {
-				nombre : $scope.nombre
-				pass : $scope.pass
-		    })*/
-		    $state.go('PanelHome');
-		}
-	}	   
-]);
+	'$http',
+    function( $scope, $state, $http ){
+		  $scope.login = function() {
+		        $http.post('/login', {
+		          nombre : $scope.nombre
+		        }).success(function(data) {
+		          document.cookie = "usuario=" + data.nombre;
+		          $state.go('PanelHome');
+		        });
+		      }
+}]);
 
 
 queComemosApp.controller( 'panelUsuarioController', [

@@ -37,7 +37,7 @@
 				{{ usuario.sexo }}
 				<br>
 				<b>Fecha de Nacimiento</b>
-				[ date ]
+				{{ usuario.fechaNacimiento | date: 'dd/MM/yyyy' }}
 				<br>
 				<b>Altura</b>
 				{{ usuario.altura }}				

@@ -19,19 +19,14 @@ class PedidoRecetas {
 	List<Receta> recetas = new ArrayList<Receta>();
 	UsuarioPosta usuario;
 	val temporadas = new ArrayList<Temporada>();
-	Integer i = 0; // Eliminar! se usa para hardcodear solo una vez
 	new( UsuarioPosta usuario ){
-		if ( usuario == null ) println("USUARIO PARAMETRO DE NEW PEDIDO RECETAS == NULL ")
-		else {
-			println( usuario.nombre )
 			this.usuario = usuario
-			
 		}
 		
 		// Cambiar el usuarioPosta de parametro por un usuario 
 		// ( Es necesario el usuarioPosta para poder llamar a marcarComoFavorita y hardcodear las recetas ) 
 		// AGREGAR USUARIO COMO PARAMETRO DE NEW Y SACAR EL HARDCODEADO
-	}
+	
 	
 	
 	
@@ -63,7 +58,7 @@ class PedidoRecetas {
 		
 	
 	def setRecetas(){
-		hardcodeRecetas()
+		//hardcodeRecetas()
 		// If de primer Login
 		if ( usuario.favoritas == 0 ) {
 			mostrando = "Tus ultimas Recetas Consultadas"

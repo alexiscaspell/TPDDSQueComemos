@@ -21,11 +21,14 @@ class MainController {
 	extension JSONUtils jsonUtils = new JSONUtils	
 	//UsuarioPosta usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "martin" , Sexo.MASCULINO)		
 	
+	
 	@Post("/login")
 	def Result login( @Body String body ){
 		var PedidoLogin pedido = body.fromJson(PedidoLogin)
 		println("[@Post login()] Haciendo login con nombre: " + pedido.nombre)
-		repoUsuarios.getUsuario( pedido.nombre )
+		
+		usuario_aux = repoUsuarios.getUsuario( pedido.nombre )
+		hardcodear(  )
 		// Buscar usuario con nombre == pedido.nombre
 		// verificar que pedido.pass == usuario encontrado pass
 		// setear usuario = usuario encontrado ( sacar el usuario hardcodeado )
@@ -33,7 +36,7 @@ class MainController {
 	}
 	
 	
-	def obtenerJugador(HttpServletRequest request) {
+	def obtenerJugador(HttpServletRequest request) { 
 		repoUsuarios.getUsuario( getCookie( request, "usuario") )
 	}
 	
@@ -55,14 +58,14 @@ class MainController {
 	@Get("/usuario")
 	def Result usuario(){
 		response.contentType = ContentType.APPLICATION_JSON
-		ok(  obtenerJugador(request).toJson )	
+		ok(  usuario_aux.toJson )	
 	}
 	
 	@Get("/recetas")
 	def Result recetas() {
 		response.contentType = ContentType.APPLICATION_JSON
-		var usuario = obtenerJugador(request)
-		var recetas = new PedidoRecetas( usuario  )
+		//var usuario = obtenerJugador(request)
+		var recetas = new PedidoRecetas( usuario_aux  )
 		recetas.setRecetas()
 		ok( recetas.toJson )
 	}

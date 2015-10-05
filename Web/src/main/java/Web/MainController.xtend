@@ -2,6 +2,7 @@ package Web
 
 // Import Pedidos
 import Pedidos.PedidoLogin
+import Pedidos.PedidoMonitoreo
 import Pedidos.PedidoRecetas
 import Pedidos.PedidoUsuario
 
@@ -73,10 +74,12 @@ class MainController {
 		ok( recetas.toJson )
 	}
 	
-	@Get("/Monitoreo")
+	@Get("/monitoreo")
 	def Result monitoreo(){
 		response.contentType = ContentType.APPLICATION_JSON
-		ok
+		var monitoreo = new PedidoMonitoreo()
+		monitoreo.setRecetas()
+		ok( monitoreo.toJson )
 	}
 	
 	@Get("/getRecetaSeleccionada")

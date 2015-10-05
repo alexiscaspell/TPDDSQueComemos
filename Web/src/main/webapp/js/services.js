@@ -12,5 +12,8 @@ var queComemosService = queComemosApp.service('queComemosService', [ '$http',
        this.getUsuario = function(){
     	   return $http.get('/usuario');
        };
+       this.getMonitoreo = function(){
+    	   return $http.get('/monitoreo')
+       }
     }]);
 

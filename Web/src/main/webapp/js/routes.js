@@ -27,8 +27,8 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
         	templateUrl: 'templates/PanelHome.html',
         	controller: 'panelMonitoreoController',
         	resolve :{
-        		recetasData: ['queComemosService', function( queComemosService ) {
-            		return queComemosService.getAll();
+        		monitoreoData: ['queComemosService', function( queComemosService ) {
+            		return queComemosService.getMonitoreo();
                     }]
         	}
         })

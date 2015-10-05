@@ -27,6 +27,8 @@ queComemosApp.controller( 'panelUsuarioController', [
 		
 		var usuario = usuarioData.data.usuario
 		$scope.usuario = usuario
+		$scope.preferenciaAlimenticia = usuario.preferenciasAlimenticias
+		$scope.recetasFavoritas = usuario.favoritas
 		$scope.imcColor = usuarioData.data.color
 		$scope.irAHome = function(){
 			$state.go('PanelHome')

@@ -1,5 +1,7 @@
 <div class="col-xs-3"></div>
 
+
+
 <div class="col-xs-6 center-block">
 
 	<div class="panel panel-default">
@@ -10,50 +12,65 @@
 
 		<div class="panel-body">
 		
-			<!--ACA EMPIEZO A TIRAR CODIGO-->
-
-		<!--panel 1-->
-		<div class="panel1">
-			<label for="labelNombre"><b>Nombre:</b></label> 		
-			<input type="text" class="form-control" id="texboxNombre" placeholder="Usuario" ng-model="nombre">
+		<!--ACA EMPIEZO A TIRAR CODIGO-->
+	
+		<div class="row">
+			<!--panel 1-->
+			<div class="col-sm-6">
+			<div class="panel1">
+				<label for="labelNombre"><b>Nombre:</b></label> 		
+				<input type="text" class="form-control" id="texboxNombre" placeholder="Usuario" ng-model="nombre">
 		
-			<label for="labelDificultad"><b>Dificultad:</b></label> 
-			<select name="listBoxDificultad">
-				<option>text1</option>
-				<option>text2</option>
+				<label for="labelDificultad"><b>Dificultad:</b></label> 
+				
+				<div><select name="listBoxDificultad">
+					<option>text1</option>
+					<option>text2</option>
+				</select></div>
+		
+				<label for="labelQueContengaIngrediente"> <b>Que contenga ingrediente:</b></label> 
+				<input type="text" class="form-control" id="texboxQueContengaIngrediente" placeholder="Ingrediente" ng-model="nombre">
+			</div>
+			</div>
+			
+			<!--panel 2-->
+			<div class="col-sm-6">
+			<div class="panel2">		
+				<label for="labelCalorias"> <b>Calorias:</b> </label> 
+				<label for="labelDe"> de </label> 
+				<input type="text" class="form-control" id="texboxMinCalorias" placeholder="Minimo" ng-model="nombre">
+				<label for="labelA"> a </label> 
+				<input type="text" class="form-control" id="texboxMaxCalorias" placeholder="Maximo" ng-model="nombre">
+		
+				<label for="labelTemporada"> <b>Temporada:</b> </label> 
+				<select name="listBoxTemporada">
+					<option>text1</option>
+					<option>text2</option>
 				</select>
-		
-			<label for="labelQueContengaIngrediente"> <b>Que contenta ingrediente:</b></label> 
-			<input type="text" class="form-control" id="texboxQueContengaIngrediente" placeholder="Ingrediente" ng-model="nombre">
-		</div>
-
-		<!--panel 2-->
-		<div class="panel3">
-		
-			<label for="labelCalorias"> <b>Calorias:</b> </label> 
-			<p>de </p> 
-			<input type="text" class="form-control" id="texboxMinCalorias" placeholder="Minimo" ng-model="nombre">
-			<p>a </p> 
-			<input type="text" class="form-control" id="texboxMaxCalorias" placeholder="Maximo" ng-model="nombre">
-		
-			<label for="labelTemporada"> <b>Temporada:</b> </label> 
-			<select name="listBoxTemporada">
-				<option>text1</option>
-				<option>text2</option>
-			</select>
-		
-			<input type="checkbox" name="checkboxAplicarFiltros" value="aplicar filtros de perfil de usuario"> <p>Aplicar filtros del perfil de usuario</p>
+				
+				<div>
+				<input type="checkbox" name="checkboxAplicarFiltros" value="aplicar filtros de perfil de usuario"> Aplicar filtros del perfil de usuario<br>
+				</div>
+				
+			</div>
+			</div>
 		</div>
 		
-		<!--panel 3-->		
+		
+		<div  class="row">
+		<!--panel 3-->
+		<div align="center" class="col-sm-12">				
 		<div class="panel3"> 
 			<button ng-click="buscarReceta()">Buscar</button>
 			
 			<button ng-click="irAHome()">Volver</button>
+		</div>		
 		</div>
+		</div>	
+		
 	
 		<!--panel 4-->
-		<div class="panel4">
+		<div align="center" class="panel4">
 			<table border="2">
 				<tr>
 					<b><th>Nombres</th><th>Calorias</th><th>Dificultad</th><th>Temporada</th></b>
@@ -71,14 +88,6 @@
 		<!--ACA TERMINO-->
 	</div>
 </div>
-
-
-
-
-
-
-
-
 
 
 

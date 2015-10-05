@@ -79,7 +79,7 @@ class MainController {
 	def Result monitoreo(){
 		response.contentType = ContentType.APPLICATION_JSON
 		var monitoreo = new PedidoMonitoreo()
-		monitoreo.setRecetas()
+		monitoreo.masConsultadas()
 		ok( monitoreo.toJson )
 	}
 	

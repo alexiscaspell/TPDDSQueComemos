@@ -5,17 +5,91 @@
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			Parte Superior Panel [ Titulos]
+			Consulta de Recetas
 		</div>
 
 		<div class="panel-body">
-			Cuerpo del Panel [ Contenido ]
+		
+			<!--ACA EMPIEZO A TIRAR CODIGO-->
+
+		<!--panel 1-->
+		<div class="panel1">
+			<label for="labelNombre"><b>Nombre:</b></label> 		
+			<input type="text" class="form-control" id="texboxNombre" placeholder="Usuario" ng-model="nombre">
+		
+			<label for="labelDificultad"><b>Dificultad:</b></label> 
+			<select name="listBoxDificultad">
+				<option>text1</option>
+				<option>text2</option>
+				</select>
+		
+			<label for="labelQueContengaIngrediente"> <b>Que contenta ingrediente:</b></label> 
+			<input type="text" class="form-control" id="texboxQueContengaIngrediente" placeholder="Ingrediente" ng-model="nombre">
 		</div>
 
-		<div class="panel-footer"> 
-			<button ng-click="irAHome()">Volver a Home</button>
+		<!--panel 2-->
+		<div class="panel3">
+		
+			<label for="labelCalorias"> <b>Calorias:</b> </label> 
+			<p>de </p> 
+			<input type="text" class="form-control" id="texboxMinCalorias" placeholder="Minimo" ng-model="nombre">
+			<p>a </p> 
+			<input type="text" class="form-control" id="texboxMaxCalorias" placeholder="Maximo" ng-model="nombre">
+		
+			<label for="labelTemporada"> <b>Temporada:</b> </label> 
+			<select name="listBoxTemporada">
+				<option>text1</option>
+				<option>text2</option>
+			</select>
+		
+			<input type="checkbox" name="checkboxAplicarFiltros" value="aplicar filtros de perfil de usuario"> <p>Aplicar filtros del perfil de usuario</p>
 		</div>
-
-
+		
+		<!--panel 3-->		
+		<div class="panel3"> 
+			<button ng-click="buscarReceta()">Buscar</button>
+			
+			<button ng-click="irAHome()">Volver</button>
+		</div>
+	
+		<!--panel 4-->
+		<div class="panel4">
+			<table border="2">
+				<tr>
+					<b><th>Nombres</th><th>Calorias</th><th>Dificultad</th><th>Temporada</th></b>
+				</tr>
+				<tr>
+					<td>Salmon con papas</td><td>550</td><td>Baja</td><td>Todo el anio</td>
+				</tr>
+			</table>	
+			
+			<button ng-click="verReceta()">Ver</button>
+		</div>
+		
+		</div>
+	
+		<!--ACA TERMINO-->
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

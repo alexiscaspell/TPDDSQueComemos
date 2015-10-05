@@ -29,7 +29,7 @@ class Dependencias {
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
-		temporadas.add(Temporada.VERANO)
+		//temporadas.add(Temporada.VERANO)
 			
 		receta1.temporadas = temporadas
 		usuario_aux.marcarComoFavorita( receta1 )

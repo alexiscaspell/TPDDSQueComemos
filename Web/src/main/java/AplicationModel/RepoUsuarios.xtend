@@ -15,7 +15,6 @@ class RepoUsuarios {
 	new(){		
 		usuarios.add( usuarioBuilder.usuarioBuilder( "Lucas" ) )
 		usuarios.add( usuarioBuilder.usuarioBuilder( "Mariano" ) )
-		usuarios.add( usuarioBuilder.usuarioBuilder( "Juan" ) )
 	}
 	
 	def getUsuario( String name ){

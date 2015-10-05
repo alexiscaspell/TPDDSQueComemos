@@ -169,7 +169,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		preferenciasAlimenticias
 	}
 
-	def double getIMC() {
+	override double getIMC() {
 		peso / (altura * altura)
 	}
 

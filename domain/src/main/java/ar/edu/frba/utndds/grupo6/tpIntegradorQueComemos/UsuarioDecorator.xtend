@@ -34,6 +34,10 @@ public abstract class UsuarioDecorator extends SujetoObservado implements Usuari
 		decorado.getPeso()
 	}
 
+	override getIMC(){
+		decorado.getIMC()
+	}
+
 	override getEmail() {
 		decorado.getEmail()
 	}

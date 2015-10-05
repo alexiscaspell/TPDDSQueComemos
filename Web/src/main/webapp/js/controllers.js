@@ -7,7 +7,8 @@ queComemosApp.controller( 'panelLoginController', [
     function( $scope, $state, $http ){
 		  $scope.login = function() {
 		        $http.post('/login', {
-		          nombre : $scope.nombre
+		          nombre : $scope.nombre,
+		          //pass : $scope.pass
 		        }).success(function(data) {
 		          document.cookie = "usuario=" + data.nombre;
 		          
@@ -24,9 +25,9 @@ queComemosApp.controller( 'panelUsuarioController', [
 	'usuarioData',
 	function( $scope, $state, queComemosService, usuarioData ){
 		
-		var usuario = usuarioData.data
+		var usuario = usuarioData.data.usuario
 		$scope.usuario = usuario
-		
+		$scope.imcColor = usuarioData.data.color
 		$scope.irAHome = function(){
 			$state.go('PanelHome')
 		}

@@ -13,6 +13,7 @@ import AplicationModel.PedidoRecetas
 
 import static AplicationModel.Dependencias.*
 import javax.servlet.http.HttpServletRequest
+import AplicationModel.PedidoUsuario
 
 @Controller
 class MainController {
@@ -26,7 +27,6 @@ class MainController {
 	def Result login( @Body String body ){
 		var PedidoLogin pedido = body.fromJson(PedidoLogin)
 		println("[@Post login()] Haciendo login con nombre: " + pedido.nombre)
-		
 		usuario_aux = repoUsuarios.getUsuario( pedido.nombre )
 		hardcodear(  )
 		// Buscar usuario con nombre == pedido.nombre
@@ -40,8 +40,7 @@ class MainController {
 		repoUsuarios.getUsuario( getCookie( request, "usuario") )
 	}
 	
-	def getCookie(HttpServletRequest request, String string) {
-		
+	def getCookie(HttpServletRequest request, String string) {	
 		println( "[MainController getCookie()] encontrada es = " + request.cookies.findFirst[it.name == string].value)
 		request.cookies.findFirst[it.name == string].value
 		// Para hacer funcionar, comentar lo de arriba y descomentar lo de abajo
@@ -58,7 +57,9 @@ class MainController {
 	@Get("/usuario")
 	def Result usuario(){
 		response.contentType = ContentType.APPLICATION_JSON
-		ok(  usuario_aux.toJson )	
+		var pedidoUsuario = new PedidoUsuario(  usuario_aux )
+		pedidoUsuario.Color()
+		ok( pedidoUsuario.toJson )	
 	}
 	
 	@Get("/recetas")
@@ -76,7 +77,6 @@ class MainController {
 	def Result getRecetaSeleccionada(){
 		ok( recetaSeleccionada.toJson )	
 	}
-	
 	
 	
 }

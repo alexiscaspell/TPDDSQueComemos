@@ -5,7 +5,7 @@
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			Usuario : [ $scope.usuario ]
+			Usuario : [ usuario.nombre ]
 		</div>
 
 		<div class="panel-body">
@@ -46,7 +46,7 @@
 				{{ usuario.peso }}								
 				<br>
 				<b>IMC</b>
-				{{ usuario.imc }}								
+				<span ng-style="{ color : imcColor }">{{ usuario.imc }}</span>								
 				<br>
 				<b>Comidas que le disgustan</b>
 				[ List ]					

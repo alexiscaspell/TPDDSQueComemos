@@ -19,17 +19,8 @@ class UsuarioTestBuilder {
 	recetaConCarne recetaCarne = new recetaConCarne()
 	
 	def UsuarioPosta usuarioBuilder( String nombre ){
-		val usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre , Sexo.MASCULINO)
-		/*	
-		usuario_test.marcarComoFavorita(recetaEsValida.cumple(usuario_test))
-		usuario_test.marcarComoFavorita(recetaEsValida.noCumple(usuario_test))
-		usuario_test.marcarComoFavorita(recetaAzucar.cumple(usuario_test))
-		usuario_test.marcarComoFavorita(recetaAzucar.noCumple(usuario_test))
-		usuario_test.marcarComoFavorita(recetaSal.cumple(usuario_test))
-		usuario_test.marcarComoFavorita(recetaSal.noCumple(usuario_test))
-		usuario_test.marcarComoFavorita(recetaCarne.cumple(usuario_test))
-		*/
-		return usuario_test
+		if ( nombre == "Lucas" ) return new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre , Sexo.MASCULINO)
+		else if ( nombre == "Mariano" ) return new UsuarioPosta(210.4, 1.40, Rutina.INTENSIVO, nombre , Sexo.MASCULINO) 
 	} 
 	
 }

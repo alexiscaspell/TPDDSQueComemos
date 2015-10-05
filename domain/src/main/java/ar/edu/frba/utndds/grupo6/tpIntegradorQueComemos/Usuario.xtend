@@ -18,6 +18,8 @@ public interface Usuario {
 	def List<Receta> getConsultas()
 
 	def Sexo getSexo()
+	
+	def double getIMC()
 
 	def List<String> getPlatosQueNoLeGustan()
 

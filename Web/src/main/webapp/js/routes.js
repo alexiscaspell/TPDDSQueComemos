@@ -22,6 +22,16 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
                         }]
                 }
         })
+        .state('PanelMonitoreo',{
+        	url: '/PanelMonitoreo',
+        	templateUrl: 'templates/PanelHome.html',
+        	controller: 'panelMonitoreoController',
+        	resolve :{
+        		recetasData: ['queComemosService', function( queComemosService ) {
+            		return queComemosService.getAll();
+                    }]
+        	}
+        })
         .state('PanelReceta', {
                 url: '/PanelReceta',
                 templateUrl: 'templates/PanelReceta.html',

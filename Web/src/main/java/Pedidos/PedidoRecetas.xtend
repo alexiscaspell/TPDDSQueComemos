@@ -1,4 +1,4 @@
-package AplicationModel
+package Pedidos
 
 import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta

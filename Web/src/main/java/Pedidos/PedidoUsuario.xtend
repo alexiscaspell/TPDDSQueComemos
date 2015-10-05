@@ -1,4 +1,4 @@
-package AplicationModel
+package Pedidos
 
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import org.eclipse.xtend.lib.annotations.Accessors

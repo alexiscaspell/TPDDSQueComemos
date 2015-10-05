@@ -1,5 +1,12 @@
 package Web
 
+// Import Pedidos
+import Pedidos.PedidoLogin
+import Pedidos.PedidoRecetas
+import Pedidos.PedidoUsuario
+
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
+import javax.servlet.http.HttpServletRequest
 import org.uqbar.xtrest.api.Result
 import org.uqbar.xtrest.api.annotation.Body
 import org.uqbar.xtrest.api.annotation.Controller
@@ -7,13 +14,8 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import AplicationModel.PedidoLogin
-import AplicationModel.PedidoRecetas
 
 import static AplicationModel.Dependencias.*
-import javax.servlet.http.HttpServletRequest
-import AplicationModel.PedidoUsuario
 
 @Controller
 class MainController {
@@ -71,7 +73,11 @@ class MainController {
 		ok( recetas.toJson )
 	}
 	
-	
+	@Get("/Monitoreo")
+	def Result monitoreo(){
+		response.contentType = ContentType.APPLICATION_JSON
+		ok
+	}
 	
 	@Get("/getRecetaSeleccionada")
 	def Result getRecetaSeleccionada(){

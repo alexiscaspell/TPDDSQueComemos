@@ -1,4 +1,4 @@
-package AplicationModel
+package Pedidos
 
 import org.eclipse.xtend.lib.annotations.Accessors
 

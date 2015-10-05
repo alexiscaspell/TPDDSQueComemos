@@ -6,11 +6,13 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.receta
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import java.util.ArrayList
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.RepoUsuarios
 
 @Accessors
 class Dependencias {
-	public static val repoUsuarios = new RepoUsuarios	
-	public static UsuarioPosta usuario_aux;
+	public static val repoUsuarios = new Repositorio()
+	public static Usuario usuario_aux
 	public static recetaConAzucar recetaAzucar = new recetaConAzucar()
 	val static temporadas = new ArrayList<Temporada>();
 	

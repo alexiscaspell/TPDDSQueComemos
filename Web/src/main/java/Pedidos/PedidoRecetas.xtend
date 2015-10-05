@@ -7,15 +7,16 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 
 @Accessors
 class PedidoRecetas {
 
 	String mostrando;
 	List<Receta> recetas = new ArrayList<Receta>();
-	UsuarioPosta usuario;
+	Usuario usuario;
 	val temporadas = new ArrayList<Temporada>();
-	new( UsuarioPosta usuario ){
+	new( Usuario usuario ){
 			this.usuario = usuario
 		}
 		

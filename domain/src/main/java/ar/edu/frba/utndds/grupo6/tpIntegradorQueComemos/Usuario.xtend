@@ -10,6 +10,8 @@ public interface Usuario {
 
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)
+	
+	def void setLogin(Login login)
 
 	//	------------------------------------------- Getters -------------------------------------------
 	
@@ -31,6 +33,8 @@ public interface Usuario {
 	def Rutina getRutina()
 
 	def double getPeso()
+	
+	def void marcarComoFavorita( Receta receta )
 
 	def List<Receta> getFavoritas()
 

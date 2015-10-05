@@ -15,16 +15,24 @@ public abstract class UsuarioDecorator extends SujetoObservado implements Usuari
 		decorado = usuario
 	}
 
-	//	------------------------------------------- Getters -------------------------------------------
+	//	------------------------------------------- Setters -------------------------------------------
 	override setNombre(String nombre) {
 
 		decorado.setNombre(nombre)
 	}
+	
+	override void setLogin(Login login){
+		
+		decorado.setLogin(login)
+	}
+	
 
 	//	------------------------------------------- Getters -------------------------------------------
 	//override getCondicion(){
 	//decorado.getCondicion()
 	//}
+	
+	
 	
 	override getLogin(){
 		
@@ -95,6 +103,11 @@ public abstract class UsuarioDecorator extends SujetoObservado implements Usuari
 
 	override agregarGrupo(Grupo grupo) {
 		decorado.agregarGrupo(grupo)
+	}
+	
+	override void marcarComoFavorita( Receta receta ){
+		
+		decorado.marcarComoFavorita(receta)
 	}
 
 // ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------

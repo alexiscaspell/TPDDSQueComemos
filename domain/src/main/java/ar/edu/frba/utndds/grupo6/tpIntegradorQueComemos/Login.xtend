@@ -9,4 +9,11 @@ class Login {
 	
 	String password
 	
+	new(String nick, String pass) {
+		
+		nickName = nick
+		
+		password = pass
+	}
+	
 }

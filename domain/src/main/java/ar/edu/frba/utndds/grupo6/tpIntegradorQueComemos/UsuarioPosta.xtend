@@ -105,6 +105,10 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		this.rutina = rutina
 	}
 
+	override void setLogin(Login login){
+		
+		this.login = login
+	}
 	//	------------------------------------------- Getters -------------------------------------------
 	
 	override getLogin(){
@@ -230,7 +234,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		!tieneIngredientesFeos(receta.getIngredientes())
 	}
 
-	def marcarComoFavorita(Receta receta) {
+	override void marcarComoFavorita(Receta receta) {
 		if (receta.puedeVer(this)) {
 			favoritas.add(receta)
 		}

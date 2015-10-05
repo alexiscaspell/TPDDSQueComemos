@@ -8,6 +8,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConSal
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConCarne
 import org.eclipse.xtend.lib.annotations.Accessors
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 
 @Accessors
 class UsuarioTestBuilder {
@@ -18,9 +19,16 @@ class UsuarioTestBuilder {
 	recetaConSal recetaSal = new recetaConSal()
 	recetaConCarne recetaCarne = new recetaConCarne()
 	
-	def UsuarioPosta usuarioBuilder( String nombre ){
+	/*def UsuarioPosta usuarioBuilder( String nombre ){
 		if ( nombre == "Lucas" ) return new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre , Sexo.MASCULINO)
 		else if ( nombre == "Mariano" ) return new UsuarioPosta(210.4, 1.40, Rutina.INTENSIVO, nombre , Sexo.MASCULINO) 
-	} 
+	} */
+	
+		def Usuario usuarioBuilder( String nombre){
+		
+		val Usuario usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre , Sexo.MASCULINO)
+				
+		return usuario_test
+	}
 	
 }

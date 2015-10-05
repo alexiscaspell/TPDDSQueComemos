@@ -6,4 +6,7 @@ class PedidoLogin {
 	
 	@Accessors
 	String nombre 
+	
+	//@Accessors
+	//String password
 }

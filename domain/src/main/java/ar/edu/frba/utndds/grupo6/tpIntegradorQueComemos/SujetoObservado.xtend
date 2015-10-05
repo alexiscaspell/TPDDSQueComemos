@@ -7,15 +7,15 @@ abstract class SujetoObservado {
 
 	private List<Observador> Observadores = new ArrayList<Observador>()
 
-	def addObservador(Observador observador) {
+	def void addObservador(Observador observador) {
 		Observadores.add(observador)
 	}
 
-	def removeObservador(Observador observador) {
+	def void removeObservador(Observador observador) {
 		Observadores.remove(observador)
 	}
 
-	def getObservadores() {
+	def List<Observador> getObservadores() {
 		Observadores
 	}
 

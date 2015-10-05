@@ -6,7 +6,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.util.ArrayList
 import java.util.List
 
-public interface Usuario {
+public interface Usuario  {
 
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)
@@ -38,8 +38,6 @@ public interface Usuario {
 
 	def List<Receta> getFavoritas()
 
-	def List<Observador> getObservadores()
-
 	def List<Ingrediente> getPreferenciasAlimenticias()
 
 	def List<Receta> getRecetas()
@@ -70,4 +68,10 @@ public interface Usuario {
 	def Boolean cumpleMismasCondiciones(Usuario usuario)
 
 	def Usuario crearPerfil()
+	
+	def void addObservador(Observador observador)
+	
+	def void removeObservador(Observador observador)
+	
+	def List<Observador> getObservadores()
 }

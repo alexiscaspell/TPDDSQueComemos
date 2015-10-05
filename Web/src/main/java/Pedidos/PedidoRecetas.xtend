@@ -4,11 +4,7 @@ import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConAzucar
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 

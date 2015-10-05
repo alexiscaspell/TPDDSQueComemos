@@ -56,6 +56,11 @@ queComemosApp.controller( 'panelMonitoreoController',[
 		$scope.lista_recetas = monitoreoData.data.recetas 
 		$scope.recetas_a_mostar = monitoreoData.data.mostrando ;
 		
+
+		// ****
+		$scope.isHome = false
+		// ****
+		
 		$scope.irAHome = function(){
 			$state.go('PanelHome')
 		}
@@ -105,6 +110,10 @@ queComemosApp.controller('panelHomeController', [
 		$scope.verMonitoreo = function(){
 			$state.go('PanelMonitoreo')
 		}
+		
+		// ****
+		$scope.isHome = true
+		// ****
 		
 		$scope.seleccionarReceta = function( receta ) {
 	        queComemosService.setRecetaSeleccionada( receta ).success(

@@ -15,5 +15,8 @@ var queComemosService = queComemosApp.service('queComemosService', [ '$http',
        this.getMonitoreo = function(){
     	   return $http.get('/monitoreo')
        }
+       this.setRecetaConsultada = function( receta ){
+    	   return $http.post('setRecetaConsultada', receta );
+       }
     }]);
 

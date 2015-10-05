@@ -63,7 +63,11 @@ queComemosApp.controller( 'panelMonitoreoController',[
 		
 		$scope.irAHome = function(){
 			$state.go('PanelHome')
-		}
+		};
+		
+		$scope.seleccionarConsulta = function( receta ) {
+	        queComemosService.setRecetaConsultada( receta )
+	    };
 	}
 ])
 

@@ -22,6 +22,7 @@ import static AplicationModel.Dependencias.*
 class MainController {
 
 	Receta recetaSeleccionada;
+	Receta	recetaConsultada;
 	extension JSONUtils jsonUtils = new JSONUtils	
 	//UsuarioPosta usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "martin" , Sexo.MASCULINO)		
 	
@@ -87,5 +88,10 @@ class MainController {
 		ok( recetaSeleccionada.toJson )	
 	}
 	
+	@Post("/setRecetaConsultada")
+	def Result setRecetaConsultada( @Body String body ){
+		recetaConsultada = body.fromJson( Receta )
+		ok
+	}
 	
 }

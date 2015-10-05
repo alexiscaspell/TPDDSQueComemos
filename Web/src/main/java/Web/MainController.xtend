@@ -79,19 +79,13 @@ class MainController {
 	def Result monitoreo(){
 		response.contentType = ContentType.APPLICATION_JSON
 		var monitoreo = new PedidoMonitoreo()
-		monitoreo.setRecetas()
+		monitoreo.masConsultadas()
 		ok( monitoreo.toJson )
 	}
 	
 	@Get("/getRecetaSeleccionada")
 	def Result getRecetaSeleccionada(){
 		ok( recetaSeleccionada.toJson )	
-	}
-	
-	@Post("/setRecetaConsultada")
-	def Result setRecetaConsultada( @Body String body ){
-		recetaConsultada = body.fromJson( Receta )
-		ok
 	}
 	
 }

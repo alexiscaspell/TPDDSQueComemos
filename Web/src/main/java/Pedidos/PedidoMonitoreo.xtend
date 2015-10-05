@@ -21,11 +21,11 @@ class PedidoMonitoreo {
 	
 	def masConsultadas(){
 		var masConsultadas = consultasXRecetas.estadistica
-		var sorted =  masConsultadas.entrySet.sortBy[ value ]
-		(0 .. 10 - recetas.size ).forEach[ 
-				
+		masConsultadas.entrySet.sortBy[ value ]
+		masConsultadas.forEach[p1, p2|
+			recetas.add ( repoRecetas.getReceta( p1 ) )
 		]
-			
+		// Eliminar todo de recetas menos 10 primeras				
 	}
 	
 }

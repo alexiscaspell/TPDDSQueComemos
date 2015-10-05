@@ -88,10 +88,4 @@ class MainController {
 		ok( recetaSeleccionada.toJson )	
 	}
 	
-	@Post("/setRecetaConsultada")
-	def Result setRecetaConsultada( @Body String body ){
-		recetaConsultada = body.fromJson( Receta )
-		ok
-	}
-	
 }

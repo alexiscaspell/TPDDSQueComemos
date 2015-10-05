@@ -16,12 +16,14 @@
         			<th>Calorias</th>
         			<th>Dificultad</th>
         			<th>Temporadas</th>
+        			<th>Consultas</th>
       				</tr>
       				<tr data-ng-repeat="receta in lista_recetas" class="animate-repeat">
-        			<td class="col-xs-4">{{receta.nombre}}</td>
+        			<td class="col-xs-3">{{receta.nombre}}</td>
         			<td class="col-xs-2">{{receta.calorias}}</td>
-        			<td class="col-xs-3">{{receta.dificultad}}</td>
-        			<td class="col-xs-2">{{receta.temporadas }}</td>
+        			<td class="col-xs-2">{{receta.dificultad}}</td>
+        			<td class="col-xs-4">{{receta.temporadas }}</td>
+        			<td class="col-xs-3">Cantidad de consultas de esta receta</td>
         			<td nowrap class="col-xs-2">
           			<button type="button" class="btn btn-default" ng-click="seleccionarReceta(receta)" aria-label="Cumplir">
 	            		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
@@ -37,7 +39,6 @@
 				<div class="form-group">
 					<button ng-click="verUsuario()">Ver Perfil de Usuario</button>
 					<button ng-click="verConsultas()">Ver Consultas de Recetas</button>
-					<button ng-click="verMonitoreo()">Ver Monitoreo de Recetas</button>
 				</div>				
 			</form>
 		</div>

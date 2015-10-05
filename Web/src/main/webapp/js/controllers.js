@@ -44,16 +44,6 @@ queComemosApp.controller( 'panelConsultasController', [
 	}
 ]);
 
-queComemosApp.controller( 'panelMonitoreoController', [
-	'$scope',
-	'$state',
-	function( $scope, $state ){
-		$scope.irAHome = function(){
-			$state.go('PanelHome')
-		}
-	}
-])
-
 
 queComemosApp.controller( 'panelRecetaController', [ 
 	'$scope', 

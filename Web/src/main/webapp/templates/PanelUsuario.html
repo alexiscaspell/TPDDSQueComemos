@@ -5,15 +5,13 @@
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			Usuario : {{ usuario.nombre }} 
+			{{ usuario.nombre }} 
 		</div>
 
-		<div class="panel-body">
-
-			<!-- PANEL IZQUIERDO -->
-			<section>
-			<div >
-				<b>Nombre</b>
+		<div style="width:100%; text-align:center; height:500px;">
+  			
+  			<div style="height:350px; width:40%; float:left; text-align:left; padding:20px;">
+      			<b>Nombre</b>
 				<br> 
 				{{ usuario.nombre }}
 				<br>
@@ -31,52 +29,62 @@
 				<br>
 				<b>Condiciones Preexistentes</b>
 				<br>
-				[ List ]						
-			</div>
-			</section>
-			<!-- PANEL DERECHO -->
-			<aside>
-			<div >
-				<b>Sexo</b> 
+				<select
+						class="form-control" size="3"
+						ng-options="preferencia for preferencia in preferenciaAlimenticia">
+
+				</select>		
+  			</div>
+  		
+	  		
+  			<div style="padding:20px;; height:350px;width:40%;float:right;">
+      			<b>Sexo</b> 
+      			<br>
 				{{ usuario.sexo }}
 				<br>
 				<b>Fecha de Nacimiento</b>
+				<br>
 				{{ usuario.fechaNacimiento | date: 'dd/MM/yyyy' }}
 				<br>
 				<b>Altura</b>
+				<br>
 				{{ usuario.altura }}				
 				<br>
 				<b>Peso</b>
+				<br>
 				{{ usuario.peso }}								
 				<br>
 				<b>IMC</b>
-				<span ng-style="{ color : imcColor }">{{ usuario.imc }}</span>								
+				<br>
+				<span ng-style="{ color : imcColor }">{{ usuario.imc | number : 2 }}</span>								
 				<br>
 				<b>Comidas que le disgustan</b>
-				[ List ]					
+				<br>
+				<select
+					class="form-control" size="3"
+					ng-options="receta.nombre for receta in favoritas">
+				</select>					
 				<br>
 				<b>Rutina</b>
-				{{ usuario.rutina }}								
-			</div>
-			</aside>
-			<!-- PANEL INFERIOR -->
-			<footer>
-			<div>
-				<b>Recetas Favoritas</b>
+				<br>
+				{{ usuario.rutina }}					
+  			</div>
+  			
+  			<div style="padding:20px ;clear:both">
+  			
+  				
+	      		<b>Recetas Favoritas</b>
 				<select
-						class="form-control" size="3"
-						ng-options="receta.nombre for receta in favoritas">
-
-				</select>
-			</div>
-			</footer>
-			
+					class="form-control" size="3"
+					ng-options="receta.nombre for receta in favoritas">
+				</select>		
+  				
+  			</div>
 		</div>
-
-		<div class="panel-footer"> 
+	
+		<div class="panel-footer" style="text-align: center;"> 
 			<button ng-click="irAHome()">Volver a Home</button>
 		</div>
-
 
 	</div>
 </div>

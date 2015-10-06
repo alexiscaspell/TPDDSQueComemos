@@ -10,6 +10,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.receta
 import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
 
 @Accessors
 class UsuarioTestBuilder {
@@ -28,7 +29,8 @@ class UsuarioTestBuilder {
 		val Usuario usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre, Sexo.MASCULINO)
 		usuario_test.preferenciasAlimenticias.add(Ingrediente.POLLO)
 		usuario_test.preferenciasAlimenticias.add(Ingrediente.ALGA)
-		return usuario_test
+		val Usuario usuario = new UsuarioDiabetico( usuario_test )
+		return usuario
 	}
 
 }

@@ -4,8 +4,8 @@ queComemosApp.controller('panelLoginController', [ '$scope', '$state', '$http',
 		function($scope, $state, $http) {
 			$scope.login = function() {
 				$http.post('/login', {
-					nombre : $scope.nombre,
-				// pass : $scope.pass
+					nombre : $scope.nombre 
+					// pass : $scope.pass
 				}).success(function(data) {
 					document.cookie = "usuario=" + data.nombre;
 
@@ -24,7 +24,7 @@ queComemosApp.controller('panelUsuarioController', [ '$scope', '$state',
 			
 			$scope.favoritasSeleccionada = usuario.favoritas[0]
 			$scope.preferenciaSeleccionada = usuario.preferenciasAlimenticias[0]
-			$scope.condicionesSeleccionada = usuario.condiciones[0]
+			$scope.condicionesSeleccionada = usuario.condicion[0]
 			$scope.platosSeleccionado = usuario.platosQueNoLeGustan[0]
 			
 			$scope.irAHome = function() {

@@ -15,21 +15,24 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
 
 @Accessors
 class Dependencias {
 	public static val repoUsuarios = new Repositorio()
 	public static val repoRecetas = Recetario.getInstance()
 	public static Usuario usuario_aux
-	public static recetaConAzucar recetaAzucar = new recetaConAzucar()
 	val static temporadasReceta1 = new ArrayList<Temporada>();
 	val static temporadasReceta2 = new ArrayList<Temporada>();
 	val static condimentosReceta1 = new HashMap<Condimento, Integer>();
 	val static condimentosReceta2 = new HashMap<Condimento, Integer>();
+	val static ingredientesReceta1 = new HashMap<Ingrediente, Integer>();
+	val static ingredientesReceta2 = new HashMap<Ingrediente, Integer>();
 	public static ConsultasXRecetas consultasXRecetas = new ConsultasXRecetas()
 
 	public static def hardcodear() {
-		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO)
+		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO) 
 		var Receta receta1 = new Receta
 		var Receta receta2 = new Receta
 		receta1.nombre = "Papa"
@@ -40,11 +43,16 @@ class Dependencias {
 		receta2.usuarioCreador = usuario
 		receta2.tipo = TipoReceta.PUBLICA
 
+		usuario.platosQueNoLeGustan.add( "Pizza" )
+
 		temporadasReceta1.add(Temporada.INVIERNO)
 		temporadasReceta1.add(Temporada.OTONIO)
 
 		condimentosReceta1.put(Condimento.AZUCAR, 10);
 		condimentosReceta1.put(Condimento.CALDO, 20);
+
+		ingredientesReceta1.put( Ingrediente.AJO, 20 )
+		ingredientesReceta2.put( Ingrediente.AJO, 20 )
 
 		receta1.temporadas = temporadasReceta1;
 		receta1.condimentos = condimentosReceta1;
@@ -54,7 +62,7 @@ class Dependencias {
 		receta2.calorias = 250
 
 		usuario_aux.marcarComoFavorita(receta1)
-//		receta1.usuarioCreador = usuario_aux;
+		//receta1.usuarioCreador = usuario_aux;
 
 		temporadasReceta2.add(Temporada.PRIMAVERA)
 		temporadasReceta2.add(Temporada.VERANO)

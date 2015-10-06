@@ -147,7 +147,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	override getRecetasConAcceso() {
-		val recetario = Recetario.getInstance();
+		
 		val recetas = recetario.listarTodas();
 		consultas.clear()
 
@@ -156,6 +156,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 				consultas.add(receta)
 			}
 		]
+		println("ENTRO EN getRecetasConAcceso")
 		notificar()
 		return consultas
 	}

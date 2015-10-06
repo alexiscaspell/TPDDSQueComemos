@@ -13,7 +13,6 @@ class Repositorio {
 	RepoUsuarios repositorio = new RepoUsuarios()
 
 	new() {
-
 		var user1 = usuarioBuilder.usuarioBuilder("Lucas")
 		user1.login = new Login("Lucas", "123")
 		var user2 = usuarioBuilder.usuarioBuilder("Mariano")

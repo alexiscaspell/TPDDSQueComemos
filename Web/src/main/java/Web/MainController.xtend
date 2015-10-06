@@ -36,7 +36,6 @@ class MainController {
 		println("[@Post login()] Haciendo login con nombre: " + pedido.nombre)
 		usuario_aux = repoUsuarios.getUsuario(pedido.nombre)
 		hardcodear()
-
 		// Buscar usuario con nombre == pedido.nombre
 		// verificar que pedido.pass == usuario encontrado pass
 		// setear usuario = usuario encontrado ( sacar el usuario hardcodeado )
@@ -75,7 +74,6 @@ class MainController {
 	@Get("/recetas")
 	def Result recetas() {
 		response.contentType = ContentType.APPLICATION_JSON
-
 		//var usuario = obtenerJugador(request)
 		var recetas = new PedidoRecetas(usuario_aux)
 		recetas.setRecetas()

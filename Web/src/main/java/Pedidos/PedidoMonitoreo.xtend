@@ -17,6 +17,7 @@ class PedidoMonitoreo {
 	
 	def masConsultadas(){
 		var masConsultadas = consultasXRecetas.estadistica
+		//println("En PedidoMonitoreo masConsultadas() : " + masConsultadas )
 		masConsultadas.entrySet.sortBy[ value ]
 		masConsultadas.forEach[p1, p2|
 			recetas.add ( repoRecetas.getReceta( p1 ) )	

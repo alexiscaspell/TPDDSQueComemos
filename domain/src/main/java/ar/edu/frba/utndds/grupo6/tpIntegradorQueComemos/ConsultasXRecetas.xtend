@@ -5,8 +5,13 @@ import java.util.HashMap
 
 class ConsultasXRecetas implements Observador {
 
-	private Map<String, Integer> recetasConsultadas = new HashMap<String, Integer>
-
+	private Map<String, Integer> recetasConsultadas;
+	
+	new(){
+		recetasConsultadas = new HashMap<String, Integer>
+		println("Haciendo el new de ConsultasXRecetas, recetasConsultadas = " + recetasConsultadas )
+	}
+	
 	override actualizar(Usuario usuario) {
 
 		//println("EN ACTUALIZAR CONSULTAS X CANTIDAD")

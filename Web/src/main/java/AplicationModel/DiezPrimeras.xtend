@@ -9,15 +9,14 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class DiezPrimeras {
 
 	List<Receta> diezPrimeras = new ArrayList<Receta>;
-	
+
 	def List<Receta> diezPrimeras(List<Receta> lista) {
-		if ( lista.size > 10 ){
+		if (lista.size > 10) {
 			lista.reverse()
-			diezPrimeras = lista.drop( lista.size - 10 ).toList	
+			diezPrimeras = lista.drop(lista.size - 10).toList
 			return diezPrimeras.reverse()
+		} else {
+			return lista
 		}
-		else return lista	
-	
 	}
-	
 }

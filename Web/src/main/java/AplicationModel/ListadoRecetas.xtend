@@ -12,24 +12,23 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.receta
 import org.eclipse.xtend.lib.annotations.Accessors
 
 class ListadoRecetas {
-	
+
 	@Accessors
 	List<Receta> recetas = new ArrayList<Receta>;
 	UsuarioTestBuilder usuarioBuilder = new UsuarioTestBuilder();
-	Usuario usuario = usuarioBuilder.usuarioBuilder( "UsuarioTest" );
-	
+	Usuario usuario = usuarioBuilder.usuarioBuilder("UsuarioTest");
+
 	recetaValida recetaEsValida = new recetaValida()
 	recetaConAzucar recetaAzucar = new recetaConAzucar()
 	recetaConSal recetaSal = new recetaConSal()
 	recetaConCarne recetaCarne = new recetaConCarne()
-			
-	new( ){
-		
-		recetas.add( recetaAzucar.cumple( usuario ) )
- 		recetas.add( recetaAzucar.noCumple( usuario ) )
- 		recetas.add( recetaSal.cumple( usuario ) )
- 		recetas.add( recetaSal.noCumple( usuario ) )
- 		recetas.add( recetaCarne.cumple( usuario ) )
- 		recetas.add( recetaCarne.noCumple( usuario ) )
+
+	new() {
+		recetas.add(recetaAzucar.cumple(usuario))
+		recetas.add(recetaAzucar.noCumple(usuario))
+		recetas.add(recetaSal.cumple(usuario))
+		recetas.add(recetaSal.noCumple(usuario))
+		recetas.add(recetaCarne.cumple(usuario))
+		recetas.add(recetaCarne.noCumple(usuario))
 	}
 }

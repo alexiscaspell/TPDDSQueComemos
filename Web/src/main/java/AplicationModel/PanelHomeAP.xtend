@@ -19,28 +19,24 @@ class PanelHomeAP {
 	new(Map<String, Integer> map) {
 		this.consultas = map
 	}
-	
 
 	// Busca las recetas a mostrar del usuario 
-	def List<Receta>  resultadosRecetas(Usuario usuario) {
+	def List<Receta> resultadosRecetas(Usuario usuario) {
 
 		// if perfilUsuario.login = primeraVez
-		if (false) {		
+		if (false) {
 			//resultados = diezUltimas(algoritmoReceta.aplicar(consultas))
 			//RecetasMostradas = "Recetas Mas Consultadas en Que Comemos? son : "
-
-		// perfilUsuario.login = No PrimeraVez	
+			// perfilUsuario.login = No PrimeraVez	
 		} else {
 			if (usuario.favoritas == 0) {
 				diezUltimas(usuario.getConsultas())
-				//RecetasMostradas = "Tus ultimas Recetas Consultadas son : "
+
+			//RecetasMostradas = "Tus ultimas Recetas Consultadas son : "
 			} else {
+
 				//RecetasMostradas = "Tus Recetas Favoritas son : "
 				diezUltimas(usuario.favoritas)
-				
-				
-				
-				
 
 			}
 

@@ -3,24 +3,22 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import java.util.ArrayList
 import java.util.List
 
-public interface Usuario  {
+public interface Usuario {
 
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)
-	
+
 	def void setLogin(Login login)
 
 	//	------------------------------------------- Getters -------------------------------------------
-	
 	def Login getLogin()
-	
+
 	def List<Receta> getConsultas()
 
 	def Sexo getSexo()
-	
+
 	def double getIMC()
 
 	def List<String> getPlatosQueNoLeGustan()
@@ -33,8 +31,8 @@ public interface Usuario  {
 	def Rutina getRutina()
 
 	def double getPeso()
-	
-	def void marcarComoFavorita( Receta receta )
+
+	def void marcarComoFavorita(Receta receta)
 
 	def List<Receta> getFavoritas()
 
@@ -68,10 +66,10 @@ public interface Usuario  {
 	def Boolean cumpleMismasCondiciones(Usuario usuario)
 
 	def Usuario crearPerfil()
-	
+
 	def void addObservador(Observador observador)
-	
+
 	def void removeObservador(Observador observador)
-	
+
 	def List<Observador> getObservadores()
 }

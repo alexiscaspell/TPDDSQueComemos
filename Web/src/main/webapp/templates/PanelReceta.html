@@ -19,49 +19,55 @@
 			<table style="width: 100%;">
 				<tr>
 					<td style="width: 50%;">
-						<h4>Dificultad</h4> 
-						<input ng-model="recetaSeleccionada.dificultad" ng-readonly="true" />
+						<h4>Dificultad</h4> <input
+						ng-model="recetaSeleccionada.dificultad" ng-readonly="true" />
 					</td>
 					<td style="width: 50%;">
-						<h4>Temporadas</h4> 
-						<input ng-model="recetaSeleccionada.temporadas" ng-readonly="true" />
+						<h4>Temporadas</h4> <input
+						ng-model="recetaSeleccionada.temporadas" ng-readonly="true" />
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<h4>Ingredientes</h4>
 						<table>
-						  <tr ng-repeat="ingrediente in recetaSeleccionada.ingredientes">
-						    <td>{{ x.nombre }}</td>
-						  </tr>
+							<tr ng-repeat="ingrediente in recetaSeleccionada.ingredientes">
+								<td>{{ x.nombre }}</td>
+							</tr>
 						</table>
-						<button ng-click="agregarIngrediente()">Agregar</button><button ng-click="eliminarIngrediente()">Eliminar</button></p>
-						<label>Favorita <input type="checkbox"/></label>						
+						<button ng-click="agregarIngrediente()">Agregar</button>
+						<button ng-click="eliminarIngrediente()">Eliminar</button>
+						</p> <label>Favorita <input type="checkbox" /></label>
 					</td>
 					<td>
 						<h4>Condimentos</h4>
-						<p><input name="nuevoCondimento" ng-model="nuevoCondimento">
-    					<button ng-click="setNuevoCondimento()">Agregar</button></p>
-    					<p><select multiple="multiple" id="idSelect"
-							  ng-options="x in recetaSeleccionada.temporadas"> 
-							</select> 
-    					<button ng-click="eliminarCondimento()">Eliminar</button></p>
-    					<h4>Condiciones preexistentes</h4>
-    					<p><select multiple="multiple"></select> 
-    					<button ng-click="actualizarCondicionesPreexistentes()">Actualizar</button></p>	
+						<p>
+							<input name="nuevoCondimento" ng-model="nuevoCondimento">
+							<button ng-click="setNuevoCondimento()">Agregar</button>
+						</p>
+						<p>
+							<select multiple="multiple" id="idSelect"
+								ng-options="x in recetaSeleccionada.temporadas">
+							</select>
+							<button ng-click="eliminarCondimento()">Eliminar</button>
+						</p>
+						<h4>Condiciones preexistentes</h4>
+						<p>
+							<select multiple="multiple"></select>
+							<button ng-click="actualizarCondicionesPreexistentes()">Actualizar</button>
+						</p>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
 						<h4>Proceso de preparacion</h4>
 						<div class="panel panel-default">
-							<div class="panel-body">
-								{{recetaSeleccionada.explicacion}}
+							<div class="panel-body">{{recetaSeleccionada.explicacion}}
 							</div>
 						</div>
 					</td>
 				</tr>
-			</table>			
+			</table>
 		</div>
 
 		<div class="panel-footer">

@@ -22,70 +22,69 @@ import static AplicationModel.Dependencias.*
 class MainController {
 
 	Receta recetaSeleccionada;
-	Receta	recetaConsultada;
-	extension JSONUtils jsonUtils = new JSONUtils	
+	extension JSONUtils jsonUtils = new JSONUtils
+
 	//UsuarioPosta usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "martin" , Sexo.MASCULINO)		
-	
-	
 	@Post("/login")
-	def Result login( @Body String body ){
+	def Result login(@Body String body) {
 		var PedidoLogin pedido = body.fromJson(PedidoLogin)
 		println("[@Post login()] Haciendo login con nombre: " + pedido.nombre)
-		usuario_aux = repoUsuarios.getUsuario( pedido.nombre )
-		hardcodear(  )
+		usuario_aux = repoUsuarios.getUsuario(pedido.nombre)
+		hardcodear()
+
 		// Buscar usuario con nombre == pedido.nombre
 		// verificar que pedido.pass == usuario encontrado pass
 		// setear usuario = usuario encontrado ( sacar el usuario hardcodeado )
 		ok
 	}
-	
-	
-	def obtenerJugador(HttpServletRequest request) { 
-		repoUsuarios.getUsuario( getCookie( request, "usuario") )
+
+	def obtenerJugador(HttpServletRequest request) {
+		repoUsuarios.getUsuario(getCookie(request, "usuario"))
 	}
-	
-	def getCookie(HttpServletRequest request, String string) {	
-		println( "[MainController getCookie()] encontrada es = " + request.cookies.findFirst[it.name == string].value)
+
+	def getCookie(HttpServletRequest request, String string) {
+		println("[MainController getCookie()] encontrada es = " + request.cookies.findFirst[it.name == string].value)
 		request.cookies.findFirst[it.name == string].value
-		// Para hacer funcionar, comentar lo de arriba y descomentar lo de abajo
-		//"Lucas"	
+
+	// Para hacer funcionar, comentar lo de arriba y descomentar lo de abajo
+	//"Lucas"	
 	}
-	
+
 	@Post("/setRecetaSeleccionada")
-	def Result setRecetaSeleccionada( @Body String body ){
-		recetaSeleccionada = body.fromJson( Receta )
+	def Result setRecetaSeleccionada(@Body String body) {
+		recetaSeleccionada = body.fromJson(Receta)
 		ok
 	}
-	
-	
+
 	@Get("/usuario")
-	def Result usuario(){
+	def Result usuario() {
 		response.contentType = ContentType.APPLICATION_JSON
-		var pedidoUsuario = new PedidoUsuario(  usuario_aux )
+		var pedidoUsuario = new PedidoUsuario(usuario_aux)
 		pedidoUsuario.Color()
-		ok( pedidoUsuario.toJson )	
+		ok(pedidoUsuario.toJson)
 	}
-	
+
 	@Get("/recetas")
 	def Result recetas() {
 		response.contentType = ContentType.APPLICATION_JSON
+
 		//var usuario = obtenerJugador(request)
-		var recetas = new PedidoRecetas( usuario_aux  )
+		var recetas = new PedidoRecetas(usuario_aux)
 		recetas.setRecetas()
-		ok( recetas.toJson )
+		ok(recetas.toJson)
 	}
-	
+
 	@Get("/monitoreo")
-	def Result monitoreo(){
+	def Result monitoreo() {
 		response.contentType = ContentType.APPLICATION_JSON
 		var monitoreo = new PedidoMonitoreo()
 		monitoreo.masConsultadas()
-		ok( monitoreo.toJson )
+		ok(monitoreo.toJson)
 	}
-	
+
 	@Get("/getRecetaSeleccionada")
-	def Result getRecetaSeleccionada(){
-		ok( recetaSeleccionada.toJson )	
+	def Result getRecetaSeleccionada() {
+		ok(recetaSeleccionada.toJson)
 	}
-	
+
 }

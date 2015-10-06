@@ -16,21 +16,21 @@ class PedidoRecetas {
 	Usuario usuario;
 	DiezPrimeras diezPrimeras = new DiezPrimeras();
 	val temporadas = new ArrayList<Temporada>();
-	new( Usuario usuario ){
-			this.usuario = usuario
-		}
-		
-	
-	def setRecetas(){
-		// If de primer Login
-		if ( usuario.favoritas == 0 ) {
-			mostrando = "Tus ultimas Recetas Consultadas"
-			recetas = diezPrimeras.diezPrimeras( usuario.getConsultas() )
-		}
-		else {
-			mostrando = "Tus Recetas Favoritas"
-			recetas = diezPrimeras.diezPrimeras( usuario.favoritas ) 	
-		} 
+
+	new(Usuario usuario) {
+		this.usuario = usuario
 	}
-	
+
+	def setRecetas() {
+
+		// If de primer Login
+		if (usuario.favoritas == 0) {
+			mostrando = "Tus ultimas Recetas Consultadas"
+			recetas = diezPrimeras.diezPrimeras(usuario.getConsultas())
+		} else {
+			mostrando = "Tus Recetas Favoritas"
+			recetas = diezPrimeras.diezPrimeras(usuario.favoritas)
+		}
+	}
+
 }

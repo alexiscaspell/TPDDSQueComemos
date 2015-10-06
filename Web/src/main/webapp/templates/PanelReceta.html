@@ -5,25 +5,72 @@
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			<h2> Receta Seleccionada : {{ recetaSeleccionada.nombre }}</h2>
+			<h3>Detalle de receta</h3>
 		</div>
 
 		<div class="panel-body">
-			 {{recetaSeleccionada.calorias}}
-			 <br>
-			 {{recetaSeleccionada.dificultad}}
-			 <br>
-			 {{recetaSeleccionada.temporadas }}
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h4>{{recetaSeleccionada.nombre}}</h4>
+					<p>{{recetaSeleccionada.calorias}} creado por
+						{{recetaSeleccionada.usuarioCreador.nombre}}</p>
+				</div>
+			</div>
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 50%;">
+						<h4>Dificultad</h4> 
+						<input ng-model="recetaSeleccionada.dificultad" ng-readonly="true" />
+					</td>
+					<td style="width: 50%;">
+						<h4>Temporadas</h4> 
+						<input ng-model="recetaSeleccionada.temporadas" ng-readonly="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h4>Ingredientes</h4>
+						<table>
+						  <tr ng-repeat="ingrediente in recetaSeleccionada.ingredientes">
+						    <td>{{ x.nombre }}</td>
+						  </tr>
+						</table>
+						<button ng-click="agregarIngrediente()">Agregar</button><button ng-click="eliminarIngrediente()">Eliminar</button></p>
+						<label>Favorita <input type="checkbox"/></label>						
+					</td>
+					<td>
+						<h4>Condimentos</h4>
+						<p><input name="nuevoCondimento" ng-model="nuevoCondimento">
+    					<button ng-click="setNuevoCondimento()">Agregar</button></p>
+    					<p><select multiple="multiple" id="idSelect"
+							  ng-options="x in recetaSeleccionada.temporadas"> 
+							</select> 
+    					<button ng-click="eliminarCondimento()">Eliminar</button></p>
+    					<h4>Condiciones preexistentes</h4>
+    					<p><select multiple="multiple"></select> 
+    					<button ng-click="actualizarCondicionesPreexistentes()">Actualizar</button></p>	
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<h4>Proceso de preparacion</h4>
+						<div class="panel panel-default">
+							<div class="panel-body">
+								{{recetaSeleccionada.explicacion}}
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>			
 		</div>
 
-		<div class="panel-footer"> 
+		<div class="panel-footer">
 			<form>
 				<div class="form-group">
-					<button ng-click="verListaRecetas()">Volver a Lista Recetas</button>
-				</div>				
+					<button ng-click="actualizarReceta()">Actualizar</button>
+					<button ng-click="verListaRecetas()">Volver</button>
+				</div>
 			</form>
 		</div>
-
-		
 	</div>
 </div>

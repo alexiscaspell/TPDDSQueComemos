@@ -50,18 +50,32 @@
 					{{ usuario.fechaNacimiento | date: 'dd/MM/yyyy' }}
 					</div>
 				<br>
-				<b>Altura</b>
-				<br>
-				{{ usuario.altura }}				
-				<br>
-				<b>Peso</b>
-				<br>
-				{{ usuario.peso }}								
-				<br>
-				<b>IMC</b>
-				<br>
-				<span ng-style="{ color : imcColor }">{{ usuario.imc | number : 2 }}</span>								
-				<br>
+				<table>
+	<thead>
+		<tr>
+			<th>Altura</th>
+			<th>&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;</th>
+			<th>Peso</th>
+			<th>&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;</th>
+			<th>IMC</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ usuario.altura }}</td>
+			<td>&nbsp;&nbsp;</td>
+			<th>&nbsp;&nbsp;</th>
+			<td>{{ usuario.peso }}</td>
+			<td>&nbsp;&nbsp;</td>
+			<th>&nbsp;&nbsp;</th>
+			<td><span ng-style="{ color : imcColor }"><b>{{ usuario.imc | number : 2 }}</b></span></td>
+							
+		</tr>
+						
+	</tbody>
+</table>
 				<b>Comidas que le disgustan</b>
 				<br>
 				<select

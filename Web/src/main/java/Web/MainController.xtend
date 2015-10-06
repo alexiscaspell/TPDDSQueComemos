@@ -17,6 +17,8 @@ import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
 
 import static AplicationModel.Dependencias.*
+import com.google.gson.Gson
+import com.google.gson.JsonParser
 
 @Controller
 class MainController {

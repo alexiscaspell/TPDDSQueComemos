@@ -11,6 +11,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Recetario
 import java.util.HashMap
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 @Accessors
 class Dependencias {
@@ -25,12 +29,16 @@ class Dependencias {
 	public static ConsultasXRecetas consultasXRecetas = new ConsultasXRecetas()
 
 	public static def hardcodear() {
-
+		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO)
 		var Receta receta1 = new Receta
 		var Receta receta2 = new Receta
 		receta1.nombre = "Papa"
 		receta1.dificultad = Dificultad.FACIL
 		receta1.calorias = 500
+		receta1.usuarioCreador = usuario
+		receta1.tipo = TipoReceta.PUBLICA
+		receta2.usuarioCreador = usuario
+		receta2.tipo = TipoReceta.PUBLICA
 
 		temporadasReceta1.add(Temporada.INVIERNO)
 		temporadasReceta1.add(Temporada.OTONIO)
@@ -46,6 +54,7 @@ class Dependencias {
 		receta2.calorias = 250
 
 		usuario_aux.marcarComoFavorita(receta1)
+//		receta1.usuarioCreador = usuario_aux;
 
 		temporadasReceta2.add(Temporada.PRIMAVERA)
 		temporadasReceta2.add(Temporada.VERANO)
@@ -58,5 +67,6 @@ class Dependencias {
 
 		usuario_aux.addObservador(consultasXRecetas)
 		usuario_aux.marcarComoFavorita(receta2)
+//		receta2.usuarioCreador = usuario_aux;
 	}
 }

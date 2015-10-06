@@ -47,7 +47,9 @@ queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 			// ****
 			$scope.isHome = false
 			// ****
-
+			$scope.actualizar = function(){
+				$state.reload() 
+			}
 			$scope.irAHome = function() {
 				$state.go('PanelHome')
 			};

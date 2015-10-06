@@ -5,7 +5,7 @@
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			{{ usuario.nombre }} 
+			Perfil de Usuario de : {{ usuario.nombre }} 
 		</div>
 
 		<div style="width:100%; text-align:center; height:500px;">
@@ -37,14 +37,17 @@
   			</div>
   		
 	  		
-  			<div style="padding:20px;; height:350px;width:40%;float:right;">
-      			<b>Sexo</b> 
-      			<br>
-				{{ usuario.sexo }}
-				<br>
-				<b>Fecha de Nacimiento</b>
-				<br>
-				{{ usuario.fechaNacimiento | date: 'dd/MM/yyyy' }}
+  			<div style="padding-left: 170px; padding-top:20px; height:350px; width:50%; float:left; text-align:left;">
+      			
+  				<div>
+      				<b>Sexo</b> 
+      				<br>
+					{{ usuario.sexo }}
+					<br>
+					<b>Fecha de Nacimiento</b>
+					<br>
+					{{ usuario.fechaNacimiento | date: 'dd/MM/yyyy' }}
+					</div>
 				<br>
 				<b>Altura</b>
 				<br>

@@ -19,6 +19,9 @@ import org.uqbar.xtrest.json.JSONUtils
 import static AplicationModel.Dependencias.*
 import com.google.gson.Gson
 import com.google.gson.JsonParser
+import com.google.gson.GsonBuilder
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import AplicationModel.UsuarioAdapterJson
 
 @Controller
 class MainController {
@@ -54,7 +57,10 @@ class MainController {
 
 	@Post("/setRecetaSeleccionada")
 	def Result setRecetaSeleccionada(@Body String body) {
-		recetaSeleccionada = body.fromJson(Receta)
+		var gsonBilder = new GsonBuilder();
+		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
+		var gson = gsonBilder.create();
+		recetaSeleccionada = gson.fromJson(body, Receta)
 		ok
 	}
 

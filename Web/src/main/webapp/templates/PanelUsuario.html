@@ -23,15 +23,16 @@
 				<br>
 				<select
 						class="form-control" size="3"
-						ng-options="preferencia for preferencia in preferenciaAlimenticia">
-
+						ng-model="preferenciaSeleccionada"
+						ng-options="preferencia for preferencia in usuario.preferenciasAlimenticias">
 				</select>
 				<br>
 				<b>Condiciones Preexistentes</b>
 				<br>
 				<select
 						class="form-control" size="3"
-						ng-options="preferencia for preferencia in preferenciaAlimenticia">
+						ng-model="condicionesSeleccionada"
+						ng-options="condiciones for condiciones in usuario.condiciones">
 
 				</select>		
   			</div>
@@ -64,9 +65,11 @@
 				<b>Comidas que le disgustan</b>
 				<br>
 				<select
-					class="form-control" size="3"
-					ng-options="receta.nombre for receta in favoritas">
-				</select>					
+						class="form-control" size="3"
+						ng-model="platosSeleccionado"
+						ng-options="platos for platos in usuario.platosQueNoLeGustan">
+
+				</select>				
 				<br>
 				<b>Rutina</b>
 				<br>
@@ -76,12 +79,12 @@
   			<div style="padding:20px ;clear:both">
   			
   				
-	      		<b>Recetas Favoritas</b>
-				<select
-					class="form-control" size="3"
-					ng-options="receta.nombre for receta in favoritas">
-				</select>		
-  				
+	      		<b>Recetas Favoritas </b>
+	      		<select
+						class="form-control" id="favoritasSeleccionada" size="3"
+						ng-model="favoritasSeleccionada"
+						ng-options="receta.nombre for receta in usuario.favoritas">
+				</select>
   			</div>
 		</div>
 	

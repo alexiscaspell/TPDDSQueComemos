@@ -20,9 +20,13 @@ queComemosApp.controller('panelUsuarioController', [ '$scope', '$state',
 
 			var usuario = usuarioData.data.usuario
 			$scope.usuario = usuario
-			$scope.preferenciaAlimenticia = usuario.preferenciasAlimenticias
-			$scope.recetasFavoritas = usuario.favoritas
 			$scope.imcColor = usuarioData.data.color
+			
+			$scope.favoritasSeleccionada = usuario.favoritas[0]
+			$scope.preferenciaSeleccionada = usuario.preferenciasAlimenticias[0]
+			$scope.condicionesSeleccionada = usuario.condiciones[0]
+			$scope.platosSeleccionado = usuario.platosQueNoLeGustan[0]
+			
 			$scope.irAHome = function() {
 				$state.go('PanelHome')
 			}
@@ -77,7 +81,7 @@ queComemosApp.controller('panelHomeController', [
 			var recetas = recetasData.data.recetas
 			$scope.lista_recetas = recetasData.data.recetas
 
-			$scope.recetaSeleccionada = recetas[0] // SE PUEDE ELIMINAR?S
+			//$scope.recetaSeleccionada = recetas[0] // SE PUEDE ELIMINAR?S
 			$scope.recetas_a_mostar = recetasData.data.mostrando;
 
 			$scope.verReceta = function() {

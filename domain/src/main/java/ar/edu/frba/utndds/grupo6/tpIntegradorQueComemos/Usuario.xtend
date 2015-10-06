@@ -4,6 +4,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.util.List
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 public interface Usuario {
 
@@ -26,6 +27,8 @@ public interface Usuario {
 	def String getEmail()
 
 	def String getNombre()
+	
+	def List<Condicion> getCondicion()
 
 	//def List<Condicion> getCondicion()
 	def Rutina getRutina()

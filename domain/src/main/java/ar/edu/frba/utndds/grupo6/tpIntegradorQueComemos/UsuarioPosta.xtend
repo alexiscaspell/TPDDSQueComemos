@@ -12,6 +12,7 @@ import java.util.Map
 import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
 import org.uqbar.commons.utils.Observable
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 
 @Observable
 @Accessors
@@ -33,7 +34,8 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	private String email
 
-	//private List<Condicion> condiciones = new ArrayList<Condicion>()
+	private List<Condicion> condiciones = new ArrayList<Condicion>()
+	
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
@@ -134,6 +136,10 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	override getRecetas() {
 		recetas
+	}
+	
+	override getCondicion(){
+		condiciones
 	}
 
 	override List<String> getPlatosQueNoLeGustan() {

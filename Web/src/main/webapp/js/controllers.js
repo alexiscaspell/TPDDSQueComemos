@@ -50,6 +50,7 @@ queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 
 			// ****
 			$scope.isHome = false
+			$scope.botonera = false
 			// ****
 			$scope.actualizar = function(){
 				$state.reload() 
@@ -83,7 +84,8 @@ queComemosApp.controller('panelHomeController', [
 
 			//$scope.recetaSeleccionada = recetas[0] // SE PUEDE ELIMINAR?S
 			$scope.recetas_a_mostar = recetasData.data.mostrando;
-
+			$scope.cantidadConsultas = recetasData.data.cantidadConsultas
+			
 			$scope.verReceta = function() {
 				$state.go('PanelReceta');
 			};
@@ -101,7 +103,8 @@ queComemosApp.controller('panelHomeController', [
 			}
 
 			// ****
-			$scope.isHome = true
+			$scope.isHome = recetasData.data.isHome
+			$scope.botonera = true
 			// ****
 
 			$scope.seleccionarReceta = function(receta) {

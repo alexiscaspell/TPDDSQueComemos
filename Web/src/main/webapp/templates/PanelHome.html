@@ -22,7 +22,7 @@
         			<td class="col-xs-3">{{receta.nombre}}</td>
         			<td class="col-xs-2">{{receta.calorias}}</td>
         			<td class="col-xs-2">{{receta.dificultad}}</td>
-        			<td class="col-xs-4" ng-show="isHome">{{receta.temporadas }}</td>
+        			<td class="col-xs-4" ng-show="isHome">{{ receta.temporadas }}</td>
         			<td class="col-xs-3" ng-hide="isHome">{{ cantidadConsultas[$index] }}</td>
         			<td nowrap class="col-xs-2">
           			<button type="button" class="btn btn-default" ng-click="seleccionarReceta(receta)" aria-label="Cumplir" ng-show="isHome">
@@ -37,11 +37,11 @@
 		<div class="panel-footer"> 
 			<form>
 				<div class="form-group">
-					<button ng-show="isHome"ng-click="verUsuario()">Ver Perfil de Usuario</button>
-					<button ng-show="isHome"ng-click="verConsultas()">Ver Consultas de Recetas</button>
-					<button ng-show="isHome" ng-click="verMonitoreo()">Ver Monitoreo de Consultas</button>
-					<button ng-hide="isHome" ng-click="actualizar()">Actualizar</button>
-					<button ng-hide="isHome" ng-click="irAHome()">Volver a Home</button>
+					<button ng-show="botonera"ng-click="verUsuario()">Ver Perfil de Usuario</button>
+					<button ng-show="botonera"ng-click="verConsultas()">Ver Consultas de Recetas</button>
+					<button ng-show="botonera" ng-click="verMonitoreo()">Ver Monitoreo de Consultas</button>
+					<button ng-hide="botonera" ng-click="actualizar()">Actualizar</button>
+					<button ng-hide="botonera" ng-click="irAHome()">Volver a Home</button>
 				</div>				
 			</form>
 		</div>

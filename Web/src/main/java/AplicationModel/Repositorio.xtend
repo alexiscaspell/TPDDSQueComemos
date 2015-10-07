@@ -3,7 +3,6 @@ package AplicationModel
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Login
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.RepoUsuarios
 import org.eclipse.xtend.lib.annotations.Accessors
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 
 @Accessors
 class Repositorio {
@@ -27,5 +26,4 @@ class Repositorio {
 		repositorio.get(name)
 	}
 
-	
 }

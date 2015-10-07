@@ -1,12 +1,14 @@
 package Web
 
 // Import Pedidos
+import AplicationModel.UsuarioAdapterJson
 import Pedidos.PedidoLogin
 import Pedidos.PedidoMonitoreo
 import Pedidos.PedidoRecetas
 import Pedidos.PedidoUsuario
-
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import com.google.gson.GsonBuilder
 import javax.servlet.http.HttpServletRequest
 import org.uqbar.xtrest.api.Result
 import org.uqbar.xtrest.api.annotation.Body
@@ -17,11 +19,6 @@ import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
 
 import static AplicationModel.Dependencias.*
-import com.google.gson.Gson
-import com.google.gson.JsonParser
-import com.google.gson.GsonBuilder
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
-import AplicationModel.UsuarioAdapterJson
 
 @Controller
 class MainController {
@@ -36,6 +33,7 @@ class MainController {
 		println("[@Post login()] Haciendo login con nombre: " + pedido.nombre)
 		usuario_aux = repoUsuarios.getUsuario(pedido.nombre)
 		hardcodear()
+
 		// Buscar usuario con nombre == pedido.nombre
 		// verificar que pedido.pass == usuario encontrado pass
 		// setear usuario = usuario encontrado ( sacar el usuario hardcodeado )
@@ -68,13 +66,14 @@ class MainController {
 		response.contentType = ContentType.APPLICATION_JSON
 		var pedidoUsuario = new PedidoUsuario(usuario_aux)
 		pedidoUsuario.Color()
-		println( "fecha de nacimiento" + pedidoUsuario.usuario.fechaDeNacimiento )
+		println("fecha de nacimiento" + pedidoUsuario.usuario.fechaDeNacimiento)
 		ok(pedidoUsuario.toJson)
 	}
 
 	@Get("/recetas")
 	def Result recetas() {
 		response.contentType = ContentType.APPLICATION_JSON
+
 		//var usuario = obtenerJugador(request)
 		var recetas = new PedidoRecetas(usuario_aux)
 		recetas.setRecetas()

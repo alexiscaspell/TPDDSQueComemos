@@ -1,22 +1,20 @@
 package AplicationModel
 
-import org.eclipse.xtend.lib.annotations.Accessors
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConAzucar
-import queComemos.entrega3.dominio.Dificultad
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import java.util.ArrayList
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Recetario
-import java.util.HashMap
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Recetario
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import java.util.ArrayList
+import java.util.HashMap
+import org.eclipse.xtend.lib.annotations.Accessors
+import queComemos.entrega3.dominio.Dificultad
 
 @Accessors
 class Dependencias {
@@ -32,7 +30,7 @@ class Dependencias {
 	public static ConsultasXRecetas consultasXRecetas = new ConsultasXRecetas()
 
 	public static def hardcodear() {
-		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO) 
+		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO)
 		var Receta receta1 = new Receta
 		var Receta receta2 = new Receta
 		receta1.nombre = "Papa"
@@ -43,7 +41,7 @@ class Dependencias {
 		receta2.usuarioCreador = usuario
 		receta2.tipo = TipoReceta.PUBLICA
 
-		usuario.platosQueNoLeGustan.add( "Pizza" )
+		usuario.platosQueNoLeGustan.add("Pizza")
 
 		temporadasReceta1.add(Temporada.INVIERNO)
 		temporadasReceta1.add(Temporada.OTONIO)
@@ -51,8 +49,8 @@ class Dependencias {
 		condimentosReceta1.put(Condimento.AZUCAR, 10);
 		condimentosReceta1.put(Condimento.CALDO, 20);
 
-		ingredientesReceta1.put( Ingrediente.AJO, 20 )
-		ingredientesReceta2.put( Ingrediente.AJO, 20 )
+		ingredientesReceta1.put(Ingrediente.AJO, 20)
+		ingredientesReceta2.put(Ingrediente.AJO, 20)
 
 		receta1.temporadas = temporadasReceta1;
 		receta1.condimentos = condimentosReceta1;
@@ -62,8 +60,8 @@ class Dependencias {
 		receta2.calorias = 250
 
 		usuario_aux.marcarComoFavorita(receta1)
-		//receta1.usuarioCreador = usuario_aux;
 
+		//receta1.usuarioCreador = usuario_aux;
 		temporadasReceta2.add(Temporada.PRIMAVERA)
 		temporadasReceta2.add(Temporada.VERANO)
 
@@ -75,6 +73,7 @@ class Dependencias {
 
 		usuario_aux.addObservador(consultasXRecetas)
 		usuario_aux.marcarComoFavorita(receta2)
-//		receta2.usuarioCreador = usuario_aux;
+
+	//		receta2.usuarioCreador = usuario_aux;
 	}
 }

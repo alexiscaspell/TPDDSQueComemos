@@ -1,7 +1,6 @@
 package Web
 
 // Import Pedidos
-
 import AplicationModel.UsuarioAdapterJson
 import Pedidos.PedidoLogin
 import Pedidos.PedidoMonitoreo
@@ -54,6 +53,11 @@ class MainController {
 	//"Lucas"	
 	}
 
+	@Get("/readonly")
+	def Result reaonly() {
+		ok(recetaSeleccionada.puedeModificar(usuario_aux).toJson);
+	}
+
 	@Post("/setRecetaSeleccionada")
 	def Result setRecetaSeleccionada(@Body String body) {
 		var gsonBilder = new GsonBuilder();
@@ -62,28 +66,26 @@ class MainController {
 		recetaSeleccionada = gson.fromJson(body, Receta)
 		ok
 	}
-	
+
 	@Post("/nuevoCondimento")
-	def Result nuevoCondimento(@Body String nombre)
-	{
+	def Result nuevoCondimento(@Body String nombre) {
 		recetaSeleccionada.agregarCondimento(Condimento.valueOf(nombre), 0);
 		var gsonBilder = new GsonBuilder();
 		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
 		var gson = gsonBilder.create();
 		ok(gson.toJson(recetaSeleccionada));
 	}
-	
+
 	@Post("/actualizarReceta")
-	def Result actualizarReceta(@Body String nombre)
-	{
-		//TODO: Si el usuario es el creador de la receta, modificarla
-		//TODO: Si no guardarse una copia.
+	def Result actualizarReceta(@Body String nombre) {
+		usuario_aux.modificarReceta(recetaSeleccionada.nombre, recetaSeleccionada.nombre, recetaSeleccionada.ingredientes,
+			recetaSeleccionada.condimentos, recetaSeleccionada.explicacion, recetaSeleccionada.dificultad, 
+			recetaSeleccionada.temporadas);
 		ok
 	}
-	
+
 	@Get("/getCondicionesPreexistentes")
-	def Result getCondicionesPreexistentes()
-	{
+	def Result getCondicionesPreexistentes() {
 		ok(recetaSeleccionada.condicionesInadecuadas().toJson)
 	}
 

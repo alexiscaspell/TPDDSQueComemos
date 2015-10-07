@@ -17,7 +17,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 @Observable
 @Accessors
 public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
-	
+
 	private Login login
 
 	private double altura
@@ -35,7 +35,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	private String email
 
 	private List<Condicion> condiciones = new ArrayList<Condicion>()
-	
+
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
@@ -102,17 +102,17 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		this.rutina = rutina
 	}
 
-	override void setLogin(Login login){
-		
+	override void setLogin(Login login) {
+
 		this.login = login
 	}
+
 	//	------------------------------------------- Getters -------------------------------------------
-	
-	override getLogin(){
-		
-		login		
+	override getLogin() {
+
+		login
 	}
-	
+
 	def getReceta(String nombre) {
 		Recetario.getInstance().getReceta(nombre)
 	}
@@ -120,8 +120,8 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	override getSexo() {
 		sexo
 	}
-	
-	override getFechaDeNacimiento(){
+
+	override getFechaDeNacimiento() {
 		fechaNacimiento
 	}
 
@@ -136,8 +136,8 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	override getRecetas() {
 		recetas
 	}
-	
-	override getCondicion(){
+
+	override getCondicion() {
 		condiciones
 	}
 
@@ -146,7 +146,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	override getRecetasConAcceso() {
-		
+
 		val recetas = Recetario.getInstance().listarTodas();
 		consultas.clear()
 
@@ -189,7 +189,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	//	------------------------------------------- Metodos -------------------------------------------
-	def modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
+	override modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada) {
 
 		val receta = getReceta(nombreRecetaAModificar)

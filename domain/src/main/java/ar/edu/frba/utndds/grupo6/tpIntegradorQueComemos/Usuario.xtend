@@ -6,6 +6,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import java.util.Date
+import java.util.Map
+import queComemos.entrega3.dominio.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 
 public interface Usuario {
 
@@ -77,4 +81,7 @@ public interface Usuario {
 	def void removeObservador(Observador observador)
 
 	def List<Observador> getObservadores()
+	
+	def void modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada)
 }

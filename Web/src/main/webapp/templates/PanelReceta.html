@@ -34,20 +34,20 @@
 							<li ng-repeat="(key, value) in recetaSeleccionada.ingredientes"
 								class="list-group-item"><span>{{key}} - {{value}}</span></li>
 						</ul>
-						<button ng-click="agregarIngrediente()">Agregar</button>
-						<button ng-click="eliminarIngrediente()">Eliminar</button> <label>Favorita
+						<button ng-click="agregarIngrediente()" ng-readonly="puedeEditar">Agregar</button>
+						<button ng-click="eliminarIngrediente()" ng-readonly="puedeEditar">Eliminar</button> <label>Favorita
 							<input type="checkbox" />
 					</label>
 					</td>
 					<td>
 						<h4>Condimentos</h4> <input name="nuevoCondimento"
 						ng-model="nuevoCondimento">
-						<button ng-click="setNuevoCondimento()">Agregar</button>
+						<button ng-click="setNuevoCondimento()" ng-readonly="puedeEditar">Agregar</button>
 						<ul class="list-group">
 							<li ng-repeat="(key, value) in recetaSeleccionada.condimentos"
 								class="list-group-item"><span>{{key}} - {{value}}</span></li>
 						</ul>
-						<button ng-click="eliminarCondimento()">Eliminar</button>
+						<button ng-click="eliminarCondimento()" ng-readonly="puedeEditar">Eliminar</button>
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +76,7 @@
 		<div class="panel-footer">
 			<form>
 				<div class="form-group">
-					<button ng-click="actualizarReceta()">Actualizar</button>
+					<button ng-click="actualizarReceta()" ng-readonly="puedeEditar">Actualizar</button>
 					<button ng-click="verListaRecetas()">Volver</button>
 				</div>
 			</form>

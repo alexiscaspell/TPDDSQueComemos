@@ -36,9 +36,9 @@ class Dependencias {
 		receta1.nombre = "Papa"
 		receta1.dificultad = Dificultad.FACIL
 		receta1.calorias = 500
-//		receta1.usuarioCreador = usuario
+		receta1.usuarioCreador = usuario
 		receta1.tipo = TipoReceta.PUBLICA
-//		receta2.usuarioCreador = usuario
+		receta2.usuarioCreador = usuario
 		receta2.tipo = TipoReceta.PUBLICA
 
 		usuario.platosQueNoLeGustan.add("Pizza")

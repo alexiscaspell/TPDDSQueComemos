@@ -52,8 +52,6 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	private List<Receta> favoritas = new ArrayList<Receta>()
 
-	private Recetario recetario
-
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo, Date fechaNacimiento) {
 		this.altura = altura
 		this.peso = peso
@@ -61,7 +59,6 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		this.fechaNacimiento = fechaNacimiento
 		this.nombre = nombre
 		this.sexo = sexo
-		recetario = Recetario.getInstance()
 	}
 
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo) {
@@ -70,8 +67,6 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		this.rutina = rutina
 		this.nombre = nombre
 		this.sexo = sexo
-		recetario = Recetario.getInstance()
-
 	}
 
 	// ------------------------------------------- Setters -------------------------------------------
@@ -119,7 +114,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 	
 	def getReceta(String nombre) {
-		recetario.getReceta(nombre)
+		Recetario.getInstance().getReceta(nombre)
 	}
 
 	override getSexo() {
@@ -152,7 +147,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	override getRecetasConAcceso() {
 		
-		val recetas = recetario.listarTodas();
+		val recetas = Recetario.getInstance().listarTodas();
 		consultas.clear()
 
 		recetas.forEach [ receta |
@@ -177,9 +172,6 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 		rutina
 	}
 
-	//override getCondicion() {
-	//condiciones
-	//}
 	override List<Ingrediente> getPreferenciasAlimenticias() {
 		preferenciasAlimenticias
 	}

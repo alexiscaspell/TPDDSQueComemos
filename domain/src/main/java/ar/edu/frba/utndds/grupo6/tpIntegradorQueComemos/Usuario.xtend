@@ -30,10 +30,9 @@ public interface Usuario {
 	def String getEmail()
 
 	def String getNombre()
-	
+
 	def List<Condicion> getCondicion()
 
-	//def List<Condicion> getCondicion()
 	def Rutina getRutina()
 
 	def double getPeso()

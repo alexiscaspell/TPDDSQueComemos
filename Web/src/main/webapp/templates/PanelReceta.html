@@ -16,7 +16,7 @@
 						{{recetaSeleccionada.usuarioCreador.nombre}}</p>
 				</div>
 			</div>
-			<table style="width: 100%;">
+			<table style="width: 100%;" class="table table-striped">
 				<tr>
 					<td style="width: 50%;">
 						<h4>Dificultad</h4> <input
@@ -30,36 +30,34 @@
 				<tr>
 					<td>
 						<h4>Ingredientes</h4>
-						<ul>
-						    <li ng-repeat="(key, value) in recetaSeleccionada.ingredientes">
-						        <span>{{key}} - {{value}}</span>
-						    </li>
+						<ul class="list-group">
+							<li ng-repeat="(key, value) in recetaSeleccionada.ingredientes" class="list-group-item">
+								<span>{{key}} - {{value}}</span>
+							</li>
 						</ul>
 						<button ng-click="agregarIngrediente()">Agregar</button>
 						<button ng-click="eliminarIngrediente()">Eliminar</button>
 						</p> <label>Favorita <input type="checkbox" /></label>
 					</td>
 					<td>
-						<h4>Condimentos</h4>
-						<p>
-							<input name="nuevoCondimento" ng-model="nuevoCondimento">
-							<button ng-click="setNuevoCondimento()">Agregar</button>
-						</p>
-						<h3>{{prueba}}</h3>
-						<p>
-							<ul>
-							    <li ng-repeat="(key, value) in recetaSeleccionada.condimentos">
-							        <span>{{key}} - {{value}}</span>
-							    </li>
-							</ul>
-							<button ng-click="eliminarCondimento()">Eliminar</button>
-						</p>
-						<h4>Condiciones preexistentes</h4>
+						<h4>Condimentos</h4> <input name="nuevoCondimento"
+						ng-model="nuevoCondimento">
+						<button ng-click="setNuevoCondimento()">Agregar</button>
+						<ul class="list-group">
+							<li ng-repeat="(key, value) in recetaSeleccionada.condimentos" class="list-group-item">
+								<span>{{key}} - {{value}}</span>
+							</li>
+						</ul>
+						<button ng-click="eliminarCondimento()">Eliminar</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><h4>Condiciones preexistentes</h4>
 						<p>
 							<select multiple="multiple"></select>
 							<button ng-click="actualizarCondicionesPreexistentes()">Actualizar</button>
-						</p>
-					</td>
+						</p></td>
 				</tr>
 				<tr>
 					<td colspan="2">

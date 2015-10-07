@@ -5,6 +5,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import java.util.Date
 
 public interface Usuario {
 
@@ -21,6 +22,8 @@ public interface Usuario {
 	def Sexo getSexo()
 
 	def double getIMC()
+
+	def Date getFechaDeNacimiento()
 
 	def List<String> getPlatosQueNoLeGustan()
 

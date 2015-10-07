@@ -125,6 +125,10 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	override getSexo() {
 		sexo
 	}
+	
+	override getFechaDeNacimiento(){
+		fechaNacimiento
+	}
 
 	override getEmail() {
 		email

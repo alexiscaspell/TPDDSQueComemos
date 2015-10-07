@@ -61,17 +61,18 @@ queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 
 		} ])
 
-queComemosApp.controller('panelRecetaController', [ '$scope', '$state',
+queComemosApp.controller('panelRecetaController', [ '$scope', '$state', '$http',
 		'queComemosService', 'recetaSeleccionadaData',
-		function($scope, $state, queComemosService, recetaSeleccionadaData) {
+		function($scope, $state, $http, queComemosService, recetaSeleccionadaData) {
 			$scope.recetaSeleccionada = recetaSeleccionadaData.data;
-
-			$scope.verListaRecetas = function() {
-				$state.go('PanelHome')
+			$scope.setNuevoCondimento = function() {
+				$http.post('/nuevoCondimento', $scope.nuevoCondimento).success(function(data) {
+					$scope.recetaSeleccionada = data;
+				});
 			}
 			
-			$scope.setNuevoCondimento = function(){
-				
+			$scope.verListaRecetas = function() {
+				$state.go('PanelHome');
 			}
 		} ]);
 

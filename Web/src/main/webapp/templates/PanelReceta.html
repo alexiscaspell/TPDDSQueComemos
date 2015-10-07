@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<td>
-						<h4>Ingredientes1</h4>
+						<h4>Ingredientes</h4>
 						<ul>
 						    <li ng-repeat="(key, value) in recetaSeleccionada.ingredientes">
 						        <span>{{key}} - {{value}}</span>
@@ -45,6 +45,7 @@
 							<input name="nuevoCondimento" ng-model="nuevoCondimento">
 							<button ng-click="setNuevoCondimento()">Agregar</button>
 						</p>
+						<h3>{{prueba}}</h3>
 						<p>
 							<ul>
 							    <li ng-repeat="(key, value) in recetaSeleccionada.condimentos">

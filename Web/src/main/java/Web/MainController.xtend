@@ -1,11 +1,13 @@
 package Web
 
 // Import Pedidos
+
 import AplicationModel.UsuarioAdapterJson
 import Pedidos.PedidoLogin
 import Pedidos.PedidoMonitoreo
 import Pedidos.PedidoRecetas
 import Pedidos.PedidoUsuario
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import com.google.gson.GsonBuilder
@@ -59,6 +61,16 @@ class MainController {
 		var gson = gsonBilder.create();
 		recetaSeleccionada = gson.fromJson(body, Receta)
 		ok
+	}
+	
+	@Post("/nuevoCondimento")
+	def Result nuevoCondimento(@Body String nombre)
+	{
+		recetaSeleccionada.agregarCondimento(Condimento.valueOf(nombre), 0);
+		var gsonBilder = new GsonBuilder();
+		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
+		var gson = gsonBilder.create();
+		ok(gson.toJson(recetaSeleccionada));
 	}
 
 	@Get("/usuario")

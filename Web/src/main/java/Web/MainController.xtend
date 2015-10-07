@@ -73,11 +73,12 @@ class MainController {
 	@Get("/recetas")
 	def Result recetas() {
 		response.contentType = ContentType.APPLICATION_JSON
-
-		//var usuario = obtenerJugador(request)
+		var gsonBilder = new GsonBuilder();
+		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
+		var gson = gsonBilder.create();
 		var recetas = new PedidoRecetas(usuario_aux)
 		recetas.setRecetas()
-		ok(recetas.toJson)
+		ok(gson.toJson(recetas))
 	}
 
 	@Get("/monitoreo")

@@ -36,9 +36,9 @@ class Dependencias {
 		receta1.nombre = "Papa"
 		receta1.dificultad = Dificultad.FACIL
 		receta1.calorias = 500
-		receta1.usuarioCreador = usuario
+//		receta1.usuarioCreador = usuario
 		receta1.tipo = TipoReceta.PUBLICA
-		receta2.usuarioCreador = usuario
+//		receta2.usuarioCreador = usuario
 		receta2.tipo = TipoReceta.PUBLICA
 
 		usuario.platosQueNoLeGustan.add("Pizza")
@@ -54,14 +54,16 @@ class Dependencias {
 
 		receta1.temporadas = temporadasReceta1;
 		receta1.condimentos = condimentosReceta1;
+		receta1.ingredientes = ingredientesReceta1;
+		receta1.explicacion = "Explicación de la receta 1";
 
 		receta2.nombre = "Carne"
 		receta2.dificultad = Dificultad.MEDIANA
 		receta2.calorias = 250
+		receta2.ingredientes = ingredientesReceta2
 
 		usuario_aux.marcarComoFavorita(receta1)
 
-		//receta1.usuarioCreador = usuario_aux;
 		temporadasReceta2.add(Temporada.PRIMAVERA)
 		temporadasReceta2.add(Temporada.VERANO)
 
@@ -70,10 +72,9 @@ class Dependencias {
 
 		receta2.temporadas = temporadasReceta2;
 		receta2.condimentos = condimentosReceta2;
+		receta2.explicacion = "Explicación de la receta 2";
 
 		usuario_aux.addObservador(consultasXRecetas)
 		usuario_aux.marcarComoFavorita(receta2)
-
-	//		receta2.usuarioCreador = usuario_aux;
 	}
 }

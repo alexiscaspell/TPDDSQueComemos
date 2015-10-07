@@ -69,6 +69,10 @@ queComemosApp.controller('panelRecetaController', [ '$scope', '$state',
 			$scope.verListaRecetas = function() {
 				$state.go('PanelHome')
 			}
+			
+			$scope.setNuevoCondimento = function(){
+				
+			}
 		} ]);
 
 queComemosApp.controller('panelHomeController', [

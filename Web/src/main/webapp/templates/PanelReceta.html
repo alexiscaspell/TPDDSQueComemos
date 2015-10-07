@@ -29,12 +29,12 @@
 				</tr>
 				<tr>
 					<td>
-						<h4>Ingredientes</h4>
-						<table>
-							<tr ng-repeat="ingrediente in recetaSeleccionada.ingredientes">
-								<td>{{ x.nombre }}</td>
-							</tr>
-						</table>
+						<h4>Ingredientes1</h4>
+						<ul>
+						    <li ng-repeat="(key, value) in recetaSeleccionada.ingredientes">
+						        <span>{{key}} - {{value}}</span>
+						    </li>
+						</ul>
 						<button ng-click="agregarIngrediente()">Agregar</button>
 						<button ng-click="eliminarIngrediente()">Eliminar</button>
 						</p> <label>Favorita <input type="checkbox" /></label>
@@ -46,9 +46,11 @@
 							<button ng-click="setNuevoCondimento()">Agregar</button>
 						</p>
 						<p>
-							<select multiple="multiple" id="idSelect"
-								ng-options="x in recetaSeleccionada.temporadas">
-							</select>
+							<ul>
+							    <li ng-repeat="(key, value) in recetaSeleccionada.condimentos">
+							        <span>{{key}} - {{value}}</span>
+							    </li>
+							</ul>
 							<button ng-click="eliminarCondimento()">Eliminar</button>
 						</p>
 						<h4>Condiciones preexistentes</h4>

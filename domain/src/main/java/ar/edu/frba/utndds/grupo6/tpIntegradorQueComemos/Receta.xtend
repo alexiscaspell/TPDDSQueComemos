@@ -118,6 +118,11 @@ public class Receta implements IReceta, Cloneable {
 	{
 		this.condimentos.put(condimento, valor);
 	}
+	
+	def agregarIngrediente(Ingrediente ingrediente, Integer valor)
+	{
+		this.ingredientes.put(ingrediente, valor);
+	}
 
 	override getExplicacion() {
 

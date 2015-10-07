@@ -159,8 +159,20 @@ queComemosApp.controller('panelHomeController', [
 			};
 		} ]);
 
-queComemosApp.controller('panelAgregarIngredienteController', [ '$scope', '$state', function($scope, $state) {
-			$scope.irAHome = function() {
-				$state.go('PanelHome')
+queComemosApp.controller('panelAgregarIngredienteController', [
+		'$scope',
+		'$state',
+		'$http',
+		function($scope, $state, $http) {
+			
+			$scope.volver = function() {
+				$state.go('PanelReceta');
+			}
+
+			$scope.agregarIngrediente = function() {
+				$http.post('/nuevoIngrediente', $scope.nuevoCondimento).success(
+						function(data) {
+							$state.go('PanelReceta');
+						});
 			}
 		} ]);

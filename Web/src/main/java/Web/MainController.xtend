@@ -20,6 +20,7 @@ import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
 
 import static AplicationModel.Dependencias.*
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 
 @Controller
 class MainController {
@@ -76,11 +77,17 @@ class MainController {
 		ok(gson.toJson(recetaSeleccionada));
 	}
 
+	@Post("/nuevoIngrediente")
+	def Result nuevoIngrediente(@Body String nombre) {
+		recetaSeleccionada.agregarIngrediente(Ingrediente.valueOf(nombre), 0);
+		ok();
+	}
+
 	@Post("/actualizarReceta")
 	def Result actualizarReceta(@Body String nombre) {
-		usuario_aux.modificarReceta(recetaSeleccionada.nombre, recetaSeleccionada.nombre, recetaSeleccionada.ingredientes,
-			recetaSeleccionada.condimentos, recetaSeleccionada.explicacion, recetaSeleccionada.dificultad, 
-			recetaSeleccionada.temporadas);
+		usuario_aux.modificarReceta(recetaSeleccionada.nombre, recetaSeleccionada.nombre,
+			recetaSeleccionada.ingredientes, recetaSeleccionada.condimentos, recetaSeleccionada.explicacion,
+			recetaSeleccionada.dificultad, recetaSeleccionada.temporadas);
 		ok
 	}
 

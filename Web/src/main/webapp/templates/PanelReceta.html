@@ -31,22 +31,21 @@
 					<td>
 						<h4>Ingredientes</h4>
 						<ul class="list-group">
-							<li ng-repeat="(key, value) in recetaSeleccionada.ingredientes" class="list-group-item">
-								<span>{{key}} - {{value}}</span>
-							</li>
+							<li ng-repeat="(key, value) in recetaSeleccionada.ingredientes"
+								class="list-group-item"><span>{{key}} - {{value}}</span></li>
 						</ul>
 						<button ng-click="agregarIngrediente()">Agregar</button>
-						<button ng-click="eliminarIngrediente()">Eliminar</button>
-						</p> <label>Favorita <input type="checkbox" /></label>
+						<button ng-click="eliminarIngrediente()">Eliminar</button> <label>Favorita
+							<input type="checkbox" />
+					</label>
 					</td>
 					<td>
 						<h4>Condimentos</h4> <input name="nuevoCondimento"
 						ng-model="nuevoCondimento">
 						<button ng-click="setNuevoCondimento()">Agregar</button>
 						<ul class="list-group">
-							<li ng-repeat="(key, value) in recetaSeleccionada.condimentos" class="list-group-item">
-								<span>{{key}} - {{value}}</span>
-							</li>
+							<li ng-repeat="(key, value) in recetaSeleccionada.condimentos"
+								class="list-group-item"><span>{{key}} - {{value}}</span></li>
 						</ul>
 						<button ng-click="eliminarCondimento()">Eliminar</button>
 					</td>
@@ -55,7 +54,10 @@
 					<td></td>
 					<td><h4>Condiciones preexistentes</h4>
 						<p>
-							<select multiple="multiple"></select>
+							<ul class="list-group">
+								<li ng-repeat="value in condicionesPreexistentes"
+									class="list-group-item"><span>{{value}}</span></li>
+							</ul>
 							<button ng-click="actualizarCondicionesPreexistentes()">Actualizar</button>
 						</p></td>
 				</tr>

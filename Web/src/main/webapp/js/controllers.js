@@ -68,11 +68,26 @@ queComemosApp.controller('panelRecetaController', [ '$scope', '$state', '$http',
 			$scope.setNuevoCondimento = function() {
 				$http.post('/nuevoCondimento', $scope.nuevoCondimento).success(function(data) {
 					$scope.recetaSeleccionada = data;
+					$http.get('/getCondicionesPreexistentes').success(function(cond){
+						$scope.condicionesPreexistentes = cond;
+					});
 				});
 			}
 			
 			$scope.verListaRecetas = function() {
 				$state.go('PanelHome');
+			}
+			
+			$scope.actualizarReceta = function() {
+				$http.post('/actualizarReceta', document.cookie).success(function(data) {
+					$state.go('PanelHome')
+				});
+			}
+			
+			$scope.actualizarCondicionesPreexistentes = function(){
+				$http.get('/getCondicionesPreexistentes').success(function(cond){
+					$scope.condicionesPreexistentes = cond;
+				});
 			}
 		} ]);
 

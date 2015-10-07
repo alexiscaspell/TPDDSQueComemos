@@ -72,6 +72,20 @@ class MainController {
 		var gson = gsonBilder.create();
 		ok(gson.toJson(recetaSeleccionada));
 	}
+	
+	@Post("/actualizarReceta")
+	def Result actualizarReceta(@Body String nombre)
+	{
+		//TODO: Si el usuario es el creador de la receta, modificarla
+		//TODO: Si no guardarse una copia.
+		ok
+	}
+	
+	@Get("/getCondicionesPreexistentes")
+	def Result getCondicionesPreexistentes()
+	{
+		ok(recetaSeleccionada.condicionesInadecuadas().toJson)
+	}
 
 	@Get("/usuario")
 	def Result usuario() {

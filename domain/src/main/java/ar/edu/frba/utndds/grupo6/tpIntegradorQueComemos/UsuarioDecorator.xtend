@@ -2,6 +2,11 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import java.util.Map
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import queComemos.entrega3.dominio.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
 @Accessors
 public abstract class UsuarioDecorator extends SujetoObservado implements Usuario, Consumidor {
@@ -114,6 +119,12 @@ public abstract class UsuarioDecorator extends SujetoObservado implements Usuari
 	override void marcarComoFavorita( Receta receta ){
 		
 		decorado.marcarComoFavorita(receta)
+	}
+	
+	override modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada) {
+		decorado.modificarReceta(nombreRecetaAModificar, nombreReceta, ingredientes, condimentos, explicacion,
+			dificultad, temporada);
 	}
 
 // ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------

@@ -42,6 +42,11 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
                 	}
                 }
         })
+        .state('PanelAgregarIngrediente', {
+        	url: '/PanelAgregarIngrediente',
+    		templateUrl: 'templates/PanelAgregarIngrediente.html',
+    		controller: 'panelAgregarIngredienteController'
+           })
     	.state('PanelUsuario', {
     		url: '/PanelUsuario',
     		templateUrl: 'templates/PanelUsuario.html',

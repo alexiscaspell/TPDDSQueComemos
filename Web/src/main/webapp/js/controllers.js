@@ -4,8 +4,8 @@ queComemosApp.controller('panelLoginController', [ '$scope', '$state', '$http',
 		function($scope, $state, $http) {
 			$scope.login = function() {
 				$http.post('/login', {
-					nombre : $scope.nombre 
-					// pass : $scope.pass
+					nombre : $scope.nombre
+				// pass : $scope.pass
 				}).success(function(data) {
 					document.cookie = "usuario=" + data.nombre;
 
@@ -14,23 +14,29 @@ queComemosApp.controller('panelLoginController', [ '$scope', '$state', '$http',
 			}
 		} ]);
 
-queComemosApp.controller('panelUsuarioController', [ '$scope', '$state',
-		'queComemosService', 'usuarioData',
-		function($scope, $state, queComemosService, usuarioData) {
+queComemosApp
+		.controller(
+				'panelUsuarioController',
+				[
+						'$scope',
+						'$state',
+						'queComemosService',
+						'usuarioData',
+						function($scope, $state, queComemosService, usuarioData) {
 
-			var usuario = usuarioData.data.usuario
-			$scope.usuario = usuario
-			$scope.imcColor = usuarioData.data.color
-			
-			$scope.favoritasSeleccionada = usuario.favoritas[0]
-			$scope.preferenciaSeleccionada = usuario.preferenciasAlimenticias[0]
-			$scope.condicionesSeleccionada = usuario.condicion[0]
-			$scope.platosSeleccionado = usuario.platosQueNoLeGustan[0]
-			
-			$scope.irAHome = function() {
-				$state.go('PanelHome')
-			}
-		} ]);
+							var usuario = usuarioData.data.usuario
+							$scope.usuario = usuario
+							$scope.imcColor = usuarioData.data.color
+
+							$scope.favoritasSeleccionada = usuario.favoritas[0]
+							$scope.preferenciaSeleccionada = usuario.preferenciasAlimenticias[0]
+							$scope.condicionesSeleccionada = usuario.condicion[0]
+							$scope.platosSeleccionado = usuario.platosQueNoLeGustan[0]
+
+							$scope.irAHome = function() {
+								$state.go('PanelHome')
+							}
+						} ]);
 
 queComemosApp.controller('panelConsultasController', [ '$scope', '$state',
 		function($scope, $state) {
@@ -52,8 +58,8 @@ queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 			$scope.isHome = false
 			$scope.botonera = false
 			// ****
-			$scope.actualizar = function(){
-				$state.reload() 
+			$scope.actualizar = function() {
+				$state.reload()
 			}
 			$scope.irAHome = function() {
 				$state.go('PanelHome')
@@ -61,38 +67,51 @@ queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 
 		} ])
 
-queComemosApp.controller('panelRecetaController', [ '$scope', '$state', '$http', 
-		'queComemosService', 'recetaSeleccionadaData',
-		function($scope, $state, $http, queComemosService, recetaSeleccionadaData) {
-			$scope.recetaSeleccionada = recetaSeleccionadaData.data;			
-			
+queComemosApp.controller('panelRecetaController', [
+		'$scope',
+		'$state',
+		'$http',
+		'queComemosService',
+		'recetaSeleccionadaData',
+		function($scope, $state, $http, queComemosService,
+				recetaSeleccionadaData) {
+			$scope.recetaSeleccionada = recetaSeleccionadaData.data;
+
 			$http.get('/readonly').success(function(data) {
-				$scope.puedeEditar = data;				
+				$scope.puedeEditar = data;
 			})
-			
+
 			$scope.setNuevoCondimento = function() {
-				$http.post('/nuevoCondimento', $scope.nuevoCondimento).success(function(data) {
-					$scope.recetaSeleccionada = data;
-					$http.get('/getCondicionesPreexistentes').success(function(cond){
-						$scope.condicionesPreexistentes = cond;
-					});
-				});
+				$http.post('/nuevoCondimento', $scope.nuevoCondimento).success(
+						function(data) {
+							$scope.recetaSeleccionada = data;
+							$http.get('/getCondicionesPreexistentes').success(
+									function(cond) {
+										$scope.condicionesPreexistentes = cond;
+									});
+						});
 			}
-			
+
+			$scope.agregarIngrediente = function() {
+				$state.go('PanelAgregarIngrediente');
+			}
+
 			$scope.verListaRecetas = function() {
 				$state.go('PanelHome');
 			}
-			
+
 			$scope.actualizarReceta = function() {
-				$http.post('/actualizarReceta', document.cookie).success(function(data) {
-					$state.go('PanelHome')
-				});
+				$http.post('/actualizarReceta', document.cookie).success(
+						function(data) {
+							$state.go('PanelHome')
+						});
 			}
-			
-			$scope.actualizarCondicionesPreexistentes = function(){
-				$http.get('/getCondicionesPreexistentes').success(function(cond){
-					$scope.condicionesPreexistentes = cond;
-				});
+
+			$scope.actualizarCondicionesPreexistentes = function() {
+				$http.get('/getCondicionesPreexistentes').success(
+						function(cond) {
+							$scope.condicionesPreexistentes = cond;
+						});
 			}
 		} ]);
 
@@ -107,10 +126,10 @@ queComemosApp.controller('panelHomeController', [
 			var recetas = recetasData.data.recetas
 			$scope.lista_recetas = recetasData.data.recetas
 
-			//$scope.recetaSeleccionada = recetas[0] // SE PUEDE ELIMINAR?S
+			// $scope.recetaSeleccionada = recetas[0] // SE PUEDE ELIMINAR?S
 			$scope.recetas_a_mostar = recetasData.data.mostrando;
 			$scope.cantidadConsultas = recetasData.data.cantidadConsultas
-			
+
 			$scope.verReceta = function() {
 				$state.go('PanelReceta');
 			};
@@ -138,4 +157,10 @@ queComemosApp.controller('panelHomeController', [
 							$scope.verReceta();
 						});
 			};
+		} ]);
+
+queComemosApp.controller('panelAgregarIngredienteController', [ '$scope', '$state', function($scope, $state) {
+			$scope.irAHome = function() {
+				$state.go('PanelHome')
+			}
 		} ]);

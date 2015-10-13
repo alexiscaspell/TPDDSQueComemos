@@ -17,8 +17,17 @@ public interface Usuario {
 	def void setNombre(String nombre)
 
 	def void setLogin(Login login)
+	
+	def void setNickName(String nickName)
+	
+	def void setPassword(String pass)
 
 	//	------------------------------------------- Getters -------------------------------------------
+	
+	def String getNickName()
+	
+	def String getPassword()
+	
 	def Login getLogin()
 
 	def List<Receta> getConsultas()
@@ -84,4 +93,9 @@ public interface Usuario {
 	
 	def void modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada)
+	
+
+	
+
+	
 }

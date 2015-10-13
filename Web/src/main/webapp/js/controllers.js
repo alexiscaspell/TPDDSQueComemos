@@ -4,10 +4,13 @@ queComemosApp.controller('panelLoginController', [ '$scope', '$state', '$http',
 		function($scope, $state, $http) {
 			$scope.login = function() {
 				$http.post('/login', {
-					nombre : $scope.nombre
-				// pass : $scope.pass
+					nombre : $scope.nombre,
+					pass : $scope.pass
+
 				}).success(function(data) {
 					document.cookie = "usuario=" + data.nombre;
+
+					document.cookie = "password=" + data.pass;
 
 					$state.go('PanelHome');
 				});

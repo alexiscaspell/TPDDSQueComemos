@@ -19,6 +19,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
 
 	private Login login
+	
+	private String nickName
+	
+	private String password
 
 	private double altura
 
@@ -70,6 +74,18 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	// ------------------------------------------- Setters -------------------------------------------
+	
+	override setNickName(String nickName){
+		
+		this.nickName = nickName
+	}
+	
+	override  setPassword(String password){
+		
+		this.password = password
+	}
+	
+	
 	override void setNombre(String unNombre) {
 		this.nombre = unNombre
 	}
@@ -108,6 +124,17 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	//	------------------------------------------- Getters -------------------------------------------
+	
+	override String getNickName(){
+		
+		nickName
+	}
+	
+	override String getPassword(){
+		
+		password
+	}
+	
 	override getLogin() {
 
 		login

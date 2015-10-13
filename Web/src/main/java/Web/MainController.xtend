@@ -33,7 +33,10 @@ class MainController {
 	def Result login(@Body String body) {
 		var PedidoLogin pedido = body.fromJson(PedidoLogin)
 		println("[@Post login()] Haciendo login con nombre: " + pedido.nombre)
-		usuario_aux = repoUsuarios.getUsuario(pedido.nombre)
+		println("[@Post login()] Haciendo login con pass: " + pedido.pass)
+		
+		//usuario_aux = repoUsuarios.getUsuario(pedido.nombre)
+		usuario_aux = repoUsuarios.loguear(pedido.nombre,pedido.pass)
 		hardcodear()
 
 		// Buscar usuario con nombre == pedido.nombre

@@ -128,6 +128,43 @@ class RepoUsuariosTestSuite {
 		
 	}
 	
+		@Test
+	def void crearPerfilDeUsuarioYBuscarPorNickYPass(){
+				
+			//pepe.login = new Login("pepe","123")
+			
+			pepe.nickName = "pepe"
+			
+			pepe.password = "123"
+			
+			repositorio.add(pepe)
+			
+			val Usuario usuarioEncontrado = repositorio.validarNickYContraseña("pepe","123")
+											
+			Assert.assertTrue(usuarioEncontrado.equals(pepe))
+		
+	}
+	
+			@Test
+	def void crearPerfilDeUsuarioVeganoYBuscarPorNickYPass(){
+				
+			//pepe.login = new Login("pepe","123")
+			
+			pepe.nickName = "pepe"
+			
+			pepe.password = "123"
+			
+			val vegano = new UsuarioVegano(pepe)
+			
+			repositorio.add(vegano)
+			
+			val Usuario usuarioEncontrado = repositorio.validarNickYContraseña("pepe","123")
+											
+			Assert.assertTrue(usuarioEncontrado.equals(vegano))
+		
+	}
+	
+	
 	
 	
 }

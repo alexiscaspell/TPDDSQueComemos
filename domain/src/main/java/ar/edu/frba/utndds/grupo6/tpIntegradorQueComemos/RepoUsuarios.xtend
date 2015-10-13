@@ -2,8 +2,10 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.ArrayList
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
 public class RepoUsuarios implements IRepoUsuarios {
+	
 
 	private List<Usuario> listaUsuarios = new ArrayList<Usuario>()
 
@@ -39,13 +41,12 @@ public class RepoUsuarios implements IRepoUsuarios {
 	public override List<Usuario> list(Usuario usuario) {
 		val listaUsuariosConElMismoNombre = listaUsuarios.filter[x|x.nombre.equals(usuario.nombre)].toList()
 
-		return listaUsuariosConElMismoNombre.filter[usuarioFiltrado|usuarioFiltrado.cumpleMismasCondiciones(usuario)].
-			toList
+		return listaUsuariosConElMismoNombre.filter[usuarioFiltrado|usuarioFiltrado.cumpleMismasCondiciones(usuario)].toList
 	}
 	
 	def validarNickYContraseña(String nick,String pass){
 		
-		val Usuario usuarioCorrecto = listaUsuarios.findFirst[usuario|usuario.login.nickName.equals(nick)&&usuario.login.password.equals(pass)]
+		val Usuario usuarioCorrecto = listaUsuarios.findFirst[usuario|usuario.nickName.equals(nick)&&usuario.password.equals(pass)]
 		
 		return usuarioCorrecto
 	}

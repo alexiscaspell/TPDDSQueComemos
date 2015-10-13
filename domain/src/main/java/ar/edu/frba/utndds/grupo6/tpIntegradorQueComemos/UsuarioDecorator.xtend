@@ -26,16 +26,38 @@ public abstract class UsuarioDecorator extends SujetoObservado implements Usuari
 		decorado.setNombre(nombre)
 	}
 	
-	override void setLogin(Login login){
+	override  setLogin(Login login){
 		
 		decorado.setLogin(login)
 	}
 	
 
+	override void setNickName(String nickName){
+		
+		decorado.nickName = nickName
+	}
+	
+	override void setPassword(String pass){
+		
+		decorado.password = pass
+	}
+
 	//	------------------------------------------- Getters -------------------------------------------
 	//override getCondicion(){
 	//decorado.getCondicion()
 	//}
+	
+	override String getNickName(){
+		
+		decorado.nickName
+	}
+	
+	override String getPassword(){
+		
+		decorado.password
+	}
+	
+
 	
 	override getCondicion(){
 		decorado.getCondicion()

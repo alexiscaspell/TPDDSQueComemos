@@ -17,6 +17,8 @@ import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.OneToMany
 import javax.persistence.Column
+import javax.persistence.Enumerated
+import javax.persistence.EnumType
 
 @Entity
 @Observable
@@ -35,13 +37,13 @@ public class Receta implements IReceta, Cloneable {
 	@Column
 	private int tiempoPreparacion
 
-	// Buscar como persistir enums, referencia a tabla ? 
+	@Enumerated(EnumType.STRING) 
 	private Dificultad dificultad
 
-	// Buscar como persistir enums, referencia a tabla ? 
+	// Buscar como persistir lista de enums 
 	private List<Temporada> temporadas
 
-	// Buscar como persistir enums, referencia a tabla ? 
+	@Enumerated(EnumType.STRING) 
 	private TipoReceta tipo
 
 	// Buscar como persistir, referencia a tabla ? 

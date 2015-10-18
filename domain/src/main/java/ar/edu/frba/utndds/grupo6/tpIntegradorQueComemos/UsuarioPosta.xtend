@@ -13,47 +13,73 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
 import org.uqbar.commons.utils.Observable
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import javax.persistence.Entity
+import javax.persistence.Column
+import javax.persistence.Enumerated
+import javax.persistence.EnumType
+import javax.persistence.OneToMany
+import javax.persistence.FetchType
 
+@Entity
 @Observable
 @Accessors
 public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
 
+	// OneToOne ?
 	private Login login
 	
+	@Column ( length = 150 )
 	private String nickName
 	
+	@Column ( length = 150 )
 	private String password
 
+	@Column
 	private double altura
 
+	@Column		
 	private double peso
 
+	@Enumerated(EnumType.STRING) 
 	private Sexo sexo
 
+	@Enumerated(EnumType.STRING)
 	private Rutina rutina
 
+	@Column ( length = 150 )
 	private String nombre
 
+	// Buscar como guardar fehcas
 	private Date fechaNacimiento
 
+	@Column ( length = 150 )
 	private String email
 
+	// Buscar como persistir lista de enums
 	private List<Condicion> condiciones = new ArrayList<Condicion>()
 
+	// Buscar como persistir lista de enums
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
+	// Buscar como persistir lista de string 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
+	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 
+	// Buscar como persistir lista de enums
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
+	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
 	private List<Receta> recetas = new ArrayList<Receta>()
 
+	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
 	private List<Receta> consultas = new ArrayList<Receta>()
 
+	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY // Verificar si es ManyToMany ?
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
+	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
 	private List<Receta> favoritas = new ArrayList<Receta>()
 
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo, Date fechaNacimiento) {

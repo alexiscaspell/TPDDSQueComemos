@@ -7,7 +7,7 @@
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			Consulta de Recetas
+			<b>Consulta de Recetas</b>
 		</div>
 
 		<div class="panel-body">
@@ -16,48 +16,52 @@
 	
 		<div class="row">
 			<!--panel 1-->
-			<div class="col-sm-6">
-			<div class="panel1">
-				<label for="labelNombre"><b>Nombre:</b></label> 		
-				<input type="text" class="form-control" id="texboxNombre" placeholder="Usuario" ng-model="nombre">
-		
-				<label for="labelDificultad"><b>Dificultad:</b></label> 
-				
-				<div><select name="listBoxDificultad">
-					<option>text1</option>
-					<option>text2</option>
-				</select></div>
-		
-				<label for="labelQueContengaIngrediente"> <b>Que contenga ingrediente:</b></label> 
-				<input type="text" class="form-control" id="texboxQueContengaIngrediente" placeholder="Ingrediente" ng-model="nombre">
-			</div>
-			</div>
+
+			 <div style="height:240px; width:40%; float:left; text-align:left; padding:20px;">
+      			<b>Nombre</b>
+				<br>
+				<input name="nombreReceta" size="40" ng-model="nombreReceta">				<br>
+				<br>
+				<b>Dificultad</b>
+				<br>
+				<select
+						class="form-control" size="3"
+						ng-model="dificultadSeleccionada"
+						ng-options="dificultad for dificultad in filtro.dificultades">
+				</select>
+				<br>
+				<b>Ingrediente</b>
+				<br>
+				<input name="ingredienteReceta" size="40" ng-model="ingredienteReceta">	<br>
+				<br>
+  			</div>
 			
 			<!--panel 2-->
-			<div class="col-sm-6">
-			<div class="panel2">		
-				<label for="labelCalorias"> <b>Calorias:</b> </label> 
-				<label for="labelDe"> de </label> 
-				<input type="text" class="form-control" id="texboxMinCalorias" placeholder="Minimo" ng-model="nombre">
-				<label for="labelA"> a </label> 
-				<input type="text" class="form-control" id="texboxMaxCalorias" placeholder="Maximo" ng-model="nombre">
-		
-				<label for="labelTemporada"> <b>Temporada:</b> </label> 
-				<select name="listBoxTemporada">
-					<option>text1</option>
-					<option>text2</option>
+
+
+			 <div style="height:240px; width:40%; float:right; text-align:left; padding:20px;">
+
+      			<b>Calorias</b>
+
+				<br>
+				<b>    de  </b> <input name="minCalorias" size="8" ng-model="minCalorias">
+
+				<b>  a  </b> <input name="maxCalorias" size="8" ng-model="maxCalorias">
+
+				<br>
+				<br>
+				<b>Temporada</b>
+				<br>
+				<select
+						class="form-control" size="3"
+						ng-model="temporadaSeleccionada"
+						ng-options="temporada for temporada in filtro.temporadas">
 				</select>
-				
-				<div>
+				<br>
 				<input type="checkbox" name="checkboxAplicarFiltros" value="aplicar filtros de perfil de usuario"> Aplicar filtros del perfil de usuario<br>
-				</div>
-				
-			</div>
-			</div>
-		</div>
-		
-		
-		<div  class="row">
+				<br>
+
+  			</div>
 		<!--panel 3-->
 		<div align="center" class="col-sm-12">				
 		<div class="panel3"> 
@@ -68,25 +72,29 @@
 		</div>
 		</div>	
 		
-	
-		<!--panel 4-->
-		<div align="center" class="panel4">
-			<table border="2">
-				<tr>
-					<b><th>Nombres</th><th>Calorias</th><th>Dificultad</th><th>Temporada</th></b>
-				</tr>
-				<tr>
-					<td>Salmon con papas</td><td>550</td><td>Baja</td><td>Todo el anio</td>
-				</tr>
-			</table>	
-			
-			<button ng-click="verReceta()">Ver</button>
 		</div>
-		
+		<!--panel 4-->
+
+			<div class="panel-footer">
+			<table class="table table-striped table-hover table-condensed example-animate-container">
+      		<tbody>
+      			<tr>
+	        		<th>Nombre</th>
+        			<th>Calorias</th>
+        			<th>Dificultad</th>
+        			<th>Temporadas</th>
+      				</tr>
+      				<tr data-ng-repeat="receta in lista_recetas_filtradas" class="animate-repeat">
+        			<td class="col-xs-3">{{receta.nombre}}</td>
+        			<td class="col-xs-2">{{receta.calorias}}</td>
+        			<td class="col-xs-2">{{receta.dificultad}}</td>
+        			<td class="col-xs-4">{{receta.temporadas}}</td>
+      			</tr>
+      		</tbody>
+    		</table>
 		</div>
 	
 		<!--ACA TERMINO-->
-	</div>
 </div>
 
 

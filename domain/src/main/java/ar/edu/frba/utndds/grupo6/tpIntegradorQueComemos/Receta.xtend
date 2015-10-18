@@ -13,33 +13,50 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 import queComemos.entrega3.dominio.Dificultad
 import org.uqbar.commons.utils.Observable
 import java.util.HashMap
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.OneToMany
+import javax.persistence.Column
 
+@Entity
 @Observable
 @Accessors
 public class Receta implements IReceta, Cloneable {
 
+	// Cambiar ? Como lo persistimos ? FK, string para buscar en el repo ?
 	private Usuario usuarioCreador
 
+	@Column ( length = 150 )
 	private String nombre
 
+	@Column
 	private int anio
 
+	@Column
 	private int tiempoPreparacion
 
+	// Buscar como persistir enums, referencia a tabla ? 
 	private Dificultad dificultad
 
+	// Buscar como persistir enums, referencia a tabla ? 
 	private List<Temporada> temporadas
 
+	// Buscar como persistir enums, referencia a tabla ? 
 	private TipoReceta tipo
 
+	// Buscar como persistir, referencia a tabla ? 
 	private Map<Ingrediente, Integer> ingredientes = new HashMap<Ingrediente, Integer>()
 
+	// Buscar como persistir, referencia a tabla ?
 	private Map<Condimento, Integer> condimentos
 
+	@Column
 	private int calorias
 
+	@Column ( length = 150 )
 	private String explicacion
 
+	@OneToMany ( fetch = FetchType.EAGER )
 	private List<IReceta> subRecetas;
 
 	new(

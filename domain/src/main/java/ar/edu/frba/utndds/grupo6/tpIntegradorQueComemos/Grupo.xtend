@@ -3,16 +3,22 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.ArrayList
+import javax.persistence.Entity
+import javax.persistence.Column
+import javax.persistence.OneToMany
+import javax.persistence.FetchType
 
+@Accessors
+@Entity
 public class Grupo implements Consumidor {
 
-	@Accessors
+	@Column ( length = 150 )
 	private String nombre
 
-	@Accessors
+	// ManyToMany ?
 	private List<Usuario> integrantes = new ArrayList<Usuario>()
 
-	@Accessors
+	@OneToMany ( fetch = FetchType.EAGER ) // verificar si es EAGER o Lazy
 	private List<Receta> recetasPreferidas = new ArrayList<Receta>()
 
 	def contieneAlUsuario(Usuario usuario) {

@@ -76,7 +76,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
 	private List<Receta> consultas = new ArrayList<Receta>()
 
-	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY // Verificar si es ManyToMany ?
+	// es ManyToMany ?
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
 	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY

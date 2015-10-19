@@ -12,13 +12,14 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConCarne
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import java.util.Calendar
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 class MonitoreoConsultasTestSuite {
 	
 	private DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
 	private Date fecha = format.parse("01-04-1970")
 	private Calendar calendario = Calendar.getInstance();
-	private Recetario  recetario =  Recetario .getInstance()
+	private RecetasRepository  recetario =  RecetasRepository .getInstance()
 	recetaConAzucar recetaAzucar = new recetaConAzucar()
 	recetaConSal recetaSal = new recetaConSal()
 	recetaConCarne recetaCarne = new recetaConCarne()
@@ -36,7 +37,8 @@ class MonitoreoConsultasTestSuite {
 	@Before
 	def void SetUp()
 	{
-		Recetario.getInstance().reset();
+		
+		RecetasRepository.getInstance().reset();
 		usuarioFemenino = getUsuarioFemenino();
 		usuarioMasculino = getUsuarioMasculino();
 	}		
@@ -95,9 +97,9 @@ class MonitoreoConsultasTestSuite {
 	}
 	
 	def seteoRecetario(){
-		recetario.agregar( recetaSal.cumple(usuarioMasculino) )
-		recetario.agregar( recetaAzucar.cumple(usuarioFemenino) )
-		recetario.agregar( recetaCarne.cumple(usuarioFemenino) )
+		recetario.create( recetaSal.cumple(usuarioMasculino) )
+		recetario.create( recetaAzucar.cumple(usuarioFemenino) )
+		recetario.create( recetaCarne.cumple(usuarioFemenino) )
 	}
 	
 	def getUsuarioMasculino() {

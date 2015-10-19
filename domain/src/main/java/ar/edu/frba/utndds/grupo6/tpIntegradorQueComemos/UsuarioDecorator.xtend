@@ -7,16 +7,17 @@ import java.util.Map
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 @Accessors
 public abstract class UsuarioDecorator extends SujetoObservado implements Usuario, Consumidor {
 
 	Usuario decorado
 
-	private Recetario recetario
+	private RecetasRepository recetario
 
 	new(Usuario usuario) {
-		recetario = Recetario.getInstance()
+		recetario = RecetasRepository.getInstance()
 		decorado = usuario
 	}
 

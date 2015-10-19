@@ -19,6 +19,7 @@ import javax.persistence.Enumerated
 import javax.persistence.EnumType
 import javax.persistence.OneToMany
 import javax.persistence.FetchType
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 @Entity
 @Observable
@@ -167,7 +168,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	}
 
 	def getReceta(String nombre) {
-		Recetario.getInstance().getReceta(nombre)
+		RecetasRepository.getInstance().searchByName(nombre).head
 	}
 
 	override getSexo() {
@@ -200,7 +201,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	override getRecetasConAcceso() {
 
-		val recetas = Recetario.getInstance().listarTodas();
+		val recetas = RecetasRepository.getInstance().allInstances();
 		consultas.clear()
 
 		recetas.forEach [ receta |
@@ -271,7 +272,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 
 	def agregarReceta(Receta receta) {
 		recetas.add(receta)
-		Recetario.getInstance().agregar(receta)
+		RecetasRepository.getInstance().create(receta)
 	}
 
 	override comparteGrupo(Usuario usuario) {

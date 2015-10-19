@@ -7,6 +7,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.text.DateFormat
 import java.util.Date
 import java.text.SimpleDateFormat
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 class CommandsTestSuite {
 	
@@ -19,7 +20,7 @@ class CommandsTestSuite {
 		var mailSender = mock(typeof(MailSender));
 		var sendMailCommand = new SendMailCommand(mailSender);		
 		
-		val recetario = Recetario.getInstance();
+		val recetario = RecetasRepository.getInstance();
 		recetario.sendMailCommand = sendMailCommand;
 		
 		val pepe = getUsuarioPepe();

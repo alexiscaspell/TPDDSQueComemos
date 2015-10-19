@@ -5,7 +5,7 @@ import org.hibernate.Criteria
 
 class UsuariosRepository extends RepoDefault<Usuario> {
 	
-	static UsuariosRepository instance
+	private static UsuariosRepository instance
 	
 	static def getInstance() {
 		if (instance == null) {
@@ -20,5 +20,10 @@ class UsuariosRepository extends RepoDefault<Usuario> {
 	
 	override addQueryByExample(Criteria criteria, Usuario t) {
 		// Sobre que criteria se busca, habria un solo tipo de busqueda?
+		if ( t != null ){
+			
+		}
 	}
+	
+	
 }

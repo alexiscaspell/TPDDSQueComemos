@@ -1,6 +1,7 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 public class UsuarioDiabetico extends UsuarioDecorator {
 	new(Usuario decorado) {
@@ -29,8 +30,8 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 	}
 
 	override getRecetasConAcceso() {
-		val recetario = Recetario.getInstance();
-		val recetas = recetario.listarTodas();
+		val recetario = RecetasRepository.getInstance();
+		val recetas = recetario.allInstances();
 		consultas.clear()
 
 		recetas.forEach [ receta |

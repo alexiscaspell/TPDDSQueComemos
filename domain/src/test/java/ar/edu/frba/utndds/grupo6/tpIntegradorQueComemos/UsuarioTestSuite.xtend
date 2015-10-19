@@ -15,6 +15,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
 import org.junit.Before
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 class UsuarioTestSuite {
 
@@ -28,7 +29,7 @@ class UsuarioTestSuite {
 	@Before
 	def void SetUp()
 	{
-		Recetario.getInstance().reset();
+		//RecetasRepository.getInstance().reset();
 	}
 
 	@Test
@@ -229,7 +230,7 @@ class UsuarioTestSuite {
 	{
 		var usuario = usuarioPepe
 		var receta = getReceta(usuario, "Receta 1");
-		Recetario.getInstance().agregar(receta)
+		RecetasRepository.getInstance().create(receta)
 		
 		usuario.modificarReceta("Receta 1", "Nuevo nombre", receta.ingredientes, receta.condimentos,
 			receta.explicacion, receta.dificultad, receta.temporadas);
@@ -244,7 +245,7 @@ class UsuarioTestSuite {
 		var usuario1 = usuarioPancho
 		var receta = getReceta(usuario1, "Receta 1");
 		receta.tipo = TipoReceta.PUBLICA;
-		Recetario.getInstance().agregar(receta)
+		RecetasRepository.getInstance().create(receta)
 		
 		usuario.modificarReceta("Receta 1", "Nuevo nombre", receta.ingredientes, receta.condimentos,
 			receta.explicacion, receta.dificultad, receta.temporadas);
@@ -261,9 +262,9 @@ class UsuarioTestSuite {
 	{
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 				
-		val recetario = Recetario.getInstance()
+		val recetario = RecetasRepository.getInstance()
 		
-		recetario.agregar(getReceta(usuario, "Pure"))
+		recetario.create(getReceta(usuario, "Pure"))
 		
 		Assert.assertEquals(usuario.getRecetasConAcceso().size, 13)
 	}
@@ -277,8 +278,8 @@ class UsuarioTestSuite {
 		grupo.agregar(usuario)
 		grupo.agregar(pepe)		
 		
-		val recetario = Recetario.getInstance()
-		recetario.agregar(getReceta(pepe, "Receta1"))
+		val recetario = RecetasRepository.getInstance()
+		recetario.create(getReceta(pepe, "Receta1"))
 		
 		Assert.assertEquals(usuario.getRecetasConAcceso().size, 13)
 	}

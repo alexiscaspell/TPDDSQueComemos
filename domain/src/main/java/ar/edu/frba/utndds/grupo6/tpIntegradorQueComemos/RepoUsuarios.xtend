@@ -2,7 +2,6 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.ArrayList
 import java.util.List
-import org.eclipse.xtend.lib.annotations.Accessors
 
 public class RepoUsuarios implements IRepoUsuarios {
 	

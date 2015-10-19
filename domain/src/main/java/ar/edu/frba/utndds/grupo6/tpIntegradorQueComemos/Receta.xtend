@@ -19,11 +19,17 @@ import javax.persistence.OneToMany
 import javax.persistence.Column
 import javax.persistence.Enumerated
 import javax.persistence.EnumType
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity
 @Observable
 @Accessors
 public class Receta implements IReceta, Cloneable {
+
+	@Id
+	@GeneratedValue
+	private long id
 
 	// Cambiar ? Como lo persistimos ? FK, string para buscar en el repo ?
 	private Usuario usuarioCreador
@@ -58,7 +64,7 @@ public class Receta implements IReceta, Cloneable {
 	@Column ( length = 150 )
 	private String explicacion
 
-	@OneToMany ( fetch = FetchType.EAGER )
+	//@OneToMany ( fetch = FetchType.EAGER )
 	private List<IReceta> subRecetas;
 
 	new(

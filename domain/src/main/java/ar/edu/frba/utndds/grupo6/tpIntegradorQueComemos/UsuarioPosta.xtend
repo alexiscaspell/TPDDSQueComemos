@@ -20,11 +20,17 @@ import javax.persistence.EnumType
 import javax.persistence.OneToMany
 import javax.persistence.FetchType
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity
 @Observable
 @Accessors
 public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
+
+	@Id
+	@GeneratedValue
+	private long id
 
 	// OneToOne ?
 	private Login login

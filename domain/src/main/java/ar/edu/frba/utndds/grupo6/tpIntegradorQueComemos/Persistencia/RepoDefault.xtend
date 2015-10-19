@@ -14,7 +14,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
 abstract class RepoDefault<T> {
 	
 		private static final SessionFactory sessionFactory = new 
-	AnnotationConfiguration().configure( "/resources/hibernate.cfg.xml" )
+	AnnotationConfiguration().configure(  )
 			.addAnnotatedClass( Receta )
 			.addAnnotatedClass( UsuarioPosta ) // Usuario - UsuarioPosta - Diabetico.. ?
 			.addAnnotatedClass( UsuarioDiabetico )

@@ -7,10 +7,16 @@ import javax.persistence.Entity
 import javax.persistence.Column
 import javax.persistence.OneToMany
 import javax.persistence.FetchType
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Accessors
 @Entity
 public class Grupo implements Consumidor {
+	
+	@Id
+	@GeneratedValue
+	private long id
 
 	@Column ( length = 150 )
 	private String nombre

@@ -108,7 +108,7 @@ class FiltroStrategyTestSuite {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		recetaSimple.calorias=100
 		recetaSimple
 	}
@@ -131,7 +131,7 @@ class FiltroStrategyTestSuite {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		recetaSimple.calorias=150
 		recetaSimple
 	}
@@ -154,7 +154,7 @@ class FiltroStrategyTestSuite {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario1.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		recetaSimple.calorias=600
 		recetaSimple
 	}
@@ -177,7 +177,7 @@ class FiltroStrategyTestSuite {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)						  
-		val recetaSimple = new Receta(usuario1, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
+		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL, temporadas)
 		recetaSimple.calorias=300
 		recetaSimple
 	}

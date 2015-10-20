@@ -27,6 +27,7 @@ import javax.persistence.ManyToMany
 import javax.persistence.OneToOne
 import org.hibernate.annotations.LazyCollection
 import org.hibernate.annotations.LazyCollectionOption
+import javax.persistence.CascadeType
 
 @Entity
 @Observable
@@ -87,7 +88,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany ( fetch = FetchType.LAZY ) // Verificar si es EAGER o LAZY
+	@OneToMany ( fetch = FetchType.LAZY, cascade = CascadeType.ALL ) // Verificar si es EAGER o LAZY
 	private List<Receta> recetas = new ArrayList<Receta>()
 
 	// @LazyCollection (LazyCollectionOption.FALSE)
@@ -271,14 +272,16 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 		val receta = getReceta(nombreRecetaAModificar)
 
-		if (receta.puedeModificar(this)) {
-			if (receta.usuarioCreador.equals(this)) {
+		if ( receta.puedeModificar(this) ) {
+			println( "Puede modificarla")
+			if ( receta.usuarioCreador.equals(this.nombre)) {
 				receta.setNombre(nombreReceta)
 				receta.setIngredientes(ingredientes)
 				receta.setCondimentos(condimentos)
 				receta.setExplicacion(explicacion)
 				receta.setDificultad(dificultad)
 				receta.setTemporadas(temporada)
+				RecetasRepository.getInstance.update( receta )
 			} else {
 				val receta1 = receta.clone();
 				receta1.setNombre(nombreReceta)
@@ -287,7 +290,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 				receta1.setExplicacion(explicacion)
 				receta1.setDificultad(dificultad)
 				receta1.setTemporadas(temporada)
-				receta1.setUsuarioCreador(this)
+				receta1.setUsuarioCreador(this.nombre)
 				recetas.add(receta1)
 			}
 		}

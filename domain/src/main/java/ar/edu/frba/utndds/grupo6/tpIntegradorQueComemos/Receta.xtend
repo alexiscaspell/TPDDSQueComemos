@@ -24,6 +24,8 @@ import org.hibernate.annotations.CollectionOfElements
 import javax.persistence.OneToOne
 import org.hibernate.annotations.LazyCollection
 import org.hibernate.annotations.LazyCollectionOption
+import javax.persistence.CascadeType
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 
 @Entity
 @Observable
@@ -36,8 +38,12 @@ public class Receta extends IReceta implements Cloneable {
 	private long id
  	*/
 	// Cambiar ? Como lo persistimos ? FK, string para buscar en el repo ?
+	/*
 	@OneToOne ( fetch = FetchType.LAZY )
 	private Usuario usuarioCreador
+	*/
+	
+	private String usuarioCreador
 
 	@Column ( length = 150 )
 	private String nombre
@@ -73,11 +79,11 @@ public class Receta extends IReceta implements Cloneable {
 	private String explicacion
 
 	@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany 
+	@OneToMany ( cascade = CascadeType.ALL )
 	private List<IReceta> subRecetas;
 
 	new(
-		Usuario usuario,
+		String usuario,
 		String nombre,
 		Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos,
@@ -172,7 +178,7 @@ public class Receta extends IReceta implements Cloneable {
 	}
 
 	def boolean puedeModificar(Usuario usuario) {
-		usuarioCreador.equals(usuario) || tipo.esPublica()
+		usuarioCreador.equals(usuario.nombre) || tipo.esPublica()
 	}
 
 	private def int cantidadDeAzucarEnLosCondimentos() {
@@ -184,8 +190,8 @@ public class Receta extends IReceta implements Cloneable {
 	}
 
 	def boolean puedeVer(Usuario usuario) {
-		usuarioCreador == null || usuarioCreador.getNombre().equals(usuario.getNombre()) || tipo.esPublica() ||
-			usuarioCreador.comparteGrupo(usuario)
+		usuarioCreador == null || usuarioCreador.equals(usuario.getNombre()) || tipo.esPublica() ||
+			UsuariosRepository.getInstance.searchByName( usuarioCreador ).head.comparteGrupo(usuario)
 	}
 
 	def boolean esIgual(Receta receta) {

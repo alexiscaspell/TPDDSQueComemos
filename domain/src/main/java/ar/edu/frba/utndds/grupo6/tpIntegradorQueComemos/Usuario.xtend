@@ -23,7 +23,7 @@ abstract class Usuario extends SujetoObservado {
 
 	@Id
 	@GeneratedValue ( strategy = GenerationType.TABLE )
-	private long id
+	public long id
 
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)

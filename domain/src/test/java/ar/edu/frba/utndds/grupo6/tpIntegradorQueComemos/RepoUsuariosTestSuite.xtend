@@ -11,6 +11,7 @@ import java.util.List
 import org.junit.Assert
 import org.junit.Test
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 
 class RepoUsuariosTestSuite {
 	
@@ -31,18 +32,7 @@ class RepoUsuariosTestSuite {
 	Usuario user
 	
 	UsuarioPosta pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-
-	@Test
-	def void agregarUsuarioARepoUsuariosSinAdministrador(){
-						
-		UsuariosRepository.getInstance().create( pepe )
-			
-		user = repositorio.searchByName( pepe.nombre ).head	
-		
-		Assert.assertTrue(user.equals(pepe))
 	
-	}
-
 		
 	@Test
 	def void agregarUsuarioARepoUsuariosConAdministrador(){
@@ -53,14 +43,12 @@ class RepoUsuariosTestSuite {
 			
 		user = repositorio.searchByName( pepe.nombre ).head	
 		
-		Assert.assertTrue(user.equals(pepe))
+		Assert.assertTrue(user.id.equals(pepe.id))
 		
 	}
 	
 	@Test
 	def void agregarUsuarioConCondicionesARepoUsuarios(){
-		
-		pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		
 		listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)
 		
@@ -74,7 +62,7 @@ class RepoUsuariosTestSuite {
 	
 		user = repositorio.searchByName( usuarioFabricado.nombre ).head	
 	
-		Assert.assertTrue(user.equals(user))
+		Assert.assertTrue(user.id.equals(user.id))
 		
 	}
 	
@@ -95,7 +83,7 @@ class RepoUsuariosTestSuite {
 		
 		user = repositorio.searchByName( userVeganoDiabetico.nombre ).head	
 		
-		Assert.assertTrue(! repositorio.existe(userVegano)&&user.equals(userVeganoDiabetico))		
+		Assert.assertTrue(! repositorio.existe(userVegano)&&user.id.equals(userVeganoDiabetico.id))		
 		
 		}
 	
@@ -119,8 +107,8 @@ class RepoUsuariosTestSuite {
 		repositorio.create(vegano)
 	
 		val List<Usuario> listaUsuarios = repositorio.list(vegano)
-	
-		Assert.assertTrue(listaUsuarios.contains(vegano)&&!listaUsuarios.contains(diabetico))		
+		
+		Assert.assertTrue( listaUsuarios.size == 1 )
 	}
 	
 	@Test

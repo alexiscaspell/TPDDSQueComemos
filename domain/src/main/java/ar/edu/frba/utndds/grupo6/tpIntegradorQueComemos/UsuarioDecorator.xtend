@@ -7,18 +7,23 @@ import java.util.Map
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
+import javax.persistence.Entity
+import javax.persistence.OneToOne
+import javax.persistence.FetchType
+import javax.persistence.CascadeType
 
+@Entity
 @Accessors
 public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 
+	@OneToOne ( fetch = FetchType.EAGER, cascade=CascadeType.ALL )
 	Usuario decorado
 
-	private RecetasRepository recetario
-
 	new(Usuario usuario) {
-		recetario = RecetasRepository.getInstance()
 		decorado = usuario
+	}
+	
+	new(){
 	}
 
 	//	------------------------------------------- Setters -------------------------------------------

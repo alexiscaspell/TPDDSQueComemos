@@ -35,7 +35,7 @@ class UsuariosRepository extends RepoDefault<Usuario> {
 	def List<Usuario> list(Usuario usuario) {
 		
 		val listaUsuariosConElMismoNombre = searchByName( usuario.nombre )
-		return listaUsuariosConElMismoNombre.filter[usuarioFiltrado|usuarioFiltrado.cumpleMismasCondiciones(usuario)].toList
+		return listaUsuariosConElMismoNombre.filter[ usuarioFiltrado|usuarioFiltrado.cumpleMismasCondiciones(usuario) ].toList
 	}
 	
 	def validarNickYContraseña(String nick,String pass){

@@ -3,13 +3,18 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
+import javax.persistence.Entity
 
+@Entity
 class UsuarioHipertenso extends UsuarioDecorator {
 	new(Usuario decorado) {
 		super(decorado)
 		decorado.condicion.add( Condicion.HIPERTENSO )
 	}
 
+	new(){
+	}
+	
 	override estadoRutina() {
 
 		// Rutina saludable si tiene una rutina activa con ejercicio Adicional

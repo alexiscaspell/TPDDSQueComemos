@@ -79,27 +79,27 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	@CollectionOfElements  
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany// Verificar si es EAGER o LAZY
+	//@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany ( fetch = FetchType.LAZY )// Verificar si es EAGER o LAZY
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 
 	@CollectionOfElements(fetch=FetchType.EAGER)
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany  // Verificar si es EAGER o LAZY
+	//@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany ( fetch = FetchType.LAZY ) // Verificar si es EAGER o LAZY
 	private List<Receta> recetas = new ArrayList<Receta>()
 
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany  // Verificar si es EAGER o LAZY
+	// @LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany  ( fetch = FetchType.LAZY )// Verificar si es EAGER o LAZY
 	private List<Receta> consultas = new ArrayList<Receta>()
 
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@ManyToMany 
+	//@LazyCollection (LazyCollectionOption.FALSE)
+	@ManyToMany ( fetch = FetchType.LAZY ) 
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany // Verificar si es EAGER o LAZY
+	//@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany  ( fetch = FetchType.LAZY ) // Verificar si es EAGER o LAZY
 	private List<Receta> favoritas = new ArrayList<Receta>()
 
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo, Date fechaNacimiento) {
@@ -109,6 +109,10 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 		this.fechaNacimiento = fechaNacimiento
 		this.nombre = nombre
 		this.sexo = sexo
+	}
+	
+	
+	new(){
 	}
 	/*
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo) {

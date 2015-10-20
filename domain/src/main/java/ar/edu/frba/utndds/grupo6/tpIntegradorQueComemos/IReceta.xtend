@@ -18,7 +18,7 @@ abstract class IReceta {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.TABLE )
-	private long Id
+	public long Id
 
 	def int getCalorias()
 

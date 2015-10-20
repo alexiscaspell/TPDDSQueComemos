@@ -11,6 +11,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Grupo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Login
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Administrador
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDecorator
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioHipertenso
 
 abstract class RepoDefault<T> {
 	
@@ -18,6 +22,10 @@ abstract class RepoDefault<T> {
 	AnnotationConfiguration().configure(  )
 			.addAnnotatedClass( Receta )
 			.addAnnotatedClass( UsuarioPosta ) // Usuario - UsuarioPosta - Diabetico.. ?
+			.addAnnotatedClass( UsuarioDecorator )
+			.addAnnotatedClass( UsuarioVegano )
+			.addAnnotatedClass( UsuarioDiabetico )
+			.addAnnotatedClass( UsuarioHipertenso )
 			.addAnnotatedClass( Grupo )
 			.addAnnotatedClass( Login )
 			.addAnnotatedClass( Administrador )

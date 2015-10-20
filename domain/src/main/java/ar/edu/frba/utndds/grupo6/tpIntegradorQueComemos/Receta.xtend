@@ -98,7 +98,7 @@ public class Receta extends IReceta implements Cloneable {
 	new() {
 		this.subRecetas = new ArrayList<IReceta>()
 	}
-
+	
 	override validar() {
 		if (ingredientes.values.length == 0 || getCalorias() < 5 || getCalorias() > 5000) {
 			throw new RecetaInvalidaExc()

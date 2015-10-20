@@ -10,12 +10,13 @@ import java.util.Date
 import java.util.List
 import org.junit.Assert
 import org.junit.Test
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 
 class RepoUsuariosTestSuite {
 	
 	Administrador admin = new Administrador
 	
-	RepoUsuarios repositorio = new RepoUsuarios	
+	UsuariosRepository repositorio = new UsuariosRepository	
 	
 	List<Condicion> listaCondicion 
 		
@@ -30,68 +31,75 @@ class RepoUsuariosTestSuite {
 	Usuario user
 	
 	UsuarioPosta pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+
+	@Test
+	def void agregarUsuarioARepoUsuariosSinAdministrador(){
+						
+		UsuariosRepository.getInstance().create( pepe )
+			
+		user = repositorio.searchByName( pepe.nombre ).head	
+		
+		Assert.assertTrue(user.equals(pepe))
+	
+	}
+
 		
 	@Test
-	def void agregarUsuarioARepoUsuarios(){
+	def void agregarUsuarioARepoUsuariosConAdministrador(){
 						
-	admin.agregarSolicitud(pepe)
-	
-	admin.repoUsuario = repositorio
-	
-	admin.aceptarUsuario(pepe)
+		admin.agregarSolicitud(pepe)
 		
-	user = repositorio.get(pepe)	
-	
-	Assert.assertTrue(user.equals(pepe))
+		admin.aceptarUsuario(pepe)
+			
+		user = repositorio.searchByName( pepe.nombre ).head	
+		
+		Assert.assertTrue(user.equals(pepe))
 		
 	}
 	
-		@Test
+	@Test
 	def void agregarUsuarioConCondicionesARepoUsuarios(){
 		
-	pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
+		
+		listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)
+		
+		fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)
+		
+		usuarioFabricado = fabrica.crearPerfil()
+					
+		admin.agregarSolicitud(usuarioFabricado)
+		
+		admin.aceptarUsuario(usuarioFabricado)
 	
-	listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)
-	
-	fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)
-	
-	usuarioFabricado = fabrica.crearPerfil()
-				
-	admin.agregarSolicitud(usuarioFabricado)
-	
-	admin.repoUsuario = repositorio
-	
-	admin.aceptarUsuario(usuarioFabricado)
-	
-	user = repositorio.get(usuarioFabricado)	
+		user = repositorio.searchByName( usuarioFabricado.nombre ).head	
 	
 		Assert.assertTrue(user.equals(user))
 		
 	}
 	
-		@Test
+	@Test
 	def void actualizarUsuarioConCondicionesARepoUsuarios(){
 			
-	listaCondicion = Arrays.asList(Condicion.VEGANO)		
-	val FabricaPerfilUsuario fabrica2 = new FabricaPerfilUsuario(listaCondicion,pepe)	
-	val Usuario userVegano = fabrica2.crearPerfil()
+		listaCondicion = Arrays.asList(Condicion.VEGANO)		
+		val FabricaPerfilUsuario fabrica2 = new FabricaPerfilUsuario(listaCondicion,pepe)	
+		val Usuario userVegano = fabrica2.crearPerfil()
 	
-	repositorio.add(userVegano)
-	
-	listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)		
-	fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)	
-	val Usuario userVeganoDiabetico = fabrica.crearPerfil()
-	
-	repositorio.update(	userVeganoDiabetico)
-	
-	user = repositorio.get(userVeganoDiabetico)	
-	
-	Assert.assertTrue(!repositorio.existe(userVegano)&&user.equals(userVeganoDiabetico))		
-	
-	}
+		repositorio.create(userVegano)
+		
+		listaCondicion = Arrays.asList(Condicion.VEGANO,Condicion.DIABETICO)		
+		fabrica = new FabricaPerfilUsuario(listaCondicion,pepe)	
+		val Usuario userVeganoDiabetico = fabrica.crearPerfil()
+		
+		repositorio.update(	userVeganoDiabetico)
+		
+		user = repositorio.searchByName( userVeganoDiabetico.nombre ).head	
+		
+		Assert.assertTrue(! repositorio.existe(userVegano)&&user.equals(userVeganoDiabetico))		
+		
+		}
 	
 	@Test
-	
 	def void listUsuarioConCondicionesEnRepoUsuarios(){
 		
 		listaCondicion = Arrays.asList(Condicion.VEGANO)
@@ -106,9 +114,9 @@ class RepoUsuariosTestSuite {
 	
 		val Usuario diabetico = fabrica2.crearPerfil()
 		
-		repositorio.add(diabetico)
+		repositorio.create(diabetico)
 	
-		repositorio.add(vegano)
+		repositorio.create(vegano)
 	
 		val List<Usuario> listaUsuarios = repositorio.list(vegano)
 	
@@ -137,7 +145,7 @@ class RepoUsuariosTestSuite {
 			
 			pepe.password = "123"
 			
-			repositorio.add(pepe)
+			repositorio.create(pepe)
 			
 			val Usuario usuarioEncontrado = repositorio.validarNickYContraseña("pepe","123")
 											
@@ -156,7 +164,7 @@ class RepoUsuariosTestSuite {
 			
 			val vegano = new UsuarioVegano(pepe)
 			
-			repositorio.add(vegano)
+			repositorio.create(vegano)
 			
 			val Usuario usuarioEncontrado = repositorio.validarNickYContraseña("pepe","123")
 											

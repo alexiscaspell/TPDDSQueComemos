@@ -10,16 +10,17 @@ import org.hibernate.criterion.Restrictions
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Grupo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Login
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Administrador
 
 abstract class RepoDefault<T> {
 	
 		private static final SessionFactory sessionFactory = new 
 	AnnotationConfiguration().configure(  )
 			.addAnnotatedClass( Receta )
-			
 			.addAnnotatedClass( UsuarioPosta ) // Usuario - UsuarioPosta - Diabetico.. ?
 			.addAnnotatedClass( Grupo )
 			.addAnnotatedClass( Login )
+			.addAnnotatedClass( Administrador )
 			.buildSessionFactory()
 			
 		

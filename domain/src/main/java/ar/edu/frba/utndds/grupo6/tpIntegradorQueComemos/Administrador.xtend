@@ -3,20 +3,30 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import java.util.ArrayList
 import java.util.List
-import org.eclipse.xtend.lib.annotations.Accessors
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
+import javax.persistence.Entity
+import javax.persistence.OneToMany
+import org.hibernate.annotations.LazyCollection
+import org.hibernate.annotations.LazyCollectionOption
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
+@Entity
 class Administrador {
 
-	@Accessors
-	private RepoUsuarios repoUsuario
-
+	@Id
+	@GeneratedValue
+	private long id
+	
+	@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany
 	private List<Usuario> colaDeEspera = new ArrayList<Usuario>()
 
 	def void aceptarUsuario(Usuario usuario) {
 
 		colaDeEspera.remove(usuario)
 
-		repoUsuario.add(usuario)
+		UsuariosRepository.getInstance().create(usuario)
 
 	}
 

@@ -110,14 +110,14 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 		this.nombre = nombre
 		this.sexo = sexo
 	}
-
+	/*
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo) {
 		this.altura = altura
 		this.peso = peso
 		this.rutina = rutina
 		this.nombre = nombre
 		this.sexo = sexo
-	}
+	} */
 
 	// ------------------------------------------- Setters -------------------------------------------
 	

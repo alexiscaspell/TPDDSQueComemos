@@ -10,6 +10,8 @@ import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToMany
+import org.hibernate.annotations.LazyCollection
+import org.hibernate.annotations.LazyCollectionOption
 
 @Accessors
 @Entity
@@ -23,10 +25,12 @@ public class Grupo implements Consumidor {
 	private String nombre
 
 	// ManyToMany ?
+	@LazyCollection (LazyCollectionOption.FALSE)
 	@ManyToMany 
 	private List<Usuario> integrantes = new ArrayList<Usuario>()
 
-	@OneToMany ( fetch = FetchType.EAGER ) // verificar si es EAGER o Lazy
+	@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany // verificar si es EAGER o Lazy
 	private List<Receta> recetasPreferidas = new ArrayList<Receta>()
 
 	def contieneAlUsuario(Usuario usuario) {

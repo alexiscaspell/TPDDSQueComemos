@@ -10,13 +10,14 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
+import javax.persistence.GenerationType
 
 @Entity
 @Inheritance ( strategy = InheritanceType.TABLE_PER_CLASS)
 abstract class IReceta {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue( strategy = GenerationType.TABLE )
 	private long Id
 
 	def int getCalorias()

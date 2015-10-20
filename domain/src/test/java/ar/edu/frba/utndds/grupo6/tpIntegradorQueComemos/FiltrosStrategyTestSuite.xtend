@@ -28,7 +28,7 @@ class FiltroStrategyTestSuite {
 		FiltroCompleto.agregarFiltroExcesoCalorias()
 		FiltroCompleto.agregarFiltroCaros()
 		FiltroCompleto.agregarFiltroCondicionesPreexistentes()
-		val listaFiltrada  = FiltroCompleto.aplicarFiltro( usuario1.getRecetas() , usuario1 )
+		val listaFiltrada  = FiltroCompleto.aplicarFiltro( usuario1.getRecetas().toList() , usuario1 )
 		//println( "La cantidad de elementos en la lista filtrada = " + listaFiltrada.size )
 		Assert.assertTrue( listaFiltrada.size == 0 ) // CORREGIR!!
 	}
@@ -41,7 +41,7 @@ class FiltroStrategyTestSuite {
 		FiltroCarosCaloriasYNoLeGusta.agregarFiltroCaros()
 		FiltroCarosCaloriasYNoLeGusta.agregarFiltroExcesoCalorias()
 		
-		val listaFiltrada  = FiltroCarosCaloriasYNoLeGusta.aplicarFiltro(  usuario1.getRecetas() , usuario1 )
+		val listaFiltrada  = FiltroCarosCaloriasYNoLeGusta.aplicarFiltro(  usuario1.getRecetas().toList()  , usuario1 )
 		//println( "La cantidad de elementos en la lista filtrada = " + listaFiltrada.size )
 		Assert.assertTrue( listaFiltrada.size == 1 )
 	}
@@ -53,7 +53,7 @@ class FiltroStrategyTestSuite {
 		FiltroCarosYNoLeGusta.agregarFiltroNoLeGusta()
 		FiltroCarosYNoLeGusta.agregarFiltroCaros()
 		
-		val listaFiltrada  = FiltroCarosYNoLeGusta.aplicarFiltro(  usuario1.getRecetas(), usuario1 )
+		val listaFiltrada  = FiltroCarosYNoLeGusta.aplicarFiltro(  usuario1.getRecetas().toList() , usuario1 )
 		//println( "La cantidad de elementos en la lista filtrada = " + listaFiltrada.size )
 		Assert.assertTrue( listaFiltrada.size == 2 )
 	}
@@ -64,7 +64,7 @@ class FiltroStrategyTestSuite {
 		//Filtros
 		FiltroNoLeGusta.agregarFiltroNoLeGusta()
 		
-		val listaFiltrada  = FiltroNoLeGusta.aplicarFiltro(  usuario1.getRecetas(), usuario1 )
+		val listaFiltrada  = FiltroNoLeGusta.aplicarFiltro(  usuario1.getRecetas().toList() , usuario1 )
 		//println( "La cantidad de elementos en la lista filtrada = " + listaFiltrada.size )
 		Assert.assertTrue( listaFiltrada.size == 3 )
 	}
@@ -72,7 +72,7 @@ class FiltroStrategyTestSuite {
 	@Test
 	def void FiltroStrategySinFiltro() {
 		val SinFiltro = new FiltroPostaS()		
-		val listaFiltrada  = SinFiltro.aplicarFiltro(  usuario1.getRecetas(), usuario1 )
+		val listaFiltrada  = SinFiltro.aplicarFiltro(  usuario1.getRecetas().toList() , usuario1 )
 		//println( "La cantidad de elementos en la lista filtrada = " + listaFiltrada.size )
 		Assert.assertTrue( listaFiltrada.size == 4 )
 	}

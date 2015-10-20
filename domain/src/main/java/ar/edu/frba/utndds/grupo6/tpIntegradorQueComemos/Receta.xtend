@@ -22,6 +22,8 @@ import javax.persistence.EnumType
 import javax.persistence.MapKey
 import org.hibernate.annotations.CollectionOfElements
 import javax.persistence.OneToOne
+import org.hibernate.annotations.LazyCollection
+import org.hibernate.annotations.LazyCollectionOption
 
 @Entity
 @Observable
@@ -34,7 +36,7 @@ public class Receta extends IReceta implements Cloneable {
 	private long id
  	*/
 	// Cambiar ? Como lo persistimos ? FK, string para buscar en el repo ?
-	@OneToOne
+	@OneToOne ( fetch = FetchType.LAZY )
 	private Usuario usuarioCreador
 
 	@Column ( length = 150 )
@@ -70,7 +72,8 @@ public class Receta extends IReceta implements Cloneable {
 	@Column ( length = 150 )
 	private String explicacion
 
-	@OneToMany ( fetch = FetchType.EAGER )
+	@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany 
 	private List<IReceta> subRecetas;
 
 	new(

@@ -25,6 +25,8 @@ import javax.persistence.Id
 import org.hibernate.annotations.CollectionOfElements
 import javax.persistence.ManyToMany
 import javax.persistence.OneToOne
+import org.hibernate.annotations.LazyCollection
+import org.hibernate.annotations.LazyCollectionOption
 
 @Entity
 @Observable
@@ -68,31 +70,36 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	private String email
 
 	// Buscar como persistir lista de enums
-	@CollectionOfElements(fetch=FetchType.EAGER)
+	@CollectionOfElements 
 	private List<Condicion> condiciones = new ArrayList<Condicion>()
 
-	@CollectionOfElements(fetch=FetchType.EAGER)
+	@CollectionOfElements
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
-	@CollectionOfElements(fetch=FetchType.EAGER) 
+	@CollectionOfElements  
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
-	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
+	@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany// Verificar si es EAGER o LAZY
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 
 	@CollectionOfElements(fetch=FetchType.EAGER)
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
-	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
+	@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany  // Verificar si es EAGER o LAZY
 	private List<Receta> recetas = new ArrayList<Receta>()
 
-	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
+	@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany  // Verificar si es EAGER o LAZY
 	private List<Receta> consultas = new ArrayList<Receta>()
 
-	@ManyToMany ( fetch = FetchType.EAGER )
+	@LazyCollection (LazyCollectionOption.FALSE)
+	@ManyToMany 
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
-	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
+	@LazyCollection (LazyCollectionOption.FALSE)
+	@OneToMany // Verificar si es EAGER o LAZY
 	private List<Receta> favoritas = new ArrayList<Receta>()
 
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo, Date fechaNacimiento) {

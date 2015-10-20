@@ -11,7 +11,6 @@ import java.util.List
 import org.junit.Assert
 import org.junit.Test
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 
 class RepoUsuariosTestSuite {
 	
@@ -135,13 +134,13 @@ class RepoUsuariosTestSuite {
 			
 			repositorio.create(pepe)
 			
-			val Usuario usuarioEncontrado = repositorio.validarNickYContraseña("pepe","123")
+			val Usuario usuarioEncontrado = repositorio.searchByExample( pepe ).head
 											
-			Assert.assertTrue(usuarioEncontrado.equals(pepe))
+			Assert.assertTrue( usuarioEncontrado.id.equals( repositorio.searchByName( pepe.nombre ).head.id ) )
 		
 	}
 	
-			@Test
+	@Test
 	def void crearPerfilDeUsuarioVeganoYBuscarPorNickYPass(){
 				
 			//pepe.login = new Login("pepe","123")
@@ -154,9 +153,9 @@ class RepoUsuariosTestSuite {
 			
 			repositorio.create(vegano)
 			
-			val Usuario usuarioEncontrado = repositorio.validarNickYContraseña("pepe","123")
+			val Usuario usuarioEncontrado = repositorio.searchByExample( vegano ).head
 											
-			Assert.assertTrue(usuarioEncontrado.equals(vegano))
+			Assert.assertTrue( usuarioEncontrado.id.equals( repositorio.searchByName( pepe.nombre ).head.id ) )
 		
 	}
 	

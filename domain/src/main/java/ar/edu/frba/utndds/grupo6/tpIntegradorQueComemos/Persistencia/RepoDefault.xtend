@@ -3,21 +3,23 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia
 import org.hibernate.SessionFactory
 import org.hibernate.cfg.AnnotationConfiguration
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import java.util.List
 import org.hibernate.HibernateException
 import org.hibernate.Criteria
 import org.hibernate.criterion.Restrictions
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Grupo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Login
 
 abstract class RepoDefault<T> {
 	
 		private static final SessionFactory sessionFactory = new 
 	AnnotationConfiguration().configure(  )
 			.addAnnotatedClass( Receta )
+			
 			.addAnnotatedClass( UsuarioPosta ) // Usuario - UsuarioPosta - Diabetico.. ?
-			.addAnnotatedClass( UsuarioDiabetico )
+			.addAnnotatedClass( Grupo )
+			.addAnnotatedClass( Login )
 			.buildSessionFactory()
 			
 		

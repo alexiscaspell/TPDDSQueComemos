@@ -10,8 +10,20 @@ import java.util.Map
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.Inheritance
+import javax.persistence.InheritanceType
+import javax.persistence.GenerationType
 
-public interface Usuario {
+@Entity
+@Inheritance ( strategy = InheritanceType.TABLE_PER_CLASS)
+abstract class Usuario extends SujetoObservado {
+
+	@Id
+	@GeneratedValue ( strategy = GenerationType.TABLE )
+	private long id
 
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)
@@ -84,13 +96,13 @@ public interface Usuario {
 	def Boolean cumpleMismasCondiciones(Usuario usuario)
 
 	def Usuario crearPerfil()
-
+	/*
 	def void addObservador(Observador observador)
 
 	def void removeObservador(Observador observador)
 
 	def List<Observador> getObservadores()
-	
+	 */
 	def void modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada)
 	

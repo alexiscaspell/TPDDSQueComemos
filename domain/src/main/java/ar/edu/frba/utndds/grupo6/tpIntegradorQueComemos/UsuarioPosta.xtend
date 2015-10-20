@@ -22,17 +22,22 @@ import javax.persistence.FetchType
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import org.hibernate.annotations.CollectionOfElements
+import javax.persistence.ManyToMany
+import javax.persistence.OneToOne
 
 @Entity
 @Observable
 @Accessors
-public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor {
+public class UsuarioPosta extends Usuario implements Consumidor {
 
+	/*
 	@Id
 	@GeneratedValue
 	private long id
+	*/
 
-	// OneToOne ?
+	@OneToOne 
 	private Login login
 	
 	@Column ( length = 150 )
@@ -63,18 +68,19 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	private String email
 
 	// Buscar como persistir lista de enums
+	@CollectionOfElements(fetch=FetchType.EAGER)
 	private List<Condicion> condiciones = new ArrayList<Condicion>()
 
-	// Buscar como persistir lista de enums
+	@CollectionOfElements(fetch=FetchType.EAGER)
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
-	// Buscar como persistir lista de string 
+	@CollectionOfElements(fetch=FetchType.EAGER) 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
 	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 
-	// Buscar como persistir lista de enums
+	@CollectionOfElements(fetch=FetchType.EAGER)
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
@@ -83,7 +89,7 @@ public class UsuarioPosta extends SujetoObservado implements Usuario, Consumidor
 	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY
 	private List<Receta> consultas = new ArrayList<Receta>()
 
-	// es ManyToMany ?
+	@ManyToMany ( fetch = FetchType.EAGER )
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
 	@OneToMany ( fetch = FetchType.EAGER ) // Verificar si es EAGER o LAZY

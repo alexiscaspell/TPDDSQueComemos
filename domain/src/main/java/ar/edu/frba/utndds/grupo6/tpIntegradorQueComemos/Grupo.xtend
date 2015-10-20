@@ -9,6 +9,7 @@ import javax.persistence.OneToMany
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.ManyToMany
 
 @Accessors
 @Entity
@@ -22,6 +23,7 @@ public class Grupo implements Consumidor {
 	private String nombre
 
 	// ManyToMany ?
+	@ManyToMany 
 	private List<Usuario> integrantes = new ArrayList<Usuario>()
 
 	@OneToMany ( fetch = FetchType.EAGER ) // verificar si es EAGER o Lazy

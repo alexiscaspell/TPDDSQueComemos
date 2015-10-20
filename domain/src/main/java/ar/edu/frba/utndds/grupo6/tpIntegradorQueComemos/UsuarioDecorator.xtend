@@ -10,7 +10,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 @Accessors
-public abstract class UsuarioDecorator extends SujetoObservado implements Usuario, Consumidor {
+public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 
 	Usuario decorado
 

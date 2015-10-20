@@ -19,19 +19,22 @@ import javax.persistence.OneToMany
 import javax.persistence.Column
 import javax.persistence.Enumerated
 import javax.persistence.EnumType
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.MapKey
+import org.hibernate.annotations.CollectionOfElements
+import javax.persistence.OneToOne
 
 @Entity
 @Observable
 @Accessors
-public class Receta implements IReceta, Cloneable {
-
+public class Receta extends IReceta implements Cloneable {
+	
+	/*
 	@Id
 	@GeneratedValue
 	private long id
-
+ 	*/
 	// Cambiar ? Como lo persistimos ? FK, string para buscar en el repo ?
+	@OneToOne
 	private Usuario usuarioCreador
 
 	@Column ( length = 150 )
@@ -46,16 +49,19 @@ public class Receta implements IReceta, Cloneable {
 	@Enumerated(EnumType.STRING) 
 	private Dificultad dificultad
 
-	// Buscar como persistir lista de enums 
+	// Buscar como persistir lista de enums
+	@CollectionOfElements 
 	private List<Temporada> temporadas
 
 	@Enumerated(EnumType.STRING) 
 	private TipoReceta tipo
 
-	// Buscar como persistir, referencia a tabla ? 
+	// Buscar como persistir, referencia a tabla ?
+	@CollectionOfElements
 	private Map<Ingrediente, Integer> ingredientes = new HashMap<Ingrediente, Integer>()
 
 	// Buscar como persistir, referencia a tabla ?
+	@CollectionOfElements
 	private Map<Condimento, Integer> condimentos
 
 	@Column
@@ -64,7 +70,7 @@ public class Receta implements IReceta, Cloneable {
 	@Column ( length = 150 )
 	private String explicacion
 
-	//@OneToMany ( fetch = FetchType.EAGER )
+	@OneToMany ( fetch = FetchType.EAGER )
 	private List<IReceta> subRecetas;
 
 	new(

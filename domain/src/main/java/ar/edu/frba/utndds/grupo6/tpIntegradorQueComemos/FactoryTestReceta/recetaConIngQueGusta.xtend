@@ -11,12 +11,12 @@ import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class recetaConIngQueGusta implements recetaFactory {
-	override Receta cumple(Usuario usuario) {
+	override Receta cumple(String creador) {
 		var rec = new recetaConCarne()
-		rec.cumple(usuario)
+		rec.cumple( creador)
 	}
 
-	override Receta noCumple(Usuario usuario) //La remolacha no le gusta a nadie//
+	override Receta noCumple(String creador) //La remolacha no le gusta a nadie//
 	{
 		val nombre = "Remolacha con huevo"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
@@ -32,7 +32,7 @@ class recetaConIngQueGusta implements recetaFactory {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)
-		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
+		val recetaSimple = new Receta(creador, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
 			temporadas)
 		recetaSimple.tipo = TipoReceta.PUBLICA
 		recetaSimple

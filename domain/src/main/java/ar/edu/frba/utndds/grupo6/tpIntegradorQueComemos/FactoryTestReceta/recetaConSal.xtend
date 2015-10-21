@@ -12,7 +12,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class recetaConSal implements recetaFactory {
 
-	override Receta cumple(Usuario usuario) {
+	override Receta cumple(String creador) {
 		val nombre = "Pure"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.PAPA, 1000)
@@ -27,28 +27,28 @@ class recetaConSal implements recetaFactory {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)
-		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
+		val recetaSimple = new Receta(creador, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
 			temporadas)
 		recetaSimple.calorias = 100
 		recetaSimple.tipo = TipoReceta.PUBLICA
 		recetaSimple
 	}
 
-	override Receta noCumple(Usuario usuario) {
+	override Receta noCumple(String creador) {
 		val nombre = "Frutillas a la crema"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.FRUTILLA, 1000)
 		val condimentos = new HashMap<Condimento, Integer>()
 		condimentos.put(Condimento.CREMA, 500)
 		condimentos.put(Condimento.AZUCAR, 800)
-		val explicacion = "1 - Cortar las frutillas\n" + "2 - Preparar crema" +
-			"3 - Agregar azucar a las frutillas" + "4 - Servir las frutillas junto con la crema"
+		val explicacion = "1 - Cortar las frutillas\n" + "2 - Preparar crema" + "3 - Agregar azucar a las frutillas" +
+			"4 - Servir las frutillas junto con la crema"
 		val temporadas = new ArrayList<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)
-		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.MEDIANA,
+		val recetaSimple = new Receta(creador, nombre, ingredientes, condimentos, explicacion, Dificultad.MEDIANA,
 			temporadas)
 		recetaSimple.tipo = TipoReceta.PRIVADA
 		recetaSimple.calorias = 240

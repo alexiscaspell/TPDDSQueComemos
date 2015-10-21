@@ -97,15 +97,15 @@ class MonitoreoConsultasTestSuite {
 	}
 	
 	def seteoRecetario(){
-		recetario.create( recetaSal.cumple(usuarioMasculino) )
-		recetario.create( recetaAzucar.cumple(usuarioFemenino) )
-		recetario.create( recetaCarne.cumple(usuarioFemenino) )
+		recetario.create( recetaSal.cumple(usuarioMasculino.nombre) )
+		recetario.create( recetaAzucar.cumple(usuarioFemenino.nombre) )
+		recetario.create( recetaCarne.cumple(usuarioFemenino.nombre) )
 	}
 	
 	def getUsuarioMasculino() {
 		val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
 		// Agregar Recetas que conoce
-		pepe.agregarReceta( recetaSal.cumple(usuarioMasculino) )
+		pepe.agregarReceta( recetaSal.cumple(usuarioMasculino.nombre) )
 		// Agregar Observadores
 		pepe.addObservador(ConsultasXSexo)
 		pepe.addObservador(ConsultasXRecetas)
@@ -118,7 +118,7 @@ class MonitoreoConsultasTestSuite {
 		val mariana = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Mariana Lopez",Sexo.FEMENINO,fecha)
 	
 		// Agregar Recetas que conoce
-		mariana.agregarReceta(recetaAzucar.cumple(usuarioFemenino))
+		mariana.agregarReceta(recetaAzucar.cumple(usuarioFemenino.nombre))
 		val vegano = new UsuarioVegano(mariana)
 		vegano.addObservador(ConsultasXSexo)
 		vegano.addObservador(ConsultasXRecetas)

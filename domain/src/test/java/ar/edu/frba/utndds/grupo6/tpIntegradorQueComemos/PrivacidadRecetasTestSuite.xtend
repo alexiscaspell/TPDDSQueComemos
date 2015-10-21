@@ -23,19 +23,19 @@ class PrivacidadRecetasTestSuite {
 	@Test 
 	def Usuario1ModificaRecetaDeUsuario1()
 	{
-		Assert.assertTrue((recetaEsPublica.noCumple(usuario1)).puedeModificar(usuario1))			
+		Assert.assertTrue((recetaEsPublica.noCumple(usuario1.nombre)).puedeModificar(usuario1))			
 	}
 	
 	@Test 
 	def Usuario2NoPuedeModificarRecetaDeUsuario1()
 	{
-		Assert.assertFalse((recetaEsPublica.noCumple(usuario1)).puedeModificar(usuario2))			
+		Assert.assertFalse((recetaEsPublica.noCumple(usuario1.nombre)).puedeModificar(usuario2))			
 	}
 	
 	@Test
 	def Usuario2ModificaRecetaUsuario1PorSerPublica()
 	{
-		Assert.assertTrue((recetaEsPublica.cumple(usuario2)).puedeModificar(usuario2))	
+		Assert.assertTrue((recetaEsPublica.cumple(usuario2.nombre)).puedeModificar(usuario2))	
 	}
 	
 	def Usuario getUsuario1()

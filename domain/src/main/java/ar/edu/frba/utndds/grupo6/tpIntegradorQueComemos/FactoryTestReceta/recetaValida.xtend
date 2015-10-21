@@ -12,7 +12,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class recetaValida implements recetaFactory {
 
-	override Receta noCumple(Usuario usuario) {
+	override Receta noCumple(String creador) {
 
 		val nombre = "RecetaVacia"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
@@ -23,16 +23,16 @@ class recetaValida implements recetaFactory {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)
-		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.DIFICIL,
+		val recetaSimple = new Receta(creador, nombre, ingredientes, condimentos, explicacion, Dificultad.DIFICIL,
 			temporadas)
 		recetaSimple.tipo = TipoReceta.PUBLICA
 		recetaSimple
 
 	}
 
-	override Receta cumple(Usuario usuario) {
+	override Receta cumple(String creador) {
 		var rec = new recetaConSal()
-		rec.cumple(usuario)
+		rec.cumple(creador)
 	}
 
 }

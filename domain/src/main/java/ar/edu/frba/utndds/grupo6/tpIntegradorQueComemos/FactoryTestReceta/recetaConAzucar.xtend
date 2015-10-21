@@ -13,7 +13,7 @@ import queComemos.entrega3.dominio.Dificultad
 @Data
 class recetaConAzucar implements recetaFactory {
 
-	override Receta cumple(Usuario usuario) {
+	override Receta cumple(String creador) {
 
 		val nombre = "Torta"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
@@ -28,7 +28,7 @@ class recetaConAzucar implements recetaFactory {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)
-		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
+		val recetaSimple = new Receta( creador, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
 			temporadas)
 		recetaSimple.tipo = TipoReceta.PRIVADA
 		recetaSimple.calorias = 600
@@ -36,7 +36,7 @@ class recetaConAzucar implements recetaFactory {
 
 	}
 
-	override Receta noCumple(Usuario usuario) {
+	override Receta noCumple(String creador ) {
 		val nombre = "Pan casero"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		ingredientes.put(Ingrediente.HARINA, 1000)
@@ -52,7 +52,7 @@ class recetaConAzucar implements recetaFactory {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)
-		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.MEDIANA,
+		val recetaSimple = new Receta( creador, nombre, ingredientes, condimentos, explicacion, Dificultad.MEDIANA,
 			temporadas)
 		recetaSimple.tipo = TipoReceta.PUBLICA
 		recetaSimple.calorias = 350

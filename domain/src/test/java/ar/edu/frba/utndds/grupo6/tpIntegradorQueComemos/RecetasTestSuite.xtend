@@ -27,7 +27,7 @@ class RecetasTestSuite {
 	def void sugerenciaAUnUsuarioDeUnaReceta()
 	{
 		usuario.ingredientesFeos.add(Ingrediente.CARNE)//factory usuario
-		Assert.assertTrue(usuario.sePuedeSugerir(recetaAzucar.cumple(usuario)))
+		Assert.assertTrue(usuario.sePuedeSugerir(recetaAzucar.cumple(usuario.nombre)))
 	}
 	
 	
@@ -35,14 +35,14 @@ class RecetasTestSuite {
 	def void noSePuedeSugerirUnaRecetaAUnUsuario()
 	{
 		usuario.ingredientesFeos.add(Ingrediente.PAPA)
-		Assert.assertFalse(usuario.sePuedeSugerir(recetaSal.cumple(usuario)))
+		Assert.assertFalse(usuario.sePuedeSugerir(recetaSal.cumple(usuario.nombre)))
 	}	
 	
 	@Test
 	def void noSePuedeSugerirUnaTortaAUnDiabetico()
 	{
 		val usuarioDiabetico = new UsuarioDiabetico(usuario)
-		Assert.assertFalse(usuarioDiabetico.sePuedeSugerir(recetaAzucar.cumple(usuario)))
+		Assert.assertFalse(usuarioDiabetico.sePuedeSugerir(recetaAzucar.cumple(usuario.nombre)))
 	}	
 		
 	//@Test(expected=RecetaInvalidaExc)
@@ -104,21 +104,21 @@ class RecetasTestSuite {
 	}*/
 	def void recetaInvalidaPorNoTenerIngredientes()
 	{
-		val receta =  recetaEsValida.noCumple(usuario)
+		val receta =  recetaEsValida.noCumple(usuario.nombre)
 		receta.validar()
 	}	
 	@Test
 	def void recetaPure()
 	{	
-		val pure= recetaSal.cumple(usuario)
+		val pure= recetaSal.cumple(usuario.nombre)
 		Assert.assertEquals(100, pure.cantidadDeAzucar(), 0.01)		
 	}
 	
 	@Test
 	def void crearRecetaMilanesasConPure()
 	{	
-		val pure = recetaSal.cumple(usuario)
-		val milanesasConPure = recetaCarne.cumple(usuario)
+		val pure = recetaSal.cumple(usuario.nombre)
+		val milanesasConPure = recetaCarne.cumple(usuario.nombre)
 		milanesasConPure.agregarSubReceta(pure)
 		Assert.assertEquals(100, milanesasConPure.cantidadDeAzucar(), 0.01)		
 	}
@@ -126,15 +126,15 @@ class RecetasTestSuite {
 	@Test
 	def void cantidadIngredientesPure()
 	{	
-		val pure = recetaSal.cumple(usuario)
+		val pure = recetaSal.cumple(usuario.nombre)
 		Assert.assertTrue(pure.getIngredientes().size == 1)
 	}
 	
 	@Test
 	def void cantidadIngredientesMilanesasConPure()
 	{	
-		val pure = recetaSal.cumple(usuario)
-		val milanesasConPure = recetaCarne.cumple(usuario)
+		val pure = recetaSal.cumple(usuario.nombre)
+		val milanesasConPure = recetaCarne.cumple(usuario.nombre)
 		milanesasConPure.agregarSubReceta(pure)
 		Assert.assertTrue(milanesasConPure.getIngredientes().values.length == 4)
 	}

@@ -12,7 +12,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 
 class recetaConIngCaro {
 
-	def Receta cumple(Usuario usuario) {
+	def Receta cumple(String creador) {
 
 		val nombre = "Salmon Ahumado"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
@@ -26,16 +26,16 @@ class recetaConIngCaro {
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
 		temporadas.add(Temporada.VERANO)
-		val recetaSimple = new Receta(usuario.nombre, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
+		val recetaSimple = new Receta( creador ,nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
 			temporadas)
 		recetaSimple.tipo = TipoReceta.PRIVADA
 		recetaSimple
 
 	}
 
-	def Receta noCumple(Usuario usuario) {
+	def Receta noCumple(String creador) {
 		var rec = new recetaConCarne()
-		rec.cumple(usuario)
+		rec.cumple(creador)
 	}
 
 }

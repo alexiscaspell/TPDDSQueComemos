@@ -27,4 +27,7 @@ class Login {
 		password = pass
 	}
 	
+	new(){
+	}
+	
 }

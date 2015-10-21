@@ -41,7 +41,7 @@ class AplicationModel {
 				RecetasMostradas = "Tus ultimas Recetas Consultadas son : "
 			} else {
 				RecetasMostradas = "Tus Recetas Favoritas son : "
-				resultados = diezUltimas(usuario.favoritas)
+				resultados = diezUltimas(usuario.favoritas.toList)
 
 			}
 

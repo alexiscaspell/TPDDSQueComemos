@@ -24,11 +24,11 @@ class ListadoRecetas {
 	recetaConCarne recetaCarne = new recetaConCarne()
 
 	new() {
-		recetas.add(recetaAzucar.cumple(usuario))
-		recetas.add(recetaAzucar.noCumple(usuario))
-		recetas.add(recetaSal.cumple(usuario))
-		recetas.add(recetaSal.noCumple(usuario))
-		recetas.add(recetaCarne.cumple(usuario))
-		recetas.add(recetaCarne.noCumple(usuario))
+		recetas.add(recetaAzucar.cumple(usuario.nombre))
+		recetas.add(recetaAzucar.noCumple(usuario.nombre))
+		recetas.add(recetaSal.cumple(usuario.nombre))
+		recetas.add(recetaSal.noCumple(usuario.nombre))
+		recetas.add(recetaCarne.cumple(usuario.nombre))
+		recetas.add(recetaCarne.noCumple(usuario.nombre))
 	}
 }

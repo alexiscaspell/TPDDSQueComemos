@@ -39,7 +39,7 @@ class PedidoRecetas {
 				recetas = diezPrimeras.diezPrimeras(usuario.getConsultas())
 			} else {
 				mostrando = "Tus Recetas Favoritas"
-				recetas = diezPrimeras.diezPrimeras(usuario.favoritas)
+				recetas = diezPrimeras.diezPrimeras(usuario.favoritas.toList)
 			}
 		}
 		

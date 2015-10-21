@@ -12,6 +12,7 @@ import org.uqbar.arena.windows.Window
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
 import java.util.Date
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 
 class QueComemosApplication extends Application {
 
@@ -29,14 +30,16 @@ class QueComemosApplication extends Application {
 	}
 
 	override protected Window<?> createMainWindow() {
-		pepe.marcarComoFavorita(recetaEsValida.cumple(pepe))
-		pepe.marcarComoFavorita(recetaEsValida.noCumple(pepe))
-		pepe.marcarComoFavorita(recetaAzucar.cumple(pepe))
-		pepe.marcarComoFavorita(recetaAzucar.noCumple(pepe))
-		pepe.marcarComoFavorita(recetaSal.cumple(pepe))
-		pepe.marcarComoFavorita(recetaSal.noCumple(pepe))
-		pepe.marcarComoFavorita(recetaCarne.cumple(pepe))
-		return new PanelUsuario(pepe, this, new AplicationModel(ConsultasXRecetas.estadistica))
+		UsuariosRepository.getInstance().create( pepe )
+		pepe.marcarComoFavorita(recetaEsValida.cumple(pepe.nombre))
+		pepe.marcarComoFavorita(recetaEsValida.noCumple(pepe.nombre))
+		pepe.marcarComoFavorita(recetaAzucar.cumple(pepe.nombre))
+		pepe.marcarComoFavorita(recetaAzucar.noCumple(pepe.nombre))
+		pepe.marcarComoFavorita(recetaSal.cumple(pepe.nombre))
+		pepe.marcarComoFavorita(recetaSal.noCumple(pepe.nombre))
+		pepe.marcarComoFavorita(recetaCarne.cumple(pepe.nombre))
+		var usuario = UsuariosRepository.getInstance().searchByName( "Juan Jose Lopez").head
+		return new PanelUsuario( usuario , this, new AplicationModel(ConsultasXRecetas.estadistica))
 	}
 
 }

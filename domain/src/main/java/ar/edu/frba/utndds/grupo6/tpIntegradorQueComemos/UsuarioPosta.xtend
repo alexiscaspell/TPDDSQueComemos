@@ -28,6 +28,12 @@ import javax.persistence.OneToOne
 import org.hibernate.annotations.LazyCollection
 import org.hibernate.annotations.LazyCollectionOption
 import javax.persistence.CascadeType
+import org.hibernate.annotations.Fetch
+import org.hibernate.annotations.FetchMode
+import java.util.HashSet
+import java.util.Set
+import javax.persistence.JoinColumn
+import javax.persistence.JoinTable
 
 @Entity
 @Observable
@@ -84,7 +90,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	@OneToMany ( fetch = FetchType.LAZY )// Verificar si es EAGER o LAZY
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 
-	@CollectionOfElements(fetch=FetchType.EAGER)
+	@CollectionOfElements //(fetch=FetchType.EAGER)
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
@@ -100,8 +106,15 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany  ( fetch = FetchType.LAZY ) // Verificar si es EAGER o LAZY
-	private List<Receta> favoritas = new ArrayList<Receta>()
+	//@OneToMany ( fetch = FetchType.EAGER, cascade = CascadeType.ALL ) // Verificar si es EAGER o LAZY
+	//@Fetch ( value = FetchMode.SUBSELECT )
+	@OneToMany ( fetch = FetchType.EAGER, cascade = CascadeType.ALL )
+   	@JoinTable(
+            name="Usuario_Favoritas",
+            joinColumns = @JoinColumn( name="User_id"),
+            inverseJoinColumns = @JoinColumn( name="Receta_id")
+    )
+	private Set<Receta> favoritas = new HashSet<Receta>()
 
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo, Date fechaNacimiento) {
 		this.altura = altura

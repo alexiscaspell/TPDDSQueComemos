@@ -16,6 +16,7 @@ import javax.persistence.Id
 import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
 import javax.persistence.GenerationType
+import java.util.Set
 
 @Entity
 @Inheritance ( strategy = InheritanceType.TABLE_PER_CLASS)
@@ -64,7 +65,7 @@ abstract class Usuario extends SujetoObservado {
 
 	def void marcarComoFavorita(Receta receta)
 
-	def List<Receta> getFavoritas()
+	def Set<Receta> getFavoritas()
 
 	def List<Ingrediente> getPreferenciasAlimenticias()
 

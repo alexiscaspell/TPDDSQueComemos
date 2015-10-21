@@ -4,7 +4,7 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hbm2ddl.auto">create-drop</property>
+		<property name="hbm2ddl.auto">update</property>
 		<property name="hibernate.dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
@@ -16,10 +16,10 @@
 			jdbc:mysql://localhost/recetas
 		</property>
 		<property name="hibernate.connection.username">
-			root
+			tpdds
 		</property>
 		<property name="hibernate.connection.password">
-			pass
+			tpdds
 		</property>
 
 		<property name="show_sql">true</property>

@@ -26,7 +26,6 @@ class PedidoRecetas {
 	}
 
 	def setRecetas() {
-
 		// If de primer Login ( cambiar false cuando este termiando el login )
 		if ( false ) {
 			pedidoMonitoreo.masConsultadas

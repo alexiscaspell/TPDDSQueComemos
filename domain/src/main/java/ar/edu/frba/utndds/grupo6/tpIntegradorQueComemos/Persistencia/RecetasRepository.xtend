@@ -16,36 +16,35 @@ import queComemos.entrega3.repositorio.RepoRecetas
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.RecetaAdapter
 
 class RecetasRepository extends RepoDefault<Receta> {
-	
+
 	private static RecetasRepository instance
-	
+
 	private RepoRecetas repoRecetas = new RepoRecetas();
-	
+
 	private Gson gson = new Gson();
-	
+
 	private RecetaAdapter adapter = new RecetaAdapter();
-	
+
 	@Accessors
 	private Command sendMailCommand;
-	
+
 	static def getInstance() {
 		if (instance == null) {
 			instance = new RecetasRepository()
 		}
 		return instance
 	}
-	
+
 	override getEntityType() {
-		typeof( Receta )
+		typeof(Receta)
 	}
-	
+
 	override addQueryByExample(Criteria criteria, Receta t) {
 		// Sobre que criteria se busca, habria un solo tipo de busqueda?
 	}
-	
-	
+
 	// Modificar?
-	def ResultadoConsulta getRecetasQueCumplen( Usuario usuario, Receta receta ) {
+	def ResultadoConsulta getRecetasQueCumplen(Usuario usuario, Receta receta) {
 		val recetasQueCoinciden = allInstances.filter [ x |
 			x.puedeVer(usuario) && receta.nombre == null || receta.nombre.equals(x.nombre) && receta.anio == 0 || receta.
 				anio == x.anio && receta.dificultad == null || receta.dificultad == x.dificultad &&
@@ -85,5 +84,5 @@ class RecetasRepository extends RepoDefault<Receta> {
 
 		recetasAdaptadas.filter[x|!allInstances.contains(x)].toList() as ArrayList<Receta>;
 	}
-	
+
 }

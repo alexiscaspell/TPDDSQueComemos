@@ -15,12 +15,15 @@ import java.util.ArrayList
 import java.util.HashMap
 import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
+import java.util.Date
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 
 @Accessors
 class Dependencias {
 	public static val repoUsuarios = new Repositorio()
 	public static val repoRecetas = Recetario.getInstance()
-	public static Usuario usuario_aux
+	public static val usuariosRepository = UsuariosRepository.getInstance;
+	public static Usuario usuario
 	val static temporadasReceta1 = new ArrayList<Temporada>();
 	val static temporadasReceta2 = new ArrayList<Temporada>();
 	val static condimentosReceta1 = new HashMap<Condimento, Integer>();
@@ -30,15 +33,15 @@ class Dependencias {
 	public static ConsultasXRecetas consultasXRecetas = new ConsultasXRecetas()
 
 	public static def hardcodear() {
-		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO)
+		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO, new Date(1989,6,5))
 		var Receta receta1 = new Receta
 		var Receta receta2 = new Receta
 		receta1.nombre = "Papa"
 		receta1.dificultad = Dificultad.FACIL
 		receta1.calorias = 500
-		receta1.usuarioCreador = usuario
+		receta1.usuarioCreador = usuario.nickName
 		receta1.tipo = TipoReceta.PUBLICA
-		receta2.usuarioCreador = usuario
+		receta2.usuarioCreador = usuario.nickName
 		receta2.tipo = TipoReceta.PUBLICA
 
 		usuario.platosQueNoLeGustan.add("Pizza")
@@ -62,7 +65,7 @@ class Dependencias {
 		receta2.calorias = 250
 		receta2.ingredientes = ingredientesReceta2
 
-		usuario_aux.marcarComoFavorita(receta1)
+		usuario.marcarComoFavorita(receta1)
 
 		temporadasReceta2.add(Temporada.PRIMAVERA)
 		temporadasReceta2.add(Temporada.VERANO)
@@ -74,7 +77,7 @@ class Dependencias {
 		receta2.condimentos = condimentosReceta2;
 		receta2.explicacion = "Explicación de la receta 2";
 
-		usuario_aux.addObservador(consultasXRecetas)
-		usuario_aux.marcarComoFavorita(receta2)
+		usuario.addObservador(consultasXRecetas)
+		usuario.marcarComoFavorita(receta2)
 	}
 }

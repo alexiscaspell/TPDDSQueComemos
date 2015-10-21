@@ -4,7 +4,6 @@ import java.util.ArrayList
 import java.util.List
 
 public class RepoUsuarios implements IRepoUsuarios {
-	
 
 	private List<Usuario> listaUsuarios = new ArrayList<Usuario>()
 
@@ -40,13 +39,15 @@ public class RepoUsuarios implements IRepoUsuarios {
 	public override List<Usuario> list(Usuario usuario) {
 		val listaUsuariosConElMismoNombre = listaUsuarios.filter[x|x.nombre.equals(usuario.nombre)].toList()
 
-		return listaUsuariosConElMismoNombre.filter[usuarioFiltrado|usuarioFiltrado.cumpleMismasCondiciones(usuario)].toList
+		return listaUsuariosConElMismoNombre.filter[usuarioFiltrado|usuarioFiltrado.cumpleMismasCondiciones(usuario)].
+			toList
 	}
-	
-	def validarNickYContraseña(String nick,String pass){
-		
-		val Usuario usuarioCorrecto = listaUsuarios.findFirst[usuario|usuario.nickName.equals(nick)&&usuario.password.equals(pass)]
-		
+
+	def validarNickYContraseña(String nick, String pass) {
+
+		val Usuario usuarioCorrecto = listaUsuarios.findFirst[usuario|
+			usuario.nickName.equals(nick) && usuario.password.equals(pass)]
+
 		return usuarioCorrecto
 	}
 }

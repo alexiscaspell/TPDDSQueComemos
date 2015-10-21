@@ -17,116 +17,107 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioHipertenso
 
 abstract class RepoDefault<T> {
-	
-		private static final SessionFactory sessionFactory = new 
-	AnnotationConfiguration().configure(  )
-			.addAnnotatedClass( Receta )
-			.addAnnotatedClass( UsuarioPosta ) // Usuario - UsuarioPosta - Diabetico.. ?
-			.addAnnotatedClass( UsuarioDecorator )
-			.addAnnotatedClass( UsuarioVegano )
-			.addAnnotatedClass( UsuarioDiabetico )
-			.addAnnotatedClass( UsuarioHipertenso )
-			.addAnnotatedClass( Grupo )
-			.addAnnotatedClass( Login )
-			.addAnnotatedClass( Administrador )
-			.buildSessionFactory()
-			
-		
-		def List<T> allInstances() {
-			val session = sessionFactory.openSession
-			try {
-				return session.createCriteria( getEntityType ).list()
-			} finally {
-				session.close
-			}
-		}
-		
-	def List<T> searchByExample( T t ){
+
+	protected static final SessionFactory sessionFactory = new AnnotationConfiguration().configure().
+		addAnnotatedClass(Receta).addAnnotatedClass(UsuarioPosta) // Usuario - UsuarioPosta - Diabetico.. ?
+		.addAnnotatedClass(UsuarioDecorator).addAnnotatedClass(UsuarioVegano).addAnnotatedClass(UsuarioDiabetico).
+		addAnnotatedClass(UsuarioHipertenso).addAnnotatedClass(Grupo).addAnnotatedClass(Login).
+		addAnnotatedClass(Administrador).buildSessionFactory()
+
+	def List<T> allInstances() {
 		val session = sessionFactory.openSession
 		try {
-			val criteria = session.createCriteria( getEntityType )
-			this.addQueryByExample( criteria, t )
-			return criteria.list()
-		} catch ( HibernateException e ) {
-			throw new RuntimeException( e )
+			return session.createCriteria(getEntityType).list()
 		} finally {
-			session.close 
+			session.close
 		}
 	}
-	
-	def List<T> searchByName( String name ){
+
+	def List<T> searchByExample(T t) {
 		val session = sessionFactory.openSession
 		try {
-			val criteria = session.createCriteria( getEntityType )
-			criteria.add( Restrictions.eq ( "nombre", name ))
+			val criteria = session.createCriteria(getEntityType)
+			this.addQueryByExample(criteria, t)
 			return criteria.list()
-		} catch ( HibernateException e ) {
-			throw new RuntimeException( e )
+		} catch (HibernateException e) {
+			throw new RuntimeException(e)
 		} finally {
-			session.close 
+			session.close
 		}
-		
 	}
-	
+
+	def List<T> searchByName(String name) {
+		val session = sessionFactory.openSession
+		try {
+			val criteria = session.createCriteria(getEntityType)
+			criteria.add(Restrictions.eq("nombre", name))
+			return criteria.list()
+		} catch (HibernateException e) {
+			throw new RuntimeException(e)
+		} finally {
+			session.close
+		}
+	}
+
 	// Funcion Peligrosa
-	def void reset(){
+	def void reset() {
 		val session = sessionFactory.openSession
 		try {
 			session.beginTransaction
 			session.clear
-			session.getTransaction.commit 
-		} catch ( HibernateException e ){
+			session.getTransaction.commit
+		} catch (HibernateException e) {
 			session.getTransaction.rollback
-			throw new RuntimeException( e ) 
+			throw new RuntimeException(e)
 		} finally {
-			session.close 
+			session.close
 		}
 	}
-	
-	def void destroy( T t ){	
+
+	def void destroy(T t) {
 		val session = sessionFactory.openSession
 		try {
 			session.beginTransaction
-			session.delete( t )
-			session.getTransaction.commit 
-		} catch ( HibernateException e ){
+			session.delete(t)
+			session.getTransaction.commit
+		} catch (HibernateException e) {
 			session.getTransaction.rollback
-			throw new RuntimeException( e ) 
+			throw new RuntimeException(e)
 		} finally {
-			session.close 
+			session.close
 		}
 	}
-	
-	def void create( T t ){
+
+	def void create(T t) {
 		val session = sessionFactory.openSession
 		try {
 			session.beginTransaction
-			session.save( t )
-			session.getTransaction.commit 
-		} catch ( HibernateException e ){
+			session.save(t)
+			session.getTransaction.commit
+		} catch (HibernateException e) {
 			session.getTransaction.rollback
-			throw new RuntimeException( e ) 
+			throw new RuntimeException(e)
 		} finally {
-			session.close 
+			session.close
 		}
 	}
-	
-	def void update( T t ){
+
+	def void update(T t) {
 		val session = sessionFactory.openSession
 		try {
 			session.beginTransaction
-			session.update( t )
-			session.getTransaction.commit 
-		} catch ( HibernateException e ){
-			session.getTransaction.rollback 
-			throw new RuntimeException( e )
+			session.update(t)
+			session.getTransaction.commit
+		} catch (HibernateException e) {
+			session.getTransaction.rollback
+			throw new RuntimeException(e)
 		} finally {
-			session.close 
+			session.close
 		}
 	}
-	
+
 	def abstract Class<T> getEntityType()
-	
-	def abstract void addQueryByExample( Criteria criteria, T t )
-	
+
+	def abstract void addQueryByExample(Criteria criteria, T t)
+
 }

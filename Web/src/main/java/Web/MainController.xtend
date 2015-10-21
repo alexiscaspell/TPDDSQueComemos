@@ -31,17 +31,11 @@ class MainController {
 	//UsuarioPosta usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "martin" , Sexo.MASCULINO)		
 	@Post("/login")
 	def Result login(@Body String body) {
-		var PedidoLogin pedido = body.fromJson(PedidoLogin)
-		println("[@Post login()] Haciendo login con nombre: " + pedido.nombre)
-		println("[@Post login()] Haciendo login con pass: " + pedido.pass)
+		val PedidoLogin pedido = body.fromJson(PedidoLogin)
+		var usuarios = usuariosRepository.allInstances
 		
-		//usuario_aux = repoUsuarios.getUsuario(pedido.nombre)
-		usuario_aux = repoUsuarios.loguear(pedido.nombre,pedido.pass)
-		hardcodear()
-
-		// Buscar usuario con nombre == pedido.nombre
-		// verificar que pedido.pass == usuario encontrado pass
-		// setear usuario = usuario encontrado ( sacar el usuario hardcodeado )
+		usuario = usuarios.findFirst[x | x.nickName == pedido.nombre && x.password == pedido.pass]
+		println(usuario.nickName)		
 		ok
 	}
 
@@ -50,16 +44,12 @@ class MainController {
 	}
 
 	def getCookie(HttpServletRequest request, String string) {
-		println("[MainController getCookie()] encontrada es = " + request.cookies.findFirst[it.name == string].value)
 		request.cookies.findFirst[it.name == string].value
-
-	// Para hacer funcionar, comentar lo de arriba y descomentar lo de abajo
-	//"Lucas"	
 	}
 
 	@Get("/readonly")
 	def Result reaonly() {
-		ok(recetaSeleccionada.puedeModificar(usuario_aux).toJson);
+		ok(recetaSeleccionada.puedeModificar(usuario).toJson);
 	}
 
 	@Post("/setRecetaSeleccionada")
@@ -88,7 +78,7 @@ class MainController {
 
 	@Post("/actualizarReceta")
 	def Result actualizarReceta(@Body String nombre) {
-		usuario_aux.modificarReceta(recetaSeleccionada.nombre, recetaSeleccionada.nombre,
+		usuario.modificarReceta(recetaSeleccionada.nombre, recetaSeleccionada.nombre,
 			recetaSeleccionada.ingredientes, recetaSeleccionada.condimentos, recetaSeleccionada.explicacion,
 			recetaSeleccionada.dificultad, recetaSeleccionada.temporadas);
 		ok
@@ -102,7 +92,7 @@ class MainController {
 	@Get("/usuario")
 	def Result usuario() {
 		response.contentType = ContentType.APPLICATION_JSON
-		var pedidoUsuario = new PedidoUsuario(usuario_aux)
+		var pedidoUsuario = new PedidoUsuario(usuario)
 		pedidoUsuario.Color()
 		println("fecha de nacimiento" + pedidoUsuario.usuario.fechaDeNacimiento)
 		ok(pedidoUsuario.toJson)
@@ -114,7 +104,7 @@ class MainController {
 		var gsonBilder = new GsonBuilder();
 		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
 		var gson = gsonBilder.create();
-		var recetas = new PedidoRecetas(usuario_aux)
+		var recetas = new PedidoRecetas(usuario)
 		recetas.setRecetas()
 		ok(gson.toJson(recetas))
 	}

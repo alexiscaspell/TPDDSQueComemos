@@ -31,7 +31,7 @@ class DetalleReceta {
 	}
 
 	def String autorReceta() {
-		return "Creado por " + this.receta.usuarioCreador.nombre
+		return "Creado por " + this.receta.usuarioCreador
 	}
 
 	def String dificultadReceta() {
@@ -55,7 +55,9 @@ class DetalleReceta {
 	}
 
 	def esFavorita() {
-		return this.receta.usuarioCreador.favoritas.contains(receta)
+
+		//		return this.receta.usuarioCreador.favoritas.contains(receta)
+		return true;
 	}
 
 	def condicionesPreexistentes() {

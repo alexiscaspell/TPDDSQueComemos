@@ -64,7 +64,9 @@ class AplicationModel {
 				colores.add(Color.red)
 			else if (it.usuarioCreador == usuario)
 				colores.add(Color.blue)
-			else if(it.usuarioCreador.comparteGrupo(usuario)) colores.add(Color.green)
+			//			else if(it.usuarioCreador.comparteGrupo(usuario)) colores.add(Color.green)
+			else
+				colores.add(Color.green)
 		]
 	}
 

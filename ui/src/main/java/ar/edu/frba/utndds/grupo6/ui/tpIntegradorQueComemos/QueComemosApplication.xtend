@@ -11,10 +11,11 @@ import org.uqbar.arena.Application
 import org.uqbar.arena.windows.Window
 import ar.edu.frba.utndds.grupo6.ui.AplicationModel.AplicationModel
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
+import java.util.Date
 
 class QueComemosApplication extends Application {
 
-	val pepe = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan Jose Lopez", Sexo.MASCULINO)
+	val pepe = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan Jose Lopez", Sexo.MASCULINO, new Date(1989, 8, 7))
 	recetaValida recetaEsValida = new recetaValida()
 	recetaConAzucar recetaAzucar = new recetaConAzucar()
 	recetaConSal recetaSal = new recetaConSal()

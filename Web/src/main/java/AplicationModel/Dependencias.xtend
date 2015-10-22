@@ -17,6 +17,8 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
 import java.util.Date
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
+import FiltrosConsultasRecetas.Filtrador
+import Pedidos.PedidoEnumsSistema
 
 @Accessors
 class Dependencias {
@@ -31,6 +33,20 @@ class Dependencias {
 	val static ingredientesReceta1 = new HashMap<Ingrediente, Integer>();
 	val static ingredientesReceta2 = new HashMap<Ingrediente, Integer>();
 	public static ConsultasXRecetas consultasXRecetas = new ConsultasXRecetas()
+	
+		//------------------CONSULTAS RECETAS--------------------------
+	public static Filtrador filtrador = new Filtrador()
+	
+	public static PedidoEnumsSistema enumsSistema = new PedidoEnumsSistema()
+	
+		public static def newRecetasFiltradas(){//Recetas hardcodeadas,esto viene de repoRecetas
+		
+		val ListadoRecetas listado = new ListadoRecetas()
+		
+		return listado.recetas		
+	}
+	
+	//--------------CONSULTAS RECETAS-----------------------
 
 	public static def hardcodear() {
 		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO, new Date(1989,6,5))

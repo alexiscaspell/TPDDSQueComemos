@@ -372,6 +372,11 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 		return usuarioCopia
 
 	}
+	
+	override boolean cumpleCondicion(Receta receta){
+		
+		true
+	}
 
 	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
 	override notificar() {

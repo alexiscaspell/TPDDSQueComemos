@@ -97,6 +97,8 @@ abstract class Usuario extends SujetoObservado {
 	def Boolean cumpleMismasCondiciones(Usuario usuario)
 
 	def Usuario crearPerfil()
+	
+	def boolean cumpleCondicion(Receta receta)
 	/*
 	def void addObservador(Observador observador)
 

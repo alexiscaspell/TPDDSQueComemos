@@ -134,7 +134,10 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 		return ( cumpleCondicion(receta) && decorado.puedeComer(receta) )
 	}
 
-	def boolean cumpleCondicion(Receta receta)
+	override boolean cumpleCondicion(Receta receta){
+		
+		decorado.cumpleCondicion(receta)
+	}
 
 	override sePuedeSugerir(Receta receta) {
 		return ( puedeComer(receta) && decorado.sePuedeSugerir(receta) )

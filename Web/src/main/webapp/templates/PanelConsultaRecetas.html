@@ -20,19 +20,19 @@
 			 <div style="height:240px; width:40%; float:left; text-align:left; padding:20px;">
       			<b>Nombre</b>
 				<br>
-				<input name="nombreReceta" size="40" ng-model="nombreReceta">				<br>
+				<input name="nombreReceta" size="40" ng-model="filtro.Nombre"><br>
 				<br>
 				<b>Dificultad</b>
 				<br>
 				<select
 						class="form-control" size="3"
-						ng-model="dificultadSeleccionada"
-						ng-options="dificultad for dificultad in filtro.dificultades">
+						ng-model="filtro.Dificultad"
+						ng-options="dificultad for dificultad in lista_dificultades_sistema">
 				</select>
 				<br>
 				<b>Ingrediente</b>
 				<br>
-				<input name="ingredienteReceta" size="40" ng-model="ingredienteReceta">	<br>
+				<input name="ingredienteReceta" size="40" ng-model="filtro.Ingrediente">	<br>
 				<br>
   			</div>
 			
@@ -44,28 +44,28 @@
       			<b>Calorias</b>
 
 				<br>
-				<b>    de  </b> <input name="minCalorias" size="8" ng-model="minCalorias">
+				<b>    de  </b> <input name="minCalorias" size="8" ng-model="filtro.MinimoCalorias">
 
-				<b>  a  </b> <input name="maxCalorias" size="8" ng-model="maxCalorias">
+				<b>  a  </b> <input name="maxCalorias" size="8" ng-model="filtro.MaximoCalorias">
 
 				<br>
 				<br>
 				<b>Temporada</b>
 				<br>
 				<select
-						class="form-control" size="3"
-						ng-model="temporadaSeleccionada"
-						ng-options="temporada for temporada in filtro.temporadas">
+						class="form-control" size="4"
+						ng-model="filtro.Temporada"
+						ng-options="temporada for temporada in lista_temporadas_sistema">
 				</select>
 				<br>
-				<input type="checkbox" name="checkboxAplicarFiltros" value="aplicar filtros de perfil de usuario"> Aplicar filtros del perfil de usuario<br>
+				<input type="checkbox" name="checkboxAplicarFiltros" ng-model="filtro.Usuario" value="aplicar filtros de perfil de usuario"> Aplicar filtros del perfil de usuario<br>
 				<br>
 
   			</div>
 		<!--panel 3-->
 		<div align="center" class="col-sm-12">				
 		<div class="panel3"> 
-			<button ng-click="buscarReceta()">Buscar</button>
+			<button ng-click="buscarRecetaPorFiltro()">Buscar</button>
 			
 			<button ng-click="irAHome()">Volver</button>
 		</div>		
@@ -96,9 +96,6 @@
 	
 		<!--ACA TERMINO-->
 </div>
-
-
-
 
 
 

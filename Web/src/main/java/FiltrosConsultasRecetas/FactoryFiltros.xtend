@@ -4,11 +4,15 @@ import java.util.List
 import Pedidos.PedidoFiltroConsultaReceta
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.ArrayList
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 
 class FactoryFiltros {
 	
 	@Accessors
 	var PedidoFiltroConsultaReceta pedido
+	
+	@Accessors
+	var Usuario usuario
 	
 	def List<FiltroInterface> create(){
 		
@@ -29,8 +33,9 @@ class FactoryFiltros {
 		if(pedido.temporada != null){
 			filtros.add(new FiltroTemporada(pedido.temporada))
 		}
+		
 		if(pedido.filtrosUsuario){
-			//verlo despues con los filtros ya hechos
+			filtros.add(new FiltroFiltrosUsuario(usuario))
 		}
 		
 		return filtros

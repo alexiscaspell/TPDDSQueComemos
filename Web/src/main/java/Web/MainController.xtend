@@ -121,5 +121,31 @@ class MainController {
 	def Result getRecetaSeleccionada() {
 		ok(recetaSeleccionada.toJson)
 	}
+	
+		 @Post("/setFiltros")
+	def Result setFiltros(@Body String body) {
+		var PedidoFiltroConsultaReceta pedido = body.fromJson(PedidoFiltroConsultaReceta)
+		println("[@Post setFiltros()] Recibiendo filtros con nombre: " + pedido.nombre)
+		println("[@Post setFiltros()] Recibiendo filtros con dificultad: " + pedido.dificultad)
+		println("[@Post setFiltros()] Recibiendo filtros con ingrediente: " + pedido.ingrediente)
+		println("[@Post setFiltros()] Recibiendo filtros con minimoCalorias: " + pedido.minimoCalorias)
+		println("y maximoCalorias: " + pedido.maximoCalorias)
+		println("[@Post setFiltros()] Recibiendo filtros con temporada: " + pedido.temporada)
+		println("[@Post setFiltros()] Recibiendo filtros con filtrosUsuario: " + pedido.filtrosUsuario)
+		
+		filtrador.usuario = usuario_aux
+		
+		filtrador.crearFiltros(pedido)
+		
+		var listaFiltrada = filtrador.filtrar(newRecetasFiltradas())
+		
+		ok(listaFiltrada.toJson)
+	}
+	
+		@Get("/getEnums")
+	def Result getEnums() {	
+		enumsSistema.hardcodear()
+		ok(enumsSistema.toJson)
+	}
 
 }

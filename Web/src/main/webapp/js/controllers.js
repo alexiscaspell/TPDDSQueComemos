@@ -41,12 +41,40 @@ queComemosApp
 							}
 						} ]);
 
-queComemosApp.controller('panelConsultasController', [ '$scope', '$state',
-		function($scope, $state) {
-			$scope.irAHome = function() {
-				$state.go('PanelHome')
-			}
-		} ]);
+queComemosApp.controller('panelConsultasController', [ '$scope', '$state','$http','queComemosService', 'enumsData', 
+         function($scope, $state,$http,queComemosService, enumsData){
+                                               		
+ $scope.lista_dificultades_sistema = enumsData.data.dificultadesDelSistema
+                                               	
+    $scope.lista_temporadas_sistema = enumsData.data.temporadasDelSistema
+                                               		
+    $scope.buscarRecetaPorFiltro = function() {
+                                               		
+	 $http.post('/setFiltros',{
+                                               		
+          nombre : $scope.filtro.Nombre,
+                                               			
+          dificultad : $scope.filtro.Dificultad,
+                                               			
+          ingrediente : $scope.filtro.Ingrediente,
+
+          maximoCalorias : $scope.filtro.MaximoCalorias,
+                                               			
+          minimoCalorias : $scope.filtro.MinimoCalorias,
+                                               			
+          temporada : $scope.filtro.Temporada,
+                                               			
+          filtrosUsuario : $scope.filtro.Usuario
+                                               		
+	 }).success(function(data) {
+                                               		
+		 $scope.lista_recetas_filtradas = data;
+             	});	
+           }
+ 
+ 		$scope.irAHome = function() {
+             $state.go('PanelHome')
+ 			}]);
 
 queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 		'$http', 'queComemosService', 'monitoreoData',

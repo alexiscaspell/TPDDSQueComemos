@@ -10,7 +10,12 @@ queComemosApp.config(function($stateProvider, $urlRouterProvider ) {
     	.state('PanelConsultas', {
     		url: '/PanelConsultas',
     		templateUrl: 'templates/PanelConsultaRecetas.html',
-    		controller: 'panelConsultasController'
+    		controller: 'panelConsultasController',
+            resolve : {
+            	enumsData: ['queComemosService', function( queComemosService ) {
+            		return queComemosService.getEnums();
+                    }]
+            }
     	})
         .state('PanelHome', {
                 url: '/PanelHome',

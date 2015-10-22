@@ -58,18 +58,18 @@ public class Receta extends IReceta implements Cloneable {
 	private Dificultad dificultad
 
 	// Buscar como persistir lista de enums
-	@CollectionOfElements 
+	@CollectionOfElements ( fetch = FetchType.EAGER )
 	private List<Temporada> temporadas
 
 	@Enumerated(EnumType.STRING) 
 	private TipoReceta tipo
 
 	// Buscar como persistir, referencia a tabla ?
-	@CollectionOfElements
+	@CollectionOfElements ( fetch = FetchType.EAGER )
 	private Map<Ingrediente, Integer> ingredientes = new HashMap<Ingrediente, Integer>()
 
 	// Buscar como persistir, referencia a tabla ?
-	@CollectionOfElements
+	@CollectionOfElements ( fetch = FetchType.EAGER )
 	private Map<Condimento, Integer> condimentos
 
 	@Column

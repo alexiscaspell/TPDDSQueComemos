@@ -75,7 +75,7 @@ public class Receta extends IReceta implements Cloneable {
 	@Column
 	private int calorias
 
-	@Column ( length = 150 )
+	@Column ( length = 350 )
 	private String explicacion
 
 	@LazyCollection (LazyCollectionOption.FALSE)

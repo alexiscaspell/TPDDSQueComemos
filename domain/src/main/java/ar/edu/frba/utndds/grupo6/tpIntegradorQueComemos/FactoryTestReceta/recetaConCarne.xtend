@@ -22,8 +22,11 @@ class recetaConCarne implements recetaFactory {
 		val condimentos = new HashMap<Condimento, Integer>()
 		condimentos.put(Condimento.SAL, 10)
 		condimentos.put(Condimento.ACEITE, 10)
-		val explicacion = "1 - Cortar la carne\n" + "2 - Pasar la carne por el huevo" +
-			"3 - Pasar la carne por pan rayado" + "4 - Hornear 25 minutos"
+		val explicacion = 
+			"1 - Cortar la carne\n" /*+ 
+			"2 - Pasar la carne por el huevo" +
+			"3 - Pasar la carne por pan rayado" 
+			+ "4 - Hornear 25 minutos" */
 		val temporadas = new ArrayList<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)

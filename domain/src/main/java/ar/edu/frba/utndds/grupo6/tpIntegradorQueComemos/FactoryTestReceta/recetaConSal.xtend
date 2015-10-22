@@ -20,8 +20,9 @@ class recetaConSal implements recetaFactory {
 		condimentos.put(Condimento.SAL, 10)
 		condimentos.put(Condimento.ACEITE, 10)
 		condimentos.put(Condimento.AZUCAR, 100)
-		val explicacion = "1 - Pelar las papas\n" + "2 - Hervir las papas 20 minutos" +
-			"3 - Pisar las papas con un pisapapas" + "4 - Condimentar"
+		val explicacion = "1 - Pelar las papas\n" + "2 - Hervir las papas 20 minutos" 
+			
+			// + "3 - Pisar las papas con un pisapapas" + "4 - Condimentar"
 		val temporadas = new ArrayList<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
@@ -41,8 +42,8 @@ class recetaConSal implements recetaFactory {
 		val condimentos = new HashMap<Condimento, Integer>()
 		condimentos.put(Condimento.CREMA, 500)
 		condimentos.put(Condimento.AZUCAR, 800)
-		val explicacion = "1 - Cortar las frutillas\n" + "2 - Preparar crema" + "3 - Agregar azucar a las frutillas" +
-			"4 - Servir las frutillas junto con la crema"
+		val explicacion = "1 - Cortar las frutillas\n" /*+ "2 - Preparar crema" + "3 - Agregar azucar a las frutillas" 
+			+ "4 - Servir las frutillas junto con la crema" */
 		val temporadas = new ArrayList<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)

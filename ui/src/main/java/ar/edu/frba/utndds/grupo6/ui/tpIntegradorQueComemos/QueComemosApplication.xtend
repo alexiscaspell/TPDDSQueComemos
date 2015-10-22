@@ -30,7 +30,6 @@ class QueComemosApplication extends Application {
 	}
 
 	override protected Window<?> createMainWindow() {
-		UsuariosRepository.getInstance().create( pepe )
 		pepe.marcarComoFavorita(recetaEsValida.cumple(pepe.nombre))
 		pepe.marcarComoFavorita(recetaEsValida.noCumple(pepe.nombre))
 		pepe.marcarComoFavorita(recetaAzucar.cumple(pepe.nombre))
@@ -38,6 +37,7 @@ class QueComemosApplication extends Application {
 		pepe.marcarComoFavorita(recetaSal.cumple(pepe.nombre))
 		pepe.marcarComoFavorita(recetaSal.noCumple(pepe.nombre))
 		pepe.marcarComoFavorita(recetaCarne.cumple(pepe.nombre))
+		UsuariosRepository.getInstance().create( pepe )
 		var usuario = UsuariosRepository.getInstance().searchByName( "Juan Jose Lopez").head
 		return new PanelUsuario( usuario , this, new AplicationModel(ConsultasXRecetas.estadistica))
 	}

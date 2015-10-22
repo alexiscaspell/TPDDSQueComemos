@@ -43,10 +43,10 @@ class recetaConAzucar implements recetaFactory {
 		val condimentos = new HashMap<Condimento, Integer>()
 		condimentos.put(Condimento.SAL, 400)
 		condimentos.put(Condimento.LEVADURA, 500) //AGREGAR LEVADURA A INGREDIENTE.
-		val explicacion = "1 - Mezclar la harina con la sal\n" +
+		val explicacion = "1 - Mezclar la harina con la sal\n" /*+
 			"2 - Disolver la levadura en agua e ir agregando da a poco a la harina" +
-			"3 - Amasar y dejar fermentando durante dos horas aprox" +
-			"4 - Fraccionar la masa y armar los panes, luego al horno por 40 minutos a 200 grados."
+			"3 - Amasar y dejar fermentando durante dos horas aprox" 
+			 + "4 - Fraccionar la masa y armar los panes, luego al horno por 40 minutos a 200 grados." */
 		val temporadas = new ArrayList<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)

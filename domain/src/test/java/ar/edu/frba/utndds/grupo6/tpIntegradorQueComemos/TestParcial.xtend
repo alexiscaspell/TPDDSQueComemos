@@ -25,10 +25,13 @@ class TestParcial {
 	
 	@Test
 	def testAgregarRecetaFavotirta( ){
-		pepe.favoritas.add( Pure )
 		RepoUsuarios.create( pepe )
-		val usuario = RepoUsuarios.searchByName( pepe.nombre ).head
-		Assert.assertTrue( ! usuario.favoritas.empty )
+		pepe.favoritas.add( Pure )
+		val usuarioSinFavoritas = RepoUsuarios.searchByName( pepe.nombre ).head
+		Assert.assertTrue(  usuarioSinFavoritas.favoritas.empty )
+		RepoUsuarios.update( pepe )
+		val usuarioConFavoritas = RepoUsuarios.searchByName( pepe.nombre ).head
+		Assert.assertTrue( ! usuarioConFavoritas.favoritas.empty )
 	}
 
 }

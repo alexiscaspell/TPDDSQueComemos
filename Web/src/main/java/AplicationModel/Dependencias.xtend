@@ -33,23 +33,24 @@ class Dependencias {
 	val static ingredientesReceta1 = new HashMap<Ingrediente, Integer>();
 	val static ingredientesReceta2 = new HashMap<Ingrediente, Integer>();
 	public static ConsultasXRecetas consultasXRecetas = new ConsultasXRecetas()
-	
-		//------------------CONSULTAS RECETAS--------------------------
-	public static Filtrador filtrador = new Filtrador()
-	
-	public static PedidoEnumsSistema enumsSistema = new PedidoEnumsSistema()
-	
-		public static def newRecetasFiltradas(){//Recetas hardcodeadas,esto viene de repoRecetas
-		
-		val ListadoRecetas listado = new ListadoRecetas()
-		
-		return listado.recetas		
-	}
-	
-	//--------------CONSULTAS RECETAS-----------------------
 
+	//------------------CONSULTAS RECETAS--------------------------
+	public static Filtrador filtrador = new Filtrador()
+
+	public static PedidoEnumsSistema enumsSistema = new PedidoEnumsSistema()
+
+	public static def newRecetasFiltradas() { //Recetas hardcodeadas,esto viene de repoRecetas
+
+		val ListadoRecetas listado = new ListadoRecetas()
+
+		return listado.recetas
+	}
+
+	//--------------CONSULTAS RECETAS-----------------------
 	public static def hardcodear() {
-		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO, new Date(1989,6,5))
+		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO,
+			new Date(1989, 6, 5))
+		
 		var Receta receta1 = new Receta
 		var Receta receta2 = new Receta
 		receta1.nombre = "Papa"
@@ -59,7 +60,7 @@ class Dependencias {
 		receta1.tipo = TipoReceta.PUBLICA
 		receta2.usuarioCreador = usuario.nickName
 		receta2.tipo = TipoReceta.PUBLICA
-
+	
 		usuario.platosQueNoLeGustan.add("Pizza")
 
 		temporadasReceta1.add(Temporada.INVIERNO)
@@ -95,5 +96,6 @@ class Dependencias {
 
 		usuario.addObservador(consultasXRecetas)
 		usuario.marcarComoFavorita(receta2)
+		return usuario
 	}
 }

@@ -77,32 +77,40 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	private String email
 
 	// Buscar como persistir lista de enums
-	@CollectionOfElements 
+	@CollectionOfElements ( fetch = FetchType.EAGER )
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Condicion> condiciones = new ArrayList<Condicion>()
 
-	@CollectionOfElements
+	@CollectionOfElements ( fetch = FetchType.EAGER )
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
-	@CollectionOfElements  
+	@CollectionOfElements ( fetch = FetchType.EAGER )
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany ( fetch = FetchType.LAZY )// Verificar si es EAGER o LAZY
+	@OneToMany ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 
-	@CollectionOfElements //(fetch=FetchType.EAGER)
+	@CollectionOfElements (fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany ( fetch = FetchType.LAZY, cascade = CascadeType.ALL ) // Verificar si es EAGER o LAZY
+	@OneToMany ( fetch = FetchType.EAGER, cascade = CascadeType.ALL ) // Verificar si es EAGER o LAZY
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Receta> recetas = new ArrayList<Receta>()
 
 	// @LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany  ( fetch = FetchType.LAZY )// Verificar si es EAGER o LAZY
+	@OneToMany  ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Receta> consultas = new ArrayList<Receta>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
-	@ManyToMany ( fetch = FetchType.LAZY ) 
+	@ManyToMany ( fetch = FetchType.EAGER )
+	@Fetch(value = FetchMode.SUBSELECT) 
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)

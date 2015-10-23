@@ -21,6 +21,7 @@ import org.uqbar.xtrest.json.JSONUtils
 
 import static AplicationModel.Dependencias.*
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import Pedidos.PedidoFiltroConsultaReceta
 
 @Controller
 class MainController {
@@ -32,6 +33,7 @@ class MainController {
 	@Post("/login")
 	def Result login(@Body String body) {
 		val PedidoLogin pedido = body.fromJson(PedidoLogin)
+		// Hacer un usuario con los datos de pedido y pasarlo por searchByExample
 		var usuarios = usuariosRepository.allInstances
 		
 		usuario = usuarios.findFirst[x | x.nickName == pedido.nombre && x.password == pedido.pass]
@@ -122,7 +124,7 @@ class MainController {
 		ok(recetaSeleccionada.toJson)
 	}
 	
-		 @Post("/setFiltros")
+	@Post("/setFiltros")
 	def Result setFiltros(@Body String body) {
 		var PedidoFiltroConsultaReceta pedido = body.fromJson(PedidoFiltroConsultaReceta)
 		println("[@Post setFiltros()] Recibiendo filtros con nombre: " + pedido.nombre)
@@ -133,7 +135,7 @@ class MainController {
 		println("[@Post setFiltros()] Recibiendo filtros con temporada: " + pedido.temporada)
 		println("[@Post setFiltros()] Recibiendo filtros con filtrosUsuario: " + pedido.filtrosUsuario)
 		
-		filtrador.usuario = usuario_aux
+		//filtrador.usuario = usuario_aux
 		
 		filtrador.crearFiltros(pedido)
 		

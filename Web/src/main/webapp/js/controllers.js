@@ -17,64 +17,56 @@ queComemosApp.controller('panelLoginController', [ '$scope', '$state', '$http',
 			}
 		} ]);
 
-queComemosApp
-		.controller(
-				'panelUsuarioController',
-				[
-						'$scope',
-						'$state',
-						'queComemosService',
-						'usuarioData',
-						function($scope, $state, queComemosService, usuarioData) {
+queComemosApp.controller( 'panelUsuarioController', [
+	'$scope',
+	'$state',
+	'queComemosService',
+	'usuarioData',
+	function($scope, $state, queComemosService, usuarioData) {
+		var usuario = usuarioData.data.usuario
+		$scope.usuario = usuario
+		$scope.imcColor = usuarioData.data.color
+		
+		$scope.favoritasSeleccionada = usuario.favoritas[0]
+		$scope.preferenciaSeleccionada = usuario.preferenciasAlimenticias[0]
+		$scope.condicionesSeleccionada = usuario.condicion[0]
+		$scope.platosSeleccionado = usuario.platosQueNoLeGustan[0]
 
-							var usuario = usuarioData.data.usuario
-							$scope.usuario = usuario
-							$scope.imcColor = usuarioData.data.color
+		$scope.irAHome = function() {
+			$state.go('PanelHome')
+		}
+	} 
+]);
 
-							$scope.favoritasSeleccionada = usuario.favoritas[0]
-							$scope.preferenciaSeleccionada = usuario.preferenciasAlimenticias[0]
-							$scope.condicionesSeleccionada = usuario.condicion[0]
-							$scope.platosSeleccionado = usuario.platosQueNoLeGustan[0]
-
-							$scope.irAHome = function() {
-								$state.go('PanelHome')
-							}
-						} ]);
-
-queComemosApp.controller('panelConsultasController', [ '$scope', '$state','$http','queComemosService', 'enumsData', 
-         function($scope, $state,$http,queComemosService, enumsData){
-                                               		
- $scope.lista_dificultades_sistema = enumsData.data.dificultadesDelSistema
-                                               	
-    $scope.lista_temporadas_sistema = enumsData.data.temporadasDelSistema
-                                               		
-    $scope.buscarRecetaPorFiltro = function() {
-                                               		
-	 $http.post('/setFiltros',{
-                                               		
-          nombre : $scope.filtro.Nombre,
-                                               			
-          dificultad : $scope.filtro.Dificultad,
-                                               			
-          ingrediente : $scope.filtro.Ingrediente,
-
-          maximoCalorias : $scope.filtro.MaximoCalorias,
-                                               			
-          minimoCalorias : $scope.filtro.MinimoCalorias,
-                                               			
-          temporada : $scope.filtro.Temporada,
-                                               			
-          filtrosUsuario : $scope.filtro.Usuario
-                                               		
-	 }).success(function(data) {
-                                               		
-		 $scope.lista_recetas_filtradas = data;
-             	});	
-           }
+queComemosApp.controller( 'panelConsultasController', [ 
+	'$scope', 
+	'$state', 
+	'$http', 
+	'queComemosService', 
+	'enumsData', 
+	function( $scope, $state, $http, queComemosService, enumsData){
+		$scope.lista_dificultades_sistema = enumsData.data.dificultadesDelSistema
+		$scope.lista_temporadas_sistema = enumsData.data.temporadasDelSistema                                       		
+		
+		$scope.buscarRecetaPorFiltro = function() {
+			$http.post('/setFiltros',{                                   		
+				nombre : $scope.filtro.Nombre,
+				dificultad : $scope.filtro.Dificultad,
+				ingrediente : $scope.filtro.Ingrediente,
+				maximoCalorias : $scope.filtro.MaximoCalorias,
+				minimoCalorias : $scope.filtro.MinimoCalorias,
+				temporada : $scope.filtro.Temporada,
+				filtrosUsuario : $scope.filtro.Usuario
+                    
+			}).success(function(data) {
+				$scope.lista_recetas_filtradas = data;
+			});	
+		}
  
  		$scope.irAHome = function() {
              $state.go('PanelHome')
- 			}]);
+ 		}
+} ] );
 
 queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 		'$http', 'queComemosService', 'monitoreoData',

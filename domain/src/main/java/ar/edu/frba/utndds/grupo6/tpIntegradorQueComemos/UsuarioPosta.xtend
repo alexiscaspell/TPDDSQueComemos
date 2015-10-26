@@ -90,11 +90,11 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
-	/*
+	
 	@OneToMany ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
-	*/
+	
 	
 
 	@CollectionOfElements (fetch=FetchType.EAGER)

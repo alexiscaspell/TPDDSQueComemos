@@ -73,7 +73,6 @@ class UsuarioHipertenso extends UsuarioDecorator {
 		return usuarioCopia
 	}
 
-	override getRecetasBuscadasFavoritas() {
-	}
+	//override getRecetasBuscadasFavoritas() {	}
 
 }

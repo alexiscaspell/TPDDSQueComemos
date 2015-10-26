@@ -73,7 +73,6 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 		return usuarioCopia
 	}
 
-	override getRecetasBuscadasFavoritas() {
-	}	
+	//override getRecetasBuscadasFavoritas() {}	
 
 }

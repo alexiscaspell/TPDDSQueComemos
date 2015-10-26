@@ -75,7 +75,7 @@ abstract class Usuario extends SujetoObservado {
 
 	def List<Receta> getRecetasConAcceso()
 
-	def List<Receta> getRecetasBuscadasFavoritas()
+	//def List<Receta> getRecetasBuscadasFavoritas()
 
 	//	------------------------------------------- Metodos -------------------------------------------
 	def void agregarGrupo(Grupo grupo)
@@ -99,6 +99,8 @@ abstract class Usuario extends SujetoObservado {
 	def Boolean cumpleMismasCondiciones(Usuario usuario)
 
 	def Usuario crearPerfil()
+	
+	def void consultarPorReceta( Receta receta )
 	
 	def boolean cumpleCondicion(Receta receta)
 	/*

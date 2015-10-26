@@ -6,6 +6,9 @@ var queComemosService = queComemosApp.service('queComemosService', [ '$http',
 			this.setRecetaSeleccionada = function(receta) {
 				return $http.post('/setRecetaSeleccionada', receta);
 			};
+			this.setRecetaAConsultar = function(receta) {
+				return $http.post('/ConsultarReceta', receta);
+			};
 			this.getRecetaSeleccionada = function() {
 				return $http.get('/getRecetaSeleccionada');
 			};

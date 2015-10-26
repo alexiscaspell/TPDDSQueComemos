@@ -91,52 +91,52 @@ queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 		} ])
 
 queComemosApp.controller('panelRecetaController', [
-		'$scope',
-		'$state',
-		'$http',
-		'queComemosService',
-		'recetaSeleccionadaData',
-		function($scope, $state, $http, queComemosService,
-				recetaSeleccionadaData) {
-			$scope.recetaSeleccionada = recetaSeleccionadaData.data;
+	'$scope',
+	'$state',
+	'$http',
+	'queComemosService',
+	'recetaSeleccionadaData',
+	function($scope, $state, $http, queComemosService, recetaSeleccionadaData) {
+		
+		$scope.recetaSeleccionada = recetaSeleccionadaData.data;
 
-			$http.get('/readonly').success(function(data) {
-				$scope.puedeEditar = data;
-			})
+		$http.get('/readonly').success(function(data) {
+			$scope.puedeEditar = data;
+		})
 
-			$scope.setNuevoCondimento = function() {
-				$http.post('/nuevoCondimento', $scope.nuevoCondimento).success(
-						function(data) {
-							$scope.recetaSeleccionada = data;
-							$http.get('/getCondicionesPreexistentes').success(
-									function(cond) {
-										$scope.condicionesPreexistentes = cond;
-									});
-						});
-			}
-
-			$scope.agregarIngrediente = function() {
-				$state.go('PanelAgregarIngrediente');
-			}
-
-			$scope.verListaRecetas = function() {
-				$state.go('PanelHome');
-			}
-
-			$scope.actualizarReceta = function() {
-				$http.post('/actualizarReceta', document.cookie).success(
-						function(data) {
-							$state.go('PanelHome')
-						});
-			}
-
-			$scope.actualizarCondicionesPreexistentes = function() {
-				$http.get('/getCondicionesPreexistentes').success(
+		$scope.setNuevoCondimento = function() {
+			$http.post('/nuevoCondimento', $scope.nuevoCondimento).success(
+				function(data) {
+					$scope.recetaSeleccionada = data;
+					$http.get('/getCondicionesPreexistentes').success(
 						function(cond) {
 							$scope.condicionesPreexistentes = cond;
-						});
-			}
-		} ]);
+							});
+					});
+		}
+
+		$scope.agregarIngrediente = function() {
+			$state.go('PanelAgregarIngrediente');
+		}
+
+		$scope.verListaRecetas = function() {
+			$state.go('PanelHome');
+		}
+
+		$scope.actualizarReceta = function() {
+			$http.post('/actualizarReceta', document.cookie).success(
+				function(data) {
+					$state.go('PanelHome')
+				});
+		}
+
+		$scope.actualizarCondicionesPreexistentes = function() {
+			$http.get('/getCondicionesPreexistentes').success(
+				function(cond) {
+					$scope.condicionesPreexistentes = cond;
+				});
+		}
+} ]);
 
 queComemosApp.controller('panelHomeController', [
 		'$scope',
@@ -168,6 +168,12 @@ queComemosApp.controller('panelHomeController', [
 			$scope.verMonitoreo = function() {
 				$state.go('PanelMonitoreo')
 			}
+
+			$scope.consultarReceta = function( receta ){
+				queComemosService.setRecetaAConsultar(receta);
+			}
+			
+
 
 			// ****
 			$scope.isHome = recetasData.data.isHome

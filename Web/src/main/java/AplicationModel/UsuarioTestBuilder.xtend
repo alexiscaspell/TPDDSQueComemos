@@ -20,6 +20,7 @@ import java.util.HashMap
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano
 
 @Accessors
 class UsuarioTestBuilder {
@@ -97,7 +98,7 @@ class UsuarioTestBuilder {
 
 		usuario_test.addObservador(consultasXRecetas)
 		usuario_test.marcarComoFavorita(receta2)
-		return usuario_test
+		return ( new UsuarioVegano( usuario_test ) )
 	}
 
 }

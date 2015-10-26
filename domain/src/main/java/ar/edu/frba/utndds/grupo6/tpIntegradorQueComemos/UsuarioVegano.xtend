@@ -72,7 +72,6 @@ class UsuarioVegano extends UsuarioDecorator {
 		return usuarioCopia
 	}
 
-	override getRecetasBuscadasFavoritas() {
-	}
+	//override getRecetasBuscadasFavoritas() {}
 
 }

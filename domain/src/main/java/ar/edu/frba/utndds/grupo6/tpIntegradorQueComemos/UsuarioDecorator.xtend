@@ -126,6 +126,10 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 		decorado.usuarioValido()
 	}
 
+	override consultarPorReceta( Receta receta ){
+		decorado.consultarPorReceta( receta )
+	}
+
 	override comparteGrupo(Usuario usuario) {
 		decorado.comparteGrupo(usuario)
 	}

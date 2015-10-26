@@ -37,6 +37,7 @@ class MainController {
 		var usuarios = usuariosRepository.allInstances
 		
 		usuario = usuarios.findFirst[x | x.nickName == pedido.nombre && x.password == pedido.pass]
+		usuario.addObservador( consultasXRecetas )
 		println(usuario.nickName)		
 		ok
 	}
@@ -87,6 +88,15 @@ class MainController {
 			recetaSeleccionada.dificultad, recetaSeleccionada.temporadas);
 		recetasRepository.update( recetaSeleccionada )
 		ok
+	}
+	
+	@Post("/ConsultarReceta")
+	def Result consultar( @Body String body ){
+		//usuario.recetasConAcceso
+		val Receta receta = body.fromJson(Receta)
+		usuario.consultarPorReceta( receta )
+		usuariosRepository.update( usuario )
+		ok 
 	}
 
 	@Get("/getCondicionesPreexistentes")

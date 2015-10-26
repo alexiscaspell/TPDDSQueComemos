@@ -90,11 +90,11 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
-	
+	/*
 	@OneToMany ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
-	
+	 */
 	
 
 	@CollectionOfElements (fetch=FetchType.EAGER)
@@ -109,6 +109,12 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	// @LazyCollection (LazyCollectionOption.FALSE)
 	@OneToMany  ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
 	@Fetch(value = FetchMode.SUBSELECT)
+	@JoinTable(
+            name="Consultas",
+            joinColumns = @JoinColumn( name="User_id"),
+            inverseJoinColumns = @JoinColumn( name="Receta_id")
+    )
+    
 	private List<Receta> consultas = new ArrayList<Receta>()
 
 	//@LazyCollection (LazyCollectionOption.FALSE)
@@ -262,7 +268,8 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 		notificar()
 		return consultas
 	}
-
+	
+	
 	override getPeso() {
 		peso
 	}
@@ -286,11 +293,11 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	override List<Receta> getConsultas() {
 		consultas
 	}
-
+	/*
 	override List<Receta> getRecetasBuscadasFavoritas() {
 		recetasBuscadasFavoritas
 	}
-
+ */
 	//	------------------------------------------- Metodos -------------------------------------------
 	override modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada) {
@@ -329,6 +336,13 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	override comparteGrupo(Usuario usuario) {
 		grupos.exists[x|x.contieneAlUsuario(usuario)]
 	}
+	
+	override consultarPorReceta( Receta receta ){
+		consultas.clear()
+		if ( receta.puedeVer( this )) consultas.add( receta )
+		notificar()
+	}
+	
 
 	override puedeComer(Receta receta) {
 		true

@@ -1,9 +1,13 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import queComemos.entrega3.dominio.Dificultad
+import javax.persistence.Entity
+import javax.persistence.Column
 
-class ConsultasXVeganos implements Observador {
+@Entity
+class ConsultasXVeganos extends Observador {
 
+	@Column
 	private int consultasXVeganos = 0
 
 	override actualizar(Usuario usuario) {

@@ -3,19 +3,26 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.Map
 import java.util.Calendar
 import java.util.HashMap
+import javax.persistence.Entity
+import org.hibernate.annotations.CollectionOfElements
+import org.hibernate.annotations.Fetch
+import org.hibernate.annotations.FetchMode
+import javax.persistence.FetchType
 
-class ConsultasXHora implements Observador {
+@Entity
+class ConsultasXHora extends Observador {
 
+	@CollectionOfElements ( fetch = FetchType.EAGER )
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Map<Integer, Integer> consultasXHora = new HashMap<Integer, Integer>
-	private Calendar calendario = Calendar.getInstance();
 
 	override actualizar(Usuario usuario) {
 
-		if (consultasXHora.containsKey(calendario.get(Calendar.HOUR_OF_DAY))) {
-			consultasXHora.put(calendario.get(Calendar.HOUR_OF_DAY),
-				consultasXHora.get(calendario.get(Calendar.HOUR_OF_DAY)) + 1)
+		if (consultasXHora.containsKey(Calendar.getInstance().get(Calendar.HOUR_OF_DAY))) {
+			consultasXHora.put(Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+				consultasXHora.get(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) + 1)
 		} else {
-			consultasXHora.put(calendario.get(Calendar.HOUR_OF_DAY), 1)
+			consultasXHora.put(Calendar.getInstance().get(Calendar.HOUR_OF_DAY), 1)
 		}
 	}
 

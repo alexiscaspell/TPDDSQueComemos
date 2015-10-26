@@ -2,9 +2,17 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import java.util.Map
 import java.util.HashMap
+import javax.persistence.Entity
+import org.hibernate.annotations.CollectionOfElements
+import org.hibernate.annotations.Fetch
+import org.hibernate.annotations.FetchMode
+import javax.persistence.FetchType
 
-class ConsultasXRecetas implements Observador {
+@Entity
+class ConsultasXRecetas extends Observador {
 
+	@CollectionOfElements ( fetch = FetchType.EAGER )
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Map<String, Integer> recetasConsultadas;
 	
 	new(){

@@ -3,10 +3,21 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.util.Map
 import java.util.HashMap
+import javax.persistence.Entity
+import org.hibernate.annotations.CollectionOfElements
+import org.hibernate.annotations.Fetch
+import org.hibernate.annotations.FetchMode
+import javax.persistence.FetchType
 
-class ConsultasXSexo implements Observador {
+@Entity
+class ConsultasXSexo extends Observador {
 
+	@CollectionOfElements ( fetch = FetchType.EAGER )
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Map<String, Integer> consultasXFemenino = new HashMap<String, Integer>
+	
+	@CollectionOfElements ( fetch = FetchType.EAGER )
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Map<String, Integer> consultasXMasculino = new HashMap<String, Integer>
 
 	override actualizar(Usuario usuario) {

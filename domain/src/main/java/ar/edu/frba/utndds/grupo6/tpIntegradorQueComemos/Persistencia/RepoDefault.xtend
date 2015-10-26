@@ -15,14 +15,30 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDecorator
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioHipertenso
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.SujetoObservado
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXHora
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXSexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXVeganos
 
 abstract class RepoDefault<T> {
 
 	protected static final SessionFactory sessionFactory = new AnnotationConfiguration().configure().
-		addAnnotatedClass(Receta).addAnnotatedClass(UsuarioPosta) // Usuario - UsuarioPosta - Diabetico.. ?
-		.addAnnotatedClass(UsuarioDecorator).addAnnotatedClass(UsuarioVegano).addAnnotatedClass(UsuarioDiabetico).
-		addAnnotatedClass(UsuarioHipertenso).addAnnotatedClass(Grupo).addAnnotatedClass(Login).
-		addAnnotatedClass(Administrador).buildSessionFactory()
+		addAnnotatedClass(Receta)
+		.addAnnotatedClass(UsuarioPosta) // Usuario - UsuarioPosta - Diabetico.. ?
+		.addAnnotatedClass(UsuarioDecorator)
+		.addAnnotatedClass(UsuarioVegano)
+		.addAnnotatedClass(UsuarioDiabetico)
+		.addAnnotatedClass(UsuarioHipertenso)
+		.addAnnotatedClass(Grupo)
+		.addAnnotatedClass(Login)
+		.addAnnotatedClass( SujetoObservado )
+		.addAnnotatedClass( ConsultasXHora )
+		.addAnnotatedClass( ConsultasXRecetas )
+		.addAnnotatedClass( ConsultasXSexo )
+		.addAnnotatedClass( ConsultasXVeganos )
+		.addAnnotatedClass(Administrador)
+		.buildSessionFactory()
 
 	def List<T> allInstances() {
 		val session = sessionFactory.openSession

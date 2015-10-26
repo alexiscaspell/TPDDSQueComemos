@@ -42,13 +42,29 @@ class UsuarioTestBuilder {
 		if ( nombre == "Lucas" ) return new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre , Sexo.MASCULINO)
 		else if ( nombre == "Mariano" ) return new UsuarioPosta(210.4, 1.40, Rutina.INTENSIVO, nombre , Sexo.MASCULINO) 
 	} */
+	
+	new(){
+		temporadasReceta1.add(Temporada.INVIERNO)
+		temporadasReceta1.add(Temporada.OTONIO)
+
+		condimentosReceta1.put(Condimento.AZUCAR, 10);
+		condimentosReceta1.put(Condimento.CALDO, 20);
+
+		ingredientesReceta1.put(Ingrediente.AJO, 20)
+		ingredientesReceta2.put(Ingrediente.AJO, 20)
+
+		temporadasReceta2.add(Temporada.PRIMAVERA)
+		temporadasReceta2.add(Temporada.VERANO)
+
+		condimentosReceta2.put(Condimento.AZUCAR, 10);
+		condimentosReceta2.put(Condimento.CALDO, 20);
+		
+	}
+	
 	def Usuario usuarioBuilder(String nombre) {
 
 		val Usuario usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre, Sexo.MASCULINO,
 			fecha)
-		
-		usuario_test.preferenciasAlimenticias.add(Ingrediente.POLLO)
-		usuario_test.preferenciasAlimenticias.add(Ingrediente.ALGA)
 
 		usuario_test.platosQueNoLeGustan.add("pizza")
 		usuario_test.platosQueNoLeGustan.add("fideos")
@@ -63,15 +79,7 @@ class UsuarioTestBuilder {
 		receta2.usuarioCreador = "test"
 		receta2.tipo = TipoReceta.PUBLICA
 	
-		temporadasReceta1.add(Temporada.INVIERNO)
-		temporadasReceta1.add(Temporada.OTONIO)
-
-		condimentosReceta1.put(Condimento.AZUCAR, 10);
-		condimentosReceta1.put(Condimento.CALDO, 20);
-
-		ingredientesReceta1.put(Ingrediente.AJO, 20)
-		ingredientesReceta2.put(Ingrediente.AJO, 20)
-
+	
 		receta1.temporadas = temporadasReceta1;
 		receta1.condimentos = condimentosReceta1;
 		receta1.ingredientes = ingredientesReceta1;
@@ -83,13 +91,6 @@ class UsuarioTestBuilder {
 		receta2.ingredientes = ingredientesReceta2
 
 		usuario_test.marcarComoFavorita(receta1)
-
-		temporadasReceta2.add(Temporada.PRIMAVERA)
-		temporadasReceta2.add(Temporada.VERANO)
-
-		condimentosReceta2.put(Condimento.AZUCAR, 10);
-		condimentosReceta2.put(Condimento.CALDO, 20);
-
 		receta2.temporadas = temporadasReceta2;
 		receta2.condimentos = condimentosReceta2;
 		receta2.explicacion = "Explicación de la receta 2";

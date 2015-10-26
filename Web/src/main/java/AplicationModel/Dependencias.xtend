@@ -19,19 +19,22 @@ import java.util.Date
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 import FiltrosConsultasRecetas.Filtrador
 import Pedidos.PedidoEnumsSistema
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 @Accessors
 class Dependencias {
-	public static val repoUsuarios = new Repositorio()
-	public static val repoRecetas = Recetario.getInstance()
+	//public static val repoUsuarios = new Repositorio()
+	//public static val repoRecetas = Recetario.getInstance()
 	public static val usuariosRepository = UsuariosRepository.getInstance;
+	public static val recetasRepository = RecetasRepository.getInstance;
+	
 	public static Usuario usuario
-	val static temporadasReceta1 = new ArrayList<Temporada>();
-	val static temporadasReceta2 = new ArrayList<Temporada>();
-	val static condimentosReceta1 = new HashMap<Condimento, Integer>();
-	val static condimentosReceta2 = new HashMap<Condimento, Integer>();
-	val static ingredientesReceta1 = new HashMap<Ingrediente, Integer>();
-	val static ingredientesReceta2 = new HashMap<Ingrediente, Integer>();
+	//val static temporadasReceta1 = new ArrayList<Temporada>();
+	//val static temporadasReceta2 = new ArrayList<Temporada>();
+	//val static condimentosReceta1 = new HashMap<Condimento, Integer>();
+	//val static condimentosReceta2 = new HashMap<Condimento, Integer>();
+	//val static ingredientesReceta1 = new HashMap<Ingrediente, Integer>();
+	//val static ingredientesReceta2 = new HashMap<Ingrediente, Integer>();
 	public static ConsultasXRecetas consultasXRecetas = new ConsultasXRecetas()
 
 	//------------------CONSULTAS RECETAS--------------------------
@@ -47,6 +50,7 @@ class Dependencias {
 	}
 
 	//--------------CONSULTAS RECETAS-----------------------
+	/*
 	public static def hardcodear() {
 		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO,
 			new Date(1989, 6, 5))
@@ -97,5 +101,5 @@ class Dependencias {
 		usuario.addObservador(consultasXRecetas)
 		usuario.marcarComoFavorita(receta2)
 		return usuario
-	}
+	} */
 }

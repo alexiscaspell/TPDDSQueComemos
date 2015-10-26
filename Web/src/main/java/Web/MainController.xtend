@@ -42,7 +42,7 @@ class MainController {
 	}
 
 	def obtenerJugador(HttpServletRequest request) {
-		repoUsuarios.getUsuario(getCookie(request, "usuario"))
+		usuariosRepository.searchByName(getCookie(request, "usuario"))
 	}
 
 	def getCookie(HttpServletRequest request, String string) {
@@ -66,6 +66,7 @@ class MainController {
 	@Post("/nuevoCondimento")
 	def Result nuevoCondimento(@Body String nombre) {
 		recetaSeleccionada.agregarCondimento(Condimento.valueOf(nombre), 0);
+		recetasRepository.update( recetaSeleccionada )
 		var gsonBilder = new GsonBuilder();
 		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
 		var gson = gsonBilder.create();
@@ -75,6 +76,7 @@ class MainController {
 	@Post("/nuevoIngrediente")
 	def Result nuevoIngrediente(@Body String nombre) {
 		recetaSeleccionada.agregarIngrediente(Ingrediente.valueOf(nombre), 0);
+		recetasRepository.update( recetaSeleccionada )
 		ok();
 	}
 
@@ -83,6 +85,7 @@ class MainController {
 		usuario.modificarReceta(recetaSeleccionada.nombre, recetaSeleccionada.nombre,
 			recetaSeleccionada.ingredientes, recetaSeleccionada.condimentos, recetaSeleccionada.explicacion,
 			recetaSeleccionada.dificultad, recetaSeleccionada.temporadas);
+		recetasRepository.update( recetaSeleccionada )
 		ok
 	}
 

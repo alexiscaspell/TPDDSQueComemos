@@ -8,6 +8,63 @@ CREATE TABLE `administrador` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `consultasxhora` (
+  `id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `consultasxhora_consultasxhora` (
+  `ConsultasXHora_id` bigint(20) NOT NULL,
+  `element` int(11) DEFAULT NULL,
+  `consultasXHora_KEY` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ConsultasXHora_id`,`consultasXHora_KEY`),
+  KEY `FK274E4BFF1F15D294` (`ConsultasXHora_id`),
+  CONSTRAINT `FK274E4BFF1F15D294` FOREIGN KEY (`ConsultasXHora_id`) REFERENCES `consultasxhora` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `consultasxrecetas` (
+  `id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `consultasxrecetas_recetasconsultadas` (
+  `ConsultasXRecetas_id` bigint(20) NOT NULL,
+  `element` int(11) DEFAULT NULL,
+  `recetasConsultadas_KEY` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`ConsultasXRecetas_id`,`recetasConsultadas_KEY`),
+  KEY `FKB22F1F18CA8ED40` (`ConsultasXRecetas_id`),
+  CONSTRAINT `FKB22F1F18CA8ED40` FOREIGN KEY (`ConsultasXRecetas_id`) REFERENCES `consultasxrecetas` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `consultasxsexo` (
+  `id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `consultasxsexo_consultasxfemenino` (
+  `ConsultasXSexo_id` bigint(20) NOT NULL,
+  `element` int(11) DEFAULT NULL,
+  `consultasXFemenino_KEY` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`ConsultasXSexo_id`,`consultasXFemenino_KEY`),
+  KEY `FKFBB50BA95449ADB4` (`ConsultasXSexo_id`),
+  CONSTRAINT `FKFBB50BA95449ADB4` FOREIGN KEY (`ConsultasXSexo_id`) REFERENCES `consultasxsexo` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `consultasxsexo_consultasxmasculino` (
+  `ConsultasXSexo_id` bigint(20) NOT NULL,
+  `element` int(11) DEFAULT NULL,
+  `consultasXMasculino_KEY` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`ConsultasXSexo_id`,`consultasXMasculino_KEY`),
+  KEY `FK23A660795449ADB4` (`ConsultasXSexo_id`),
+  CONSTRAINT `FK23A660795449ADB4` FOREIGN KEY (`ConsultasXSexo_id`) REFERENCES `consultasxsexo` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `consultasxveganos` (
+  `id` bigint(20) NOT NULL,
+  `consultasXVeganos` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `administrador_usuario` (
   `Administrador_id` bigint(20) NOT NULL,
   `colaDeEspera_id` bigint(20) NOT NULL,

@@ -33,12 +33,13 @@ class MainController {
 	@Post("/login")
 	def Result login(@Body String body) {
 		val PedidoLogin pedido = body.fromJson(PedidoLogin)
+
 		// Hacer un usuario con los datos de pedido y pasarlo por searchByExample
 		var usuarios = usuariosRepository.allInstances
-		
-		usuario = usuarios.findFirst[x | x.nickName == pedido.nombre && x.password == pedido.pass]
-		usuario.addObservador( consultasXRecetas )
-		println(usuario.nickName)		
+
+		usuario = usuarios.findFirst[x|x.nickName == pedido.nombre && x.password == pedido.pass]
+		usuario.addObservador(consultasXRecetas)
+		println(usuario.nickName)
 		ok
 	}
 
@@ -67,7 +68,7 @@ class MainController {
 	@Post("/nuevoCondimento")
 	def Result nuevoCondimento(@Body String nombre) {
 		recetaSeleccionada.agregarCondimento(Condimento.valueOf(nombre), 0);
-		recetasRepository.update( recetaSeleccionada )
+		recetasRepository.update(recetaSeleccionada)
 		var gsonBilder = new GsonBuilder();
 		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
 		var gson = gsonBilder.create();
@@ -77,7 +78,7 @@ class MainController {
 	@Post("/nuevoIngrediente")
 	def Result nuevoIngrediente(@Body String nombre) {
 		recetaSeleccionada.agregarIngrediente(Ingrediente.valueOf(nombre), 0);
-		recetasRepository.update( recetaSeleccionada )
+		recetasRepository.update(recetaSeleccionada)
 		ok();
 	}
 
@@ -86,17 +87,21 @@ class MainController {
 		usuario.modificarReceta(recetaSeleccionada.nombre, recetaSeleccionada.nombre,
 			recetaSeleccionada.ingredientes, recetaSeleccionada.condimentos, recetaSeleccionada.explicacion,
 			recetaSeleccionada.dificultad, recetaSeleccionada.temporadas);
-		recetasRepository.update( recetaSeleccionada )
+		recetasRepository.update(recetaSeleccionada)
 		ok
 	}
-	
+
 	@Post("/ConsultarReceta")
-	def Result consultar( @Body String body ){
+	def Result consultar(@Body String body) {
+
 		//usuario.recetasConAcceso
-		val Receta receta = body.fromJson(Receta)
-		usuario.consultarPorReceta( receta )
-		usuariosRepository.update( usuario )
-		ok 
+		var gsonBilder = new GsonBuilder();
+		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
+		var gson = gsonBilder.create();
+		recetaSeleccionada = gson.fromJson(body, Receta)
+		usuario.consultarPorReceta(recetaSeleccionada)
+		usuariosRepository.update(usuario)
+		ok
 	}
 
 	@Get("/getCondicionesPreexistentes")
@@ -136,7 +141,7 @@ class MainController {
 	def Result getRecetaSeleccionada() {
 		ok(recetaSeleccionada.toJson)
 	}
-	
+
 	@Post("/setFiltros")
 	def Result setFiltros(@Body String body) {
 		var PedidoFiltroConsultaReceta pedido = body.fromJson(PedidoFiltroConsultaReceta)
@@ -147,18 +152,17 @@ class MainController {
 		println("y maximoCalorias: " + pedido.maximoCalorias)
 		println("[@Post setFiltros()] Recibiendo filtros con temporada: " + pedido.temporada)
 		println("[@Post setFiltros()] Recibiendo filtros con filtrosUsuario: " + pedido.filtrosUsuario)
-		
+
 		//filtrador.usuario = usuario_aux
-		
 		filtrador.crearFiltros(pedido)
-		
+
 		var listaFiltrada = filtrador.filtrar(newRecetasFiltradas())
-		
+
 		ok(listaFiltrada.toJson)
 	}
-	
-		@Get("/getEnums")
-	def Result getEnums() {	
+
+	@Get("/getEnums")
+	def Result getEnums() {
 		enumsSistema.hardcodear()
 		ok(enumsSistema.toJson)
 	}

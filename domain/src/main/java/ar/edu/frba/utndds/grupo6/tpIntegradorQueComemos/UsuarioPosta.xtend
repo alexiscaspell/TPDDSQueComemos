@@ -255,19 +255,18 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 
 	override getRecetasConAcceso() {
-
+		
 		val recetas = RecetasRepository.getInstance().allInstances();
-		consultas.clear()
+		val listaRecetasConAcceso = new ArrayList<Receta>
 
 		recetas.forEach [ receta |
 			if (receta.puedeVer(this)) {
-				consultas.add(receta)
+				listaRecetasConAcceso.add(receta)
 			}
 		]
-		println("ENTRO EN getRecetasConAcceso")
-		notificar()
-		return consultas
-	}
+		
+		return listaRecetasConAcceso
+	}  
 	
 	
 	override getPeso() {
@@ -338,6 +337,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 	
 	override consultarPorReceta( Receta receta ){
+		
 		consultas.clear()
 		if ( receta.puedeVer( this )) consultas.add( receta )
 		notificar()

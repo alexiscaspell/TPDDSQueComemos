@@ -33,20 +33,11 @@ class UsuarioHipertenso extends UsuarioDecorator {
 	override notificar() {
 		getObservadores().forEach[actualizar(this)]
 	}
-
-	override getRecetasConAcceso() {
-		val recetario = RecetasRepository.getInstance();
-		val recetas = recetario.allInstances();
+	
+	override consultarPorReceta( Receta receta ){
 		consultas.clear()
-
-		recetas.forEach [ receta |
-			if (receta.puedeVer(this)) {
-				consultas.add(receta)
-			}
-		]
-
+		if ( receta.puedeVer( this )) consultas.add( receta )
 		notificar()
-		return consultas
 	}
 
 	override esVegano() {

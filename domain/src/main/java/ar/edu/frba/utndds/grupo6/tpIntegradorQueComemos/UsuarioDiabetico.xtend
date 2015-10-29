@@ -1,7 +1,6 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 import javax.persistence.Entity
 
 @Entity
@@ -33,22 +32,12 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 	override notificar() {
 		getObservadores().forEach[actualizar(this)]
 	}
-
-	override getRecetasConAcceso() {
-		val recetario = RecetasRepository.getInstance();
-		val recetas = recetario.allInstances();
+	
+	override consultarPorReceta( Receta receta ){
 		consultas.clear()
-
-		recetas.forEach [ receta |
-			if (receta.puedeVer(this)) {
-				consultas.add(receta)
-			}
-		]
-
+		if ( receta.puedeVer( this )) consultas.add( receta )
 		notificar()
-		return consultas
 	}
-
 	override esVegano() {
 		return false || decorado.esVegano();
 	}

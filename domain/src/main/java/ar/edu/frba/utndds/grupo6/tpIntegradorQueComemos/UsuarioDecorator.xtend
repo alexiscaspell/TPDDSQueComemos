@@ -64,7 +64,9 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 		decorado.password
 	}
 	
-
+	override getRecetasConAcceso(){
+		decorado.recetasConAcceso
+	}
 	
 	override getCondicion(){
 		decorado.getCondicion()

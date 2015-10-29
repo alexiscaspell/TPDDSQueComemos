@@ -117,7 +117,7 @@ class MainController {
 		response.contentType = ContentType.APPLICATION_JSON
 		var pedidoUsuario = new PedidoUsuario(usuario)
 		pedidoUsuario.Color()
-		println("fecha de nacimiento" + pedidoUsuario.usuario.fechaDeNacimiento)
+		//println("fecha de nacimiento" + pedidoUsuario.usuario.fechaDeNacimiento)
 		ok(pedidoUsuario.toJson)
 	}
 

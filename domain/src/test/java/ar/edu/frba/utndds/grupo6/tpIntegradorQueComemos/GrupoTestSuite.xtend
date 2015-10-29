@@ -14,6 +14,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import java.util.List
 import queComemos.entrega3.dominio.Dificultad
+import java.util.HashSet
 
 class GrupoTestSuite {
 	
@@ -47,7 +48,7 @@ class GrupoTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -71,7 +72,7 @@ class GrupoTestSuite {
 						  "2 - Pasar la carne por el huevo" +
 						  "3 - Pasar la carne por pan rayado" +
 						  "4 - Hornear 25 minutos"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)

@@ -16,6 +16,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
 import org.junit.Before
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
+import java.util.HashSet
 
 class UsuarioTestSuite {
 
@@ -299,7 +300,7 @@ class UsuarioTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -322,7 +323,7 @@ class UsuarioTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -346,7 +347,7 @@ class UsuarioTestSuite {
 						  "2 - Pasar la carne por el huevo" +
 						  "3 - Pasar la carne por pan rayado" +
 						  "4 - Hornear 25 minutos"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -366,7 +367,7 @@ class UsuarioTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)

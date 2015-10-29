@@ -22,6 +22,7 @@ import org.uqbar.xtrest.json.JSONUtils
 import static AplicationModel.Dependencias.*
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import Pedidos.PedidoFiltroConsultaReceta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 
 @Controller
 class MainController {
@@ -33,11 +34,13 @@ class MainController {
 	@Post("/login")
 	def Result login(@Body String body) {
 		val PedidoLogin pedido = body.fromJson(PedidoLogin)
-
+		var usuarioExample = new UsuarioPosta()
+		usuarioExample.nickName = pedido.nombre
+		usuarioExample.password = pedido.pass
 		// Hacer un usuario con los datos de pedido y pasarlo por searchByExample
-		var usuarios = usuariosRepository.allInstances
-
-		usuario = usuarios.findFirst[x|x.nickName == pedido.nombre && x.password == pedido.pass]
+		//var usuarios = usuariosRepository.allInstances
+		//usuario = usuarios.findFirst[x|x.nickName == pedido.nombre && x.password == pedido.pass]
+		usuario = usuariosRepository.searchByExample( usuarioExample ).head
 		usuario.addObservador(consultasXRecetas)
 		println(usuario.nickName)
 		ok

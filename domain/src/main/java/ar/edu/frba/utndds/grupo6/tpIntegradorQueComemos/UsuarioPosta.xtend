@@ -300,7 +300,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
  */
 	//	------------------------------------------- Metodos -------------------------------------------
 	override modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
-		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada) {
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, Set<Temporada> temporada) {
 
 		val receta = getReceta(nombreRecetaAModificar)
 

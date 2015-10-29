@@ -1,14 +1,13 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta
 
 import java.util.HashMap
-import java.util.ArrayList
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
+import java.util.HashSet
 
 class recetaValida implements recetaFactory {
 
@@ -18,7 +17,7 @@ class recetaValida implements recetaFactory {
 		val ingredientes = new HashMap<Ingrediente, Integer>()
 		val condimentos = new HashMap<Condimento, Integer>()
 		val explicacion = "1 - Nada\n" + "2 - Nada otra vez"
-		val temporadas = new ArrayList<Temporada>()
+		val temporadas = new HashSet<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)

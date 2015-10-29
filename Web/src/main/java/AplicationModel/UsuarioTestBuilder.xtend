@@ -27,16 +27,16 @@ class UsuarioTestBuilder {
 
 	//Calendar calendar = Calendar.getInstance();
 	Date fecha = new Date()
-	recetaValida recetaEsValida = new recetaValida()
-	recetaConAzucar recetaAzucar = new recetaConAzucar()
-	recetaConSal recetaSal = new recetaConSal()
-	recetaConCarne recetaCarne = new recetaConCarne()
-	val static temporadasReceta1 = new ArrayList<Temporada>();
-	val static temporadasReceta2 = new ArrayList<Temporada>();
-	val static condimentosReceta1 = new HashMap<Condimento, Integer>();
-	val static condimentosReceta2 = new HashMap<Condimento, Integer>();
-	val static ingredientesReceta1 = new HashMap<Ingrediente, Integer>();
-	val static ingredientesReceta2 = new HashMap<Ingrediente, Integer>();
+	//recetaValida recetaEsValida = new recetaValida()
+	//recetaConAzucar recetaAzucar = new recetaConAzucar()
+	//recetaConSal recetaSal = new recetaConSal()
+	//recetaConCarne recetaCarne = new recetaConCarne()
+	//val static temporadasReceta1 = new ArrayList<Temporada>();
+	//val static temporadasReceta2 = new ArrayList<Temporada>();
+	//val static condimentosReceta1 = new HashMap<Condimento, Integer>();
+	//val static condimentosReceta2 = new HashMap<Condimento, Integer>();
+	//val static ingredientesReceta1 = new HashMap<Ingrediente, Integer>();
+	//val static ingredientesReceta2 = new HashMap<Ingrediente, Integer>();
 	public static ConsultasXRecetas consultasXRecetas = new ConsultasXRecetas()
 	
 	/*def UsuarioPosta usuarioBuilder( String nombre ){
@@ -45,6 +45,7 @@ class UsuarioTestBuilder {
 	} */
 	
 	new(){
+		/*
 		temporadasReceta1.add(Temporada.INVIERNO)
 		temporadasReceta1.add(Temporada.OTONIO)
 
@@ -59,11 +60,12 @@ class UsuarioTestBuilder {
 
 		condimentosReceta2.put(Condimento.AZUCAR, 10);
 		condimentosReceta2.put(Condimento.CALDO, 20);
+		*/
 		
 	}
 	
 	def Usuario usuarioBuilder(String nombre) {
-
+		/*
 		val Usuario usuario_test = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, nombre, Sexo.MASCULINO,
 			fecha)
 
@@ -99,6 +101,7 @@ class UsuarioTestBuilder {
 		usuario_test.addObservador(consultasXRecetas)
 		usuario_test.marcarComoFavorita(receta2)
 		return ( new UsuarioVegano( usuario_test ) )
+		*/
 	}
 
 }

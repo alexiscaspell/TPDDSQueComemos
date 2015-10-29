@@ -9,6 +9,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
+import java.util.HashSet
 
 class recetaPublica implements recetaFactory {
 
@@ -22,7 +23,7 @@ class recetaPublica implements recetaFactory {
 		condimentos.put(Condimento.AZUCAR, 100)
 		condimentos.put(Condimento.ACEITE, 10)
 		val explicacion = "No se hacer una torta"
-		val temporadas = new ArrayList<Temporada>()
+		val temporadas = new HashSet<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -43,7 +44,7 @@ class recetaPublica implements recetaFactory {
 		condimentos.put(Condimento.AZUCAR, 100)
 		condimentos.put(Condimento.ACEITE, 10)
 		val explicacion = "No se hacer una torta"
-		val temporadas = new ArrayList<Temporada>()
+		val temporadas = new HashSet<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)

@@ -13,6 +13,7 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import org.junit.Assert
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
+import java.util.HashSet
 
 class FiltroStrategyTestSuite {
 
@@ -103,7 +104,7 @@ class FiltroStrategyTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -126,7 +127,7 @@ class FiltroStrategyTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -149,7 +150,7 @@ class FiltroStrategyTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -172,7 +173,7 @@ class FiltroStrategyTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)

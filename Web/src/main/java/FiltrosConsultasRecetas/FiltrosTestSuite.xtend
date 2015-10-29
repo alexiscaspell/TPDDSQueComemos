@@ -17,9 +17,8 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioHipertenso
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Grupo
 import Pedidos.PedidoFiltroConsultaReceta
+import java.util.HashSet
 
 class FiltrosTestSuite {
 	
@@ -53,7 +52,7 @@ class FiltrosTestSuite {
 						  "2 - Hervir las papas 20 minutos" +
 						  "3 - Pisar las papas con un pisapapas" +
 						  "4 - Condimentar"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new  HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -77,7 +76,7 @@ class FiltrosTestSuite {
 						  "2 - Pasar la carne por el huevo" +
 						  "3 - Pasar la carne por pan rayado" +
 						  "4 - Hornear 25 minutos"
-		val temporadas = new ArrayList<Temporada>()		
+		val temporadas = new HashSet<Temporada>()		
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)

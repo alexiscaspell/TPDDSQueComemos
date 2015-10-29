@@ -5,10 +5,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import java.util.ArrayList
 import java.util.HashMap
 import queComemos.entrega3.dominio.Dificultad
+import java.util.HashSet
 
 @Data
 class recetaConAzucar implements recetaFactory {
@@ -23,7 +23,7 @@ class recetaConAzucar implements recetaFactory {
 		condimentos.put(Condimento.AZUCAR, 100)
 		condimentos.put(Condimento.ACEITE, 10)
 		val explicacion = "No se hacer una torta"
-		val temporadas = new ArrayList<Temporada>()
+		val temporadas = new HashSet<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)
@@ -47,7 +47,7 @@ class recetaConAzucar implements recetaFactory {
 			"2 - Disolver la levadura en agua e ir agregando da a poco a la harina" +
 			"3 - Amasar y dejar fermentando durante dos horas aprox" 
 			 + "4 - Fraccionar la masa y armar los panes, luego al horno por 40 minutos a 200 grados." */
-		val temporadas = new ArrayList<Temporada>()
+		val temporadas = new HashSet<Temporada>()
 		temporadas.add(Temporada.INVIERNO)
 		temporadas.add(Temporada.OTONIO)
 		temporadas.add(Temporada.PRIMAVERA)

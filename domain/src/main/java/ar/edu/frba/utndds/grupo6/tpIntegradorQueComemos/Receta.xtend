@@ -26,6 +26,7 @@ import org.hibernate.annotations.LazyCollection
 import org.hibernate.annotations.LazyCollectionOption
 import javax.persistence.CascadeType
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
+import java.util.Set
 
 @Entity
 @Observable
@@ -59,7 +60,7 @@ public class Receta extends IReceta implements Cloneable {
 
 	// Buscar como persistir lista de enums
 	@CollectionOfElements ( fetch = FetchType.EAGER )
-	private List<Temporada> temporadas
+	private Set<Temporada> temporadas
 
 	@Enumerated(EnumType.STRING) 
 	private TipoReceta tipo
@@ -89,7 +90,7 @@ public class Receta extends IReceta implements Cloneable {
 		Map<Condimento, Integer> condimentos,
 		String explicacion,
 		Dificultad dificultad,
-		List<Temporada> temporadas
+		Set<Temporada> temporadas
 	) {
 		this.usuarioCreador = usuario
 		this.nombre = nombre

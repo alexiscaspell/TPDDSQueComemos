@@ -11,6 +11,7 @@ import javax.persistence.Entity
 import javax.persistence.OneToOne
 import javax.persistence.FetchType
 import javax.persistence.CascadeType
+import java.util.Set
 
 @Entity
 @Accessors
@@ -157,7 +158,7 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 	}
 	
 	override modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
-		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada) {
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, Set<Temporada> temporada) {
 		decorado.modificarReceta(nombreRecetaAModificar, nombreReceta, ingredientes, condimentos, explicacion,
 			dificultad, temporada);
 	}

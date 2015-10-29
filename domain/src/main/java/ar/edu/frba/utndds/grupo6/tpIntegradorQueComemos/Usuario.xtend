@@ -111,7 +111,7 @@ abstract class Usuario extends SujetoObservado {
 	def List<Observador> getObservadores()
 	 */
 	def void modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
-		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, List<Temporada> temporada)
+		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, Set<Temporada> temporada)
 	
 
 	

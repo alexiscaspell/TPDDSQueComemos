@@ -53,6 +53,7 @@ queComemosApp
 								enumsData) {
 							$scope.lista_dificultades_sistema = enumsData.data.dificultadesDelSistema
 							$scope.lista_temporadas_sistema = enumsData.data.temporadasDelSistema
+					
 
 							$scope.buscarRecetaPorFiltro = function() {
 								$http

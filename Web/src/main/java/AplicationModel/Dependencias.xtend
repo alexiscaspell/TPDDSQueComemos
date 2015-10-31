@@ -20,6 +20,8 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRep
 import FiltrosConsultasRecetas.Filtrador
 import Pedidos.PedidoEnumsSistema
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
+import java.util.List
+import java.util.HashSet
 
 @Accessors
 class Dependencias {
@@ -44,9 +46,38 @@ class Dependencias {
 
 	public static def newRecetasFiltradas() { //Recetas hardcodeadas,esto viene de repoRecetas
 
-		val ListadoRecetas listado = new ListadoRecetas()
+		//val ListadoRecetas listado = new ListadoRecetas()
 
-		return listado.recetas
+		//return listado.recetas
+		
+		val String creador = "Lucas"
+		val nombre = "Milanesas"
+		val ingredientes = new HashMap<Ingrediente, Integer>()
+		ingredientes.put(Ingrediente.CARNE, 1000)
+		ingredientes.put(Ingrediente.HUEVO, 6)
+		ingredientes.put(Ingrediente.PAN_RAYADO, 6)
+		val condimentos = new HashMap<Condimento, Integer>()
+		condimentos.put(Condimento.SAL, 10)
+		condimentos.put(Condimento.ACEITE, 10)
+		val explicacion = 
+			"1 - Cortar la carne\n" /*+ 
+			"2 - Pasar la carne por el huevo" +
+			"3 - Pasar la carne por pan rayado" 
+			+ "4 - Hornear 25 minutos" */
+		val temporadas = new HashSet<Temporada>()
+		temporadas.add(Temporada.INVIERNO)
+		temporadas.add(Temporada.OTONIO)
+		temporadas.add(Temporada.PRIMAVERA)
+		temporadas.add(Temporada.VERANO)
+		val recetaSimple = new Receta(creador, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
+			temporadas)
+		recetaSimple.tipo = TipoReceta.PUBLICA
+		
+		var List<Receta> recetasHard = new ArrayList<Receta>
+		
+		recetasHard.add(recetaSimple)
+		
+		return recetasHard
 	}
 
 	//--------------CONSULTAS RECETAS-----------------------

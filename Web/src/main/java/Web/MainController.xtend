@@ -23,6 +23,7 @@ import static AplicationModel.Dependencias.*
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import Pedidos.PedidoFiltroConsultaReceta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano
 
 @Controller
 class MainController {
@@ -155,8 +156,11 @@ class MainController {
 		println("y maximoCalorias: " + pedido.maximoCalorias)
 		println("[@Post setFiltros()] Recibiendo filtros con temporada: " + pedido.temporada)
 		println("[@Post setFiltros()] Recibiendo filtros con filtrosUsuario: " + pedido.filtrosUsuario)
-
-		//filtrador.usuario = usuario_aux
+		
+		if(pedido.filtrosUsuario==null)
+			pedido.filtrosUsuario=false
+			
+		filtrador.usuario = usuario
 		filtrador.crearFiltros(pedido)
 
 		var listaFiltrada = filtrador.filtrar(newRecetasFiltradas())

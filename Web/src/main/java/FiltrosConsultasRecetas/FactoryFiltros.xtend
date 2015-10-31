@@ -18,7 +18,7 @@ class FactoryFiltros {
 		
 		var List<FiltroInterface> filtros = new ArrayList<FiltroInterface>
 		
-		if(pedido.nombre.trim()!= null){
+		if(pedido.nombre!= null){
 			filtros.add(new FiltroNombre(pedido.nombre))
 		} 			
 		if(pedido.dificultad != null){

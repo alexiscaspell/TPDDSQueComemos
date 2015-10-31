@@ -84,5 +84,10 @@ class RecetasRepository extends RepoDefault<Receta> {
 
 		recetasAdaptadas.filter[x|!allInstances.contains(x)].toList() as ArrayList<Receta>;
 	}
+	
+	def List<Receta> getRecetas(){
+		
+		allInstances
+	}
 
 }

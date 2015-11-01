@@ -62,7 +62,7 @@ queComemosApp
 												{
 													nombre : $scope.filtro.Nombre,
 													dificultad : $scope.filtro.Dificultad,
-													ingrediente : $scope.filtro.Ingrediente,
+													ingrediente : angular.uppercase($scope.filtro.Ingrediente),
 													maximoCalorias : $scope.filtro.MaximoCalorias,
 													minimoCalorias : $scope.filtro.MinimoCalorias,
 													temporada : $scope.filtro.Temporada,

@@ -89,6 +89,18 @@
         			<td class="col-xs-2">{{receta.calorias}}</td>
         			<td class="col-xs-2">{{receta.dificultad}}</td>
         			<td class="col-xs-4">{{receta.temporadas}}</td>
+
+        			<!--ROBANDO-->
+        			<td nowrap class="col-xs-2">
+          			<button type="button" class="btn btn-default" ng-click="seleccionarReceta(receta)" aria-label="Cumplir">
+	            		<span class="glyphicon glyphicon-pencil"></span>
+          			</button>
+          			<button type="button" class="btn btn-default" ng-click="consultarReceta(receta)" aria-label="Cumplir">
+	            		<span class="glyphicon glyphicon-search"></span>
+          			</button>          			
+        			</td>
+        			<!--ROBANDO-->
+
       			</tr>
       		</tbody>
     		</table>

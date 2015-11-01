@@ -78,6 +78,27 @@ queComemosApp
 							$scope.irAHome = function() {
 								$state.go('PanelHome')
 							}
+
+							/*roBando*/
+							$scope.verReceta = function() {
+							$state.go('PanelReceta');
+							};
+
+
+			$scope.consultarReceta = function(receta) {
+				queComemosService.setRecetaAConsultar(receta).success(function(){
+					$scope.verReceta();
+				});
+			}
+
+			$scope.seleccionarReceta = function(receta) {
+				queComemosService.setRecetaSeleccionada(receta).success(
+						function() {
+							$scope.verReceta();
+						});
+			};
+
+						/*roBando*/
 						} ]);
 
 queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',

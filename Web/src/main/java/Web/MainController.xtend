@@ -163,7 +163,7 @@ class MainController {
 		filtrador.usuario = usuario
 		filtrador.crearFiltros(pedido)
 		
-		var listaFiltrada = filtrador.filtrar(recetasRepository.recetas)//consultar si hacerlo EAGER o LAZY
+		var listaFiltrada = filtrador.filtrar(recetasRepository.allInstances)//consultar si hacerlo EAGER o LAZY
 
 		ok(listaFiltrada.toJson)
 	}

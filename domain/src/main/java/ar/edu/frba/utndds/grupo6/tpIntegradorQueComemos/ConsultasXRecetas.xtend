@@ -8,11 +8,8 @@ import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
 import javax.persistence.FetchType
 
-@Entity
 class ConsultasXRecetas extends Observador {
 
-	@CollectionOfElements ( fetch = FetchType.EAGER )
-	@Fetch(value = FetchMode.SUBSELECT)
 	private Map<String, Integer> recetasConsultadas;
 	
 	new(){

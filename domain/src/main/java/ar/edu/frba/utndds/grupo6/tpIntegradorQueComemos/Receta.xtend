@@ -28,59 +28,32 @@ import javax.persistence.CascadeType
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 import java.util.Set
 
-@Entity
 @Observable
 @Accessors
-public class Receta extends IReceta implements Cloneable {
-	
-	/*
-	@Id
-	@GeneratedValue
-	private long id
- 	*/
-	// Cambiar ? Como lo persistimos ? FK, string para buscar en el repo ?
-	/*
-	@OneToOne ( fetch = FetchType.LAZY )
-	private Usuario usuarioCreador
-	*/
+public class Receta implements Cloneable, IReceta {
 	
 	private String usuarioCreador
 
-	@Column ( length = 150 )
 	private String nombre
 
-	@Column
 	private int anio
 
-	@Column
 	private int tiempoPreparacion
 
-	@Enumerated(EnumType.STRING) 
 	private Dificultad dificultad
 
-	// Buscar como persistir lista de enums
-	@CollectionOfElements ( fetch = FetchType.EAGER )
 	private Set<Temporada> temporadas
 
-	@Enumerated(EnumType.STRING) 
 	private TipoReceta tipo
 
-	// Buscar como persistir, referencia a tabla ?
-	@CollectionOfElements ( fetch = FetchType.EAGER )
 	private Map<Ingrediente, Integer> ingredientes = new HashMap<Ingrediente, Integer>()
 
-	// Buscar como persistir, referencia a tabla ?
-	@CollectionOfElements ( fetch = FetchType.EAGER )
 	private Map<Condimento, Integer> condimentos
 
-	@Column
 	private int calorias
 
-	@Column ( length = 350 )
 	private String explicacion
 
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany ( cascade = CascadeType.ALL )
 	private List<IReceta> subRecetas;
 
 	new(

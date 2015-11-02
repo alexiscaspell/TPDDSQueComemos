@@ -14,23 +14,12 @@ import org.hibernate.annotations.LazyCollection
 import org.hibernate.annotations.LazyCollectionOption
 
 @Accessors
-@Entity
 public class Grupo implements Consumidor {
 	
-	@Id
-	@GeneratedValue
-	private long id
-
-	@Column ( length = 150 )
 	private String nombre
 
-	// ManyToMany ?
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@ManyToMany 
 	private List<Usuario> integrantes = new ArrayList<Usuario>()
 
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany // verificar si es EAGER o Lazy
 	private List<Receta> recetasPreferidas = new ArrayList<Receta>()
 
 	def contieneAlUsuario(Usuario usuario) {

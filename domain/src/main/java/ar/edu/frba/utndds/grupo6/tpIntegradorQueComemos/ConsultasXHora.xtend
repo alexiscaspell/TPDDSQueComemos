@@ -9,11 +9,8 @@ import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
 import javax.persistence.FetchType
 
-@Entity
 class ConsultasXHora extends Observador {
 
-	@CollectionOfElements ( fetch = FetchType.EAGER )
-	@Fetch(value = FetchMode.SUBSELECT)
 	private Map<Integer, Integer> consultasXHora = new HashMap<Integer, Integer>
 
 	override actualizar(Usuario usuario) {

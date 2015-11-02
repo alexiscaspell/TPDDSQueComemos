@@ -12,14 +12,8 @@ import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
 import javax.persistence.GenerationType
 
-@Entity
-@Inheritance ( strategy = InheritanceType.TABLE_PER_CLASS)
-abstract class IReceta {
+interface IReceta {
 	
-	@Id
-	@GeneratedValue( strategy = GenerationType.TABLE )
-	public long Id
-
 	def int getCalorias()
 
 	def String getExplicacion()

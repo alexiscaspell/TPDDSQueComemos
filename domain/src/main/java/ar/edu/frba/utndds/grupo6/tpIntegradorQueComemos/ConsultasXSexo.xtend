@@ -9,15 +9,10 @@ import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
 import javax.persistence.FetchType
 
-@Entity
 class ConsultasXSexo extends Observador {
 
-	@CollectionOfElements ( fetch = FetchType.EAGER )
-	@Fetch(value = FetchMode.SUBSELECT)
 	private Map<String, Integer> consultasXFemenino = new HashMap<String, Integer>
 	
-	@CollectionOfElements ( fetch = FetchType.EAGER )
-	@Fetch(value = FetchMode.SUBSELECT)
 	private Map<String, Integer> consultasXMasculino = new HashMap<String, Integer>
 
 	override actualizar(Usuario usuario) {

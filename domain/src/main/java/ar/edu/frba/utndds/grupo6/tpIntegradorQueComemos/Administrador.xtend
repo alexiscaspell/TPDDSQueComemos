@@ -11,15 +11,8 @@ import org.hibernate.annotations.LazyCollectionOption
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
-@Entity
 class Administrador {
 
-	@Id
-	@GeneratedValue
-	private long id
-	
-	@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany
 	private List<Usuario> colaDeEspera = new ArrayList<Usuario>()
 
 	def void aceptarUsuario(Usuario usuario) {

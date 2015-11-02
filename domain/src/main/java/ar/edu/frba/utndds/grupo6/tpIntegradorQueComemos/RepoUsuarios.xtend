@@ -5,6 +5,17 @@ import java.util.List
 
 public class RepoUsuarios implements IRepoUsuarios {
 
+	private static RepoUsuarios instance;
+
+	static def RepoUsuarios getInstance() {
+		if (instance == null) {
+			instance = new RepoUsuarios()
+		} else {
+			instance
+		}
+	}
+	
+
 	private List<Usuario> listaUsuarios = new ArrayList<Usuario>()
 
 	public def Boolean existe(Usuario usuario) {

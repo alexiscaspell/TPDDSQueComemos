@@ -165,7 +165,7 @@ public class Receta implements Cloneable, IReceta {
 
 	def boolean puedeVer(Usuario usuario) {
 		usuarioCreador == null || usuarioCreador.equals(usuario.getNombre()) || tipo.esPublica() ||
-			UsuariosRepository.getInstance.searchByName( usuarioCreador ).head.comparteGrupo(usuario)
+			RepoUsuarios.getInstance.get( usuarioCreador ).comparteGrupo(usuario)
 	}
 
 	def boolean esIgual(Receta receta) {

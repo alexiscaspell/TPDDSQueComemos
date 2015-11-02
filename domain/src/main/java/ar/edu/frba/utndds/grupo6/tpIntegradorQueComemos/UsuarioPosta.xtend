@@ -203,7 +203,7 @@ public class UsuarioPosta extends SujetoObservado implements Consumidor, Usuario
 
 	override getRecetasConAcceso() {
 		
-		val recetas = RecetasRepository.getInstance().allInstances();
+		val recetas = Recetario.getInstance().listarTodas;
 		val listaRecetasConAcceso = new ArrayList<Receta>
 
 		recetas.forEach [ receta |

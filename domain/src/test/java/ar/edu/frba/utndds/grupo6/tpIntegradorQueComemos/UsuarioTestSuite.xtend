@@ -15,7 +15,6 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import queComemos.entrega3.dominio.Dificultad
 import org.junit.Before
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 import java.util.HashSet
 
 class UsuarioTestSuite {
@@ -30,7 +29,7 @@ class UsuarioTestSuite {
 	@Before
 	def void SetUp()
 	{
-		//RecetasRepository.getInstance().reset();
+		//Recetario.getInstance().reset();
 	}
 
 	@Test
@@ -231,12 +230,12 @@ class UsuarioTestSuite {
 	{
 		var usuario = usuarioPepe
 		var receta = getReceta(usuario, "Receta 1");
-		RecetasRepository.getInstance().create(receta)
+		Recetario.getInstance().agregar(receta)
 		
 		usuario.modificarReceta("Receta 1", "Nuevo nombre", receta.ingredientes, receta.condimentos,
 			receta.explicacion, receta.dificultad, receta.temporadas);
 			
-		Assert.assertFalse( RecetasRepository.getInstance().searchByName( "Nuevo nombre" ).empty );
+		Assert.assertEquals("Nuevo nombre", receta.nombre);
 	}
 	
 	@Test
@@ -246,7 +245,7 @@ class UsuarioTestSuite {
 		var usuario1 = usuarioPancho
 		var receta = getReceta(usuario1, "Receta 1");
 		receta.tipo = TipoReceta.PUBLICA;
-		RecetasRepository.getInstance().create(receta)
+		Recetario.getInstance().agregar(receta)
 		
 		usuario.modificarReceta("Receta 1", "Nuevo nombre", receta.ingredientes, receta.condimentos,
 			receta.explicacion, receta.dificultad, receta.temporadas);
@@ -263,11 +262,11 @@ class UsuarioTestSuite {
 	{
 		val usuario = new UsuarioPosta(100, 1.50, Rutina.LEVE,"Juan Carlos Lopez",Sexo.MASCULINO,fecha)
 				
-		val recetario = RecetasRepository.getInstance()
+		val recetario = Recetario.getInstance()
 		
-		recetario.create(getReceta(usuario, "Pure"))
-		// Cambiar a 13 ( no estan andando las recetas json )
-		Assert.assertEquals(usuario.getRecetasConAcceso().size, 1)
+		recetario.agregar(getReceta(usuario, "Pure"))
+		
+		Assert.assertEquals(usuario.getRecetasConAcceso().size, 13)
 	}
 	
 	@Test
@@ -279,11 +278,10 @@ class UsuarioTestSuite {
 		grupo.agregar(usuario)
 		grupo.agregar(pepe)		
 		
-		val recetario = RecetasRepository.getInstance()
-		recetario.create(getReceta(pepe, "Receta1"))
+		val recetario = Recetario.getInstance()
+		recetario.agregar(getReceta(pepe, "Receta1"))
 		
-		// Cambiar a 13 ( no estan andando las recetas json )		
-		Assert.assertEquals( usuario.getRecetasConAcceso().size, 1)
+		Assert.assertEquals(usuario.getRecetasConAcceso().size, 13)
 	}
 	
 	private def Receta getRecetaPureConSal()

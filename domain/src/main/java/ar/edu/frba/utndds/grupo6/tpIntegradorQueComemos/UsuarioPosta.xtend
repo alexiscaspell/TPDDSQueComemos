@@ -40,12 +40,6 @@ import javax.persistence.JoinTable
 @Accessors
 public class UsuarioPosta extends Usuario implements Consumidor {
 
-	/*
-	@Id
-	@GeneratedValue
-	private long id
-	*/
-
 	@OneToOne 
 	private Login login
 	

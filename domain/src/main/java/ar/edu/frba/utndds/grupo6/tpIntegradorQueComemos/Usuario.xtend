@@ -18,16 +18,8 @@ import javax.persistence.InheritanceType
 import javax.persistence.GenerationType
 import java.util.Set
 
-@Entity
-abstract class Usuario extends SujetoObservado {
+interface Usuario {
 	
-	/*
-	@Id
-	@GeneratedValue ( strategy = GenerationType.TABLE )
-	public long id
-	*/
-	
-
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)
 

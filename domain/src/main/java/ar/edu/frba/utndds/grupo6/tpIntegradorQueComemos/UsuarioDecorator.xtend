@@ -13,11 +13,9 @@ import javax.persistence.FetchType
 import javax.persistence.CascadeType
 import java.util.Set
 
-@Entity
 @Accessors
-public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
+public abstract class UsuarioDecorator extends SujetoObservado implements Usuario,  Consumidor {
 
-	@OneToOne ( fetch = FetchType.EAGER, cascade=CascadeType.ALL )
 	Usuario decorado
 
 	new(Usuario usuario) {

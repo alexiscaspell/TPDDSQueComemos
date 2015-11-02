@@ -15,16 +15,8 @@ import javax.persistence.GenerationType
 import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
 
-@Entity
-@Inheritance ( strategy = InheritanceType.TABLE_PER_CLASS)
 abstract class SujetoObservado {
 
-	@Id
-	@GeneratedValue ( strategy = GenerationType.TABLE )
-	public long id
-
-	@OneToMany ( fetch = FetchType.EAGER, cascade = CascadeType.ALL )
-	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Observador> Observadores = new ArrayList<Observador>()
 
 	def void addObservador(Observador observador) {

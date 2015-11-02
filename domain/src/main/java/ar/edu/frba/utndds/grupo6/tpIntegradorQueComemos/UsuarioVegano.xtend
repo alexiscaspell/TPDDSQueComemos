@@ -4,7 +4,6 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 import javax.persistence.Entity
 
-@Entity
 class UsuarioVegano extends UsuarioDecorator {
 	new(Usuario decorado) {
 		super(decorado)

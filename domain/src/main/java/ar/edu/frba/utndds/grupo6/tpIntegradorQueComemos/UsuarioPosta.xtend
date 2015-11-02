@@ -35,98 +35,50 @@ import java.util.Set
 import javax.persistence.JoinColumn
 import javax.persistence.JoinTable
 
-@Entity
 @Observable
 @Accessors
-public class UsuarioPosta extends Usuario implements Consumidor {
+public class UsuarioPosta extends SujetoObservado implements Consumidor, Usuario {
 
 	// Comentario test
-	@OneToOne 
+	 
 	private Login login
 	
-	@Column ( length = 150 )
 	private String nickName
 	
-	@Column ( length = 150 )
 	private String password
 
-	@Column
 	private double altura
 
-	@Column		
 	private double peso
 
-	@Enumerated(EnumType.STRING) 
 	private Sexo sexo
 
-	@Enumerated(EnumType.STRING)
 	private Rutina rutina
 
-	@Column ( length = 150 )
 	private String nombre
 
-	// Buscar como guardar fehcas
 	private Date fechaNacimiento
 
-	@Column ( length = 150 )
 	private String email
 
-	// Buscar como persistir lista de enums
-	@CollectionOfElements ( fetch = FetchType.EAGER )
-	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Condicion> condiciones = new ArrayList<Condicion>()
 
-	@CollectionOfElements ( fetch = FetchType.EAGER )
-	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
-	@CollectionOfElements ( fetch = FetchType.EAGER )
-	@Fetch(value = FetchMode.SUBSELECT)
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
-	//@LazyCollection (LazyCollectionOption.FALSE)
 	/*
-	@OneToMany ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
-	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 	 */
 	
-
-	@CollectionOfElements (fetch=FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
-	//@LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany ( fetch = FetchType.EAGER, cascade = CascadeType.ALL ) // Verificar si es EAGER o LAZY
-	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Receta> recetas = new ArrayList<Receta>()
 
-	// @LazyCollection (LazyCollectionOption.FALSE)
-	@OneToMany  ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
-	@Fetch(value = FetchMode.SUBSELECT)
-	@JoinTable(
-            name="Consultas",
-            joinColumns = @JoinColumn( name="User_id"),
-            inverseJoinColumns = @JoinColumn( name="Receta_id")
-    )
-    
 	private List<Receta> consultas = new ArrayList<Receta>()
 
-	//@LazyCollection (LazyCollectionOption.FALSE)
-	@ManyToMany ( fetch = FetchType.EAGER )
-	@Fetch(value = FetchMode.SUBSELECT) 
 	private List<Grupo> grupos = new ArrayList<Grupo>()
 
-	//@LazyCollection (LazyCollectionOption.FALSE)
-	//@OneToMany ( fetch = FetchType.EAGER, cascade = CascadeType.ALL ) // Verificar si es EAGER o LAZY
-	//@Fetch ( value = FetchMode.SUBSELECT )
-	@OneToMany ( fetch = FetchType.EAGER, cascade = CascadeType.ALL )
-   	@JoinTable(
-            name="Usuario_Favoritas",
-            joinColumns = @JoinColumn( name="User_id"),
-            inverseJoinColumns = @JoinColumn( name="Receta_id")
-    )
-    
 	private Set<Receta> favoritas = new HashSet<Receta>()
 
 	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo, Date fechaNacimiento) {

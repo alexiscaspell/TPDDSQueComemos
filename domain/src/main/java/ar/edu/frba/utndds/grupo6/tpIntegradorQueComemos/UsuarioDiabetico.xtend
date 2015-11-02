@@ -3,7 +3,6 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import javax.persistence.Entity
 
-@Entity
 public class UsuarioDiabetico extends UsuarioDecorator {
 	new(Usuario decorado) {
 		super(decorado)

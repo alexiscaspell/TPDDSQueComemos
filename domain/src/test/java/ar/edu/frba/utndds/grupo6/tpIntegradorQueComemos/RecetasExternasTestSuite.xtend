@@ -22,7 +22,7 @@ public class RecetasExternasTestSuite {
 		repo = new RepoRecetas();
 		gson = new Gson();
 		adapter = new RecetaAdapter();
-		Recetario.getInstance().reset();
+		
 	}
 	
 	//El RepoRecetas devuelve 12 Recetas en forma JSON	

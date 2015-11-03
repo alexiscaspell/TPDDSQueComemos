@@ -1,6 +1,5 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia
 
-import org.hibernate.Criteria
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ResultadoConsulta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
@@ -37,10 +36,6 @@ class RecetasRepository extends RepoDefault<Receta> {
 
 	override getEntityType() {
 		typeof(Receta)
-	}
-
-	override addQueryByExample(Criteria criteria, Receta t) {
-		// Sobre que criteria se busca, habria un solo tipo de busqueda?
 	}
 
 	// Modificar?

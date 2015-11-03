@@ -5,15 +5,9 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import java.util.List
 import java.util.Map
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.GeneratedValue
-import javax.persistence.Inheritance
-import javax.persistence.InheritanceType
-import javax.persistence.GenerationType
 
 interface IReceta {
-	
+
 	def int getCalorias()
 
 	def String getExplicacion()

@@ -1,7 +1,6 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import javax.persistence.Entity
 
 public class UsuarioDiabetico extends UsuarioDecorator {
 	new(Usuario decorado) {
@@ -10,8 +9,8 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 
 	//decorado.condicion.add( Condicion.DIABETICO )
 	}
-	
-	new(){
+
+	new() {
 	}
 
 	override estadoRutina() {
@@ -31,12 +30,13 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 	override notificar() {
 		getObservadores().forEach[actualizar(this)]
 	}
-	
-	override consultarPorReceta( Receta receta ){
+
+	override consultarPorReceta(Receta receta) {
 		consultas.clear()
-		if ( receta.puedeVer( this )) consultas.add( receta )
+		if(receta.puedeVer(this)) consultas.add(receta)
 		notificar()
 	}
+
 	override esVegano() {
 		return false || decorado.esVegano();
 	}
@@ -61,6 +61,5 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 		return usuarioCopia
 	}
 
-	//override getRecetasBuscadasFavoritas() {}	
-
+//override getRecetasBuscadasFavoritas() {}	
 }

@@ -13,27 +13,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
 import org.uqbar.commons.utils.Observable
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import javax.persistence.Entity
-import javax.persistence.Column
-import javax.persistence.Enumerated
-import javax.persistence.EnumType
-import javax.persistence.OneToMany
-import javax.persistence.FetchType
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import org.hibernate.annotations.CollectionOfElements
-import javax.persistence.ManyToMany
-import javax.persistence.OneToOne
-import org.hibernate.annotations.LazyCollection
-import org.hibernate.annotations.LazyCollectionOption
-import javax.persistence.CascadeType
-import org.hibernate.annotations.Fetch
-import org.hibernate.annotations.FetchMode
 import java.util.HashSet
 import java.util.Set
-import javax.persistence.JoinColumn
-import javax.persistence.JoinTable
 
 @Observable
 @Accessors

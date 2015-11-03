@@ -1,8 +1,6 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
 import queComemos.entrega3.dominio.Dificultad
-import javax.persistence.Entity
-import javax.persistence.Column
 
 class ConsultasXVeganos extends Observador {
 

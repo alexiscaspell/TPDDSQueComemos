@@ -3,11 +3,6 @@ package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 import java.util.Map
 import java.util.Calendar
 import java.util.HashMap
-import javax.persistence.Entity
-import org.hibernate.annotations.CollectionOfElements
-import org.hibernate.annotations.Fetch
-import org.hibernate.annotations.FetchMode
-import javax.persistence.FetchType
 
 class ConsultasXHora extends Observador {
 

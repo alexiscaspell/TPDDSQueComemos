@@ -1,19 +1,17 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
-import javax.persistence.Entity
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 
 class UsuarioHipertenso extends UsuarioDecorator {
 	new(Usuario decorado) {
 		super(decorado)
-		decorado.condicion.add( Condicion.HIPERTENSO )
+		decorado.condicion.add(Condicion.HIPERTENSO)
 	}
 
-	new(){
+	new() {
 	}
-	
+
 	override estadoRutina() {
 
 		// Rutina saludable si tiene una rutina activa con ejercicio Adicional
@@ -32,10 +30,10 @@ class UsuarioHipertenso extends UsuarioDecorator {
 	override notificar() {
 		getObservadores().forEach[actualizar(this)]
 	}
-	
-	override consultarPorReceta( Receta receta ){
+
+	override consultarPorReceta(Receta receta) {
 		consultas.clear()
-		if ( receta.puedeVer( this )) consultas.add( receta )
+		if(receta.puedeVer(this)) consultas.add(receta)
 		notificar()
 	}
 
@@ -63,6 +61,5 @@ class UsuarioHipertenso extends UsuarioDecorator {
 		return usuarioCopia
 	}
 
-	//override getRecetasBuscadasFavoritas() {	}
-
+//override getRecetasBuscadasFavoritas() {	}
 }

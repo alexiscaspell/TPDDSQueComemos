@@ -1,36 +1,33 @@
 package AplicationModel
 
+import FiltrosConsultasRecetas.Filtrador
+import Pedidos.PedidoEnumsSistema
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Recetario
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import java.util.ArrayList
 import java.util.HashMap
+import java.util.HashSet
+import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
-import java.util.Date
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
-import FiltrosConsultasRecetas.Filtrador
-import Pedidos.PedidoEnumsSistema
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
-import java.util.List
-import java.util.HashSet
 
 @Accessors
 class Dependencias {
+
 	//public static val repoUsuarios = new Repositorio()
 	//public static val repoRecetas = Recetario.getInstance()
 	public static val usuariosRepository = UsuariosRepository.getInstance;
 	public static val recetasRepository = RecetasRepository.getInstance;
-	
+
 	public static Usuario usuario
+
 	//val static temporadasReceta1 = new ArrayList<Temporada>();
 	//val static temporadasReceta2 = new ArrayList<Temporada>();
 	//val static condimentosReceta1 = new HashMap<Condimento, Integer>();
@@ -47,9 +44,7 @@ class Dependencias {
 	public static def newRecetasFiltradas() { //Recetas hardcodeadas,esto viene de repoRecetas
 
 		//val ListadoRecetas listado = new ListadoRecetas()
-
 		//return listado.recetas
-		
 		val String creador = "Lucas"
 		val nombre = "Milanesas"
 		val ingredientes = new HashMap<Ingrediente, Integer>()
@@ -59,8 +54,9 @@ class Dependencias {
 		val condimentos = new HashMap<Condimento, Integer>()
 		condimentos.put(Condimento.SAL, 10)
 		condimentos.put(Condimento.ACEITE, 10)
-		val explicacion = 
-			"1 - Cortar la carne\n" /*+ 
+		val explicacion = "1 - Cortar la carne\n"
+
+		/*+ 
 			"2 - Pasar la carne por el huevo" +
 			"3 - Pasar la carne por pan rayado" 
 			+ "4 - Hornear 25 minutos" */
@@ -72,16 +68,16 @@ class Dependencias {
 		val recetaSimple = new Receta(creador, nombre, ingredientes, condimentos, explicacion, Dificultad.FACIL,
 			temporadas)
 		recetaSimple.tipo = TipoReceta.PUBLICA
-		
+
 		var List<Receta> recetasHard = new ArrayList<Receta>
-		
+
 		recetasHard.add(recetaSimple)
-		
+
 		return recetasHard
 	}
 
-	//--------------CONSULTAS RECETAS-----------------------
-	/*
+//--------------CONSULTAS RECETAS-----------------------
+/*
 	public static def hardcodear() {
 		val Usuario usuario = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan", Sexo.MASCULINO,
 			new Date(1989, 6, 5))

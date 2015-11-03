@@ -16,7 +16,8 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRep
 
 class QueComemosApplication extends Application {
 
-	val pepe = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan Jose Lopez", Sexo.MASCULINO, new Date(1989, 8, 7))
+	val pepe = new UsuarioPosta(80.4, 1.90, Rutina.ACTIVA_SIN_EJERCICIO, "Juan Jose Lopez", Sexo.MASCULINO,
+		new Date(1989, 8, 7))
 	recetaValida recetaEsValida = new recetaValida()
 	recetaConAzucar recetaAzucar = new recetaConAzucar()
 	recetaConSal recetaSal = new recetaConSal()
@@ -37,9 +38,9 @@ class QueComemosApplication extends Application {
 		pepe.marcarComoFavorita(recetaSal.cumple(pepe.nombre))
 		pepe.marcarComoFavorita(recetaSal.noCumple(pepe.nombre))
 		pepe.marcarComoFavorita(recetaCarne.cumple(pepe.nombre))
-		UsuariosRepository.getInstance().create( pepe )
-		var usuario = UsuariosRepository.getInstance().searchByName( "Juan Jose Lopez").head
-		return new PanelUsuario( usuario , this, new AplicationModel(ConsultasXRecetas.estadistica))
+		UsuariosRepository.getInstance().create(pepe)
+		var usuario = UsuariosRepository.getInstance().searchByName("Juan Jose Lopez").head
+		return new PanelUsuario(usuario, this, new AplicationModel(ConsultasXRecetas.estadistica))
 	}
 
 }

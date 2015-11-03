@@ -1,26 +1,9 @@
 package AplicationModel
 
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConAzucar
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConCarne
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaConSal
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.FactoryTestReceta.recetaValida
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioDiabetico
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import java.util.Date
 import org.eclipse.xtend.lib.annotations.Accessors
-import queComemos.entrega3.dominio.Dificultad
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.ConsultasXRecetas
-import java.util.ArrayList
-import java.util.HashMap
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano
 
 @Accessors
 class UsuarioTestBuilder {

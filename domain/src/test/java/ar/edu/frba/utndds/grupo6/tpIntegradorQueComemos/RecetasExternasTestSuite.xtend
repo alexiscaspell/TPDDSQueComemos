@@ -9,7 +9,6 @@ import java.util.ArrayList
 import com.google.gson.JsonArray
 import org.junit.Assert
 import org.junit.Before
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 public class RecetasExternasTestSuite {
 	
@@ -23,7 +22,7 @@ public class RecetasExternasTestSuite {
 		repo = new RepoRecetas();
 		gson = new Gson();
 		adapter = new RecetaAdapter();
-		RecetasRepository.getInstance().reset
+		Recetario.getInstance().reset();
 	}
 	
 	//El RepoRecetas devuelve 12 Recetas en forma JSON	
@@ -64,7 +63,7 @@ public class RecetasExternasTestSuite {
 	@Test
 	def void ObtencionDeRecetasExternasDelRecetario()
 	{
-		val recetario = RecetasRepository.getInstance();
+		val recetario = Recetario.getInstance();
 		
 		val recetasExternas = recetario.getRecetasExternas();
 		

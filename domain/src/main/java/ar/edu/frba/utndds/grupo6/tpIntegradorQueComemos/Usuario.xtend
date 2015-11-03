@@ -1,40 +1,33 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import java.util.Date
-import java.util.Map
-import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Inheritance
-import javax.persistence.InheritanceType
-import javax.persistence.GenerationType
+import java.util.Date
+import java.util.List
+import java.util.Map
 import java.util.Set
+import queComemos.entrega3.dominio.Dificultad
 
 interface Usuario {
-	
+
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)
 
 	def void setLogin(Login login)
-	
+
 	def void setNickName(String nickName)
-	
+
 	def void setPassword(String pass)
 
 	//	------------------------------------------- Getters -------------------------------------------
-	
 	def String getNickName()
-	
+
 	def String getPassword()
-	
+
 	def Login getLogin()
 
 	def List<Receta> getConsultas()
@@ -68,7 +61,6 @@ interface Usuario {
 	def List<Receta> getRecetasConAcceso()
 
 	//def List<Receta> getRecetasBuscadasFavoritas()
-
 	//	------------------------------------------- Metodos -------------------------------------------
 	def void agregarGrupo(Grupo grupo)
 
@@ -91,22 +83,19 @@ interface Usuario {
 	def Boolean cumpleMismasCondiciones(Usuario usuario)
 
 	def Usuario crearPerfil()
-	
-	def void consultarPorReceta( Receta receta )
-	
+
+	def void consultarPorReceta(Receta receta)
+
 	def boolean cumpleCondicion(Receta receta)
-	/*
+
 	def void addObservador(Observador observador)
 
+	/*
 	def void removeObservador(Observador observador)
 
 	def List<Observador> getObservadores()
 	 */
 	def void modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, Set<Temporada> temporada)
-	
 
-	
-
-	
 }

@@ -1,14 +1,16 @@
 package Web
 
-// Import Pedidos
 import AplicationModel.UsuarioAdapterJson
+import Pedidos.PedidoFiltroConsultaReceta
 import Pedidos.PedidoLogin
 import Pedidos.PedidoMonitoreo
 import Pedidos.PedidoRecetas
 import Pedidos.PedidoUsuario
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import com.google.gson.GsonBuilder
 import javax.servlet.http.HttpServletRequest
 import org.uqbar.xtrest.api.Result
@@ -18,12 +20,7 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
-
 import static AplicationModel.Dependencias.*
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
-import Pedidos.PedidoFiltroConsultaReceta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioVegano
 
 @Controller
 class MainController {
@@ -43,7 +40,6 @@ class MainController {
 		//usuario = usuarios.findFirst[x|x.nickName == pedido.nombre && x.password == pedido.pass]
 		usuario = usuariosRepository.searchByExample( usuarioExample ).head
 		usuario.addObservador(consultasXRecetas)
-		println(usuario.nickName)
 		ok
 	}
 

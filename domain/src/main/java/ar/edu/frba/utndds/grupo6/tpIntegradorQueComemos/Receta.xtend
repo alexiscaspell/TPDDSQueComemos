@@ -14,10 +14,11 @@ import queComemos.entrega3.dominio.Dificultad
 import org.uqbar.commons.utils.Observable
 import java.util.HashMap
 import java.util.Set
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
 
 @Observable
 @Accessors
-public class Receta implements Cloneable, IReceta {
+public class Receta extends BaseEntity implements Cloneable, IReceta {
 	
 	private String usuarioCreador
 

@@ -20,7 +20,7 @@ class PedidoMonitoreo {
 		//println("En PedidoMonitoreo masConsultadas() : " + masConsultadas )
 		masConsultadas.entrySet.sortBy[ value ]
 		masConsultadas.forEach[p1, p2|
-			recetas.add ( recetasRepository.searchByName( p1 ).head )	
+			recetas.add ( recetasRepository.FindBy( p1 ))	
 			cantidadConsultas.add( p2 )
 		]
 		

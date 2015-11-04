@@ -9,8 +9,8 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 
 	//decorado.condicion.add( Condicion.DIABETICO )
 	}
-
-	new() {
+	
+	new(){
 	}
 
 	override estadoRutina() {
@@ -27,16 +27,15 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 		return ((receta.cantidadDeAzucar() == 0 ))
 	}
 
-//	override notificar() {
-//		getObservadores().forEach[actualizar(this)]
-//	}
-
-	override consultarPorReceta(Receta receta) {
-		consultas.clear()
-		if(receta.puedeVer(this)) consultas.add(receta)
-//		notificar()
+	override notificar() {
+		getObservadores().forEach[actualizar(this)]
 	}
-
+	
+	override consultarPorReceta( Receta receta ){
+		consultas.clear()
+		if ( receta.puedeVer( this )) consultas.add( receta )
+		notificar()
+	}
 	override esVegano() {
 		return false || decorado.esVegano();
 	}
@@ -61,5 +60,6 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 		return usuarioCopia
 	}
 
-//override getRecetasBuscadasFavoritas() {}	
+	//override getRecetasBuscadasFavoritas() {}	
+
 }

@@ -20,7 +20,7 @@ class CommandsTestSuite {
 		var mailSender = mock(typeof(MailSender));
 		var sendMailCommand = new SendMailCommand(mailSender);		
 		
-		val recetario = RecetasRepository.getInstance();
+		val recetario = new RecetasRepository("Receta");
 		recetario.sendMailCommand = sendMailCommand;
 		
 		val pepe = getUsuarioPepe();

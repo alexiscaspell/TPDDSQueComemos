@@ -5,10 +5,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 class UsuarioVegano extends UsuarioDecorator {
 	new(Usuario decorado) {
 		super(decorado)
-		decorado.condicion.add(Condicion.VEGANO)
+		decorado.condicion.add( Condicion.VEGANO )
 	}
 
-	new() {
+	new(){
 	}
 
 	override estadoRutina() {
@@ -26,16 +26,16 @@ class UsuarioVegano extends UsuarioDecorator {
 		return ((receta.ingredientes.filter[condimento, cantidad|condimento.contieneCarne()].size() == 0))
 	}
 
-//	def notificar() {
-//		getObservadores().forEach[actualizar(this)]
-//	}
-
-	override consultarPorReceta(Receta receta) {
-		consultas.clear()
-		if(receta.puedeVer(this)) consultas.add(receta)
-//		notificar()
+	override notificar() {
+		getObservadores().forEach[actualizar(this)]
 	}
-
+	
+	override consultarPorReceta( Receta receta ){
+		consultas.clear()
+		if ( receta.puedeVer( this )) consultas.add( receta )
+		notificar()
+	}
+	
 	override esVegano() {
 		return true;
 	}
@@ -59,4 +59,7 @@ class UsuarioVegano extends UsuarioDecorator {
 
 		return usuarioCopia
 	}
+
+	//override getRecetasBuscadasFavoritas() {}
+
 }

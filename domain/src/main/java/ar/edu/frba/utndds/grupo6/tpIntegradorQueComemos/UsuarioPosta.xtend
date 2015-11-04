@@ -21,8 +21,6 @@ import java.util.Set
 @Accessors
 public class UsuarioPosta extends Usuario implements Consumidor {
 
-	// Comentario test
-	 
 	private Login login
 	
 	private String nickName
@@ -39,20 +37,26 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 	private String nombre
 
+	// Buscar como guardar fehcas
 	private Date fechaNacimiento
 
 	private String email
 
+	// Buscar como persistir lista de enums
 	private List<Condicion> condiciones = new ArrayList<Condicion>()
 
 	private List<Ingrediente> preferenciasAlimenticias = new ArrayList<Ingrediente>()
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
+	//@LazyCollection (LazyCollectionOption.FALSE)
 	/*
+	@OneToMany ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
 	 */
 	
+
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	private List<Receta> recetas = new ArrayList<Receta>()
@@ -152,7 +156,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 
 	def getReceta(String nombre) {
-		RecetasRepository.getInstance().searchByName(nombre).head
+		new RecetasRepository("Receta").FindBy(nombre)
 	}
 
 	override getSexo() {
@@ -185,7 +189,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 	override getRecetasConAcceso() {
 		
-		val recetas = Recetario.getInstance().listarTodas;
+		val recetas = new RecetasRepository("Receta").allInstances();
 		val listaRecetasConAcceso = new ArrayList<Receta>
 
 		recetas.forEach [ receta |
@@ -241,7 +245,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 				receta.setExplicacion(explicacion)
 				receta.setDificultad(dificultad)
 				receta.setTemporadas(temporada)
-				RecetasRepository.getInstance.update( receta )
+				new RecetasRepository("Receta").update( receta )
 			} else {
 				val receta1 = receta.clone();
 				receta1.setNombre(nombreReceta)
@@ -258,7 +262,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 	def agregarReceta(Receta receta) {
 		recetas.add(receta)
-		RecetasRepository.getInstance().create(receta)
+		new RecetasRepository("Receta").create(receta)
 	}
 
 	override comparteGrupo(Usuario usuario) {
@@ -269,7 +273,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 		
 		consultas.clear()
 		if ( receta.puedeVer( this )) consultas.add( receta )
-//		notificar()
+		notificar()
 	}
 	
 
@@ -334,9 +338,9 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 
 	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
-//	override notificar() {
-//		getObservadores().forEach[actualizar(this)]
-//	}
+	override notificar() {
+		getObservadores().forEach[actualizar(this)]
+	}
 
 	override esVegano() {
 		return false;

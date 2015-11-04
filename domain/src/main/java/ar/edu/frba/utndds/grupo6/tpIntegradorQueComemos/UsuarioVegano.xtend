@@ -26,14 +26,14 @@ class UsuarioVegano extends UsuarioDecorator {
 		return ((receta.ingredientes.filter[condimento, cantidad|condimento.contieneCarne()].size() == 0))
 	}
 
-	override notificar() {
-		getObservadores().forEach[actualizar(this)]
-	}
+//	def notificar() {
+//		getObservadores().forEach[actualizar(this)]
+//	}
 
 	override consultarPorReceta(Receta receta) {
 		consultas.clear()
 		if(receta.puedeVer(this)) consultas.add(receta)
-		notificar()
+//		notificar()
 	}
 
 	override esVegano() {
@@ -59,6 +59,4 @@ class UsuarioVegano extends UsuarioDecorator {
 
 		return usuarioCopia
 	}
-
-//override getRecetasBuscadasFavoritas() {}
 }

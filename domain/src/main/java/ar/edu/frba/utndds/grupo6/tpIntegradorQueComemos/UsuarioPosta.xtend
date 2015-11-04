@@ -19,7 +19,7 @@ import java.util.Set
 
 @Observable
 @Accessors
-public class UsuarioPosta extends SujetoObservado implements Consumidor, Usuario {
+public class UsuarioPosta extends Usuario implements Consumidor {
 
 	// Comentario test
 	 
@@ -269,7 +269,7 @@ public class UsuarioPosta extends SujetoObservado implements Consumidor, Usuario
 		
 		consultas.clear()
 		if ( receta.puedeVer( this )) consultas.add( receta )
-		notificar()
+//		notificar()
 	}
 	
 
@@ -334,9 +334,9 @@ public class UsuarioPosta extends SujetoObservado implements Consumidor, Usuario
 	}
 
 	// ------------------------------------------------ Metodos Observer y Alternativa------------------------------------------------
-	override notificar() {
-		getObservadores().forEach[actualizar(this)]
-	}
+//	override notificar() {
+//		getObservadores().forEach[actualizar(this)]
+//	}
 
 	override esVegano() {
 		return false;

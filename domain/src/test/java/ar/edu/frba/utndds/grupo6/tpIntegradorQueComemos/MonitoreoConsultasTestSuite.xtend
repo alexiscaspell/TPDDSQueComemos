@@ -107,10 +107,10 @@ class MonitoreoConsultasTestSuite {
 		// Agregar Recetas que conoce
 		pepe.agregarReceta( recetaSal.cumple(usuarioMasculino.nombre) )
 		// Agregar Observadores
-		pepe.addObservador(ConsultasXSexo)
-		pepe.addObservador(ConsultasXRecetas)
-		pepe.addObservador(ConsultasXVeganos)
-		pepe.addObservador(ConsultasXHora)
+//		pepe.addObservador(ConsultasXSexo)
+//		pepe.addObservador(ConsultasXRecetas)
+//		pepe.addObservador(ConsultasXVeganos)
+//		pepe.addObservador(ConsultasXHora)
 		return pepe
 	}
 	
@@ -120,10 +120,10 @@ class MonitoreoConsultasTestSuite {
 		// Agregar Recetas que conoce
 		mariana.agregarReceta(recetaAzucar.cumple(usuarioFemenino.nombre))
 		val vegano = new UsuarioVegano(mariana)
-		vegano.addObservador(ConsultasXSexo)
-		vegano.addObservador(ConsultasXRecetas)
-		vegano.addObservador(ConsultasXHora)
-		vegano.addObservador(ConsultasXVeganos)
+//		vegano.addObservador(ConsultasXSexo)
+//		vegano.addObservador(ConsultasXRecetas)
+//		vegano.addObservador(ConsultasXHora)
+//		vegano.addObservador(ConsultasXVeganos)
 			
 		return vegano
 	}

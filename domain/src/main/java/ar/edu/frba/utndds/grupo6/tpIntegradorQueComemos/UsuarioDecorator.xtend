@@ -10,7 +10,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import queComemos.entrega3.dominio.Dificultad
 
 @Accessors
-public abstract class UsuarioDecorator extends SujetoObservado implements Usuario, Consumidor {
+public abstract class UsuarioDecorator extends Usuario implements Consumidor {
 
 	Usuario decorado
 

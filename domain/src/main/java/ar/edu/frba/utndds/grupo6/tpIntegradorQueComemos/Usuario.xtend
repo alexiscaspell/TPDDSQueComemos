@@ -11,8 +11,9 @@ import java.util.List
 import java.util.Map
 import java.util.Set
 import queComemos.entrega3.dominio.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
 
-interface Usuario {
+abstract class Usuario extends BaseEntity {
 
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)
@@ -60,7 +61,6 @@ interface Usuario {
 
 	def List<Receta> getRecetasConAcceso()
 
-	//def List<Receta> getRecetasBuscadasFavoritas()
 	//	------------------------------------------- Metodos -------------------------------------------
 	def void agregarGrupo(Grupo grupo)
 
@@ -88,13 +88,6 @@ interface Usuario {
 
 	def boolean cumpleCondicion(Receta receta)
 
-	def void addObservador(Observador observador)
-
-	/*
-	def void removeObservador(Observador observador)
-
-	def List<Observador> getObservadores()
-	 */
 	def void modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, Set<Temporada> temporada)
 

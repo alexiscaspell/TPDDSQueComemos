@@ -27,14 +27,14 @@ class UsuarioHipertenso extends UsuarioDecorator {
 		return (!receta.condimentos.containsKey(Condimento.SAL))
 	}
 
-	override notificar() {
-		getObservadores().forEach[actualizar(this)]
-	}
+//	override notificar() {
+//		getObservadores().forEach[actualizar(this)]
+//	}
 
 	override consultarPorReceta(Receta receta) {
 		consultas.clear()
 		if(receta.puedeVer(this)) consultas.add(receta)
-		notificar()
+//		notificar()
 	}
 
 	override esVegano() {

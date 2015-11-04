@@ -13,15 +13,12 @@ class Administrador {
 
 		colaDeEspera.remove(usuario)
 
-		UsuariosRepository.getInstance().create(usuario)
-
+		new UsuariosRepository("Usuario").create(usuario)
 	}
 
 	def void rechazarUsuario(Usuario usuario, String motivoDeRechazo) {
 
 		colaDeEspera.remove(usuario)
-
-	//usuario.enviarMotivoDeRechazo(motivo)
 	}
 
 	public def void agregarSolicitud(Usuario usuario) {

@@ -27,14 +27,14 @@ public class UsuarioDiabetico extends UsuarioDecorator {
 		return ((receta.cantidadDeAzucar() == 0 ))
 	}
 
-	override notificar() {
-		getObservadores().forEach[actualizar(this)]
-	}
+//	override notificar() {
+//		getObservadores().forEach[actualizar(this)]
+//	}
 
 	override consultarPorReceta(Receta receta) {
 		consultas.clear()
 		if(receta.puedeVer(this)) consultas.add(receta)
-		notificar()
+//		notificar()
 	}
 
 	override esVegano() {

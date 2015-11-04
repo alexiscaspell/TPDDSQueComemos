@@ -38,13 +38,13 @@ class MainController {
 		// Hacer un usuario con los datos de pedido y pasarlo por searchByExample
 		//var usuarios = usuariosRepository.allInstances
 		//usuario = usuarios.findFirst[x|x.nickName == pedido.nombre && x.password == pedido.pass]
-		usuario = usuariosRepository.searchByExample( usuarioExample ).head
-		usuario.addObservador(consultasXRecetas)
+		usuario = usuariosRepository.FindBy(usuarioExample.nombre)
+//		usuario.addObservador(consultasXRecetas)
 		ok
 	}
 
 	def obtenerJugador(HttpServletRequest request) {
-		usuariosRepository.searchByName(getCookie(request, "usuario"))
+		usuariosRepository.FindBy(getCookie(request, "usuario"))
 	}
 
 	def getCookie(HttpServletRequest request, String string) {

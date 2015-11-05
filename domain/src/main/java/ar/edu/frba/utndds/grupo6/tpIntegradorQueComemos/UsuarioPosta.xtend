@@ -155,8 +155,9 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 		login
 	}
 
+	
 	def getReceta(String nombre) {
-		new RecetasRepository("Receta").FindBy(nombre)
+		new RecetasRepository("Receta").findByName( nombre )
 	}
 
 	override getSexo() {

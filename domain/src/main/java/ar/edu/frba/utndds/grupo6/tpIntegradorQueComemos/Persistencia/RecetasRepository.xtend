@@ -13,6 +13,13 @@ import com.google.gson.JsonArray
 import com.google.gson.Gson
 import queComemos.entrega3.repositorio.RepoRecetas
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.RecetaAdapter
+import org.bson.Document
+import java.util.Map
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import queComemos.entrega3.dominio.Dificultad
+import java.util.Set
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
 public class RecetasRepository extends MongoDBRepository<Receta> {
 
@@ -72,12 +79,23 @@ public class RecetasRepository extends MongoDBRepository<Receta> {
 		recetasAdaptadas.toList() as ArrayList<Receta>;
 	}
 	
-	def Receta FindBy(String string) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	/* LO MISMO Q EN USUARIO; FIND BY NAME DEBERIA DEVOLVER UN DOCUMENTO
+	def Receta getReceta(String string) {
+		RecetaFromJson( findByName( string ).head )	
+	}
+	 */
+	
+	// No seria necesario porque las operaciones sobre collection ya saben que devolver ? 
+	def Receta RecetaFromJson( Document recetaJSON ){
+		new Receta(
+			recetaJSON.get("usuario") as String, 
+			recetaJSON.get("nombre") as String,
+			recetaJSON.get("ingredientes") as Map<Ingrediente, Integer>,
+			recetaJSON.get("condimentos") as Map<Condimento, Integer>,
+			recetaJSON.get("explicacion") as String,
+			recetaJSON.get("dificultad") as Dificultad,
+			recetaJSON.get("temporadas") as Set<Temporada>
+		)
 	}
 	
-	def List<Receta> allInstances() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-
 }

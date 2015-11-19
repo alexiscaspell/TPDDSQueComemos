@@ -95,9 +95,9 @@ class MonitoreoConsultasTestSuite {
 	}
 	
 	def seteoRecetario(){
-		recetario.create( recetaSal.cumple(usuarioMasculino.nombre) )
-		recetario.create( recetaAzucar.cumple(usuarioFemenino.nombre) )
-		recetario.create( recetaCarne.cumple(usuarioFemenino.nombre) )
+//		recetario.create( recetaSal.cumple(usuarioMasculino.nombre) )
+//		recetario.create( recetaAzucar.cumple(usuarioFemenino.nombre) )
+//		recetario.create( recetaCarne.cumple(usuarioFemenino.nombre) )
 	}
 	
 	def getUsuarioMasculino() {

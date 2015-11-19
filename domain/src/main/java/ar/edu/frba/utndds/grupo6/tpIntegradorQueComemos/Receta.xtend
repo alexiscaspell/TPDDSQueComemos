@@ -14,11 +14,15 @@ import queComemos.entrega3.dominio.Dificultad
 import org.uqbar.commons.utils.Observable
 import java.util.HashMap
 import java.util.Set
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
+import org.mongodb.morphia.annotations.Entity
+import org.mongodb.morphia.annotations.Id
 
 @Observable
 @Accessors
-public class Receta extends BaseEntity implements Cloneable, IReceta {
+@Entity
+public class Receta implements Cloneable, IReceta {
+	
+	@Id private String id;
 	
 	private String usuarioCreador
 

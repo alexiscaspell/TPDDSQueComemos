@@ -4,7 +4,7 @@ import java.util.ArrayList
 import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
 
-abstract class SujetoObservado extends BaseEntity {
+abstract class SujetoObservado {
 
 	private List<Observador> Observadores = new ArrayList<Observador>()
 

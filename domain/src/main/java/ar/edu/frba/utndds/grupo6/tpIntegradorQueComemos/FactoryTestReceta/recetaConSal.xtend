@@ -9,7 +9,7 @@ import java.util.HashMap
 import java.util.HashSet
 import queComemos.entrega3.dominio.Dificultad
 
-class recetaConSal implements recetaFactory {
+public class recetaConSal implements recetaFactory {
 
 	override Receta cumple(String creador) {
 		val nombre = "Pure"

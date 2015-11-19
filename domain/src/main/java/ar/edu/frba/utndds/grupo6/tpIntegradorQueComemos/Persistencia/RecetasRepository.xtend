@@ -21,7 +21,7 @@ import queComemos.entrega3.dominio.Dificultad
 import java.util.Set
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 
-public class RecetasRepository extends MongoDBRepository<Receta> {
+public class RecetasRepository {
 
 	private RepoRecetas repoRecetas = new RepoRecetas();
 
@@ -33,25 +33,20 @@ public class RecetasRepository extends MongoDBRepository<Receta> {
 	private Command sendMailCommand;
 
 	new(String className) {
-		super(className)
-	}
-
-	override getEntityType() {
-		typeof(Receta)
 	}
 
 	// Modificar?
 	def ResultadoConsulta getRecetasQueCumplen(Usuario usuario, Receta receta) {
-				val recetasQueCoinciden = allInstances.filter [ x |
-					x.puedeVer(usuario) && receta.nombre == null || receta.nombre.equals(x.nombre) && receta.anio == 0 || receta.
-						anio == x.anio && receta.dificultad == null || receta.dificultad == x.dificultad &&
-						receta.explicacion == null || receta.explicacion.equals(x.explicacion)
-				].toList();
-				val resultado = new ResultadoConsulta(receta, recetasQueCoinciden, usuario)
-				sendMailCommand.execute(resultado);
-				if (recetasQueCoinciden.size > 100) {
-					//TODO: Ejecutar comando de Log
-				}
+//				val recetasQueCoinciden = allInstances.filter [ x |
+//					x.puedeVer(usuario) && receta.nombre == null || receta.nombre.equals(x.nombre) && receta.anio == 0 || receta.
+//						anio == x.anio && receta.dificultad == null || receta.dificultad == x.dificultad &&
+//						receta.explicacion == null || receta.explicacion.equals(x.explicacion)
+//				].toList();
+//				val resultado = new ResultadoConsulta(receta, recetasQueCoinciden, usuario)
+//				sendMailCommand.execute(resultado);
+//				if (recetasQueCoinciden.size > 100) {
+//					//TODO: Ejecutar comando de Log
+//				}
 		//if (el perfil del usuario tiene marcado el check de marcar todas las recetas como favoritas)
 		//{
 		//	Ejecutar Comando de Marcar Favoritas
@@ -75,7 +70,7 @@ public class RecetasRepository extends MongoDBRepository<Receta> {
 			recetasAdaptadas.add(adapter.getReceta(x));
 		]
 
-		recetasAdaptadas.filter[x|!allInstances.contains(x)].toList() as ArrayList<Receta>;
+//		recetasAdaptadas.filter[x|!allInstances.contains(x)].toList() as ArrayList<Receta>;
 		recetasAdaptadas.toList() as ArrayList<Receta>;
 	}
 	

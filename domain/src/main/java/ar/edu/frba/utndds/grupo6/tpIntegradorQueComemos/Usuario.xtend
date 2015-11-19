@@ -11,8 +11,14 @@ import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import java.util.Set
+import org.mongodb.morphia.annotations.Entity
+import org.mongodb.morphia.annotations.Id
+import org.bson.BsonObjectId
 
+@Entity
 abstract class Usuario extends SujetoObservado {
+	
+	@Id private BsonObjectId id;
 	
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)

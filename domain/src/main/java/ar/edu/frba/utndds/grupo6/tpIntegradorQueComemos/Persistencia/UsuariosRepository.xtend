@@ -1,34 +1,33 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia
 
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
-import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
-import org.bson.Document
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
+import com.mongodb.MongoClient
 import java.util.Date
+import java.util.List
+import org.bson.Document
+import org.mongodb.morphia.Morphia
+import org.mongodb.morphia.Datastore
 
-public class UsuariosRepository extends MongoDBRepository<Usuario> {
+public class UsuariosRepository {
+	
+	private MongoClient mongoClient;
+	private Datastore ds;
 
-	new(String className) {
-		super(className)
+	new(){
+//		mongoClient = new MongoClient();
+//		ds = new Morphia().createDatastore(mongoClient, "QueComemosDB")
+//		ds.ensureIndexes();
+//		ds.ensureCaps();
 	}
-
-	override getEntityType() {
-		typeof(Usuario)
-	}
-
 	def List<Usuario> list(Usuario usuario) {
 	}
 
 	def List<Usuario> login(String name, String pass) {
 	}
 
-	/* // el find de Mongo no estaria devolviendo un documento ? 
-	def Usuario getUsuario( String string ) {
-		UsuarioFromJson( findByName( string ).head )	
-	} */
-	// COMO DIFERENCIAR QUE USUARIO ES ?
 	def Usuario UsuarioFromJson(Document usuarioJSON) {
 		new UsuarioPosta(
 			usuarioJSON.get("peso") as Double,
@@ -39,12 +38,18 @@ public class UsuariosRepository extends MongoDBRepository<Usuario> {
 			usuarioJSON.get("fechaNacimiento") as Date
 		)
 	}
-	
+
 	// Hago el field collection publico para poder usarlo aca
-	def Usuario searchByNickYPass(String nick, String pass) {
-		var document = new Document
-		document.append("nickName", nick)
-		document.append("password", pass)
-		collection.find( document ).head
+	//	def Usuario searchByNickYPass(String nick, String pass) {
+	//		var document = new Document
+	//		document.append("nickName", nick)
+	//		document.append("password", pass)
+	////		collection.find( document ).head
+	//	}
+	def create(Usuario usuario) {
+		
+		ds.save(usuario);
+		
 	}
+	
 }

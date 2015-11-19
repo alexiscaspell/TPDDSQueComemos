@@ -6,32 +6,19 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import java.util.Date
 import java.util.List
 import java.util.Map
 import java.util.Set
-import org.mongojack.ObjectId
 import queComemos.entrega3.dominio.Dificultad
 
-@JsonSubTypes(
-    @JsonSubTypes.Type(value = typeof(UsuarioPosta), name = "UsuarioPosta"))
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="type")
+@JsonSubTypes(@JsonSubTypes.Type(value=typeof(UsuarioPosta), name="UsuarioPosta"))
 public abstract class Usuario extends SujetoObservado {
 	
-	private String code;
-
-	@ObjectId
-	@JsonProperty("_id")
-	def String getCode() {
-		return code;
-	}
-
-	@ObjectId
-	@JsonProperty("_id")
-	def void setCode(String id) {
-		this.code = id;
-	}
+	public String _id;
 	
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)

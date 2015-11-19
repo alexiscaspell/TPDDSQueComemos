@@ -13,7 +13,6 @@ import java.util.List
 import java.util.Map
 import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.mongojack.ObjectId
 import org.uqbar.commons.utils.Observable
 import queComemos.entrega3.dominio.Dificultad
 
@@ -23,13 +22,11 @@ public class Receta implements Cloneable, IReceta {
 	
 	private String id;
 
-	@ObjectId
 	@JsonProperty("_id")
 	def String getId() {
 		return id;
 	}
 
-	@ObjectId
 	@JsonProperty("_id")
 	def void setId(String id) {
 		this.id = id;

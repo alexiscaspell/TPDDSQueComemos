@@ -16,9 +16,11 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 import java.util.HashSet
 import java.util.Set
+import com.fasterxml.jackson.annotation.JsonTypeName
 
 @Observable
 @Accessors
+@JsonTypeName("UsuarioPosta")
 public class UsuarioPosta extends Usuario implements Consumidor {
 
 	private Login login

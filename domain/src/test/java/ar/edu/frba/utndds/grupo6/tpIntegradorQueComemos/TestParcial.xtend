@@ -1,22 +1,25 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import java.text.DateFormat
-import java.util.Date
-import java.text.SimpleDateFormat
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 import org.junit.Test
+import org.mongojack.JacksonDBCollection
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.Clase
+import com.mongodb.DBCollection
+import com.mongodb.MongoClient
+import com.mongodb.client.MongoDatabase
+import com.mongodb.DB
+import com.mongodb.Mongo
 
 class MongoTest {
-	
-	DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
-	Date fecha = format.parse("01-04-1970")
-	val pepe = new UsuarioPosta(80.4,1.90,Rutina.ACTIVA_SIN_EJERCICIO,"Juan Jose Lopez",Sexo.MASCULINO,fecha)
-	UsuariosRepository repoUsuarios = new UsuariosRepository( "Usuarios" )
-	
+
 	@Test
-	def guardarUsuario(){
-		repoUsuarios.create( pepe )
+	def guardarUsuario() {
+		var mongo = new Mongo()
+		var database = new DB(mongo, "TestJackson")
+		var collection = database.getCollection("Clases")
+		var coll = JacksonDBCollection.wrap(collection, typeof(Clase), typeof(String));
+		var entity = new Clase()
+		var result = coll.insert(entity);
+		var id = result.getSavedId();
+		var savedObject = result.getSavedObject();
 	}
 }

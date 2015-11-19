@@ -157,7 +157,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 	
 	def getReceta(String nombre) {
-		new RecetasRepository("Receta").findByName( nombre )
+//		new RecetasRepository("Receta").findByName( nombre )
 	}
 
 	override getSexo() {
@@ -190,16 +190,16 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 	override getRecetasConAcceso() {
 		
-		val recetas = new RecetasRepository("Receta").allInstances();
-		val listaRecetasConAcceso = new ArrayList<Receta>
-
-		recetas.forEach [ receta |
-			if (receta.puedeVer(this)) {
-				listaRecetasConAcceso.add(receta)
-			}
-		]
+//		val recetas = new RecetasRepository("Receta").allInstances();
+//		val listaRecetasConAcceso = new ArrayList<Receta>
+//
+//		recetas.forEach [ receta |
+//			if (receta.puedeVer(this)) {
+//				listaRecetasConAcceso.add(receta)
+//			}
+//		]
 		
-		return listaRecetasConAcceso
+//		return listaRecetasConAcceso
 	}  
 	
 	
@@ -237,33 +237,33 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 		val receta = getReceta(nombreRecetaAModificar)
 
-		if ( receta.puedeModificar(this) ) {
-			println( "Puede modificarla")
-			if ( receta.usuarioCreador.equals(this.nombre)) {
-				receta.setNombre(nombreReceta)
-				receta.setIngredientes(ingredientes)
-				receta.setCondimentos(condimentos)
-				receta.setExplicacion(explicacion)
-				receta.setDificultad(dificultad)
-				receta.setTemporadas(temporada)
-				new RecetasRepository("Receta").update( receta )
-			} else {
-				val receta1 = receta.clone();
-				receta1.setNombre(nombreReceta)
-				receta1.setIngredientes(ingredientes)
-				receta1.setCondimentos(condimentos)
-				receta1.setExplicacion(explicacion)
-				receta1.setDificultad(dificultad)
-				receta1.setTemporadas(temporada)
-				receta1.setUsuarioCreador(this.nombre)
-				recetas.add(receta1)
-			}
-		}
+//		if ( receta.puedeModificar(this) ) {
+//			println( "Puede modificarla")
+//			if ( receta.usuarioCreador.equals(this.nombre)) {
+//				receta.setNombre(nombreReceta)
+//				receta.setIngredientes(ingredientes)
+//				receta.setCondimentos(condimentos)
+//				receta.setExplicacion(explicacion)
+//				receta.setDificultad(dificultad)
+//				receta.setTemporadas(temporada)
+//				new RecetasRepository("Receta").update( receta )
+//			} else {
+//				val receta1 = receta.clone();
+//				receta1.setNombre(nombreReceta)
+//				receta1.setIngredientes(ingredientes)
+//				receta1.setCondimentos(condimentos)
+//				receta1.setExplicacion(explicacion)
+//				receta1.setDificultad(dificultad)
+//				receta1.setTemporadas(temporada)
+//				receta1.setUsuarioCreador(this.nombre)
+//				recetas.add(receta1)
+//			}
+//		}
 	}
 
 	def agregarReceta(Receta receta) {
 		recetas.add(receta)
-		new RecetasRepository("Receta").create(receta)
+//		new RecetasRepository("Receta").create(receta)
 	}
 
 	override comparteGrupo(Usuario usuario) {

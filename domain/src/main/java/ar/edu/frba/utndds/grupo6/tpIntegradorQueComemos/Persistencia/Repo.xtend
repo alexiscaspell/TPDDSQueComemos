@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.mongojack.ObjectId
 
 class Clase {
+	
 	private String id;
 
 	@ObjectId

@@ -1,18 +1,37 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import java.util.Date
-import java.util.Map
-import queComemos.entrega3.dominio.Dificultad
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import java.util.Date
+import java.util.List
+import java.util.Map
 import java.util.Set
+import org.mongojack.ObjectId
+import queComemos.entrega3.dominio.Dificultad
 
-abstract class Usuario extends SujetoObservado {
+@JsonSubTypes(
+    @JsonSubTypes.Type(value = typeof(UsuarioPosta), name = "UsuarioPosta"))
+public abstract class Usuario extends SujetoObservado {
+	
+	private String code;
+
+	@ObjectId
+	@JsonProperty("_id")
+	def String getCode() {
+		return code;
+	}
+
+	@ObjectId
+	@JsonProperty("_id")
+	def void setCode(String id) {
+		this.code = id;
+	}
 	
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)

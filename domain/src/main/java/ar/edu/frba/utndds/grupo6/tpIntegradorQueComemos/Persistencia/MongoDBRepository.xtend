@@ -6,7 +6,7 @@ import com.mongodb.client.MongoDatabase
 import org.bson.Document
 import java.util.List
 
-public abstract class MongoDBRepository<T extends BaseEntity> {
+public abstract class MongoDBRepository<T> {
 
 	private MongoClient mongoClient;
 
@@ -25,15 +25,15 @@ public abstract class MongoDBRepository<T extends BaseEntity> {
 	}
 
 	def delete(T object) {
-		collection.deleteOne(new Document("id", object.id))
+//		collection.deleteOne(new Document("id", object.id))
 	}
 	
 	def update(T object) {
-		collection.replaceOne(new Document("id", object.id), object)
+//		collection.replaceOne(new Document("id", object.id), object)
 	}
 	
 	def T findByName( String string ){
-		collection.find ( new Document( "nombre", string ) ).head
+//		collection.find ( new Document( "nombre", string ) ).head
 	}
 	
 	def List<T> allInstances(){

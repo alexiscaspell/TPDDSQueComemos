@@ -1,24 +1,39 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import java.util.ArrayList
-import org.eclipse.xtend.lib.annotations.Accessors
-import java.util.Map
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
-import queComemos.entrega3.dominio.Dificultad
-import org.uqbar.commons.utils.Observable
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
+import com.fasterxml.jackson.annotation.JsonProperty
+import java.util.ArrayList
 import java.util.HashMap
+import java.util.List
+import java.util.Map
 import java.util.Set
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.mongojack.ObjectId
+import org.uqbar.commons.utils.Observable
+import queComemos.entrega3.dominio.Dificultad
 
 @Observable
 @Accessors
-public class Receta extends BaseEntity implements Cloneable, IReceta {
+public class Receta implements Cloneable, IReceta {
+	
+	private String id;
+
+	@ObjectId
+	@JsonProperty("_id")
+	def String getId() {
+		return id;
+	}
+
+	@ObjectId
+	@JsonProperty("_id")
+	def void setId(String id) {
+		this.id = id;
+	}
 	
 	private String usuarioCreador
 
@@ -36,7 +51,7 @@ public class Receta extends BaseEntity implements Cloneable, IReceta {
 
 	private Map<Ingrediente, Integer> ingredientes = new HashMap<Ingrediente, Integer>()
 
-	private Map<Condimento, Integer> condimentos
+	private Map<Condimento, Integer> condimentos = new HashMap<Condimento, Integer>()
 
 	private int calorias
 

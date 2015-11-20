@@ -37,7 +37,7 @@ public abstract class MongoDBRepository<T extends BaseEntity> {
 	}
 
 	def T findByName(String string) {
-		collection.findOne("{name: '"+string+"'}").^as(getEntityType)
+		collection.findOne("{nombre: '"+string+"'}").^as(getEntityType)
 	}
 
 	def List<T> allInstances() {

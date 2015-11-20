@@ -14,7 +14,6 @@ class ConsultasXRecetas extends Observador {
 
 	override actualizar(Usuario usuario) {
 
-		//println("EN ACTUALIZAR CONSULTAS X CANTIDAD")
 		usuario.getConsultas().forEach [
 			if (! recetasConsultadas.containsKey(it.nombre))
 				recetasConsultadas.put(it.nombre, 1)

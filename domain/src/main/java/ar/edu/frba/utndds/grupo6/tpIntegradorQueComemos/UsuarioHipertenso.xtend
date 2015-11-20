@@ -6,12 +6,12 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 class UsuarioHipertenso extends UsuarioDecorator {
 	new(Usuario decorado) {
 		super(decorado)
-		decorado.condicion.add( Condicion.HIPERTENSO )
+		decorado.condicion.add(Condicion.HIPERTENSO)
 	}
 
-	new(){
+	new() {
 	}
-	
+
 	override estadoRutina() {
 
 		// Rutina saludable si tiene una rutina activa con ejercicio Adicional
@@ -30,10 +30,10 @@ class UsuarioHipertenso extends UsuarioDecorator {
 	override notificar() {
 		getObservadores().forEach[actualizar(this)]
 	}
-	
-	override consultarPorReceta( Receta receta ){
+
+	override consultarPorReceta(Receta receta) {
 		consultas.clear()
-		if ( receta.puedeVer( this )) consultas.add( receta )
+		if(receta.puedeVer(this)) consultas.add(receta)
 		notificar()
 	}
 
@@ -60,7 +60,4 @@ class UsuarioHipertenso extends UsuarioDecorator {
 
 		return usuarioCopia
 	}
-
-	//override getRecetasBuscadasFavoritas() {	}
-
 }

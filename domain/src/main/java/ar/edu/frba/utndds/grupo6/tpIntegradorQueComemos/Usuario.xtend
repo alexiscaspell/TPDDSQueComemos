@@ -16,23 +16,22 @@ import queComemos.entrega3.dominio.Dificultad
 
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="type")
 @JsonSubTypes(@JsonSubTypes.Type(value=typeof(UsuarioPosta), name="UsuarioPosta"))
-public abstract class Usuario extends SujetoObservado {	
-	
+public abstract class Usuario extends SujetoObservado {
+
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)
 
 	def void setLogin(Login login)
-	
+
 	def void setNickName(String nickName)
-	
+
 	def void setPassword(String pass)
 
 	//	------------------------------------------- Getters -------------------------------------------
-	
 	def String getNickName()
-	
+
 	def String getPassword()
-	
+
 	def Login getLogin()
 
 	def List<Receta> getConsultas()
@@ -65,8 +64,6 @@ public abstract class Usuario extends SujetoObservado {
 
 	def List<Receta> getRecetasConAcceso()
 
-	//def List<Receta> getRecetasBuscadasFavoritas()
-
 	//	------------------------------------------- Metodos -------------------------------------------
 	def void agregarGrupo(Grupo grupo)
 
@@ -89,22 +86,12 @@ public abstract class Usuario extends SujetoObservado {
 	def Boolean cumpleMismasCondiciones(Usuario usuario)
 
 	def Usuario crearPerfil()
-	
-	def void consultarPorReceta( Receta receta )
-	
+
+	def void consultarPorReceta(Receta receta)
+
 	def boolean cumpleCondicion(Receta receta)
-	/*
-	def void addObservador(Observador observador)
 
-	def void removeObservador(Observador observador)
-
-	def List<Observador> getObservadores()
-	 */
 	def void modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, Set<Temporada> temporada)
-	
 
-	
-
-	
 }

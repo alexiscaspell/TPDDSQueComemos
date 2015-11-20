@@ -13,7 +13,7 @@ class Administrador {
 
 		colaDeEspera.remove(usuario)
 
-//		new UsuariosRepository("Usuario").create(usuario)
+		new UsuariosRepository("Usuario").create(usuario)
 	}
 
 	def void rechazarUsuario(Usuario usuario, String motivoDeRechazo) {

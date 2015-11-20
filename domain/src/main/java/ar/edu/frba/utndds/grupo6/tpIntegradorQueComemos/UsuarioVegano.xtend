@@ -5,10 +5,10 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 class UsuarioVegano extends UsuarioDecorator {
 	new(Usuario decorado) {
 		super(decorado)
-		decorado.condicion.add( Condicion.VEGANO )
+		decorado.condicion.add(Condicion.VEGANO)
 	}
 
-	new(){
+	new() {
 	}
 
 	override estadoRutina() {
@@ -29,13 +29,13 @@ class UsuarioVegano extends UsuarioDecorator {
 	override notificar() {
 		getObservadores().forEach[actualizar(this)]
 	}
-	
-	override consultarPorReceta( Receta receta ){
+
+	override consultarPorReceta(Receta receta) {
 		consultas.clear()
-		if ( receta.puedeVer( this )) consultas.add( receta )
+		if(receta.puedeVer(this)) consultas.add(receta)
 		notificar()
 	}
-	
+
 	override esVegano() {
 		return true;
 	}
@@ -59,7 +59,4 @@ class UsuarioVegano extends UsuarioDecorator {
 
 		return usuarioCopia
 	}
-
-	//override getRecetasBuscadasFavoritas() {}
-
 }

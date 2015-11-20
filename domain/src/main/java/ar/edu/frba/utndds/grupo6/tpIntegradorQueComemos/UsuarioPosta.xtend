@@ -1,22 +1,22 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
+import com.fasterxml.jackson.annotation.JsonTypeName
 import java.util.ArrayList
 import java.util.Date
+import java.util.HashSet
 import java.util.List
 import java.util.Map
-import org.eclipse.xtend.lib.annotations.Accessors
-import queComemos.entrega3.dominio.Dificultad
-import org.uqbar.commons.utils.Observable
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condicion
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
-import java.util.HashSet
 import java.util.Set
-import com.fasterxml.jackson.annotation.JsonTypeName
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
+import queComemos.entrega3.dominio.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.RecetasRepository
 
 @Observable
 @Accessors
@@ -24,9 +24,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName
 public class UsuarioPosta extends Usuario implements Consumidor {
 
 	private Login login
-	
+
 	private String nickName
-	
+
 	private String password
 
 	private double altura
@@ -51,14 +51,6 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 	private List<String> platosQueNoLeGustan = new ArrayList<String>()
 
-	//@LazyCollection (LazyCollectionOption.FALSE)
-	/*
-	@OneToMany ( fetch = FetchType.EAGER )// Verificar si es EAGER o LAZY
-	@Fetch(value = FetchMode.SUBSELECT)
-	private List<Receta> recetasBuscadasFavoritas = new ArrayList<Receta>()
-	 */
-	
-
 	private List<Ingrediente> ingredientesFeos = new ArrayList<Ingrediente>()
 
 	private List<Receta> recetas = new ArrayList<Receta>()
@@ -77,32 +69,21 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 		this.nombre = nombre
 		this.sexo = sexo
 	}
-	
-	
-	new(){
+
+	new() {
 	}
-	/*
-	new(double peso, double altura, Rutina rutina, String nombre, Sexo sexo) {
-		this.altura = altura
-		this.peso = peso
-		this.rutina = rutina
-		this.nombre = nombre
-		this.sexo = sexo
-	} */
 
 	// ------------------------------------------- Setters -------------------------------------------
-	
-	override setNickName(String nickName){
-		
+	override setNickName(String nickName) {
+
 		this.nickName = nickName
 	}
-	
-	override  setPassword(String password){
-		
+
+	override setPassword(String password) {
+
 		this.password = password
 	}
-	
-	
+
 	override void setNombre(String unNombre) {
 		this.nombre = unNombre
 	}
@@ -141,25 +122,23 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 
 	//	------------------------------------------- Getters -------------------------------------------
-	
-	override String getNickName(){
-		
+	override String getNickName() {
+
 		nickName
 	}
-	
-	override String getPassword(){
-		
+
+	override String getPassword() {
+
 		password
 	}
-	
+
 	override getLogin() {
 
 		login
 	}
 
-	
 	def getReceta(String nombre) {
-//		new RecetasRepository("Receta").findByName( nombre )
+		new RecetasRepository("Receta").findByName(nombre)
 	}
 
 	override getSexo() {
@@ -191,20 +170,17 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 
 	override getRecetasConAcceso() {
-		
-//		val recetas = new RecetasRepository("Receta").allInstances();
-//		val listaRecetasConAcceso = new ArrayList<Receta>
-//
-//		recetas.forEach [ receta |
-//			if (receta.puedeVer(this)) {
-//				listaRecetasConAcceso.add(receta)
-//			}
-//		]
-		
-//		return listaRecetasConAcceso
-	}  
-	
-	
+		val recetas = new RecetasRepository("Receta").allInstances();
+		val listaRecetasConAcceso = new ArrayList<Receta>
+
+		recetas.forEach [ receta |
+			if (receta.puedeVer(this)) {
+				listaRecetasConAcceso.add(receta)
+			}
+		]
+		return listaRecetasConAcceso
+	}
+
 	override getPeso() {
 		peso
 	}
@@ -228,57 +204,50 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	override List<Receta> getConsultas() {
 		consultas
 	}
-	/*
-	override List<Receta> getRecetasBuscadasFavoritas() {
-		recetasBuscadasFavoritas
-	}
- */
+
 	//	------------------------------------------- Metodos -------------------------------------------
 	override modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, Set<Temporada> temporada) {
 
 		val receta = getReceta(nombreRecetaAModificar)
 
-//		if ( receta.puedeModificar(this) ) {
-//			println( "Puede modificarla")
-//			if ( receta.usuarioCreador.equals(this.nombre)) {
-//				receta.setNombre(nombreReceta)
-//				receta.setIngredientes(ingredientes)
-//				receta.setCondimentos(condimentos)
-//				receta.setExplicacion(explicacion)
-//				receta.setDificultad(dificultad)
-//				receta.setTemporadas(temporada)
-//				new RecetasRepository("Receta").update( receta )
-//			} else {
-//				val receta1 = receta.clone();
-//				receta1.setNombre(nombreReceta)
-//				receta1.setIngredientes(ingredientes)
-//				receta1.setCondimentos(condimentos)
-//				receta1.setExplicacion(explicacion)
-//				receta1.setDificultad(dificultad)
-//				receta1.setTemporadas(temporada)
-//				receta1.setUsuarioCreador(this.nombre)
-//				recetas.add(receta1)
-//			}
-//		}
+		if (receta.puedeModificar(this)) {
+			if (receta.usuarioCreador.equals(this.nombre)) {
+				receta.setNombre(nombreReceta)
+				receta.setIngredientes(ingredientes)
+				receta.setCondimentos(condimentos)
+				receta.setExplicacion(explicacion)
+				receta.setDificultad(dificultad)
+				receta.setTemporadas(temporada)
+				new RecetasRepository("Receta").update(receta)
+			} else {
+				val receta1 = receta.clone();
+				receta1.setNombre(nombreReceta)
+				receta1.setIngredientes(ingredientes)
+				receta1.setCondimentos(condimentos)
+				receta1.setExplicacion(explicacion)
+				receta1.setDificultad(dificultad)
+				receta1.setTemporadas(temporada)
+				receta1.setUsuarioCreador(this.nombre)
+				recetas.add(receta1)
+			}
+		}
 	}
 
 	def agregarReceta(Receta receta) {
 		recetas.add(receta)
-//		new RecetasRepository("Receta").create(receta)
+		new RecetasRepository("Receta").create(receta)
 	}
 
 	override comparteGrupo(Usuario usuario) {
 		grupos.exists[x|x.contieneAlUsuario(usuario)]
 	}
-	
-	override consultarPorReceta( Receta receta ){
-		
+
+	override consultarPorReceta(Receta receta) {
 		consultas.clear()
-		if ( receta.puedeVer( this )) consultas.add( receta )
+		if(receta.puedeVer(this)) consultas.add(receta)
 		notificar()
 	}
-	
 
 	override puedeComer(Receta receta) {
 		true
@@ -323,7 +292,6 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 
 	override cumpleMismasCondiciones(Usuario usuario) {
-
 		true
 	}
 
@@ -334,9 +302,9 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 		return usuarioCopia
 
 	}
-	
-	override boolean cumpleCondicion(Receta receta){
-		
+
+	override boolean cumpleCondicion(Receta receta) {
+
 		true
 	}
 

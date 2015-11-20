@@ -6,7 +6,7 @@ import java.util.ArrayList
 
 @Accessors
 public class Grupo implements Consumidor {
-	
+
 	private String nombre
 
 	private List<Usuario> integrantes = new ArrayList<Usuario>()

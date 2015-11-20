@@ -15,10 +15,12 @@ import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import queComemos.entrega3.dominio.Dificultad
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 
 @Observable
 @Accessors
-public class Receta implements Cloneable, IReceta {
+public class Receta extends BaseEntity implements Cloneable, IReceta {
 	
 	private String id;
 
@@ -165,11 +167,10 @@ public class Receta implements Cloneable, IReceta {
 
 	def boolean puedeVer(Usuario usuario) {
 		usuarioCreador == null || usuarioCreador.equals(usuario.getNombre()) || tipo.esPublica() ||
-			RepoUsuarios.getInstance.get( usuarioCreador ).comparteGrupo(usuario)
+			new UsuariosRepository("Usuario").findByName(usuarioCreador).comparteGrupo(usuario)
 	}
 
 	def boolean esIgual(Receta receta) {
-
 		return (nombre == receta.nombre)
 	}
 

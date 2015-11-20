@@ -10,15 +10,15 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import java.util.Set
 
 @Accessors
-public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
+public abstract class UsuarioDecorator extends Usuario implements Consumidor {
 
 	Usuario decorado
 
 	new(Usuario usuario) {
 		decorado = usuario
 	}
-	
-	new(){
+
+	new() {
 	}
 
 	//	------------------------------------------- Setters -------------------------------------------
@@ -26,20 +26,19 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 
 		decorado.setNombre(nombre)
 	}
-	
-	override  setLogin(Login login){
-		
+
+	override setLogin(Login login) {
+
 		decorado.setLogin(login)
 	}
-	
 
-	override void setNickName(String nickName){
-		
+	override void setNickName(String nickName) {
+
 		decorado.nickName = nickName
 	}
-	
-	override void setPassword(String pass){
-		
+
+	override void setPassword(String pass) {
+
 		decorado.password = pass
 	}
 
@@ -47,38 +46,38 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 	//override getCondicion(){
 	//decorado.getCondicion()
 	//}
-	
-	override String getNickName(){
-		
+	override String getNickName() {
+
 		decorado.nickName
 	}
-	
-	override String getPassword(){
-		
+
+	override String getPassword() {
+
 		decorado.password
 	}
-	
-	override getRecetasConAcceso(){
+
+	override getRecetasConAcceso() {
 		decorado.recetasConAcceso
 	}
-	
-	override getCondicion(){
+
+	override getCondicion() {
 		decorado.getCondicion()
 	}
-	
-	override getFechaDeNacimiento(){
+
+	override getFechaDeNacimiento() {
 		decorado.getFechaDeNacimiento()
 	}
-	
-	override getLogin(){
-		
+
+	override getLogin() {
+
 		decorado.getLogin()
 	}
+
 	override getPeso() {
 		decorado.getPeso()
 	}
 
-	override getIMC(){
+	override getIMC() {
 		decorado.getIMC()
 	}
 
@@ -123,8 +122,8 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 		decorado.usuarioValido()
 	}
 
-	override consultarPorReceta( Receta receta ){
-		decorado.consultarPorReceta( receta )
+	override consultarPorReceta(Receta receta) {
+		decorado.consultarPorReceta(receta)
 	}
 
 	override comparteGrupo(Usuario usuario) {
@@ -135,8 +134,8 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 		return ( cumpleCondicion(receta) && decorado.puedeComer(receta) )
 	}
 
-	override boolean cumpleCondicion(Receta receta){
-		
+	override boolean cumpleCondicion(Receta receta) {
+
 		decorado.cumpleCondicion(receta)
 	}
 
@@ -147,12 +146,12 @@ public abstract class UsuarioDecorator extends Usuario implements  Consumidor {
 	override agregarGrupo(Grupo grupo) {
 		decorado.agregarGrupo(grupo)
 	}
-	
-	override void marcarComoFavorita( Receta receta ){
-		
+
+	override void marcarComoFavorita(Receta receta) {
+
 		decorado.marcarComoFavorita(receta)
 	}
-	
+
 	override modificarReceta(String nombreRecetaAModificar, String nombreReceta, Map<Ingrediente, Integer> ingredientes,
 		Map<Condimento, Integer> condimentos, String explicacion, Dificultad dificultad, Set<Temporada> temporada) {
 		decorado.modificarReceta(nombreRecetaAModificar, nombreReceta, ingredientes, condimentos, explicacion,

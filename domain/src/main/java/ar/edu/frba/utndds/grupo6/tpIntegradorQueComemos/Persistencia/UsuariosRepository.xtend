@@ -10,10 +10,6 @@ import java.util.Date
 
 public class UsuariosRepository {
 
-	new(String className) {
-//		super(className)
-	}
-
 	def List<Usuario> list(Usuario usuario) {
 	}
 
@@ -38,9 +34,11 @@ public class UsuariosRepository {
 	
 	// Hago el field collection publico para poder usarlo aca
 	def Usuario searchByNickYPass(String nick, String pass) {
-//		var document = new Document
-//		document.append("nickName", nick)
-//		document.append("password", pass)
-//		collection.find( document ).head
+		
+	}
+	
+	def create (Usuario usuario)
+	{
+		
 	}
 }

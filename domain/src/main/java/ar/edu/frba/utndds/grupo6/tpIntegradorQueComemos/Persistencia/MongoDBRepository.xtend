@@ -1,45 +1,58 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia
 
-import com.mongodb.MongoClient
-import com.mongodb.client.MongoCollection
-import com.mongodb.client.MongoDatabase
-import org.bson.Document
+import com.mongodb.DB
+import com.mongodb.Mongo
+import java.util.ArrayList
 import java.util.List
+import org.jongo.Jongo
+import org.jongo.MongoCollection
 
-public abstract class MongoDBRepository<T> {
+public abstract class MongoDBRepository<T extends BaseEntity> {
 
-	private MongoClient mongoClient;
+	private Mongo mongo;
 
-	private MongoDatabase db;
+	private DB database;
+	
+	private Jongo jongo;
 
-	public MongoCollection<T> collection;
+	public MongoCollection collection;
 
 	new(String className) {
-		mongoClient = new MongoClient();
-		db = mongoClient.getDatabase("QueComemosDB");
-		collection = db.getCollection(className, getEntityType)
+		mongo = new Mongo()
+		database = new DB(mongo, "QueComemosDB")
+		jongo = new Jongo(database);
+		collection = jongo.getCollection(className)
 	}
 
 	def create(T object) {
-		collection.insertOne(object);
+		collection.save(object);
 	}
 
 	def delete(T object) {
-//		collection.deleteOne(new Document("id", object.id))
+		collection.remove("{_id: '"+ object._id +"'}");
 	}
-	
+
 	def update(T object) {
-//		collection.replaceOne(new Document("id", object.id), object)
+		collection.save(object);
 	}
-	
-	def T findByName( String string ){
-//		collection.find ( new Document( "nombre", string ) ).head
+
+	def T findByName(String string) {
+		collection.findOne("{name: '"+string+"'}").^as(getEntityType)
 	}
-	
-	def List<T> allInstances(){
-		collection.find().toList
+
+	def List<T> allInstances() {
+		var list = new ArrayList<T>()
+		var results = collection.find("{}").^as(getEntityType)
+		
+		while(results.hasNext())
+		{
+			var result = results.next();
+			list.add(result)
+		}
+		
+		return list;
 	}
-	
+
 	def abstract Class<T> getEntityType()
-	
+
 }

@@ -8,8 +8,12 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
 import java.util.Date
 
-public class UsuariosRepository {
+public class UsuariosRepository extends MongoDBRepository<Usuario> {
 
+	new(String className) {
+		super(className)
+	}
+	
 	def List<Usuario> list(Usuario usuario) {
 	}
 
@@ -37,8 +41,8 @@ public class UsuariosRepository {
 		
 	}
 	
-	def create (Usuario usuario)
-	{
-		
+	override getEntityType() {
+		return typeof(Usuario)
 	}
+	
 }

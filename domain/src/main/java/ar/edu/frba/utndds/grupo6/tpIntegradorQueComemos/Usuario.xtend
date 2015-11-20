@@ -16,9 +16,7 @@ import queComemos.entrega3.dominio.Dificultad
 
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="type")
 @JsonSubTypes(@JsonSubTypes.Type(value=typeof(UsuarioPosta), name="UsuarioPosta"))
-public abstract class Usuario extends SujetoObservado {
-	
-	public String _id;
+public abstract class Usuario extends SujetoObservado {	
 	
 	//	------------------------------------------- Setters -------------------------------------------
 	def void setNombre(String nombre)

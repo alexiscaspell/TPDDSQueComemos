@@ -32,10 +32,7 @@ class MainController {
 	@Post("/login")
 	def Result login(@Body String body) {
 		val PedidoLogin pedido = body.fromJson(PedidoLogin)
-		var usuarioExample = new UsuarioPosta()
-		usuarioExample.nickName = pedido.nombre
-		usuarioExample.password = pedido.pass
-		usuario = usuariosRepository.findByName(usuarioExample.nombre)
+		usuario = usuariosRepository.searchByNickYPass(pedido.nombre, pedido.pass)
 		usuario.addObservador(consultasXRecetas)
 		ok
 	}

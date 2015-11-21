@@ -25,8 +25,8 @@ public class RecetasRepository extends MongoDBRepository<Receta> {
 	@Accessors
 	private Command sendMailCommand;
 
-	new(String className) {
-		super(className)
+	new() {
+		super("Receta")
 	}
 
 	override getEntityType() {

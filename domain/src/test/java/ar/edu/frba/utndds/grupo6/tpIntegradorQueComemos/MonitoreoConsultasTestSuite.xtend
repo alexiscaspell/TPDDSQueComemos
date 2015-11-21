@@ -19,7 +19,7 @@ class MonitoreoConsultasTestSuite {
 	private DateFormat format = new SimpleDateFormat("dd-mm-yyyy")
 	private Date fecha = format.parse("01-04-1970")
 	private Calendar calendario = Calendar.getInstance();
-	private RecetasRepository  recetario =  new RecetasRepository("Receta")
+	private RecetasRepository  recetario =  new RecetasRepository()
 	recetaConAzucar recetaAzucar = new recetaConAzucar()
 	recetaConSal recetaSal = new recetaConSal()
 	recetaConCarne recetaCarne = new recetaConCarne()

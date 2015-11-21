@@ -24,7 +24,7 @@ class Dependencias {
 	//public static val repoUsuarios = new Repositorio()
 	//public static val repoRecetas = Recetario.getInstance()
 	public static val usuariosRepository = new UsuariosRepository();
-	public static val recetasRepository = new RecetasRepository("Receta");
+	public static val recetasRepository = new RecetasRepository();
 
 	public static Usuario usuario
 

@@ -138,7 +138,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 
 	def getReceta(String nombre) {
-		new RecetasRepository("Receta").findByName(nombre)
+		new RecetasRepository().findByName(nombre)
 	}
 
 	override getSexo() {
@@ -170,7 +170,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 	}
 
 	override getRecetasConAcceso() {
-		val recetas = new RecetasRepository("Receta").allInstances();
+		val recetas = new RecetasRepository().allInstances();
 		val listaRecetasConAcceso = new ArrayList<Receta>
 
 		recetas.forEach [ receta |
@@ -219,7 +219,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 				receta.setExplicacion(explicacion)
 				receta.setDificultad(dificultad)
 				receta.setTemporadas(temporada)
-				new RecetasRepository("Receta").update(receta)
+				new RecetasRepository().update(receta)
 			} else {
 				val receta1 = receta.clone();
 				receta1.setNombre(nombreReceta)
@@ -236,7 +236,7 @@ public class UsuarioPosta extends Usuario implements Consumidor {
 
 	def agregarReceta(Receta receta) {
 		recetas.add(receta)
-		new RecetasRepository("Receta").create(receta)
+		new RecetasRepository().create(receta)
 	}
 
 	override comparteGrupo(Usuario usuario) {

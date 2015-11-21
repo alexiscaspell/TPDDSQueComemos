@@ -34,7 +34,7 @@ class PedidoRecetas {
 			mostrando = "Las 10 recetas mas consultadas"
 			isHome = false
 		} else {
-			if (usuario.favoritas == 0) {
+			if (usuario.favoritas.size == 0) {
 				mostrando = "Tus ultimas Recetas Consultadas"
 				recetas = diezPrimeras.diezPrimeras(usuario.getConsultas())
 			} else {

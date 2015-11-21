@@ -10,7 +10,6 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Condimento
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
 import com.google.gson.GsonBuilder
 import javax.servlet.http.HttpServletRequest
 import org.uqbar.xtrest.api.Result
@@ -20,6 +19,7 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
+
 import static AplicationModel.Dependencias.*
 
 @Controller
@@ -87,8 +87,6 @@ class MainController {
 
 	@Post("/ConsultarReceta")
 	def Result consultar(@Body String body) {
-
-		//usuario.recetasConAcceso
 		var gsonBilder = new GsonBuilder();
 		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
 		var gson = gsonBilder.create();
@@ -145,14 +143,14 @@ class MainController {
 		println("y maximoCalorias: " + pedido.maximoCalorias)
 		println("[@Post setFiltros()] Recibiendo filtros con temporada: " + pedido.temporada)
 		println("[@Post setFiltros()] Recibiendo filtros con filtrosUsuario: " + pedido.filtrosUsuario)
-		
-		if(pedido.filtrosUsuario==null)
-			pedido.filtrosUsuario=false
-			
+
+		if (pedido.filtrosUsuario == null)
+			pedido.filtrosUsuario = false
+
 		filtrador.usuario = usuario
 		filtrador.crearFiltros(pedido)
-		
-		var listaFiltrada = filtrador.filtrar(recetasRepository.allInstances)//consultar si hacerlo EAGER o LAZY
+
+		var listaFiltrada = filtrador.filtrar(recetasRepository.allInstances) //consultar si hacerlo EAGER o LAZY
 
 		ok(listaFiltrada.toJson)
 	}

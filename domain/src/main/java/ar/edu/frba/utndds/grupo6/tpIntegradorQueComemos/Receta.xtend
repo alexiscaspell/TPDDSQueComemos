@@ -6,7 +6,8 @@ import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Ingrediente
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Temporada
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.TipoReceta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Excepciones.RecetaInvalidaExc
-import com.fasterxml.jackson.annotation.JsonProperty
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
@@ -15,24 +16,12 @@ import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import queComemos.entrega3.dominio.Dificultad
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.UsuariosRepository
 
 @Observable
 @Accessors
 public class Receta extends BaseEntity implements Cloneable, IReceta {
 	
 	private String id;
-
-	@JsonProperty("_id")
-	def String getId() {
-		return id;
-	}
-
-	@JsonProperty("_id")
-	def void setId(String id) {
-		this.id = id;
-	}
 	
 	private String usuarioCreador
 
@@ -167,7 +156,7 @@ public class Receta extends BaseEntity implements Cloneable, IReceta {
 
 	def boolean puedeVer(Usuario usuario) {
 		usuarioCreador == null || usuarioCreador.equals(usuario.getNombre()) || tipo.esPublica() ||
-			new UsuariosRepository("Usuario").findByName(usuarioCreador).comparteGrupo(usuario)
+			new UsuariosRepository().findByName(usuarioCreador).comparteGrupo(usuario)
 	}
 
 	def boolean esIgual(Receta receta) {

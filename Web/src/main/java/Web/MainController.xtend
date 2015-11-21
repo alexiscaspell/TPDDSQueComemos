@@ -35,16 +35,13 @@ class MainController {
 		var usuarioExample = new UsuarioPosta()
 		usuarioExample.nickName = pedido.nombre
 		usuarioExample.password = pedido.pass
-		// Hacer un usuario con los datos de pedido y pasarlo por searchByExample
-		//var usuarios = usuariosRepository.allInstances
-		//usuario = usuarios.findFirst[x|x.nickName == pedido.nombre && x.password == pedido.pass]
-		usuario = usuariosRepository.FindBy(usuarioExample.nombre)
-//		usuario.addObservador(consultasXRecetas)
+		usuario = usuariosRepository.findByName(usuarioExample.nombre)
+		usuario.addObservador(consultasXRecetas)
 		ok
 	}
 
 	def obtenerJugador(HttpServletRequest request) {
-		usuariosRepository.FindBy(getCookie(request, "usuario"))
+		usuariosRepository.findByName(getCookie(request, "usuario"))
 	}
 
 	def getCookie(HttpServletRequest request, String string) {
@@ -114,7 +111,6 @@ class MainController {
 		response.contentType = ContentType.APPLICATION_JSON
 		var pedidoUsuario = new PedidoUsuario(usuario)
 		pedidoUsuario.Color()
-		//println("fecha de nacimiento" + pedidoUsuario.usuario.fechaDeNacimiento)
 		ok(pedidoUsuario.toJson)
 	}
 

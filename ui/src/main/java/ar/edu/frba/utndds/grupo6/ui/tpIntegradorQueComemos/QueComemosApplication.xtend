@@ -38,8 +38,8 @@ class QueComemosApplication extends Application {
 		pepe.marcarComoFavorita(recetaSal.cumple(pepe.nombre))
 		pepe.marcarComoFavorita(recetaSal.noCumple(pepe.nombre))
 		pepe.marcarComoFavorita(recetaCarne.cumple(pepe.nombre))
-		new UsuariosRepository("Usuario").create(pepe)
-		var usuario = new UsuariosRepository("Usuario").FindBy("Juan Jose Lopez")
+		new UsuariosRepository().create(pepe)
+		var usuario = new UsuariosRepository().findByName("Juan Jose Lopez")
 		return new PanelUsuario(usuario, this, new AplicationModel(ConsultasXRecetas.estadistica))
 	}
 

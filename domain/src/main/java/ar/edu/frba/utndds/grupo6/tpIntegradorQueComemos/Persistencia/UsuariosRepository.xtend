@@ -10,8 +10,8 @@ import java.util.Date
 
 public class UsuariosRepository extends MongoDBRepository<Usuario> {
 
-	new(String className) {
-		super(className)
+	new() {
+		super("Usuario")
 	}
 	
 	def List<Usuario> list(Usuario usuario) {

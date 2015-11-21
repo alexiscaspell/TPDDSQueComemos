@@ -9,7 +9,7 @@ class Repositorio {
 
 	UsuarioTestBuilder usuarioBuilder = new UsuarioTestBuilder()
 
-	UsuariosRepository repositorio = new UsuariosRepository("Usuario")
+	UsuariosRepository repositorio = new UsuariosRepository()
 
 	new() {
 		/*
@@ -30,12 +30,12 @@ class Repositorio {
 	}
 
 	def getUsuario(String name) {
-		repositorio.FindBy(name)
+		repositorio.findByName(name)
 	}
 	
 	def loguear( Usuario usuario ){
 
-		val Usuario usuarioEncontrado = repositorio.FindBy(usuario.nombre)
+		val Usuario usuarioEncontrado = repositorio.findByName(usuario.nombre)
 		return usuarioEncontrado
 		
 	}

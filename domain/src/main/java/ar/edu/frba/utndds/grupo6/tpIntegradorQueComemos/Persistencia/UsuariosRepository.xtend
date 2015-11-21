@@ -34,4 +34,19 @@ public class UsuariosRepository extends MongoDBRepository<Usuario> {
 		return typeof(Usuario)
 	}
 	
+	/*
+	override delete(Usuario object) {
+		//println( object.nombre )
+		//collection.remove("{nombre: '"+ object.nombre +"'}");
+		println( object._id )
+		collection.remove("{_id: '"+ object._id +"'}");
+	}
+	
+	override update(Usuario object) {
+		//println( object.nombre )
+		//collection.update("{nombre: '"+ object.nombre +"'}").with( object );
+		println( object._id )
+		collection.update("{_id: '"+ object._id +"'}").with( object );
+	} */
+	
 }

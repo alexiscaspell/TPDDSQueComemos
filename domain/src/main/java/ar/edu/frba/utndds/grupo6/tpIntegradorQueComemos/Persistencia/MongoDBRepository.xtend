@@ -28,12 +28,17 @@ public abstract class MongoDBRepository<T extends BaseEntity> {
 		collection.save(object);
 	}
 
-	def delete(T object) {
-		collection.remove("{_id: '"+ object._id +"'}");
+	def void delete(T object) {
+		//println( object._id )
+		//collection.remove("{_id: '"+ object._id +"'}");
+		collection.remove( object.get_id )
 	}
-
-	def update(T object) {
-		collection.save(object);
+	
+	
+	def void update(T object) {
+		//collection.save(object);
+		//println( object._id )
+		collection.update( object.get_id ).with( object );
 	}
 
 	def T findByName(String string) {

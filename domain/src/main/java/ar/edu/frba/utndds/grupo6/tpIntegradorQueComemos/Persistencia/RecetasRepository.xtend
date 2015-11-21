@@ -11,6 +11,7 @@ import com.google.gson.JsonParser
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.jongo.marshall.jackson.oid.ObjectId
 import queComemos.entrega3.repositorio.BusquedaRecetas
 import queComemos.entrega3.repositorio.RepoRecetas
 
@@ -76,4 +77,19 @@ public class RecetasRepository extends MongoDBRepository<Receta> {
 	def Receta getReceta(String string) {
 		findByName(string)
 	}
+	/*
+	override delete(Receta object) {
+		//println( object.nombre )
+		//collection.remove("{nombre: '"+ object.nombre +"'}");
+		println( object._id )
+		collection.remove(  object._id ) ;
+	}
+	
+	override update(Receta object) {
+		//println( object.nombre )
+		//collection.update("{nombre: '"+ object.nombre +"'}").with( object );
+		println( object._id )
+		collection.update("{_id: '"+ object._id +"'}").with( object );
+	} */
+	
 }

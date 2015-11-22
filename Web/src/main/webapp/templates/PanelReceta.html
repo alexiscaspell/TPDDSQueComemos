@@ -35,8 +35,8 @@
 								class="list-group-item"><span>{{key}} - {{value}}</span></li>
 						</ul>
 						<button ng-click="agregarIngrediente()" ng-readonly="puedeEditar">Agregar</button>
-						<button ng-click="eliminarIngrediente()" ng-readonly="puedeEditar">Eliminar</button> <label>Favorita
-							<input type="checkbox" />
+						<button ng-click="eliminarIngrediente()" ng-readonly="puedeEditar">Eliminar</button> 
+						<label> Es Favorita? <input type="checkbox" ng-model = "esFavorita" />
 					</label>
 					</td>
 					<td>

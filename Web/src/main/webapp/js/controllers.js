@@ -133,6 +133,10 @@ queComemosApp.controller('panelRecetaController', [
 				recetaSeleccionadaData) {
 
 			$scope.recetaSeleccionada = recetaSeleccionadaData.data;
+			
+			$http.get('/esFavorita').success(function(data) {
+				$scope.esFavorita = data;
+			})
 
 			$http.get('/readonly').success(function(data) {
 				$scope.puedeEditar = data;

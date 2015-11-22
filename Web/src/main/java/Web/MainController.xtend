@@ -62,6 +62,14 @@ class MainController {
 	def Result reaonly() {
 		ok(recetaSeleccionada.puedeModificar(usuario).toJson);
 	}
+	
+	@Get("/esFavorita")
+	def Result getEsFavorita(){
+		var esFavorita = usuario.favoritas.findFirst[ it.get_id == recetaSeleccionada.get_id ]
+		println(  esFavorita != null )
+		ok( ( esFavorita != null ).toJson ) 
+	}
+	
 
 	@Post("/setRecetaSeleccionada")
 	def Result setRecetaSeleccionada(@Body String body) {

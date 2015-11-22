@@ -1,12 +1,14 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos
 
-import java.util.ArrayList
-import java.util.List
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia.BaseEntity
+import com.fasterxml.jackson.annotation.JsonIgnore
+import java.util.HashSet
+import java.util.Set
 
 abstract class SujetoObservado extends BaseEntity {
-
-	private List<Observador> Observadores = new ArrayList<Observador>()
+	
+	@JsonIgnore
+	private Set<Observador> Observadores = new HashSet<Observador>()
 
 	def void addObservador(Observador observador) {
 		Observadores.add(observador)
@@ -16,7 +18,7 @@ abstract class SujetoObservado extends BaseEntity {
 		Observadores.remove(observador)
 	}
 
-	def List<Observador> getObservadores() {
+	def Set<Observador> getObservadores() {
 		Observadores
 	}
 

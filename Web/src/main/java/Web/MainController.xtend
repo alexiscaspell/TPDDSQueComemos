@@ -34,6 +34,7 @@ class MainController {
 		val PedidoLogin pedido = body.fromJson(PedidoLogin)
 		usuario = usuariosRepository.searchByNickYPass(pedido.nombre, pedido.pass)
 		usuario.addObservador(consultasXRecetas)
+		// Deberia actualizar el usuario para que tenga el observer ? 
 		ok
 	}
 
@@ -44,6 +45,18 @@ class MainController {
 	def getCookie(HttpServletRequest request, String string) {
 		request.cookies.findFirst[it.name == string].value
 	}
+	
+	def updateUsuario(){
+		usuariosRepository.update(usuario)
+	}
+	
+	def updateReceta( Receta receta ){
+		recetasRepository.update( receta )
+		usuariosRepository.updateRecetasContenidas( usuario, receta )
+	}
+	
+	
+	
 
 	@Get("/readonly")
 	def Result reaonly() {
@@ -62,7 +75,10 @@ class MainController {
 	@Post("/nuevoCondimento")
 	def Result nuevoCondimento(@Body String nombre) {
 		recetaSeleccionada.agregarCondimento(Condimento.valueOf(nombre), 0);
-		recetasRepository.update(recetaSeleccionada)
+		//---------- Updates ------------- 
+		updateReceta( recetaSeleccionada )
+		updateUsuario()
+		// -------------------------------
 		var gsonBilder = new GsonBuilder();
 		gsonBilder.registerTypeAdapter(Usuario, new UsuarioAdapterJson());
 		var gson = gsonBilder.create();
@@ -72,7 +88,11 @@ class MainController {
 	@Post("/nuevoIngrediente")
 	def Result nuevoIngrediente(@Body String nombre) {
 		recetaSeleccionada.agregarIngrediente(Ingrediente.valueOf(nombre), 0);
-		recetasRepository.update(recetaSeleccionada)
+		//---------- Updates ------------- 
+		updateReceta( recetaSeleccionada )
+		updateUsuario()
+		// -------------------------------
+		
 		ok();
 	}
 
@@ -81,7 +101,11 @@ class MainController {
 		usuario.modificarReceta(recetaSeleccionada.nombre, recetaSeleccionada.nombre,
 			recetaSeleccionada.ingredientes, recetaSeleccionada.condimentos, recetaSeleccionada.explicacion,
 			recetaSeleccionada.dificultad, recetaSeleccionada.temporadas);
-		recetasRepository.update(recetaSeleccionada)
+		//---------- Updates ------------- 
+		updateReceta( recetaSeleccionada )
+		updateUsuario()
+		// -------------------------------
+		
 		ok
 	}
 
@@ -92,7 +116,11 @@ class MainController {
 		var gson = gsonBilder.create();
 		recetaSeleccionada = gson.fromJson(body, Receta)
 		usuario.consultarPorReceta(recetaSeleccionada)
-		usuariosRepository.update(usuario)
+		//---------- Updates ------------- 
+		updateReceta( recetaSeleccionada )
+		updateUsuario()
+		// -------------------------------
+		
 		ok
 	}
 

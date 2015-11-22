@@ -1,12 +1,8 @@
 package ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Persistencia
 
+import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Receta
 import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Usuario
 import java.util.List
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.UsuarioPosta
-import org.bson.Document
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Rutina
-import ar.edu.frba.utndds.grupo6.tpIntegradorQueComemos.Enums.Sexo
-import java.util.Date
 
 public class UsuariosRepository extends MongoDBRepository<Usuario> {
 
@@ -34,19 +30,17 @@ public class UsuariosRepository extends MongoDBRepository<Usuario> {
 		return typeof(Usuario)
 	}
 	
-	/*
-	override delete(Usuario object) {
-		//println( object.nombre )
-		//collection.remove("{nombre: '"+ object.nombre +"'}");
-		println( object._id )
-		collection.remove("{_id: '"+ object._id +"'}");
+	def updateRecetasContenidas( Usuario usuario, Receta receta ) {
+		
+		// Por ahora es para un usuario, pero deberia ser para todos
+		// Se puede justificar que por performance el de todos los usuarios 
+		// se hace aparte cada 24 horas o algo asi
+		val Receta recetaFavoritaARemplazar = usuario.favoritas.findFirst[ it.get_id == receta.get_id ]
+		val Receta recetaARemplazar = usuario.recetas.findFirst[ it.get_id == receta.get_id ]
+		usuario.favoritas.remove( recetaFavoritaARemplazar )
+		usuario.favoritas.add( receta )
+		usuario.recetas.remove( recetaARemplazar )
+		usuario.recetas.add( receta )
+		collection.update( usuario.get_id ).with( usuario ) 
 	}
-	
-	override update(Usuario object) {
-		//println( object.nombre )
-		//collection.update("{nombre: '"+ object.nombre +"'}").with( object );
-		println( object._id )
-		collection.update("{_id: '"+ object._id +"'}").with( object );
-	} */
-	
 }

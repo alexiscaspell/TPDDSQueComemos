@@ -39,11 +39,14 @@ class TestInicial {
 		receta.temporadas.add(Temporada.INVIERNO)
 		receta.usuarioCreador = pepe.nickName
 		receta.nombre = "Receta 1"
-		pepe.recetas.add(receta)
-		pepe.favoritas.add(receta)
 		
 		var repoRecetas = new RecetasRepository()
 		repoRecetas.create(receta)
+		
+		
+		pepe.recetas.add(receta)
+		pepe.favoritas.add(receta)
+		
 		var repo = new UsuariosRepository()
 		repo.create(pepe)
 		

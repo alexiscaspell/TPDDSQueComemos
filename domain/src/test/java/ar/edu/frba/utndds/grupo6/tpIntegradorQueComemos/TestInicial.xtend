@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.HashSet
 import org.junit.Test
 import queComemos.entrega3.dominio.Dificultad
+import org.junit.Assert
 
 class TestInicial {
 
@@ -51,7 +52,8 @@ class TestInicial {
 		var repo = new UsuariosRepository()
 		repo.create(pepe)
 		
-		//Sin esta linea el Test no corre
-		var asd = "";
+		Assert.assertTrue(
+			repo.findByName("Juan Jose Lopez").nickName == pepe.nickName
+		)
 	}
 }

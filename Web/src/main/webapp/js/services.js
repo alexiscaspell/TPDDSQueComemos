@@ -20,5 +20,5 @@ var queComemosService = queComemosApp.service('queComemosService', [ '$http',
 			};
 			this.getEnums = function() {
 				return $http.get('/getEnums')
-			}
+			};			
 		} ]);

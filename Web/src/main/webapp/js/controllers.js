@@ -3,11 +3,12 @@
 queComemosApp.controller('panelLoginController', [ '$scope', '$state', '$http',
 		function($scope, $state, $http) {
 			$scope.login = function() {
-				$http.post('/login', {
+				$http.post('/login', 
+				{
 					nombre : $scope.nombre,
 					pass : $scope.pass
-
-				}).success(function(data) {
+				})
+				.success(function(data) {
 					document.cookie = "usuario=" + data.nombre;
 
 					document.cookie = "password=" + data.pass;
@@ -40,66 +41,48 @@ queComemosApp
 							}
 						} ]);
 
-queComemosApp
-		.controller(
-				'panelConsultasController',
-				[
-						'$scope',
-						'$state',
-						'$http',
-						'queComemosService',
-						'enumsData',
-						function($scope, $state, $http, queComemosService,
-								enumsData) {
-							$scope.lista_dificultades_sistema = enumsData.data.dificultadesDelSistema
-							$scope.lista_temporadas_sistema = enumsData.data.temporadasDelSistema
-					
+queComemosApp.controller('panelConsultasController',['$scope','$state','$http','queComemosService',	'enumsData',
+	function($scope, $state, $http, queComemosService, enumsData) {
 
-							$scope.buscarRecetaPorFiltro = function() {
-								$http
-										.post(
-												'/setFiltros',
-												{
-													nombre : $scope.filtro.Nombre,
-													dificultad : $scope.filtro.Dificultad,
-													ingrediente : angular.uppercase($scope.filtro.Ingrediente),
-													maximoCalorias : $scope.filtro.MaximoCalorias,
-													minimoCalorias : $scope.filtro.MinimoCalorias,
-													temporada : $scope.filtro.Temporada,
-													filtrosUsuario : $scope.filtro.Usuario
+		$scope.lista_dificultades_sistema = enumsData.data.dificultadesDelSistema
+		$scope.lista_temporadas_sistema = enumsData.data.temporadasDelSistema
 
-												})
-										.success(
-												function(data) {
-													$scope.lista_recetas_filtradas = data;
-												});
-							}
+		$scope.buscarRecetaPorFiltro = function() {
+		$http.post('/setFiltros',
+			{	nombre : $scope.filtro.Nombre,
+				dificultad : $scope.filtro.Dificultad,
+				ingrediente : angular.uppercase($scope.filtro.Ingrediente),
+				maximoCalorias : $scope.filtro.MaximoCalorias,
+				minimoCalorias : $scope.filtro.MinimoCalorias,
+				temporada : $scope.filtro.Temporada,
+				filtrosUsuario : $scope.filtro.Usuario 
+			})
+			.success(function(data) {
+				$scope.lista_recetas_filtradas = data;
+			});
+		};
 
-							$scope.irAHome = function() {
-								$state.go('PanelHome')
-							}
-
-							/*roBando*/
-							$scope.verReceta = function() {
-							$state.go('PanelReceta');
-							};
+		$scope.irAHome = function() {
+			$state.go('PanelHome')
+		}
+								
+		$scope.verReceta = function() {
+			$state.go('PanelReceta');
+		}
 
 
-			$scope.consultarReceta = function(receta) {
-				queComemosService.setRecetaAConsultar(receta).success(function(){
-					$scope.verReceta();
-				});
-			}
+		$scope.consultarReceta = function(receta) {
+			queComemosService.setRecetaAConsultar(receta).success(function(){
+				$scope.verReceta();
+			});
+		}
 
-			$scope.seleccionarReceta = function(receta) {
-				queComemosService.setRecetaSeleccionada(receta).success(
-						function() {
-							$scope.verReceta();
-						});
-			};
-
-						/*roBando*/
-						} ]);
+		$scope.seleccionarReceta = function(receta) {
+			queComemosService.setRecetaSeleccionada(receta).success(function() {
+				$scope.verReceta();
+			});
+		}
+} ]);
 
 queComemosApp.controller('panelMonitoreoController', [ '$scope', '$state',
 		'$http', 'queComemosService', 'monitoreoData',

@@ -19,13 +19,14 @@
 
 			 <div style="height:240px; width:40%; float:left; text-align:left; padding:20px;">
       			<b>Nombre</b>
-				<br>
-				<input name="nombreReceta" size="40" ng-model="filtro.Nombre"><br>
+				<br
+>				<input name="nombreReceta" size="40" ng-model="filtro.Nombre"><br>
 				<br>
 				<b>Dificultad</b>
 				<br>
 				<select
-						class="form-control" size="3"
+						class="form-control"
+						size="1"
 						ng-model="filtro.Dificultad"
 						ng-options="dificultad for dificultad in lista_dificultades_sistema">
 				</select>
@@ -53,7 +54,8 @@
 				<b>Temporada</b>
 				<br>
 				<select
-						class="form-control" size="4"
+						class="form-control" 
+						size="1"
 						ng-model="filtro.Temporada"
 						ng-options="temporada for temporada in lista_temporadas_sistema">
 				</select>
@@ -61,7 +63,7 @@
 				<input type="checkbox" name="checkboxAplicarFiltros" ng-model="filtro.Usuario" value="aplicar filtros de perfil de usuario"> Aplicar filtros del perfil de usuario<br>
 				<br>
 
-  			</div>
+  			</div> 
 		<!--panel 3-->
 		<div align="center" class="col-sm-12">				
 		<div class="panel3"> 
@@ -90,7 +92,6 @@
         			<td class="col-xs-2">{{receta.dificultad}}</td>
         			<td class="col-xs-4">{{receta.temporadas}}</td>
 
-        			<!--ROBANDO-->
         			<td nowrap class="col-xs-2">
           			<button type="button" class="btn btn-default" ng-click="seleccionarReceta(receta)" aria-label="Cumplir">
 	            		<span class="glyphicon glyphicon-pencil"></span>
@@ -99,8 +100,7 @@
 	            		<span class="glyphicon glyphicon-search"></span>
           			</button>          			
         			</td>
-        			<!--ROBANDO-->
-
+        			
       			</tr>
       		</tbody>
     		</table>

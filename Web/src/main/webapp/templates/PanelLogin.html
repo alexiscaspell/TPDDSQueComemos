@@ -1,35 +1,36 @@
-<div class="col-xs-3"></div>
+<div class="center-block"></div>
 
-<div class="col-xs-6 center-block">
+<div class="center-block" id="centrar">
 	<div class="panel panel-default">
 		
 		<div class="panel-heading">
-			<h2>Ingrese su usuario y Contraseña</h2>
+			<h2 align=center>Login</h2>
 		</div>
 
 		<div class="panel-body">
 			<form>
 				<div class="form-group">
-					<label for="usuario">Usuario </label>
+					<label for="usuario">Usuario</label>
 					<input 
+						id="nombre"
 						type="text"
 						class="form-control" 
-						id="usuario" 
 						placeholder="Usuario"
 						ng-model="nombre">
-					<label for="pass">Contraseña </label>
+
+					<label for="pass">Contraseña</label>
 					<input 
+						id="pass"
 						type="password"
 						class="form-control" 
-						id="pass" 
 						placeholder="Contraseña"
 						ng-model="pass">
 				</div>
 			</form>
 		</div>
 		
-		<div class="panel-footer"> 
-			<button class="btn btn-default" ng-click="login()">Ingresar</button>
+		<div class="panel-default"> 
+			<button class="btn btn-default col-xs-12" ng-click="login()">Ingresar</button>
 		</div>
 		
 		
